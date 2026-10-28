@@ -1,0 +1,921 @@
+{
+  "schema": 1,
+  "retail_sha256": "43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19",
+  "translated_sha256": "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+  "rom_bytes": 16777216,
+  "pointer_literals": [
+    {
+      "offset": 38072,
+      "old": 139366356,
+      "new": 145684992
+    },
+    {
+      "offset": 81088,
+      "old": 139111932,
+      "new": 145528576
+    },
+    {
+      "offset": 81112,
+      "old": 139067436,
+      "new": 145500160
+    },
+    {
+      "offset": 81304,
+      "old": 139166624,
+      "new": 145565504
+    },
+    {
+      "offset": 81376,
+      "old": 139166624,
+      "new": 145565504
+    },
+    {
+      "offset": 81460,
+      "old": 139166624,
+      "new": 145565504
+    },
+    {
+      "offset": 81560,
+      "old": 139166624,
+      "new": 145565504
+    },
+    {
+      "offset": 141952,
+      "old": 138079908,
+      "new": 145051648
+    },
+    {
+      "offset": 145396,
+      "old": 139031576,
+      "new": 145476096
+    },
+    {
+      "offset": 160900,
+      "old": 139031576,
+      "new": 145476096
+    },
+    {
+      "offset": 160988,
+      "old": 139031576,
+      "new": 145476096
+    },
+    {
+      "offset": 193340,
+      "old": 138168456,
+      "new": 145061888
+    },
+    {
+      "offset": 201536,
+      "old": 138079908,
+      "new": 145051648
+    },
+    {
+      "offset": 201888,
+      "old": 138073592,
+      "new": 145055232
+    },
+    {
+      "offset": 201896,
+      "old": 138074888,
+      "new": 145059328
+    },
+    {
+      "offset": 259768,
+      "old": 139158692,
+      "new": 145559808
+    },
+    {
+      "offset": 318776,
+      "old": 138079908,
+      "new": 145051648
+    },
+    {
+      "offset": 318792,
+      "old": 138101268,
+      "new": 145031168
+    },
+    {
+      "offset": 322876,
+      "old": 139212696,
+      "new": 145587456
+    },
+    {
+      "offset": 326932,
+      "old": 139212696,
+      "new": 145587456
+    },
+    {
+      "offset": 327988,
+      "old": 139212696,
+      "new": 145587456
+    },
+    {
+      "offset": 346428,
+      "old": 139214432,
+      "new": 145589280
+    },
+    {
+      "offset": 361928,
+      "old": 137959361,
+      "new": 137959329
+    },
+    {
+      "offset": 378200,
+      "old": 138079908,
+      "new": 145051648
+    },
+    {
+      "offset": 415576,
+      "old": 138101268,
+      "new": 145031168
+    },
+    {
+      "offset": 416792,
+      "old": 139214432,
+      "new": 145589280
+    },
+    {
+      "offset": 421216,
+      "old": 138101268,
+      "new": 145031168
+    },
+    {
+      "offset": 450396,
+      "old": 139214432,
+      "new": 145589280
+    },
+    {
+      "offset": 453300,
+      "old": 138101268,
+      "new": 145031168
+    },
+    {
+      "offset": 453352,
+      "old": 138079908,
+      "new": 145051648
+    },
+    {
+      "offset": 473468,
+      "old": 138131440,
+      "new": 145039872
+    },
+    {
+      "offset": 554080,
+      "old": 138101268,
+      "new": 145031168
+    },
+    {
+      "offset": 554088,
+      "old": 138131440,
+      "new": 145038848
+    },
+    {
+      "offset": 554104,
+      "old": 138132604,
+      "new": 145042432
+    },
+    {
+      "offset": 554112,
+      "old": 138105764,
+      "new": 145047552
+    },
+    {
+      "offset": 572892,
+      "old": 138131440,
+      "new": 145039872
+    },
+    {
+      "offset": 573760,
+      "old": 138079908,
+      "new": 145051648
+    },
+    {
+      "offset": 1224088,
+      "old": 139214160,
+      "new": 145588992
+    },
+    {
+      "offset": 1225948,
+      "old": 139214160,
+      "new": 145588992
+    },
+    {
+      "offset": 1277932,
+      "old": 138101268,
+      "new": 145031168
+    },
+    {
+      "offset": 1308524,
+      "old": 144152392,
+      "new": 145064224
+    }
+  ],
+  "copy_calls": [
+    {
+      "call_rom": "0x22a1a",
+      "call_cpu": "0x8022a1a",
+      "load_rom": "0x22a16",
+      "literal_rom": "0x22a80",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x2f2d0",
+      "call_cpu": "0x802f2d0",
+      "load_rom": "0x2f2cc",
+      "literal_rom": "0x2f33c",
+      "source_old_cpu": "0x83c4888",
+      "source_new_cpu": "0x8a57800",
+      "source_old_rom": "0x3c4888",
+      "source_new_rom": "0xa57800",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 1472
+    },
+    {
+      "call_rom": "0x31324",
+      "call_cpu": "0x8031324",
+      "load_rom": "0x31320",
+      "literal_rom": "0x31340",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x313f0",
+      "call_cpu": "0x80313f0",
+      "load_rom": "0x313ec",
+      "literal_rom": "0x314a0",
+      "source_old_cpu": "0x83ad5f8",
+      "source_new_cpu": "0x8a55e00",
+      "source_old_rom": "0x3ad5f8",
+      "source_new_rom": "0xa55e00",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 4000
+    },
+    {
+      "call_rom": "0x31404",
+      "call_cpu": "0x8031404",
+      "load_rom": "0x31400",
+      "literal_rom": "0x314a8",
+      "source_old_cpu": "0x83adb08",
+      "source_new_cpu": "0x8a56e00",
+      "source_old_rom": "0x3adb08",
+      "source_new_rom": "0xa56e00",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2176
+    },
+    {
+      "call_rom": "0x4dc38",
+      "call_cpu": "0x804dc38",
+      "load_rom": "0x4dc34",
+      "literal_rom": "0x4dd38",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x4dcf0",
+      "call_cpu": "0x804dcf0",
+      "load_rom": "0x4dcec",
+      "literal_rom": "0x4dd48",
+      "source_old_cpu": "0x83b4214",
+      "source_new_cpu": "0x8a50000",
+      "source_old_rom": "0x3b4214",
+      "source_new_rom": "0xa50000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7264
+    },
+    {
+      "call_rom": "0x5c528",
+      "call_cpu": "0x805c528",
+      "load_rom": "0x5c524",
+      "literal_rom": "0x5c558",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x656e0",
+      "call_cpu": "0x80656e0",
+      "load_rom": "0x656dc",
+      "literal_rom": "0x65758",
+      "source_old_cpu": "0x83b4214",
+      "source_new_cpu": "0x8a50000",
+      "source_old_rom": "0x3b4214",
+      "source_new_rom": "0xa50000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7264
+    },
+    {
+      "call_rom": "0x66cb2",
+      "call_cpu": "0x8066cb2",
+      "load_rom": "0x66cae",
+      "literal_rom": "0x66d60",
+      "source_old_cpu": "0x83b4214",
+      "source_new_cpu": "0x8a50000",
+      "source_old_rom": "0x3b4214",
+      "source_new_rom": "0xa50000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7264
+    },
+    {
+      "call_rom": "0x6e968",
+      "call_cpu": "0x806e968",
+      "load_rom": "0x6e964",
+      "literal_rom": "0x6eab4",
+      "source_old_cpu": "0x83b4214",
+      "source_new_cpu": "0x8a50000",
+      "source_old_rom": "0x3b4214",
+      "source_new_rom": "0xa50000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7264
+    },
+    {
+      "call_rom": "0x6ea1c",
+      "call_cpu": "0x806ea1c",
+      "load_rom": "0x6ea16",
+      "literal_rom": "0x6eae8",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R5 literal; R1=R5 at0x6EA1A",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x6ea54",
+      "call_cpu": "0x806ea54",
+      "load_rom": "0x6ea16",
+      "literal_rom": "0x6eae8",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R5 literal; R1=R5 at0x6EA52",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x73926",
+      "call_cpu": "0x8073926",
+      "load_rom": "0x73922",
+      "literal_rom": "0x7397c",
+      "source_old_cpu": "0x83bb7f0",
+      "source_new_cpu": "0x8a52200",
+      "source_old_rom": "0x3bb7f0",
+      "source_new_rom": "0xa52200",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 896
+    },
+    {
+      "call_rom": "0x873a8",
+      "call_cpu": "0x80873a8",
+      "load_rom": "0x873a4",
+      "literal_rom": "0x87460",
+      "source_old_cpu": "0x83b4214",
+      "source_new_cpu": "0x8a50000",
+      "source_old_rom": "0x3b4214",
+      "source_new_rom": "0xa50000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7264
+    },
+    {
+      "call_rom": "0x873bc",
+      "call_cpu": "0x80873bc",
+      "load_rom": "0x873b8",
+      "literal_rom": "0x87468",
+      "source_old_cpu": "0x83bb7f0",
+      "source_new_cpu": "0x8a51e00",
+      "source_old_rom": "0x3bb7f0",
+      "source_new_rom": "0xa51e00",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 896
+    },
+    {
+      "call_rom": "0x873e6",
+      "call_cpu": "0x80873e6",
+      "load_rom": "0x873e2",
+      "literal_rom": "0x87478",
+      "source_old_cpu": "0x83bbc7c",
+      "source_new_cpu": "0x8a52c00",
+      "source_old_rom": "0x3bbc7c",
+      "source_new_rom": "0xa52c00",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 4352
+    },
+    {
+      "call_rom": "0x873fa",
+      "call_cpu": "0x80873fa",
+      "load_rom": "0x873f6",
+      "literal_rom": "0x87480",
+      "source_old_cpu": "0x83b53a4",
+      "source_new_cpu": "0x8a54000",
+      "source_old_rom": "0x3b53a4",
+      "source_new_rom": "0xa54000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2176
+    },
+    {
+      "call_rom": "0x8bdb0",
+      "call_cpu": "0x808bdb0",
+      "load_rom": "0x8bdac",
+      "literal_rom": "0x8bddc",
+      "source_old_cpu": "0x83bb7f0",
+      "source_new_cpu": "0x8a52200",
+      "source_old_rom": "0x3bb7f0",
+      "source_new_rom": "0xa52200",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 896
+    },
+    {
+      "call_rom": "0x8c016",
+      "call_cpu": "0x808c016",
+      "load_rom": "0x8c012",
+      "literal_rom": "0x8c140",
+      "source_old_cpu": "0x83aeea4",
+      "source_new_cpu": "0x8a55000",
+      "source_old_rom": "0x3aeea4",
+      "source_new_rom": "0xa55000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 2880
+    },
+    {
+      "call_rom": "0x137f5a",
+      "call_cpu": "0x8137f5a",
+      "load_rom": "0x137f56",
+      "literal_rom": "0x137fec",
+      "source_old_cpu": "0x83b4214",
+      "source_new_cpu": "0x8a50000",
+      "source_old_rom": "0x3b4214",
+      "source_new_rom": "0xa50000",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7264
+    },
+    {
+      "call_rom": "0x13f696",
+      "call_cpu": "0x813f696",
+      "load_rom": "0x13f692",
+      "literal_rom": "0x13f76c",
+      "source_old_cpu": "0x8979748",
+      "source_new_cpu": "0x8a58120",
+      "source_old_rom": "0x979748",
+      "source_new_rom": "0xa58120",
+      "trace": "LDR R1 literal",
+      "new_prefix_u16_bytes": 7072
+    }
+  ],
+  "replacement_tables": {
+    "identity_literals": {
+      "0x3b42d0": "0x83acd68",
+      "0x3b42d4": "0x83ab42c",
+      "0x3b42d8": "0x83c1834",
+      "0x3b42e0": "0x83b42f0",
+      "0x3b4320": "0x83b4330",
+      "0x3b4450": "0x83b4460"
+    },
+    "tables": [
+      {
+        "load_rom": "0x3b4290",
+        "literal_rom": "0x3b42e0",
+        "table_cpu": "0x83b42f0",
+        "table_rom": "0x3b42f0",
+        "rows": [
+          {
+            "table_row_rom": "0x3b42f0",
+            "key": 0,
+            "byte_count": 768,
+            "source_cpu": "0x8a5ec64",
+            "source_rom": "0xa5ec64",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b42f8",
+            "key": 6,
+            "byte_count": 768,
+            "source_cpu": "0x8a5f124",
+            "source_rom": "0xa5f124",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4300",
+            "key": 12,
+            "byte_count": 768,
+            "source_cpu": "0x8a5f5e4",
+            "source_rom": "0xa5f5e4",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4308",
+            "key": 18,
+            "byte_count": 768,
+            "source_cpu": "0x8a5faa4",
+            "source_rom": "0xa5faa4",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4310",
+            "key": 24,
+            "byte_count": 768,
+            "source_cpu": "0x8a5ff64",
+            "source_rom": "0xa5ff64",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          }
+        ],
+        "sentinel_rom": "0x3b4318"
+      },
+      {
+        "load_rom": "0x3b42b4",
+        "literal_rom": "0x3b4320",
+        "table_cpu": "0x83b4330",
+        "table_rom": "0x3b4330",
+        "rows": [
+          {
+            "table_row_rom": "0x3b4330",
+            "key": 0,
+            "byte_count": 576,
+            "source_cpu": "0x8a60424",
+            "source_rom": "0xa60424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4338",
+            "key": 9,
+            "byte_count": 576,
+            "source_cpu": "0x8a60824",
+            "source_rom": "0xa60824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4340",
+            "key": 14,
+            "byte_count": 576,
+            "source_cpu": "0x8a60c24",
+            "source_rom": "0xa60c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4348",
+            "key": 19,
+            "byte_count": 576,
+            "source_cpu": "0x8a61024",
+            "source_rom": "0xa61024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4350",
+            "key": 25,
+            "byte_count": 576,
+            "source_cpu": "0x8a61424",
+            "source_rom": "0xa61424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4358",
+            "key": 30,
+            "byte_count": 576,
+            "source_cpu": "0x8a61824",
+            "source_rom": "0xa61824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4360",
+            "key": 38,
+            "byte_count": 576,
+            "source_cpu": "0x8a61c24",
+            "source_rom": "0xa61c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4368",
+            "key": 45,
+            "byte_count": 576,
+            "source_cpu": "0x8a62024",
+            "source_rom": "0xa62024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4370",
+            "key": 53,
+            "byte_count": 576,
+            "source_cpu": "0x8a62424",
+            "source_rom": "0xa62424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4378",
+            "key": 61,
+            "byte_count": 576,
+            "source_cpu": "0x8a62824",
+            "source_rom": "0xa62824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4380",
+            "key": 69,
+            "byte_count": 576,
+            "source_cpu": "0x8a62c24",
+            "source_rom": "0xa62c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4388",
+            "key": 78,
+            "byte_count": 576,
+            "source_cpu": "0x8a63024",
+            "source_rom": "0xa63024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4390",
+            "key": 85,
+            "byte_count": 576,
+            "source_cpu": "0x8a63424",
+            "source_rom": "0xa63424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4398",
+            "key": 93,
+            "byte_count": 576,
+            "source_cpu": "0x8a63824",
+            "source_rom": "0xa63824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43a0",
+            "key": 100,
+            "byte_count": 576,
+            "source_cpu": "0x8a63c24",
+            "source_rom": "0xa63c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43a8",
+            "key": 107,
+            "byte_count": 576,
+            "source_cpu": "0x8a64024",
+            "source_rom": "0xa64024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43b0",
+            "key": 116,
+            "byte_count": 576,
+            "source_cpu": "0x8a64424",
+            "source_rom": "0xa64424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43b8",
+            "key": 124,
+            "byte_count": 576,
+            "source_cpu": "0x8a64824",
+            "source_rom": "0xa64824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43c0",
+            "key": 132,
+            "byte_count": 576,
+            "source_cpu": "0x8a64c24",
+            "source_rom": "0xa64c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43c8",
+            "key": 140,
+            "byte_count": 576,
+            "source_cpu": "0x8a65024",
+            "source_rom": "0xa65024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43d0",
+            "key": 148,
+            "byte_count": 576,
+            "source_cpu": "0x8a65424",
+            "source_rom": "0xa65424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43d8",
+            "key": 156,
+            "byte_count": 576,
+            "source_cpu": "0x8a65824",
+            "source_rom": "0xa65824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43e0",
+            "key": 164,
+            "byte_count": 576,
+            "source_cpu": "0x8a65c24",
+            "source_rom": "0xa65c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43e8",
+            "key": 171,
+            "byte_count": 576,
+            "source_cpu": "0x8a66024",
+            "source_rom": "0xa66024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43f0",
+            "key": 179,
+            "byte_count": 576,
+            "source_cpu": "0x8a66424",
+            "source_rom": "0xa66424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b43f8",
+            "key": 187,
+            "byte_count": 576,
+            "source_cpu": "0x8a66824",
+            "source_rom": "0xa66824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4400",
+            "key": 195,
+            "byte_count": 576,
+            "source_cpu": "0x8a66c24",
+            "source_rom": "0xa66c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4408",
+            "key": 203,
+            "byte_count": 576,
+            "source_cpu": "0x8a67024",
+            "source_rom": "0xa67024",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4410",
+            "key": 210,
+            "byte_count": 576,
+            "source_cpu": "0x8a67424",
+            "source_rom": "0xa67424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4418",
+            "key": 217,
+            "byte_count": 576,
+            "source_cpu": "0x8a67824",
+            "source_rom": "0xa67824",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          }
+        ],
+        "sentinel_rom": "0x3b4420"
+      },
+      {
+        "load_rom": "0x3b42b8",
+        "literal_rom": "0x3b4450",
+        "table_cpu": "0x83b4460",
+        "table_rom": "0x3b4460",
+        "rows": [
+          {
+            "table_row_rom": "0x3b4460",
+            "key": 0,
+            "byte_count": 1472,
+            "source_cpu": "0x8a67c24",
+            "source_rom": "0xa67c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4468",
+            "key": 1,
+            "byte_count": 1472,
+            "source_cpu": "0x8a68424",
+            "source_rom": "0xa68424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4470",
+            "key": 2,
+            "byte_count": 1472,
+            "source_cpu": "0x8a68c24",
+            "source_rom": "0xa68c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4478",
+            "key": 3,
+            "byte_count": 1472,
+            "source_cpu": "0x8a69424",
+            "source_rom": "0xa69424",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          },
+          {
+            "table_row_rom": "0x3b4480",
+            "key": 5,
+            "byte_count": 1472,
+            "source_cpu": "0x8a69c24",
+            "source_rom": "0xa69c24",
+            "positive_word_multiple": true,
+            "pointer_in_rom": true
+          }
+        ],
+        "sentinel_rom": "0x3b4488"
+      }
+    ]
+  },
+  "extra_consumer_pages": [
+    [
+      4994968,
+      11369728
+    ]
+  ],
+  "inline_native_streams": [
+    3741575,
+    3741601,
+    3741624
+  ],
+  "fills": [
+    {
+      "offset": 3883540,
+      "size": 12,
+      "value": 0,
+      "purpose": "reclaimed original resource prefix"
+    },
+    {
+      "offset": 3883618,
+      "size": 14,
+      "value": 0,
+      "purpose": "fixed gap between added copy and override code"
+    },
+    {
+      "offset": 3741600,
+      "size": 1,
+      "value": 0,
+      "purpose": "inline native text separator"
+    },
+    {
+      "offset": 3741608,
+      "size": 1,
+      "value": 0,
+      "purpose": "inline native text separator"
+    },
+    {
+      "offset": 3741627,
+      "size": 6,
+      "value": 0,
+      "purpose": "retired inline string tail padding"
+    }
+  ]
+}

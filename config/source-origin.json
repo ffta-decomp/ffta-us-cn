@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/hitsmaxft/ffta-us-decomp.git",
+  "revision": "2cc09be6ebb69faad7e8bc145dca2b10726f74da",
+  "subdirectory": "localization/cjk",
+  "migration": "Standalone ffta-us-cn project; original branch remains intact."
+}

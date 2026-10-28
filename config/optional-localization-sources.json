@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "default_build_dependency": false,
+  "sources": [
+    {
+      "id": "ffta-us-cn",
+      "url": "https://github.com/BSoD123456/ffta_us_cn",
+      "revision": "cd32ebce88bb26cae030115d5538c1d01a0772f3",
+      "checkout_policy": "external; no game text or font binaries vendored",
+      "repository_license": "GPL-3.0",
+      "font": {
+        "path": "font/BoutiqueBitmap9x9_1.7.ttf",
+        "sha256": "97826c054699c9a0ca35b62d0e8c6d7f300893436c8d970493d52a32c173e8d0",
+        "upstream": "https://github.com/scott0107000/BoutiqueBitmap9x9",
+        "license_evidence": "Preserve embedded version 1.7 copyright and permission notices; do not infer its terms from the current font release"
+      },
+      "converter": "tools/convert_ffta_us_cn.py",
+      "scope": "Translation additions and fixes, charset provenance, optional font subset",
+      "limitations": [
+        "Base translated story requires a separately supplied Chinese ROM",
+        "Generated codes require a dedicated localization linker",
+        "No retail manifest replacement or ROM patching"
+      ]
+    }
+  ],
+  "bear_rom_sources": [
+    {
+      "variant": "small-fixed",
+      "sha256": "672dca7222a0e2b1f7b759bfb9e453fb03069ebe4250cc0293e741ff3de6427e",
+      "size": 10361856,
+      "role": "preferred external localization source"
+    },
+    {
+      "variant": "large",
+      "sha256": "aee65df70410f9c72c2e9b7a5ac9206b826f8559050c94018907be00ef8c4574",
+      "size": 10361600,
+      "role": "external font comparison source"
+    }
+  ]
+}
