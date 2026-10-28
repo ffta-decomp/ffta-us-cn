@@ -104,8 +104,7 @@ def main():
     run([args.tool_prefix + 'as', '-mcpu=arm7tdmi', '-mthumb', *assembly_flags, support, '-o', obj])
     objects.append(obj)
     linker = out / 'pinyin.ld'
-    linker.write_text('SECTIONS { .pinyin_tabs_bridge 0x083b42e4 : { *(.pinyin_tabs_bridge) } '
-        '.pinyin_cursor_bridge 0x083b4490 : { *(.pinyin_cursor_bridge) } '
+    linker.write_text('SECTIONS { .pinyin_cursor_bridge 0x083b4490 : { *(.pinyin_cursor_bridge) } '
         '. = 0x08b00000; .text : { *(.text*) *(.rodata*) } '
         '/DISCARD/ : { *(.ARM.exidx*) *(.ARM.extab*) *(.comment*) *(.note*) } '
         '.data : { *(.data*) } .bss : { *(.bss*) *(COMMON) } }\n'
@@ -128,8 +127,7 @@ def main():
     # Original constructors: work 205<<2, callback literal 0812A085.
     # Extend the task-owned work tail; original task destruction owns its free.
     patches = []
-    for section, site, size in [('pinyin_tabs_bridge', 0x3b42e4, 8 if args.source_extensions else 12),
-                               ('pinyin_cursor_bridge', 0x3b4490, 8)]:
+    for section, site, size in [('pinyin_cursor_bridge', 0x3b4490, 8)]:
         file = out / (section + '.bin')
         run([args.tool_prefix + 'objcopy', '-O', 'binary', '-j', '.' + section, elf, file])
         data = file.read_bytes()
@@ -139,8 +137,7 @@ def main():
         patches.append(dict(rom_offset=site, cpu_address=hex(0x08000000 + site),
                             purpose='temporary isolated Thumb bridge', bytes=size))
     if not args.source_extensions:
-        for site, old, new in [(0x12a326, 0x0812a91c, 0x083b4490),
-                               (0x12a502, 0x08001f34, 0x083b42e4)]:
+        for site, old, new in [(0x12a326, 0x0812a91c, 0x083b4490)]:
             if base[site:site + 4] != thumb_bl(site, old):
                 raise ValueError('Native name call-site identity differs')
             image[site:site + 4] = thumb_bl(site, new)
@@ -172,7 +169,8 @@ def main():
         sources={str(p.relative_to(ENGINE)) if p.is_relative_to(ENGINE) else p.name:
                  sha(p.read_bytes()) for p in sources + [support]},
         candidate_coverage=json.loads((table / 'coverage.json').read_text()),
-        policy='Installed native font tokens only; English and feature-off CN builders unchanged')
+        keyboard_pages=2, pinyin_page=0, native_second_page=1, extra_tab=False,
+        policy='Native page zero replaced by pinyin; original second page and both native tabs retained; feature-off builders unchanged')
     (out / 'build-report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({'output_sha256': sha(image), 'payload_bytes': len(payload),
                       'output_bytes': len(image)}))

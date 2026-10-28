@@ -155,6 +155,18 @@ int main(int argc, char **argv)
             unsigned index = (unsigned)strtoul(argument, NULL, 10);
             assert(index < byte(0x37c));
             first_row(); column(index % 10); row(3 + index / 10); key(1);
+        } else if (!strcmp(command, "accept-cell")) {
+            unsigned x, y;
+            assert(sscanf(argument, "%u,%u", &x, &y) == 2 && x < 10 && y < 6);
+            first_row(); column(x); row(y); key(1);
+        } else if (!strcmp(command, "expect-page")) {
+            assert(byte(0x2f6) == (unsigned)strtoul(argument, NULL, 10));
+            assert(byte(0x2f6) < 2);
+            assert(byte(0x384) == (byte(0x2f6) == 0));
+        } else if (!strcmp(command, "expect-candidates")) {
+            assert(byte(0x37c) == (unsigned)strtoul(argument, NULL, 10));
+        } else if (!strcmp(command, "expect-upload-limit")) {
+            assert(byte(0x2f4) <= 3);
         } else if (!strcmp(command, "clear")) {
             unsigned tries = 0;
             do { key(2); assert(++tries < 25); }
@@ -172,6 +184,8 @@ int main(int argc, char **argv)
                 assert(byte(0x312 + i * 2) == token >> 8);
                 assert(byte(0x313 + i * 2) == (token & 255));
             }
+        } else if (!strcmp(command, "expect-name-empty")) {
+            assert(byte(0x326) == 0);
         } else if (!strcmp(command, "secondary-context-fixture")) {
             core->busWrite16(core, editor + 6, 0);
             puts("{\"fixture\":\"secondary editor mode; not natural story entry\"}");

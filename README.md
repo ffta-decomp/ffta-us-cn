@@ -4,7 +4,8 @@ Optional Chinese and pinyin naming extensions for Final Fantasy Tactics Advance
 US, built jointly with pinned decomp source dependencies. **CN and pinyin are
 both enabled by default.** The serial counter timeout fix also defaults on for
 CN builds. The ROM stays 16 MiB; native glyph IDs, token/control
-semantics and the original Aa/123 pages are preserved.
+semantics and both original tab styles are preserved. Pinyin replaces the first
+keyboard page; the original second page remains available. No third tab is added.
 
 | Invocation | Result |
 | --- | --- |
@@ -33,7 +34,7 @@ See [AGENTS.md](AGENTS.md) and [vendor provenance](vendor/README.md).
 The compatibility build compiles five published decompiled native naming C
 entries (1,700 original bytes), checks their complete bytes against US retail,
 and applies the selected source/resource extension in the same build. Pinyin
-replaces four complete source modules through the upstream extension API; it
+replaces three complete source modules through the upstream extension API; it
 does not overwrite vendor C or patch those C call sites by byte offset.
 Other game code remains supplied by the authenticated original input. This is
 not a claim that this project rebuilds the entire game from recovered source.

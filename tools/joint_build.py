@@ -17,7 +17,6 @@ BASE_MODULES = (
 )
 REPLACEMENTS = {
     'CoreRegion_0012A084': 'advance_save_name_editor.c',
-    'CoreRegion_0012A440': 'scene_sprite_layout.c',
     'Remaining38_0012B208': 'start_primary_name_editor.c',
     'Remaining38_0012B230': 'start_secondary_name_editor.c',
 }

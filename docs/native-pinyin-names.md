@@ -5,13 +5,11 @@ The native adapter connects them to the primary and secondary name editors.
 Pinyin defaults on in this project and is disabled with `--disable-pinyin`; it
 does not change the official decomp project's default manifest.
 
-The original `Aa` and `123` pages, their native resources and selected-tab
-renderer remain intact. A third tab uses the installed native Zhong glyph
-(`0x8125`). Its selected frame is copied from the original tab resource; its
-inactive frame is copied from the original BG3 tab. The inactive colors come
-from the actual BG palette 11, copied into a temporarily reserved OBJ palette,
-and the selected colors use the original OBJ palette 5. Equal palette indices
-in these two palettes are not interchangeable.
+The original two `Aa` / `123` tab resources, palettes, positions and selected-tab
+renderer remain intact. Pinyin replaces native keyboard page zero, selected by
+the first tab, and is ready when the editor opens. The second tab keeps its
+original native character page. There is no third tab, overlay, extra OBJ VRAM
+reservation or temporary palette.
 
 The pinyin page has 26 letter cells and up to 30 candidate cells. Its six rows
 use 14-pixel spacing, followed by a separate spelling strip at screen
@@ -22,7 +20,8 @@ before allowing this layout. It neither scales nor modifies font cells.
 
 Controls:
 
-- L/R cycles the two original pages and the third Chinese page.
+- L/R switches between pinyin on page zero and the original second page.
+  A pending spelling is retained when switching away and back.
 - D-pad selects a letter or an existing candidate; A accepts it.
 - B removes the last pending letter first. Only an empty composition lets B
   delete a committed name character.
@@ -49,8 +48,8 @@ readings. This is not full 128-byte cell equality or a claim of independent
 manual verification of every Unicode label. The map report records this limit.
 No candidate introduces a new font cell or changes a native glyph code.
 
-Run from this project root. The pinned vendor dependency provides generic codecs; this project owns the
-pinyin core. To derive local inputs, run:
+Run from this project root. The pinned vendor dependency provides generic
+codecs; this project owns the pinyin core. To derive local inputs, run:
 
 ```sh
 python3 tools/map_native_pinyin_glyphs.py \
@@ -76,48 +75,49 @@ The result remains 16 MiB. Generated tables, coverage and build reports are
 written in the external output directory; the final ROM is `ffta-us-cn.gba`.
 
 The feature-enabled ROM intentionally differs from the supplied Chinese ROM.
-Use `tools/build.py --disable-pinyin --disable-link-fix` for byte-identical Chinese-reference
-output, or `--disable-cjk` for byte-identical US retail. See the README for
+Use `tools/build.py --disable-pinyin --disable-link-fix` for byte-identical
+Chinese-reference output, or `--disable-cjk` for byte-identical US retail. See the README for
 complete commands and [exact import details](us-cn-exact-build.md).
 
 ## Native lifecycle and temporary patch boundary
 
 Both original constructors, `0812B208` and `0812B230`, select the same editor
-callback. The source extensions increase their task-owned work from `0x334` to `0x3A0`,
-keep the original context/mode halfword, and select callback/input/tab behavior
-through complete C module replacements. The nearby Thumb bridges occupy
-authenticated padding;
-the new code and table occupy erased storage at ROM `B00000`, without ROM
+callback. The source extensions increase their task-owned work from `0x334`
+to `0x3A0`, keep the original context/mode halfword and select the callback and
+cursor through complete C module replacements. The nearby Thumb cursor bridge
+occupies authenticated padding; the new code and table occupy erased storage
+at ROM `B00000`, without ROM
 expansion. The assembly is local to this CJK subproject and earns no decomp
 matching credit. Replace these fixed-revision bridges with typed engine hooks
 when the main engine integration is ready.
 
-The adapter borrows native keyboard page one while Chinese is active and
-regenerates its original key and graphics buffers before returning to it.
-All native name tokens remain big-endian byte pairs. It never indexes a third
-page into the original 240-byte keyboard allocation.
+Both native page caches are prepared by the original open sequence. Before
+native event `0x102` copies page zero to VRAM, the adapter replaces only that
+page's 120-byte token cache and `0x2100`-byte graphics cache. The original
+second-page caches remain untouched. Rendering uses the existing scratch area
+inside the task-owned buffer. Native name tokens remain big-endian byte pairs;
+no page index beyond zero or one is used.
 
-The third-tab overlay uses OBJ VRAM `16B00..16E00`, following the native name
-field's `16600..16A80`, and temporary OBJ palette 11. Both are backed up in an
-owned 800-byte heap allocation, restored and freed at the original editor's
-close/destruction boundary. Original tab VRAM and palettes are not replaced.
+On later input and page changes, the original keyboard uploader and original
+selected-tab resource uploader are used. The first tab therefore regains its
+own label/frame when switching back. No custom tab rendering is called, and
+the original 236-byte sprite-layout C module remains byte-identical to retail.
 
-The native upload allocator has only three 28-byte descriptors. In particular,
-editor event `102` already uses all three; the new initial tab upload must wait
-for the following callback. A fourth descriptor overwrites editor pointers and
-causes visible corruption. Every added upload checks the three-slot boundary;
-name redraw plus pinyin page plus third-tab upload uses exactly three. SELECT,
-direction and A/B consumption cannot also trigger another tab upload that tick.
+The native upload allocator has only three 28-byte descriptors. The initial
+pinyin render only prepares RAM; the original open path performs its existing
+uploads. During editing, a native name redraw plus keyboard and selected-tab
+uploads uses at most three slots. Each added upload checks this limit. No
+additional header allocation or VRAM/palette backup/restore lifecycle exists.
 
 ## Validation boundary
 
 The local acceptance run checks actual keypad input in mGBA: composition,
 backspace, impossible-prefix rejection, six-letter display, candidate paging
-and wrap, native-page restoration, width rejection, primary-name confirmation
-and return to the story. The primary test commits a name different from the
+and wrap, two-page switching, original second-page input, width rejection,
+primary-name confirmation and return to the story. The primary test commits a name different from the
 default. Original tab-label regions are compared pixel-for-pixel against the
-native renderer. The temporary VRAM and palette are checked against their
-backups after close, and two clean builds must produce the same ROM.
+native renderer, including switching back to the first tab. The old third-tab
+bridge storage remains unchanged, and two clean builds must produce the same ROM.
 
 `tools/probe_native_pinyin.c` is a separate host test driver linked to mGBA.
 Its input language supports `key HEX`, `spell LETTERS`, `candidate INDEX`,
