@@ -1,0 +1,123 @@
+# ffta-us-cn
+
+Optional Chinese and pinyin naming extensions for Final Fantasy Tactics Advance
+US, built jointly with pinned decomp source dependencies. **CN and pinyin are
+both enabled by default.** The serial counter timeout fix also defaults on for
+CN builds. The ROM stays 16 MiB; native glyph IDs, token/control
+semantics and the original Aa/123 pages are preserved.
+
+| Invocation | Result |
+| --- | --- |
+| Default | CN resources/loading, pinyin naming, and the serial timeout fix |
+| `--disable-pinyin` | CN with the serial timeout fix, without pinyin |
+| `--disable-pinyin --disable-link-fix` | Exact pinned 16 MiB Chinese reference |
+| `--disable-cjk` | English baseline, with pinyin disabled automatically |
+| `--disable-cjk --enable-link-fix` | English with only the serial timeout fix |
+| `--disable-cjk --enable-pinyin` | Rejected as contradictory |
+
+## Source ownership
+
+CN C/ASM lives in `engine/`, including complete naming-entry replacements under
+`engine/extensions/`. Resources and pointer layout rules live in this project.
+`vendor/` contains immutable, hash-locked source exports of the official decomp
+source/toolkit, the compiler source and the licensed Rime dictionary. The pinyin core belongs to this project under `engine/pinyin/`.
+No adjacent decomp checkout or environment variable is required.
+
+**Never edit vendor code.** Needed generic build options are submitted upstream;
+see [the official extension-interface PR](https://github.com/ffta-decomp/fftadecomp/pull/1).
+The dependency lock pins merged upstream commit
+`4ecb640abb607decd2581383e27604e3caaee280`. This project consumes the official
+source without a local vendor patch.
+See [AGENTS.md](AGENTS.md) and [vendor provenance](vendor/README.md).
+
+The compatibility build compiles five published decompiled native naming C
+entries (1,700 original bytes), checks their complete bytes against US retail,
+and applies the selected source/resource extension in the same build. Pinyin
+replaces four complete source modules through the upstream extension API; it
+does not overwrite vendor C or patch those C call sites by byte offset.
+Other game code remains supplied by the authenticated original input. This is
+not a claim that this project rebuilds the entire game from recovered source.
+No optional/mod output earns decomp recovery credit.
+
+## Inputs and prerequisites
+
+Use Python 3.12+, Clang, Make and ARM binutils (`arm-none-eabi-as`, `ld`,
+`objcopy`, `nm`). Core build tools use the Python standard library. Compiler
+bootstrap is serial, uses an external work directory and removes that owned
+work directory after success. An existing compatible compiler may be selected
+explicitly with `--compiler`; its hash and the exact native baseline checks are
+recorded in the report.
+
+Keep these resources outside the repository and source archives:
+
+- US retail: SHA-256 `43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19`.
+- Chinese reference, used only for local import/verification: SHA-256
+  `ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03`.
+- The imported private component pack, native-glyph map and its provenance report.
+- The explicit source-font/charset inputs when deriving that glyph map.
+
+No ROM, extracted text, font, glyph map, save or screenshot is distributed here.
+The build reads US retail plus the private pack; it does not load a Chinese ROM
+as its output or import a whole-ROM binary diff.
+
+## Import once, then build
+
+Commands run from this repository root. Variables below name your external
+inputs and clean output directories; there is no automatic resource discovery.
+
+```sh
+python3 tools/verify_vendor.py
+python3 tools/migrate_us_cn.py import \
+  --retail "$US_ROM" --translated "$CN_ROM" --pack-dir "$PRIVATE_PACK"
+
+python3 tools/map_native_pinyin_glyphs.py \
+  --translated "$CN_ROM" --source-font "$SOURCE_FONT" \
+  --source-charset "$SOURCE_CHARSET" --output-dir "$GLYPH_MAP_DIR"
+
+# Default: Chinese + pinyin. Rime source and its Apache license are vendored.
+python3 tools/build.py --retail "$US_ROM" --pack-dir "$PRIVATE_PACK" \
+  --glyph-map "$GLYPH_MAP_DIR/glyph-map.json" \
+  --map-report "$GLYPH_MAP_DIR/map-report.json" --output-dir "$OUTPUT"
+
+# Exact Chinese reference, without pinyin or the new serial timeout fix.
+python3 tools/build.py --retail "$US_ROM" --pack-dir "$PRIVATE_PACK" \
+  --disable-pinyin --disable-link-fix --output-dir "$EXACT_CN_OUTPUT"
+
+# Original English baseline.
+python3 tools/build.py --retail "$US_ROM" \
+  --disable-cjk --output-dir "$EN_OUTPUT"
+```
+
+The final file is `ffta-us-cn.gba`; `features.json` records source/dependency
+hashes, feature selections, actual compiled entry envelopes and output identity.
+The generated `extension.json`, fragments and compiler reports stay external.
+Use a clean output directory per build. Add `--patch-output "$LOCAL_PATCH"` to
+also generate a deterministic IPS against the authenticated US input and check
+its complete apply round trip. Generated patches contain local game resources:
+keep them private; they are excluded from source packaging.
+
+The [serial timeout fix](docs/link-timeout-fix.md) is a source-assembled Thumb
+comparison extension, not a recovered C function or new GP-mode implementation.
+Both linked players must select the same ROM and feature flags; compare full
+ROM hashes. Direct-function emulator checks do not establish multiplayer support.
+
+## Packaging and verification
+
+```sh
+python3 -m unittest discover -s tests -v
+PYTHONPATH=tools python3 -m unittest discover -s tools -p test_convert_ffta_us_cn.py
+python3 tools/package_source.py --output "$SOURCE_ARCHIVE"
+```
+
+The deterministic source archive includes the exact vendored dependencies and
+license notices, without `.git`, build caches, ROMs or private resources. It
+works without a second checkout. Verify dependencies before and after builds.
+For build determinism, use two clean external directories and compare final ROM
+hashes; source manifests may contain their distinct explicit output paths.
+
+See [native pinyin behavior and emulator-test limits](docs/native-pinyin-names.md),
+[exact resource import](docs/us-cn-exact-build.md), and
+[the observed Chinese address layout](docs/us-cn-translation-layout.md).
+The former ROM-only and 32 MiB demo tools remain historical diagnostics, not the
+current joint-build entry. Historical demos that require a full writable engine
+checkout must select a separate development checkout explicitly.

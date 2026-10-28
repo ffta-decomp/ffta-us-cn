@@ -1,0 +1,24 @@
+profiles/*.local.json
+__pycache__/
+*.pyc
+
+# Private resources and generated artifacts belong outside this subproject.
+*.gba
+*.rom
+*.bin
+*.ttf
+*.otf
+*.bdf
+*.ppm
+*.png
+*.sav
+*.state
+
+# Source bundles and optional local patches are external.
+*.ips
+*.bps
+*.zip
+*.tar.gz
+.venv/
+build/
+dist/
