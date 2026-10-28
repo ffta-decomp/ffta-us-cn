@@ -30,19 +30,7 @@ __aeabi_uidivmod:
 .global __aeabi_uidiv
 .thumb_set __aeabi_uidiv, __aeabi_uidivmod
 
-/* Explicitly reserved padding in the exact CN layout. No function body or
- * asset is displaced. The A440 call site keeps editor+2F6 in R5. */
-.section .pinyin_tabs_bridge,"ax",%progbits
-.thumb_func
-.global PinyinTabsBridge
-PinyinTabsBridge:
-.ifndef CJK_SOURCE_EXTENSIONS
-    movs r0, r5
-.endif
-    ldr r3, =NativePinyinTabs
-    bx r3
-    .ltorg
-
+/* Near bridge for the original cursor call. Native tab drawing is unchanged. */
 .section .pinyin_cursor_bridge,"ax",%progbits
 .thumb_func
 .global PinyinCursorBridge

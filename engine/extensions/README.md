@@ -1,10 +1,10 @@
 # Native naming source extensions
 
-These four complete C modules are selected by the official build extension API;
+These three complete C modules are selected by the official build extension API;
 no vendored C is edited. The two naming constructors select the pinyin callback
 and reserve its larger work area. The save-name update selects the native input
-bridge. The sprite-layout entry calls the tab adapter while retaining the
-original Aa/123 resources and native drawing behavior.
+bridge. The original sprite-layout module and both tab resources remain
+unmodified. Pinyin replaces native page zero rather than adding a tab.
 
 `cjk_name_bindings.h` is generated in the external build directory. Every
 replacement is checked against the original complete module envelope and the
