@@ -2,101 +2,160 @@
 
 简体中文 | [English](README.en.md)
 
-Final Fantasy Tactics Advance 美版的可选汉化与拼音命名扩展，与固定版本的反编译源码依赖联合构建。**默认启用汉化和拼音输入**，汉化构建也默认启用串行通信计数器超时修复。ROM 保持 16 MiB，保留原生字形编号、文本与控制符语义，以及原有的两种标签页样式。拼音输入替换第一页键盘，第二页原生键盘仍可使用，不新增第三个标签页。
+**《最终幻想战略版 Advance》（FFTA）GBA 美版的汉化构建与插件模板。**
 
-| 构建参数 | 结果 |
+本项目以美版汉化 v1.1 为基础，集成拼音命名、串行通信超时修复和标题菜单 Info。你可以直接构建默认版本，也可以 fork 后在 `plugins/` 中添加自己的插件。
+
+**默认输出为 16 MiB ROM；也提供精确复现汉化参考版的构建模式。** 游戏 ROM 由用户自行提供，不随源码分发。
+
+## 主要功能
+
+| 功能 | 内容 |
 | --- | --- |
-| 默认 | 汉化资源与加载逻辑、拼音命名、串行超时修复、标题菜单 Info，以及追加的斜体入口字形 |
-| `--disable-pinyin` | 启用汉化和串行超时修复，关闭拼音输入 |
-| `--disable-pinyin --disable-link-fix` | 精确复现固定版本的 16 MiB 汉化参考 ROM |
-| `--disable-cjk` | 英文基线，自动关闭拼音输入 |
-| `--disable-cjk --enable-link-fix --disable-info` | 英文基线，仅启用串行超时修复 |
-| `--disable-cjk --enable-pinyin` | 参数相互矛盾，拒绝构建 |
-| `--disable-italic-font` | 保留原字库，Info 入口使用正体 |
+| 汉化集成 | 导入汉化 v1.1 的文本、字库、图片和资源加载逻辑，支持逐字节复现指定参考 ROM |
+| 拼音命名 | 用拼音输入中文名字；替换第一页键盘，保留第二页原生键盘，不增加第三个标签页 |
+| 串行超时修复 | 调整串行通信计数器的超时比较阈值，可单独关闭 |
+| 插件信息界面 | 在标题菜单加入 Info，显示插件名称与作者说明，支持分页和自动换行，按 **B** 关闭 |
+| 插件与字库扩展 | 本地插件直接放在 `plugins/`；支持追加样式字形并生成更新后的字表，默认用于 Info 斜体入口 |
 
-字库插件在 `plugins.json` 中声明字表、源字库布局和优先级。美版汉化 v1.1 基础字库拥有最高优先级；样式插件通过追加字形单元并生成更新后的字表实现扩展，不改变原有字形编码。详见[字库扩展](docs/font-plugins.md)。
+以上功能在默认构建中启用。汉化基础字库拥有最高优先级，追加字形不改变原有字形编码。
 
-一个插件项目可以通过文件清单导出多个插件。本地插件直接从 `plugins/` 读取，固定 Git 版本的外部插件导入 `vendor/plugins/`，只使用清单中声明的文件。详见[项目结构](docs/plugin-projects.md)。
+## 快速开始
 
-## Fork 后添加插件
+本地构建需要 **Git、Python 3.12+、Clang、Make 和 ARM binutils（`arm-none-eabi-*`）**。Python 工具仅使用标准库；构建入口负责拉取固定版本依赖并构建所需编译器。
 
-Fork 本仓库，将 `examples/plugin-template/build.py` 复制到 `plugins/my_plugin/build.py`，再把示例声明加入 `plugins/plugins.json`。执行 `python3 tools/plugin_projects.py sync` 后，按正常流程构建即可。构建系统会自动加载已启用的声明，无需修改主构建脚本或进行第二次注册。在实现扩展清单之前，示例插件不会改变 ROM。
+### 1. Fork 并配置 ROM 私库
 
-本地源码在 `plugins/` 中开发，`vendor/` 用于保存固定版本的外部源码。详见[本地插件指南](plugins/README.md)和[构建入口约定](docs/plugin-projects.md)。
+Fork 本仓库，在本地克隆你的 fork。另建一个私有仓库，在根目录放入以下两个 ROM：
 
-需要私有输入时，在个人 fork 的根目录添加 `rom-source.txt`，只写一行 ROM 私库的 Git 地址。[用户构建入口](docs/private-rom-workflow.md)会在本地构建和手动 Actions 构建时读取这个文件，无需配置仓库地址、提交号或启用开关等变量。Actions 只需配置私库的只读 deploy key。模板不包含真实输入配置，默认跳过 ROM 构建。
-
-## 源码归属
-
-汉化相关的 C/ASM 位于 `engine/`，其中 `engine/extensions/` 保存完整的命名入口替换实现。资源规则和指针布局规则由本项目维护。Info 在 `plugins/info/` 中维护并直接编译。
-
-`vendor/` 保存按固定提交拉取的 Git 工作副本，包括官方反编译源码与工具、其编译器子模块，以及带许可证的 Rime 词典。这些依赖源码被 Git 忽略，不提交到模板，也不放入模板源码包。拼音核心由本项目维护，位于 `engine/pinyin/`。构建不依赖相邻的 decomp 工作目录或额外环境变量。
-
-**不要修改 vendor 中的代码。** 通用构建接口的改动应提交到上游，参见[官方扩展接口 PR](https://github.com/ffta-decomp/fftadecomp/pull/1)。依赖锁固定到已合并的上游提交 `4ecb640abb607decd2581383e27604e3caaee280`，本项目不对依赖源码施加本地补丁。详见 [AGENTS.md](AGENTS.md) 和[依赖来源说明](docs/dependencies.md)。
-
-兼容构建会编译五个已公开的原生命名 C 入口，对应 1,700 字节原始代码，并与美版零售 ROM 逐字节比较，再应用所选源码和资源扩展。拼音功能通过上游扩展接口替换三个完整源码模块，不覆盖 vendor 中的 C 文件，也不按字节偏移修改这些 C 函数的调用点。
-
-其他游戏代码仍由已验证的原始输入提供，本项目并不声称已通过恢复的源码重建整个游戏。可选功能和修改版的输出不计入反编译匹配成果。
-
-## 输入与构建环境
-
-需要 Git、Python 3.12+、Clang、Make 和 ARM binutils（`arm-none-eabi-as`、`ld`、`objcopy`、`nm`）。核心构建工具仅使用 Python 标准库。编译器引导构建采用串行方式，在项目外的工作目录进行，并在成功后清理该临时工作目录。也可以通过 `--compiler` 显式指定已有的兼容编译器；报告会记录其哈希及原生基线的精确校验结果。
-
-以下资源应保存在仓库和源码包之外：
-
-- 美版零售 ROM：SHA-256 为 `43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19`。
-- 汉化参考 ROM，仅用于本地导入和验证：SHA-256 为 `ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03`。
-- 已导入的私有组件包、原生字形映射及其来源报告。
-- 推导字形映射时显式提供的源字体和字符集输入。
-
-本仓库不分发 ROM、提取的游戏文本、字体、存档或截图。所有者提供的第三方 v1.1 字符映射表保存在 `config/charsets/us-cn-v1.1/`，包含来源记录和 18 个样本的对比结果。构建读取美版零售 ROM 与私有组件包，不直接把汉化 ROM 作为输出，也不导入整份 ROM 的二进制差分。
-
-## 导入一次，随后构建
-
-以下命令在仓库根目录执行。变量应指向你显式选择的外部输入和全新输出目录，工具不会自动搜索资源。
-
-```sh
-python3 tools/fetch_dependencies.py
-python3 tools/verify_vendor.py
-python3 tools/migrate_us_cn.py import \
-  --retail "$US_ROM" --translated "$CN_ROM" --pack-dir "$PRIVATE_PACK"
-
-python3 tools/map_native_pinyin_glyphs.py \
-  --translated "$CN_ROM" --source-font "$SOURCE_FONT" \
-  --source-charset "$SOURCE_CHARSET" --output-dir "$GLYPH_MAP_DIR"
-
-# 默认：汉化与拼音。Rime 源码及 Apache 许可证已在上面拉取。
-python3 tools/build.py --retail "$US_ROM" --pack-dir "$PRIVATE_PACK" \
-  --glyph-map "$GLYPH_MAP_DIR/glyph-map.json" \
-  --map-report "$GLYPH_MAP_DIR/map-report.json" --output-dir "$OUTPUT"
-
-# 精确复现汉化参考版，关闭拼音和新增的串行超时修复。
-python3 tools/build.py --retail "$US_ROM" --pack-dir "$PRIVATE_PACK" \
-  --disable-pinyin --disable-link-fix --output-dir "$EXACT_CN_OUTPUT"
-
-# 原版英文基线。
-python3 tools/build.py --retail "$US_ROM" \
-  --disable-cjk --output-dir "$EN_OUTPUT"
+```text
+ffta-us.gba
+ffta-us-cn-v1.1.gba
 ```
 
-最终文件为 `ffta-us-cn.gba`。`features.json` 记录源码与依赖哈希、功能选项、实际编译入口的空间范围和输出身份。生成的 `extension.json`、二进制片段及编译报告均保存在项目外。每次构建应使用全新输出目录。
+文件名用于方便辨认，实际版本由 SHA-256 确认。直接存放 ROM 即可；已有的 `inputs.zip` 也兼容读取。
 
-添加 `--patch-output "$LOCAL_PATCH"` 可同时生成相对于已验证美版输入的确定性 IPS，并检查补丁应用后的完整还原结果。生成的补丁包含本地游戏资源，应保持私有，不纳入源码包。
+在**个人 fork 的根目录**创建 `rom-source.txt`，只写一行私库地址。例如，将 `YOUR_USER` 替换为你的 GitHub 用户名：
 
-[串行超时修复](docs/link-timeout-fix.md)是由源码汇编生成的 Thumb 比较指令扩展，不是恢复的 C 函数，也不是新增的 GP 模式实现。联机双方必须选择相同 ROM 和功能参数，并比较完整 ROM 哈希。直接调用函数的模拟器测试不能证明真实联机支持。
+```text
+https://github.com/YOUR_USER/ffta-roms.git
+```
 
-## 打包与验证
+可从 `rom-source.example.txt` 复制后修改。真实地址只保存在个人 fork；组织模板不包含用户配置，没有这个文件时会跳过 ROM 构建。
+
+### 2. 本地构建
+
+在源码根目录执行，私库访问使用你已有的 Git 登录凭据：
 
 ```sh
-python3 -m unittest discover -s tests -v
-PYTHONPATH=tools python3 -m unittest discover -s tools -p test_convert_ffta_us_cn.py
+python3 tools/ci_private_build.py \
+  --work-dir ../private-build --publish-dir ../patches --profile default
+```
+
+脚本会自动拉取公共依赖和 ROM 私库、校验输入、导入汉化资源，再完成编译。**每次构建使用新的外部工作目录**，不要把输入和输出放进源码仓库。
+
+| 产物 | 默认示例路径 |
+| --- | --- |
+| 完整 ROM | `../private-build/build/ffta-us-cn.gba` |
+| 相对于美版原版的 IPS 补丁 | `../patches/ffta-us-cn.ips` |
+| 输入提交、ROM 哈希及构建报告 | `../patches/build-report.json` |
+
+### 3. 使用 GitHub Actions 构建
+
+将 `rom-source.txt` 提交到个人 fork，并配置一个 Secret：**`PRIVATE_ROM_SSH_KEY`**，内容为 ROM 私库的只读 deploy key 私钥。Actions 的默认令牌无法读取另一个私库，因此仍需要这项授权；无需再配置仓库地址、提交号或启用开关等变量。
+
+打开个人 fork 的 **Actions → Private ROM build (manual opt-in) → Run workflow**，选择构建模式后运行。流程只允许手动触发，不会在 push、PR 或定时任务中自动构建。
+
+**Actions 默认只上传 IPS 和校验报告，不上传完整 ROM。** 完整 ROM、字体和资源包应保存在私有环境。详细配置见[私库与构建指南](docs/private-rom-workflow.md)。
+
+## 选择构建模式
+
+| `--profile` / Actions 选项 | 适用场景 |
+| --- | --- |
+| `default` | 使用汉化、拼音、串行超时修复和 Info，或开发自己的插件 |
+| `exact-reference` | 仅保留参考汉化，关闭拼音、串行超时修复和 Info，检查输出是否逐字节一致 |
+
+如果自行添加了会修改 ROM 的插件，复现参考版前也需要关闭这些插件。英文基线及独立功能开关见下方的高级选项。
+
+## 添加自己的插件
+
+1. 将 `examples/plugin-template/build.py` 复制到 `plugins/my_plugin/build.py`。
+2. 把 `examples/plugin-template/declaration.json` 中的示例声明加入 `plugins/plugins.json`。
+3. 在插件入口中实现自己的源码或资源扩展；示例本身为空实现，不会改变 ROM。
+4. 执行 `python3 tools/plugin_projects.py sync` 更新源码哈希锁，再按正常流程构建。
+
+构建会自动加载已启用的插件，不需要修改主构建脚本或再次注册。一个插件项目可以声明多个插件；引用外部项目时，只导入其清单中声明的文件，不自动引入内部依赖或测试内容。
+
+详见[本地插件指南](plugins/README.md)、[插件项目约定](docs/plugin-projects.md)和[字库扩展](docs/font-plugins.md)。
+
+### 目录分工
+
+| 路径 | 用途 |
+| --- | --- |
+| `plugins/` | 本项目维护的插件源码，包括 Info |
+| `engine/` | 汉化加载、原生命名入口和拼音核心的 C/ASM 实现 |
+| `config/` | 资源布局、字符映射、插件配置与依赖锁 |
+| `tools/` | 依赖拉取、资源导入、构建和验证工具 |
+| `vendor/` | 按固定 Git 版本拉取的外部依赖，不纳入版本控制或源码包 |
+
+**在自己的源码目录开发，不要修改或提交 `vendor/` 内容。** 通用引擎接口应提交到上游，再更新锁定版本。详见[依赖说明](docs/dependencies.md)和[项目约定](AGENTS.md)。
+
+## 验证与打包
+
+拉取依赖后，可执行：
+
+```sh
+python3 tools/verify_vendor.py
+python3 -m unittest discover -s tests
 python3 tools/package_source.py --output "$SOURCE_ARCHIVE"
 ```
 
-确定性源码包包含项目源码和依赖锁，不包含 `vendor/`、`.git`、构建缓存、ROM 或私有资源。解压后执行 `python3 tools/fetch_dependencies.py`，拉取固定版本的公共源码及原始许可证。构建前后都应验证依赖。
+`$SOURCE_ARCHIVE` 必须指向项目外的输出路径。源码包包含项目源码和依赖锁，不包含依赖实现、ROM、字体、资源包或构建缓存；解压后执行 `python3 tools/fetch_dependencies.py` 拉取依赖及原始许可证。
 
-验证构建确定性时，使用两个全新的外部目录并比较最终 ROM 哈希；源码清单可能包含各自显式指定的输出路径。
+验证构建确定性时，在两个全新的外部目录中构建并比较最终 ROM 哈希。`exact-reference` 会进一步检查输出是否与汉化参考版一致。
 
-进一步说明见[原生拼音行为与模拟器测试范围](docs/native-pinyin-names.md)、[精确资源导入](docs/us-cn-exact-build.md)和[已观察到的汉化地址布局](docs/us-cn-translation-layout.md)。旧版 ROM 构建工具和 32 MiB 演示工具仅作为历史诊断保留，不是当前联合构建入口。需要完整可写引擎工作副本的历史演示，必须显式选择独立开发目录。
+### 实现与验证范围
 
-[持久化参考资源导出器](docs/us-cn-resource-export.md)导出原生字形、文本、资源及 IPS 元数据，并验证整份 ROM 的字节匹配。可选的[标题菜单 Info 界面](docs/plugin-info.md)从 `plugins.json` 读取插件信息，可通过 `--disable-info` 关闭。
+- 本项目通过上游构建扩展接口应用源码和资源替换。当前会编译并精确校验 5 个已反编译的命名入口，对应 1,700 字节原始代码；其余原版代码仍来自已验证的美版 ROM，尚非全游戏源码重建。
+- 新增功能不计入反编译匹配成果。串行超时修复不代表新增 GP 模式；函数级模拟器测试也不能替代真实联机、硬件或存档读写验证。
+- 仓库保留了所有者提供的第三方汉化字符映射及来源记录，详见[字表说明](config/charsets/us-cn-v1.1/README.md)。原生字库像素、提取文本及其他游戏资源由用户输入提供。
+
+<details>
+<summary>高级：独立功能开关与英文基线</summary>
+
+以下参数用于底层入口 `tools/build.py`，不是上面的 `ci_private_build.py`。该入口需要显式提供 ROM、资源包和相应字表输入，详见[精确构建说明](docs/us-cn-exact-build.md)。
+
+| 参数 | 结果 |
+| --- | --- |
+| `--disable-pinyin` | 保留汉化和串行超时修复，关闭拼音输入 |
+| `--disable-pinyin --disable-link-fix` | 精确复现汉化参考版，同时关闭默认 Info 和斜体扩展 |
+| `--disable-cjk` | 构建英文基线，默认关闭拼音、串行超时修复和 Info |
+| `--disable-cjk --enable-link-fix --disable-info` | 英文基线，仅启用串行超时修复 |
+| `--disable-info` | 关闭标题菜单 Info，默认也不生成其斜体字形 |
+| `--disable-italic-font` | Info 入口使用原字库正体 |
+
+不能同时使用 `--disable-cjk` 和 `--enable-pinyin`。若显式启用斜体，则必须同时启用汉化基础字库和 Info。
+
+</details>
+
+<details>
+<summary>输入 ROM 的 SHA-256 校验值</summary>
+
+两个输入均为 16 MiB，仅接受以下固定版本：
+
+| 输入 | SHA-256 |
+| --- | --- |
+| 美版零售 ROM | `43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19` |
+| 美版汉化 v1.1 参考 ROM | `ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03` |
+
+</details>
+
+## 深入阅读
+
+| 主题 | 文档 |
+| --- | --- |
+| 汉化参考版的导出与字节匹配 | [资源导出](docs/us-cn-resource-export.md) · [精确构建](docs/us-cn-exact-build.md) |
+| 拼音输入的行为与验证范围 | [原生拼音命名](docs/native-pinyin-names.md) |
+| 标题菜单和插件信息界面 | [Info 界面](docs/plugin-info.md) |
+| 串行通信修复 | [超时修复说明](docs/link-timeout-fix.md) |
+| 依赖来源与版权说明 | [依赖说明](docs/dependencies.md) · [NOTICE](NOTICE.md) |
