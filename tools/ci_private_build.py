@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Manual CI build from an explicitly provided private ZIP, identified by SHA-256."""
+"""Build from the root-configured private ROM repository, identified by SHA-256."""
 import argparse
 import hashlib
 import json
@@ -56,6 +56,37 @@ def identify(archive, output):
     return found
 
 
+def identify_directory(directory, output):
+    """Inspect only the explicitly selected input repository's top-level files."""
+    directory, output = Path(directory).resolve(), Path(output)
+    candidates = [p for p in directory.iterdir() if p.is_file() and
+                  (p.suffix.lower() in {'.gba', '.rom'} or p.stat().st_size == ROM_BYTES)]
+    if not candidates and (directory / 'inputs.zip').is_file():
+        if (directory / 'inputs.zip').is_symlink():
+            raise ValueError('ROM archive must be a regular file in the selected repository')
+        return identify(directory / 'inputs.zip', output)  # Existing input repos remain usable.
+    output.mkdir(parents=True, exist_ok=False)
+    found = {}
+    for path in candidates:
+        if path.is_symlink() or not path.resolve().is_relative_to(directory):
+            raise ValueError('ROM input must be a regular file in the selected repository')
+        data = path.read_bytes()
+        if len(data) != ROM_BYTES:
+            raise ValueError('ROM size does not match a supported reference')
+        digest = sha(data)
+        role = next((name for name, expected in ROM_HASHES.items() if digest == expected), None)
+        if role is None:
+            raise ValueError('Unsupported ROM SHA-256: ' + digest)
+        if role in found:
+            raise ValueError('Duplicate ROM for role: ' + role)
+        target = output / (role + '.gba')
+        target.write_bytes(data)
+        found[role] = target
+    if set(found) != set(ROM_HASHES):
+        raise ValueError('Input repository must contain exactly one authenticated US and one CN v1.1 ROM')
+    return found
+
+
 def glyph_inputs(translated, output):
     """Recover the build map from the committed owner-provided native table."""
     rom = Path(translated).read_bytes()
@@ -87,7 +118,9 @@ def glyph_inputs(translated, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--rom-archive', required=True, type=Path)
+    inputs = parser.add_mutually_exclusive_group()
+    inputs.add_argument('--rom-dir', type=Path)
+    inputs.add_argument('--rom-archive', type=Path, help='Compatibility input for an existing archive')
     parser.add_argument('--work-dir', required=True, type=Path)
     parser.add_argument('--publish-dir', required=True, type=Path)
     parser.add_argument('--profile', choices=['default', 'exact-reference'], default='default')
@@ -96,10 +129,27 @@ def main():
     if work.is_relative_to(ROOT) or publish.is_relative_to(ROOT) or \
        work.is_relative_to(publish) or publish.is_relative_to(work):
         parser.error('Work and publish directories must be separate and outside the repository')
-    if args.rom_archive.resolve().is_relative_to(ROOT):
-        parser.error('ROM archive must be outside the source repository')
+    for path in (args.rom_archive, args.rom_dir):
+        if path is not None and path.resolve().is_relative_to(ROOT):
+            parser.error('Private ROM inputs must be outside the source repository')
+    if args.rom_archive is None and args.rom_dir is None:
+        from rom_source import load
+        if load() is None:
+            parser.error('Create rom-source.txt in your personal source clone with the private ROM Git URL')
+    from fetch_dependencies import fetch
+    fetch()
     work.mkdir(parents=True, exist_ok=False)
-    roms = identify(args.rom_archive, work / 'roms')
+    input_commit = None
+    if args.rom_archive:
+        roms = identify(args.rom_archive, work / 'roms')
+    else:
+        from rom_source import checkout
+        directory = args.rom_dir or checkout(work / 'input-repository')
+        roms = identify_directory(directory, work / 'roms')
+        if (directory / '.git').exists():
+            input_commit = subprocess.check_output(
+                ['git', '-C', str(directory), 'rev-parse', 'HEAD'], text=True).strip()
+
     def run(tool, *options):
         subprocess.run([sys.executable, str(ROOT / 'tools' / tool), *map(str, options)], check=True)
     run('export_us_cn.py', '--retail', roms['retail'], '--translated', roms['translated'],
@@ -120,7 +170,7 @@ def main():
     shutil.copyfile(work / 'output.ips', publish / 'ffta-us-cn.ips')
     report = dict(schema=1, profile=args.profile, input_sha256=ROM_HASHES,
                   output_sha256=sha(built), patch_sha256=sha((work / 'output.ips').read_bytes()),
-                  source_commit=os.environ.get('GITHUB_SHA'),
+                  source_commit=os.environ.get('GITHUB_SHA'), private_input_commit=input_commit,
                   plugin_lock_sha256=sha((ROOT / 'config/plugin-projects.lock.json').read_bytes()),
                   reference_reconstruction=json.loads((work / 'resources/byte-match.json').read_text()))
     (publish / 'build-report.json').write_text(json.dumps(report, indent=2) + '\n')

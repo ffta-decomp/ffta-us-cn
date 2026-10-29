@@ -46,13 +46,39 @@ class PrivateBuildTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, error):
                         ci.identify(archive, root / 'inputs')
 
+    def test_direct_rom_files_use_hashes_and_reject_external_symlinks(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary); inputs = root / 'private-roms'; inputs.mkdir()
+            (inputs / 'ffta-us.gba').write_bytes(b'CN!!')
+            (inputs / 'ffta-us-cn-v1.1.gba').write_bytes(b'US!!')
+            expected = dict(retail=ci.sha(b'US!!'), translated=ci.sha(b'CN!!'))
+            with patch.object(ci, 'ROM_BYTES', 4), patch.object(ci, 'ROM_HASHES', expected):
+                found = ci.identify_directory(inputs, root / 'identified')
+                self.assertEqual(found['retail'].read_bytes(), b'US!!')
+                (inputs / 'ffta-us.gba').unlink()
+                (root / 'outside.gba').write_bytes(b'CN!!')
+                (inputs / 'ffta-us.gba').symlink_to(root / 'outside.gba')
+                with self.assertRaisesRegex(ValueError, 'regular file'):
+                    ci.identify_directory(inputs, root / 'rejected')
+
+    def test_existing_zip_input_repository_remains_readable(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary); inputs = root / 'private-roms'; inputs.mkdir()
+            archive = self.archive(inputs, [('first.gba', b'US!!'), ('second.gba', b'CN!!')])
+            archive.rename(inputs / 'inputs.zip')
+            with patch.object(ci, 'ROM_BYTES', 4), patch.object(ci, 'ROM_HASHES',
+                              dict(retail=ci.sha(b'US!!'), translated=ci.sha(b'CN!!'))):
+                self.assertEqual(set(ci.identify_directory(inputs, root / 'out')), {'retail', 'translated'})
+
     def test_workflow_is_manual_opt_in_and_uploads_only_allowlisted_outputs(self):
         workflow = (ci.ROOT / '.github/workflows/private-rom-build.yml').read_text()
         self.assertIn('  workflow_dispatch:', workflow)
         self.assertNotIn('  push:', workflow)
         self.assertNotIn('  pull_request:', workflow)
         self.assertNotIn('  schedule:', workflow)
-        self.assertIn("vars.ENABLE_PRIVATE_ROM_BUILD == 'true'", workflow)
+        self.assertIn('tools/rom_source.py --github-output', workflow)
+        self.assertIn("steps.rom_source.outputs.configured == 'true'", workflow)
+        self.assertNotIn('vars.', workflow)
         upload = workflow.split('      - name: Upload patch')[1].split('      - name: Remove')[0]
         self.assertIn('ffta-us-cn.ips', upload)
         self.assertIn('build-report.json', upload)
@@ -60,7 +86,7 @@ class PrivateBuildTests(unittest.TestCase):
         self.assertNotIn('ffta-private', upload)
         self.assertIn('always()', workflow)
         self.assertIn('secrets.PRIVATE_ROM_SSH_KEY', workflow)
-        self.assertIn('vars.PRIVATE_ROM_REVISION', workflow)
+        self.assertIn('steps.rom_source.outputs.repository', workflow)
         self.assertIn('python3 tools/fetch_dependencies.py', workflow)
 
 

@@ -38,10 +38,11 @@ Edit local sources in `plugins/`; reserve `vendor/` for external pinned
 sources. See [the local plugin guide](plugins/README.md) and
 [the build-entry contract](docs/plugin-projects.md).
 
-The optional [private ROM workflow](docs/private-rom-workflow.md) builds from
-your own private ZIP using SHA-256 to identify both references. It is manual
-only and requires an explicit repository-variable opt-in; only patches and
-hash reports are uploaded.
+For private inputs, add `rom-source.txt` at your personal fork's root with one
+private ROM Git URL. The [user build entry](docs/private-rom-workflow.md) reads
+that file for local and manual Actions builds. No repository/revision/enable
+variables are needed; Actions needs only a read-only input-repository deploy
+key. The template has no real input file and skips ROM builds by default.
 
 ## Source ownership
 
