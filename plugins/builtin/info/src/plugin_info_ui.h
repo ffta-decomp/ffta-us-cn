@@ -1,4 +1,4 @@
-/* Optional plugin catalogue UI. New behavior; no decomp matching credit. */
+/* Info plugin catalogue UI. New behavior; no decomp matching credit. */
 #ifndef PLUGIN_INFO_UI_H
 #define PLUGIN_INFO_UI_H
 #include <stddef.h>

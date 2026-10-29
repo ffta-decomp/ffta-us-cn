@@ -166,6 +166,15 @@ def build(args):
         if image[:0x4d78] != before[:0x4d78] or image[0x4d7a:] != before[0x4d7a:]:
             raise ValueError('Link comparison extension changed bytes outside its instruction')
         link_report['extension'] = link_extension
+    font_report = None
+    if args.italic_font:
+        from font_plugins import prepare as prepare_font
+        font_manifest, font_report = prepare_font(reference, image,
+            {'cjk': args.cjk, 'link_fix': args.link_fix, 'info': args.info, 'italic_font': args.italic_font},
+            out / 'font-extensions')
+        image, font_extension = apply_extensions(image, reference, config, font_manifest)
+        font_report['extension'] = font_extension
+    args.font_extension_report = font_report
     info_report = None
     if args.info:
         from build_plugin_info import prepare as prepare_info
@@ -184,6 +193,7 @@ def build(args):
               'cjk_enabled': args.cjk, 'pinyin_enabled': args.pinyin,
               'link_fix_enabled': args.link_fix, 'link_fix': link_report,
               'info_enabled': args.info, 'plugin_info': info_report,
+              'italic_font_enabled': args.italic_font, 'font_extension': font_report,
               'output_bytes': len(image), 'output_sha256': sha(image),
               'english_baseline_sha256': baseline_hash,
               'compiled_decomp_modules': compiled,
@@ -191,5 +201,6 @@ def build(args):
               'extension': extension_report, 'recovery_credit_eligible': False,
               'compiler_sha256': sha(compiler.read_bytes()),
               'vendor_lock_sha256': sha((ROOT / 'vendor/lock.json').read_bytes()),
+              'plugin_projects_lock_sha256': sha((ROOT / 'config/plugin-projects.lock.json').read_bytes()),
               'scope': 'Five published naming C entries plus optional CN source/resources. Other original game code remains supplied by the authenticated input; this is not a whole-game decomp claim.'}
     return bytes(image), report

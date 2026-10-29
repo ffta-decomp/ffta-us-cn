@@ -22,3 +22,6 @@ __pycache__/
 .venv/
 build/
 dist/
+
+# Immutable plugin snapshots generated from builtin sources or pinned Git commits.
+vendor/plugins/

@@ -1,4 +1,4 @@
-/* Optional title callback, selected through a complete source replacement.
+/* Info plugin title callback, selected through a complete source replacement.
  * Original labels, color-mode submenu and game transitions retain native APIs.
  * No native instructions or resource pointers are patched at runtime. */
 #include <stdint.h>

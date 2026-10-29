@@ -8,6 +8,9 @@ The entry uses the original title OBJ palettes (bank 1 normally, bank 3 when
 selected), including dark ink index 1, light outline index 8 and lower shadow
 index 6. Its native feather cursor sits to the right of the rendered label,
 with the same vertical position and animation as the original last-row cursor.
+The default CN profile obtains the entry's italic glyphs from the append-only
+font extension and its generated style map; see [font plugins](font-plugins.md).
+`--disable-italic-font` retains the upright entry.
 
 The detail screen has a blue background, white text and two white rounded
 frames. The left sidebar selects enabled plugins and the right panel shows

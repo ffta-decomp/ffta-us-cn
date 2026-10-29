@@ -12,6 +12,12 @@ Verify dependency hashes with `python3 tools/verify_vendor.py`.
 Dependency updates select an explicitly reviewed upstream revision and update
 the lock; they must not carry unpublished local patches.
 
+Plugin projects use the separately managed `vendor/plugins/` namespace. The
+owner authorizes importing only files explicitly exported by a project's
+`plugins.json`, from builtin sources or a pinned Git commit. Create snapshots
+with `tools/plugin_projects.py sync`; never edit snapshots in place. Existing
+engine/compiler dependencies and `vendor/lock.json` remain immutable.
+
 If decomp needs a build option, extension point or generic loader interface,
 implement and test it in a separate checkout/branch and submit a PR to the
 official upstream repository. Pin the published revision when available.
