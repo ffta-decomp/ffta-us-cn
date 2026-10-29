@@ -41,6 +41,24 @@ int main(int argc, char **argv)
    printf(",\"display_control\":%u,\"blend_control\":%u,\"blend_alpha\":%u,\"color_mode\":%u,\"palette_blue\":%u,\"palette_white\":%u",
     core->busRead16(core,0x03000940),core->busRead16(core,0x0300098a),core->busRead16(core,0x0300098c),
     core->busRead8(core,0x02002fc2)&3,core->busRead16(core,0x050003ec),core->busRead16(core,0x050003e8));
+   for(unsigned i=0;i<128;++i) {
+    unsigned a=core->busRead16(core,0x07000000+i*8);
+    unsigned b=core->busRead16(core,0x07000002+i*8);
+    unsigned c=core->busRead16(core,0x07000004+i*8);
+    if((a&0x0300)==0x0200)continue;
+    if((c&1023)==384 && (a&0xc000)==0x4000) {
+     printf(",\"entry_x\":%u,\"entry_y\":%u,\"entry_palette\":%u",b&511,a&255,c>>12);
+     unsigned mode=core->busRead8(core,0x02002fc2)&3;
+     uint32_t source=core->busRead32(core,0x083a8c58+mode*8)+(c>>12)*32;
+     uint32_t target=0x05000200+(c>>12)*32;
+     unsigned differences=0;
+     for(unsigned color=0;color<16;++color)
+      differences+=core->busRead16(core,target+color*2)!=core->busRead16(core,source+color*2);
+     printf(",\"entry_native_palette_differences\":%u",differences);
+    }
+    if((c&1023)==0x15e)
+     printf(",\"feather_x\":%u,\"feather_y\":%u",b&511,a&255);
+   }
    puts("}");fflush(stdout);
   }
  }

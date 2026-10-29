@@ -58,7 +58,6 @@ static void Label(struct InfoState *info)
         Copy(gPluginInfoLabel, (u16 *)0x06013000, 512);
         info->loaded = 1;
     }
-    Palette();
     Sprite(154, 110, 384, 1, 0, ROOT[0x8962] == 3 ? 3 : 1);
     Sprite(186, 110, 400, 1, 0, ROOT[0x8962] == 3 ? 3 : 1);
 }
@@ -153,7 +152,7 @@ void PluginInfoTitleUpdate(u8 *caller)
     if (selected < 3) {
         const u16 *positions = (const u16 *)0x083a8c6c;
         x = positions[selected * 2]; y = positions[selected * 2 + 1];
-    } else { x = 138; y = 112; }
+    } else { x = PLUGIN_INFO_LABEL_CURSOR_X; y = 110; }
     /* Five-frame native cursor bob, without a division runtime dependency. */
     i = 0;
     while (tick >= 5) { tick -= 5; ++i; }

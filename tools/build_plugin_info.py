@@ -36,6 +36,29 @@ def tiles(pixels, columns=8, rows=5, palette_indices=(0, 6, 4)):
     return bytes(result)
 
 
+def title_label(pixels):
+    """Use the native title ramp: dark ink, light outline, lower shadow.
+
+    Normal and selected title labels use the same pixel indices and switch
+    between OBJ palette banks 1 and 3. A single-color mask loses that styling.
+    """
+    ink = {(x, y) for y in range(16) for x in range(64) if pixels[y * 240 + x] == 2}
+    if not ink:
+        raise ValueError('Empty Info entry label')
+    outlined = {(x + dx, y + dy) for x, y in ink
+                for dx in (-1, 0, 1) for dy in (-1, 0, 1)
+                if 0 <= x + dx < 64 and 0 <= y + dy < 16}
+    result = bytearray(240 * 160)
+    for x, y in outlined:
+        if y + 1 < 16:
+            result[(y + 1) * 240 + x] = 6
+    for x, y in outlined:
+        result[y * 240 + x] = 8
+    for x, y in ink:
+        result[y * 240 + x] = 1
+    return result, max(x for x, _ in outlined) + 1
+
+
 def generate_assets(font_image, args, out, pages):
     mapping = json.loads(args.glyph_map.read_text())
     provenance = json.loads(args.map_report.read_text())
@@ -108,7 +131,8 @@ def generate_assets(font_image, args, out, pages):
         (out / (view['symbol'] + '.ppm')).write_bytes(ppm)
         pixels_path.unlink()
     label_path = out / 'gPluginInfoLabel.pixels'
-    chunks.append(('gPluginInfoLabel', tiles(label_path.read_bytes(), columns=2, rows=1, palette_indices=(0, 1, 1))))
+    label_pixels, label_width = title_label(label_path.read_bytes())
+    chunks.append(('gPluginInfoLabel', tiles(label_pixels, columns=2, rows=1, palette_indices=tuple(range(16)))))
     label_path.unlink()
     renderer.unlink()
     source = []
@@ -122,12 +146,16 @@ def generate_assets(font_image, args, out, pages):
                   ','.join('{page_%d,%d}' % (n, len(views)) for n, views in enumerate(page_views)))
     header = out / 'plugin_info_assets.h'
     header.write_text('#define PLUGIN_INFO_PAGE_COUNT %d\n' % len(pages) +
+        '#define PLUGIN_INFO_LABEL_CURSOR_X %d\n' % (154 + label_width + 4) +
         'struct PluginInfoAssetPage { const unsigned short *const *views; unsigned view_count; };\n'
         'extern const struct PluginInfoAssetPage gPluginInfoPages[];\n'
         'extern const unsigned short gPluginInfoLabel[];\n')
     generated = out / 'plugin_info_assets.c'
     generated.write_text('#include "plugin_info_assets.h"\n' + '\n'.join(source) + '\n')
-    return generated, header, {'glyphs': bindings, 'views': records}
+    return generated, header, {'glyphs': bindings, 'views': records,
+        'title_label': {'palette_banks': [1, 3], 'ink_index': 1,
+                        'outline_index': 8, 'shadow_index': 6,
+                        'width': label_width, 'cursor_x': 154 + label_width + 4}}
 
 
 def prepare(reference, image, font_image, args, out, config):
