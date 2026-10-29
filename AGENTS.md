@@ -2,7 +2,8 @@
 
 This is the standalone `ffta-us-cn` project. Own Chinese resources, optional
 resource-loading extensions, pinyin naming, build profiles and packaging.
-Keep source and documentation in English.
+Keep source and documentation in English, except the root README: `README.md`
+defaults to Simplified Chinese and `README.en.md` provides English.
 
 ## Vendor is immutable
 
