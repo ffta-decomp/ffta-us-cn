@@ -1,77 +1,87 @@
-# User build: public source and a separate private ROM repository
+# User build: one root file and a separate private ROM repository
 
-Keep three roles separate:
+The organization's template holds generic source. A user's source fork holds
+their plugins and `rom-source.txt`. The independent private ROM repository holds
+the game inputs. Never put ROMs in either source repository.
 
-- The organization's public template contains generic source, manifests and locks.
-- A user's source clone contains their plugins and repository-specific Actions
-  settings. It never contains ROMs or private input archives.
-- The user's independent private ROM repository contains `inputs.zip` and its
-  provenance README. It does not contain template source or build outputs.
+## Configure your personal fork
 
-## Fresh local build
+Copy `rom-source.example.txt` to `rom-source.txt` in your fork's root and replace
+its single line with your private ROM Git URL:
 
-Clone the template, fetch public dependencies, and clone your own private ROM
-repository into a sibling directory. Substitute your real repository URLs:
+```text
+https://github.com/YOUR_USER/ffta-roms.git
+```
+
+SSH form (`git@github.com:YOUR_USER/ffta-roms.git`) also works. Commit this file
+only in your personal fork. Do not put tokens, passwords, extra JSON fields or
+machine paths in it. The organization's template has only the example file;
+without the actual root file its manual ROM build is skipped.
+
+There are no Actions variables for repository address, input revision or an
+enable switch. The checkout's actual input commit is recorded in the build
+report. Complete ROM SHA-256 pins still determine the supported versions.
+
+## Local build
+
+Use your existing Git authentication for the private repository. After cloning
+the source and creating `rom-source.txt`, run:
 
 ```sh
-git clone https://github.com/ORGANIZATION/ffta-us-cn.git source
-cd source
-python3 tools/fetch_dependencies.py
-python3 tools/verify_vendor.py
-cd ..
-git clone git@github.com:USER/ffta-roms.git private-roms
-cd source
 python3 tools/ci_private_build.py \
-  --rom-archive ../private-roms/inputs.zip \
   --work-dir ../private-build --publish-dir ../patches --profile default
 ```
 
-Use new external output directories. The entry imports resources, recovers the
-build map from the committed owner-provided native table, bootstraps the compiler
-and builds the selected profile. Python, Git, Clang, Make and ARM binutils are
-required; no spreadsheet/OCR/Swift runtime is needed.
+Use new directories outside the source checkout. The entry fetches public Git
+dependencies at locked revisions, clones the configured private repository into
+the external work directory, identifies the ROMs by hash, imports resources,
+bootstraps the compiler and builds. Python, Git, Clang, Make and ARM binutils are
+required. No external font/OCR/spreadsheet/Swift runtime is needed.
 
-## Manual Actions workflow in the user's source clone
+For an existing explicitly selected input checkout, `--rom-dir ../private-roms`
+avoids another clone. The older `--rom-archive` remains a compatibility option.
+No other local directories or game files are automatically discovered.
 
-The template's workflow has only `workflow_dispatch`; push, pull requests and
-schedules never trigger it. Its job is skipped unless `ENABLE_PRIVATE_ROM_BUILD`
-is `true`. Configure these settings in your own source clone, not the template:
+## Manual Actions build
 
-| Setting | Value |
-| --- | --- |
-| Variable `ENABLE_PRIVATE_ROM_BUILD` | `true` |
-| Variable `PRIVATE_ROM_REPOSITORY` | `USER/ffta-roms` |
-| Variable `PRIVATE_ROM_REVISION` | Complete 40-character input repository commit |
-| Secret `PRIVATE_ROM_SSH_KEY` | Private half of a read-only deploy key registered on the ROM repository |
+Actions also reads the root file. Open Actions in your source fork, select
+**Private ROM build (manual opt-in)**, and choose **Run workflow**. There are no
+push, pull-request or scheduled builds. Only the build profile is selectable.
 
-The deploy key should grant read access only to the ROM repository; no personal
-access token or organization-wide credential is required. The workflow checks
-out source and private inputs into sibling directories, fetches public Git
-dependencies and verifies hashes before building. Private input settings stay
-out of the organization's template. Open Actions in your own clone, choose
-**Private ROM build (manual opt-in)** and **Run workflow**.
+Private repository access still needs authentication. Add a read-only deploy
+key on the ROM repository and store its private half in the source fork's
+`PRIVATE_ROM_SSH_KEY` Actions secret. This is the only Actions setting required;
+the source fork's default token cannot read a different private repository.
+Local builds instead use normal Git authentication. No personal access token
+or organization-wide credential is needed.
 
-## Input identity and outputs
+The workflow checks out source and private inputs into sibling directories.
+Only the IPS and hash report are uploaded as seven-day artifacts. An `always()`
+cleanup removes private inputs and generated resources. The organization template
+contains no user's real input URL, deploy key or ROMs.
 
-The explicit ZIP is limited to 64 MiB and 64 members and contains exactly one
-US retail and one Chinese v1.1 ROM, each 16 MiB. Member names and subdirectories
-do not select roles. SHA-256 identifies them; wrong versions, missing inputs and
-duplicate matches fail. ZIP paths are never extracted.
+## ROM files and identity
+
+Prefer two plain files in the private input repository's root:
+
+```text
+ffta-us.gba
+ffta-us-cn-v1.1.gba
+```
+
+Names are descriptive labels; complete SHA-256 determines each role. Duplicate,
+missing, wrong-version and wrong-size inputs fail. Original native glyphs and
+widths are checked against the owner-provided character table.
 
 | Role | Required SHA-256 |
 | --- | --- |
 | US retail | `43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19` |
 | US Chinese v1.1 | `ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03` |
 
+Existing private repositories with `inputs.zip` remain readable when no direct
+ROM files are present. ZIP is not required for new repositories; member paths
+are never extracted, and the legacy archive limits remain 64 MiB/64 members.
+
 `default` builds CN/pinyin/link/Info/italic and enabled custom plugins.
-`exact-reference` disables optional built-in changes and requires the final ROM
-to match the CN reference; disable custom plugins that alter it.
-
-Only the IPS and hash report are published as seven-day Actions artifacts.
-Both profiles first verify full CN resource reconstruction. ROMs, fonts, text,
-private packs, dependency checkouts and build caches are never uploaded as
-artifacts. An `always()` cleanup removes the job's private checkout and generated
-resources. Disable the repository opt-in variable to skip future manual builds.
-
-GitHub's [manual workflow documentation](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow)
-explains dispatching from the default branch.
+`exact-reference` disables optional built-in changes and requires byte identity
+with the CN reference; disable any custom plugins that change the output.
