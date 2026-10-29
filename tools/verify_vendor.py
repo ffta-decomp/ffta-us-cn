@@ -19,7 +19,7 @@ def verify():
             count += 1
     if (ROOT / 'config/plugin-projects.lock.json').is_file():
         from plugin_projects import locked
-        plugins = locked(restore_builtin=True)
+        plugins = locked()
         count += sum(len(project['files']) for project in plugins['projects'].values())
     return count
 

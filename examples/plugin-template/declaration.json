@@ -1,0 +1,9 @@
+{
+  "id": "my_plugin",
+  "name": "My Plugin",
+  "content": "My plugin description\nAuthor name",
+  "enabled": true,
+  "priority": 0,
+  "entry": "my_plugin/build.py",
+  "files": ["my_plugin/build.py"]
+}

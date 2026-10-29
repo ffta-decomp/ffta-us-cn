@@ -21,7 +21,7 @@ def main():
         parser.error('Source archive must be external')
     verify()
     names = subprocess.check_output(['git', '-C', str(ROOT), 'ls-files', '-z']).decode().split('\0')
-    plugins = locked(restore_builtin=True)
+    plugins = locked()
     names = set(filter(None, names))
     for record in plugins['projects'].values():
         names.update(str(Path(record['directory']) / name) for name in record['files'])

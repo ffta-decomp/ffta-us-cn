@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import struct
 
-from plugin_info import ROOT, load_pages, load_catalogue
+from plugin_info import ROOT, load_pages, load_catalogue, enabled
 
 FONT, WIDTHS, COUNT = 0x433330, 0x4966b0, 3175
 ORIGIN = 0xd00000
@@ -37,7 +37,7 @@ def resolve(features, path=None):
             raise ValueError('Plugin priority must be a nonnegative integer')
         if plugin['id'] != 'uscn' and priority >= uscn['priority']:
             raise ValueError('uscn must have the highest plugin priority')
-    fonts = sorted((p for p in catalogue if features.get(p['feature']) and 'font' in p and
+    fonts = sorted((p for p in catalogue if enabled(p, features) and 'font' in p and
                     ('when' not in p['font'] or features.get(p['font']['when'], False))),
                    key=lambda p: (-p.get('priority', 0), p['id']))
     if not fonts:

@@ -23,5 +23,5 @@ __pycache__/
 build/
 dist/
 
-# Immutable plugin snapshots generated from builtin sources or pinned Git commits.
+# Immutable plugin snapshots imported from pinned Git commits.
 vendor/plugins/

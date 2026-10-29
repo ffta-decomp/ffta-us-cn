@@ -3,7 +3,7 @@
   "projects": [
     {
       "id": "builtin",
-      "source": {"kind": "builtin", "path": "plugins/builtin"}
+      "source": {"kind": "builtin", "path": "plugins"}
     }
   ]
 }
