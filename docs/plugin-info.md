@@ -4,6 +4,10 @@ The title source extension places `Info` to the right of the native color-mode
 item. Up/down retain the three original menu rows; left/right select between
 color mode and Info on the last row. A/Start opens Info. The native color-mode
 submenu and original game confirmations retain their existing implementation.
+The entry uses the original title OBJ palettes (bank 1 normally, bank 3 when
+selected), including dark ink index 1, light outline index 8 and lower shadow
+index 6. Its native feather cursor sits to the right of the rendered label,
+with the same vertical position and animation as the original last-row cursor.
 
 The detail screen has a blue background, white text and two white rounded
 frames. The left sidebar selects enabled plugins and the right panel shows

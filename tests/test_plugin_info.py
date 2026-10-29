@@ -10,10 +10,20 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from plugin_info import load_pages, ROOT
-from build_plugin_info import generate_assets, prepare, sha, FONT_START, FONT_END, WIDTHS
+from build_plugin_info import generate_assets, prepare, sha, title_label, FONT_START, FONT_END, WIDTHS
 
 
 class PluginInfoTests(unittest.TestCase):
+    def test_entry_retains_native_ink_outline_and_shadow(self):
+        mask = bytearray(240 * 160)
+        mask[7 * 240 + 3] = 2
+        styled, width = title_label(mask)
+        self.assertEqual(styled[7 * 240 + 3], 1)  # Native title ink.
+        self.assertEqual(styled[6 * 240 + 3], 8)  # Light outline remains visible.
+        self.assertEqual(styled[9 * 240 + 3], 6)  # Lower shadow.
+        self.assertEqual(width, 5)
+        self.assertEqual(set(styled), {0, 1, 6, 8})
+
     def test_selected_metadata_and_explicit_newlines(self):
         pages = load_pages({'cjk': True, 'link_fix': True})
         self.assertEqual([p['name'] for p in pages], ['uscn', 'netfix'])
