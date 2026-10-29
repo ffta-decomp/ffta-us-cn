@@ -166,9 +166,24 @@ def build(args):
         if image[:0x4d78] != before[:0x4d78] or image[0x4d7a:] != before[0x4d7a:]:
             raise ValueError('Link comparison extension changed bytes outside its instruction')
         link_report['extension'] = link_extension
+    info_report = None
+    if args.info:
+        from build_plugin_info import prepare as prepare_info
+        if args.cjk:
+            font_image = image
+        else:
+            from migrate_us_cn import compose
+            font_image, _ = compose(reference, args.pack_dir, out / 'info-font-stage', args.tool_prefix)
+        info_manifest, info_report = prepare_info(
+            reference, image, font_image, args, out / 'plugin-info', config)
+        image, info_extension = apply_extensions(
+            image, reference, config, info_manifest,
+            lambda module: compile_source(module, 'info-source-extensions'))
+        info_report['extension'] = info_extension
     report = {'schema': 1, 'build_mode': 'joint-decomp-extension',
               'cjk_enabled': args.cjk, 'pinyin_enabled': args.pinyin,
               'link_fix_enabled': args.link_fix, 'link_fix': link_report,
+              'info_enabled': args.info, 'plugin_info': info_report,
               'output_bytes': len(image), 'output_sha256': sha(image),
               'english_baseline_sha256': baseline_hash,
               'compiled_decomp_modules': compiled,

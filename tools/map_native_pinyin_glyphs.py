@@ -11,7 +11,7 @@ import hashlib
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[1]
 CN_SHA = 'ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03'
 FONT_SHA = '07ab9c83358aff167ab45c6b96b63c27f935819d409870af8e9e873f93c07e24'
 CHARSET_SHA = '4f76f5e2a90c93f7b34faa987561492e6f361d75fb00b366ac7dceb88980b778'
