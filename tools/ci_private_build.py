@@ -8,8 +8,6 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
-import urllib.parse
-import urllib.request
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,46 +16,12 @@ ROM_HASHES = {
     'retail': '43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19',
     'translated': 'ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03',
 }
-MAX_DOWNLOAD = 64 * 1024 * 1024
+MAX_ARCHIVE_BYTES = 64 * 1024 * 1024
 
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
 
-
-class HTTPSRedirects(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        if urllib.parse.urlsplit(newurl).scheme != 'https':
-            raise ValueError('Private download redirects must use HTTPS')
-        return super().redirect_request(req, fp, code, msg, headers, newurl)
-
-
-def download(destination):
-    url = os.environ.get('PRIVATE_ROM_ARCHIVE_URL', '')
-    if urllib.parse.urlsplit(url).scheme != 'https':
-        raise ValueError('Set PRIVATE_ROM_ARCHIVE_URL to a private HTTPS ZIP download URL')
-    request = urllib.request.Request(url, headers={'Accept': 'application/octet-stream'})
-    # Same-repository private release assets can use the job's read-only token.
-    # Unredirected headers never follow the asset's signed CDN redirect.
-    parsed = urllib.parse.urlsplit(url)
-    repository = os.environ.get('GITHUB_REPOSITORY', '')
-    if parsed.netloc == 'api.github.com' and repository and \
-       parsed.path.startswith('/repos/' + repository + '/releases/assets/'):
-        token = os.environ.get('GH_TOKEN', '')
-        if token:
-            request.add_unredirected_header('Authorization', 'Bearer ' + token)
-    # Never print request exceptions: they can contain the signed private URL.
-    try:
-        with urllib.request.build_opener(HTTPSRedirects()).open(request, timeout=120) as response:
-            with Path(destination).open('xb') as output:
-                total = 0
-                while chunk := response.read(1024 * 1024):
-                    total += len(chunk)
-                    if total > MAX_DOWNLOAD:
-                        raise ValueError('Archive exceeds download limit')
-                    output.write(chunk)
-    except Exception:
-        raise ValueError('Private ROM archive download failed (details suppressed)') from None
 
 
 def identify(archive, output):
@@ -65,6 +29,8 @@ def identify(archive, output):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     found = {}
+    if Path(archive).stat().st_size > MAX_ARCHIVE_BYTES:
+        raise ValueError('ROM archive exceeds 64 MiB')
     with zipfile.ZipFile(archive) as zipped:
         if len(zipped.infolist()) > 64:
             raise ValueError('ROM archive contains too many members')
@@ -121,6 +87,7 @@ def glyph_inputs(translated, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--rom-archive', required=True, type=Path)
     parser.add_argument('--work-dir', required=True, type=Path)
     parser.add_argument('--publish-dir', required=True, type=Path)
     parser.add_argument('--profile', choices=['default', 'exact-reference'], default='default')
@@ -129,11 +96,10 @@ def main():
     if work.is_relative_to(ROOT) or publish.is_relative_to(ROOT) or \
        work.is_relative_to(publish) or publish.is_relative_to(work):
         parser.error('Work and publish directories must be separate and outside the repository')
+    if args.rom_archive.resolve().is_relative_to(ROOT):
+        parser.error('ROM archive must be outside the source repository')
     work.mkdir(parents=True, exist_ok=False)
-    archive = work / 'inputs.zip'
-    download(archive)
-    roms = identify(archive, work / 'roms')
-    archive.unlink()
+    roms = identify(args.rom_archive, work / 'roms')
     def run(tool, *options):
         subprocess.run([sys.executable, str(ROOT / 'tools' / tool), *map(str, options)], check=True)
     run('export_us_cn.py', '--retail', roms['retail'], '--translated', roms['translated'],

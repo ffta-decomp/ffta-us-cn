@@ -7,16 +7,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def verify_dependency(root, dependency):
+    directory = root / dependency['directory']
+    for name, digest in dependency['files'].items():
+        path = (directory / name).resolve()
+        if not path.is_relative_to(directory.resolve()) or not path.is_file():
+            raise ValueError('Missing dependency source: ' + name + '; run python3 tools/fetch_dependencies.py')
+        if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
+            raise ValueError('Dependency hash mismatch: ' + str(path))
+    return len(dependency['files'])
+
+
 def verify():
-    lock = json.loads((ROOT / 'vendor/lock.json').read_text())
-    count = 0
-    for dependency in lock['dependencies']:
-        directory = ROOT / dependency['directory']
-        for name, digest in dependency['files'].items():
-            path = directory / name
-            if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
-                raise ValueError('Vendor hash mismatch: ' + str(path.relative_to(ROOT)))
-            count += 1
+    lock = json.loads((ROOT / 'config/dependencies.lock.json').read_text())
+    count = sum(verify_dependency(ROOT, dependency) for dependency in lock['dependencies'])
     if (ROOT / 'config/plugin-projects.lock.json').is_file():
         from plugin_projects import locked
         plugins = locked()
