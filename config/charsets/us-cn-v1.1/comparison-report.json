@@ -1,0 +1,318 @@
+{
+  "schema": 1,
+  "source_workbook_sha256": "473dd8d2bb43c17aab292a51e00fa5154b97bc5610d53cded1cb737d6d02e17e",
+  "sheet": "Sheet2",
+  "translated_sha256": "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+  "native_font_sha256": "b029602d9b2979e9d68f25678277e80f9768e756afb49882e592245acdb41a47",
+  "reviewed_map_sha256": "54be9d353eb14566c271930c674d81b8cdef6a7d5d765be18d89372dd6471d63",
+  "native_entries": 3175,
+  "labelled_entries": 2731,
+  "blank_entries": 444,
+  "unique_unicode_characters": 2688,
+  "duplicate_unicode_labels": {
+    "+": [
+      "0x80FD",
+      "0x8A9F"
+    ],
+    "-": [
+      "0x80FE",
+      "0x8AA0"
+    ],
+    "/": [
+      "0x80F1",
+      "0x8AA1"
+    ],
+    "0": [
+      "0x80A6",
+      "0x8118"
+    ],
+    "1": [
+      "0x80A7",
+      "0x8119"
+    ],
+    "2": [
+      "0x80A8",
+      "0x811A"
+    ],
+    "3": [
+      "0x80A9",
+      "0x811B"
+    ],
+    "4": [
+      "0x80AA",
+      "0x811C"
+    ],
+    "5": [
+      "0x80AB",
+      "0x811D"
+    ],
+    "6": [
+      "0x80AC",
+      "0x811E"
+    ],
+    "7": [
+      "0x80AD",
+      "0x811F"
+    ],
+    "8": [
+      "0x80AE",
+      "0x8120"
+    ],
+    "9": [
+      "0x80AF",
+      "0x8121"
+    ],
+    "=": [
+      "0x8101",
+      "0x8AA2"
+    ],
+    "A": [
+      "0x80B0",
+      "0x8AA4"
+    ],
+    "B": [
+      "0x80B1",
+      "0x8AA5"
+    ],
+    "C": [
+      "0x80B2",
+      "0x8AA6"
+    ],
+    "D": [
+      "0x80B3",
+      "0x8AA7"
+    ],
+    "E": [
+      "0x80B4",
+      "0x8AA8"
+    ],
+    "H": [
+      "0x80B7",
+      "0x8AA9"
+    ],
+    "J": [
+      "0x80B9",
+      "0x8AAA"
+    ],
+    "K": [
+      "0x80BA",
+      "0x8AAB"
+    ],
+    "L": [
+      "0x80BB",
+      "0x8AAC"
+    ],
+    "M": [
+      "0x80BC",
+      "0x8AAD"
+    ],
+    "O": [
+      "0x80BE",
+      "0x8AAE"
+    ],
+    "P": [
+      "0x80BF",
+      "0x8AAF"
+    ],
+    "R": [
+      "0x80C1",
+      "0x8AB0"
+    ],
+    "S": [
+      "0x80C2",
+      "0x8AB1"
+    ],
+    "T": [
+      "0x80C3",
+      "0x8AB2"
+    ],
+    "V": [
+      "0x80C5",
+      "0x8AB3"
+    ],
+    "Y": [
+      "0x80C8",
+      "0x8AB4"
+    ],
+    "x": [
+      "0x80E1",
+      "0x8A94"
+    ],
+    "~": [
+      "0x80F2",
+      "0x8A95"
+    ],
+    "·": [
+      "0x80ED",
+      "0x8A9E"
+    ],
+    "、": [
+      "0x80A3",
+      "0x8A97"
+    ],
+    "。": [
+      "0x80A4",
+      "0x8A99"
+    ],
+    "「": [
+      "0x80E5",
+      "0x8A9C"
+    ],
+    "」": [
+      "0x80E6",
+      "0x8A9D"
+    ],
+    "岂": [
+      "0x8A04",
+      "0x8A81"
+    ],
+    "揭": [
+      "0x83B2",
+      "0x8A56"
+    ],
+    "摇": [
+      "0x8354",
+      "0x894E"
+    ],
+    "晚": [
+      "0x85DA",
+      "0x880C"
+    ],
+    "霸": [
+      "0x827E",
+      "0x87C0"
+    ]
+  },
+  "reviewed_samples": 18,
+  "matched_samples": 18,
+  "all_reviewed_samples_match": true,
+  "comparisons": [
+    {
+      "character": "丁",
+      "index": 1753,
+      "token": "0x86D9",
+      "spreadsheet_character": "丁",
+      "match": true
+    },
+    {
+      "character": "作",
+      "index": 1175,
+      "token": "0x8497",
+      "spreadsheet_character": "作",
+      "match": true
+    },
+    {
+      "character": "化",
+      "index": 616,
+      "token": "0x8268",
+      "spreadsheet_character": "化",
+      "match": true
+    },
+    {
+      "character": "发",
+      "index": 2032,
+      "token": "0x87F0",
+      "spreadsheet_character": "发",
+      "match": true
+    },
+    {
+      "character": "周",
+      "index": 1314,
+      "token": "0x8522",
+      "spreadsheet_character": "周",
+      "match": true
+    },
+    {
+      "character": "小",
+      "index": 1386,
+      "token": "0x856A",
+      "spreadsheet_character": "小",
+      "match": true
+    },
+    {
+      "character": "开",
+      "index": 665,
+      "token": "0x8299",
+      "spreadsheet_character": "开",
+      "match": true
+    },
+    {
+      "character": "成",
+      "index": 1510,
+      "token": "0x85E6",
+      "spreadsheet_character": "成",
+      "match": true
+    },
+    {
+      "character": "机",
+      "index": 2142,
+      "token": "0x885E",
+      "spreadsheet_character": "机",
+      "match": true
+    },
+    {
+      "character": "汉",
+      "index": 735,
+      "token": "0x82DF",
+      "spreadsheet_character": "汉",
+      "match": true
+    },
+    {
+      "character": "版",
+      "index": 2050,
+      "token": "0x8802",
+      "spreadsheet_character": "版",
+      "match": true
+    },
+    {
+      "character": "王",
+      "index": 311,
+      "token": "0x8137",
+      "spreadsheet_character": "王",
+      "match": true
+    },
+    {
+      "character": "美",
+      "index": 2089,
+      "token": "0x8829",
+      "spreadsheet_character": "美",
+      "match": true
+    },
+    {
+      "character": "者",
+      "index": 345,
+      "token": "0x8159",
+      "spreadsheet_character": "者",
+      "match": true
+    },
+    {
+      "character": "联",
+      "index": 2485,
+      "token": "0x89B5",
+      "spreadsheet_character": "联",
+      "match": true
+    },
+    {
+      "character": "补",
+      "index": 465,
+      "token": "0x81D1",
+      "spreadsheet_character": "补",
+      "match": true
+    },
+    {
+      "character": "闲",
+      "index": 751,
+      "token": "0x82EF",
+      "spreadsheet_character": "闲",
+      "match": true
+    },
+    {
+      "character": "集",
+      "index": 292,
+      "token": "0x8124",
+      "spreadsheet_character": "集",
+      "match": true
+    }
+  ],
+  "validation_scope": "Only the reviewed samples are semantically compared. Other labels retain third-party provenance; blank labels remain unknown. No OCR or alternate charset order is used."
+}

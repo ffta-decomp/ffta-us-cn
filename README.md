@@ -9,11 +9,11 @@ keyboard page; the original second page remains available. No third tab is added
 
 | Invocation | Result |
 | --- | --- |
-| Default | CN resources/loading, pinyin naming, and the serial timeout fix |
+| Default | CN resources/loading, pinyin naming, serial timeout fix, and title Info |
 | `--disable-pinyin` | CN with the serial timeout fix, without pinyin |
 | `--disable-pinyin --disable-link-fix` | Exact pinned 16 MiB Chinese reference |
 | `--disable-cjk` | English baseline, with pinyin disabled automatically |
-| `--disable-cjk --enable-link-fix` | English with only the serial timeout fix |
+| `--disable-cjk --enable-link-fix --disable-info` | English with only the serial timeout fix |
 | `--disable-cjk --enable-pinyin` | Rejected as contradictory |
 
 ## Source ownership
@@ -57,7 +57,9 @@ Keep these resources outside the repository and source archives:
 - The imported private component pack, native-glyph map and its provenance report.
 - The explicit source-font/charset inputs when deriving that glyph map.
 
-No ROM, extracted text, font, glyph map, save or screenshot is distributed here.
+No ROM, extracted game text, font, save or screenshot is distributed here.
+The owner-supplied third-party v1.1 character mapping is retained under
+`config/charsets/us-cn-v1.1/`, including its provenance and 18-sample comparison.
 The build reads US retail plus the private pack; it does not load a Chinese ROM
 as its output or import a whole-ROM binary diff.
 
@@ -122,3 +124,8 @@ See [native pinyin behavior and emulator-test limits](docs/native-pinyin-names.m
 The former ROM-only and 32 MiB demo tools remain historical diagnostics, not the
 current joint-build entry. Historical demos that require a full writable engine
 checkout must select a separate development checkout explicitly.
+
+The [persistent reference exporter](docs/us-cn-resource-export.md) exports native
+glyphs, text, resources and IPS metadata, then proves a full-ROM byte match.
+The optional [title Info UI](docs/plugin-info.md) reads plugin credits from
+`plugins.json`; use `--disable-info` to omit it.

@@ -35,7 +35,10 @@ def options(argv=None):
     link = parser.add_mutually_exclusive_group()
     link.add_argument('--enable-link-fix', dest='link_fix', action='store_true')
     link.add_argument('--disable-link-fix', dest='link_fix', action='store_false')
-    parser.set_defaults(cjk=True, pinyin=None, link_fix=None)
+    info = parser.add_mutually_exclusive_group()
+    info.add_argument('--enable-info', dest='info', action='store_true')
+    info.add_argument('--disable-info', dest='info', action='store_false')
+    parser.set_defaults(cjk=True, pinyin=None, link_fix=None, info=None)
     parser.add_argument('--patch-output', type=Path,
                         help='Optional local IPS against the authenticated US input')
     args = parser.parse_args(argv)
@@ -43,10 +46,15 @@ def options(argv=None):
         parser.error('--enable-pinyin requires CJK')
     args.pinyin = args.cjk if args.pinyin is None else args.pinyin
     args.link_fix = args.cjk if args.link_fix is None else args.link_fix
+    args.info = (args.pinyin or args.link_fix) if args.info is None else args.info
+    if args.info and not (args.cjk or args.link_fix):
+        parser.error('--enable-info requires at least one enabled plugin')
     if args.cjk and args.pack_dir is None:
         parser.error('CN requires --pack-dir; import your local resources first')
-    if args.pinyin and (args.glyph_map is None or args.map_report is None):
-        parser.error('Pinyin requires --glyph-map and --map-report')
+    if (args.pinyin or args.info) and (args.glyph_map is None or args.map_report is None):
+        parser.error('Pinyin/Info requires --glyph-map and --map-report')
+    if args.info and not args.cjk and args.pack_dir is None:
+        parser.error('English Info requires --pack-dir for its Chinese display font')
     for path in [args.output_dir, args.patch_output]:
         if path is not None and path.resolve().is_relative_to(ROOT):
             parser.error('Generated output must be outside the source tree')
@@ -72,7 +80,7 @@ def main():
         args.patch_output.write_bytes(patch)
         report['local_patch_sha256'] = hashlib.sha256(patch).hexdigest()
     (args.output_dir / 'features.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(json.dumps({key: report[key] for key in ['build_mode', 'cjk_enabled', 'pinyin_enabled', 'link_fix_enabled', 'output_bytes', 'output_sha256']}))
+    print(json.dumps({key: report[key] for key in ['build_mode', 'cjk_enabled', 'pinyin_enabled', 'link_fix_enabled', 'info_enabled', 'output_bytes', 'output_sha256']}))
 
 
 if __name__ == '__main__':

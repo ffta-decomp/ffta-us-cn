@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "plugins": [
+    {
+      "id": "uscn",
+      "feature": "cjk",
+      "name": "uscn",
+      "content": "美版汉化v1.1 集成\n作者 美版汉化v1.1 汉化组\n开发者bhe"
+    },
+    {
+      "id": "netfix",
+      "feature": "link_fix",
+      "name": "netfix",
+      "content": "联机补丁\n作者闲王小周周"
+    }
+  ]
+}
