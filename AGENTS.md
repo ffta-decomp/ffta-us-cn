@@ -8,7 +8,8 @@ Keep source and documentation in English.
 
 **Never modify code or files under `vendor/`.** Do not patch dependencies,
 rewrite their build scripts, add local fixes, or hide changes in vendor trees.
-Verify dependency hashes with `python3 tools/verify_vendor.py`.
+Dependency checkouts are ignored and fetched from public Git revisions; never
+commit their contents. Verify dependency hashes with `python3 tools/verify_vendor.py`.
 Dependency updates select an explicitly reviewed upstream revision and update
 the lock; they must not carry unpublished local patches.
 
@@ -17,7 +18,7 @@ owner authorizes importing only files explicitly exported by a project's
 `plugins.json`, from a pinned Git commit. Local plugin sources stay in
 `plugins/` and are read directly. Create external snapshots
 with `tools/plugin_projects.py sync`; never edit snapshots in place. Existing
-engine/compiler dependencies and `vendor/lock.json` remain immutable.
+engine/compiler dependencies and `config/dependencies.lock.json` remain immutable.
 
 If decomp needs a build option, extension point or generic loader interface,
 implement and test it in a separate checkout/branch and submit a PR to the

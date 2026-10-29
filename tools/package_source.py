@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package committed source plus pinned vendor files, with stable archive metadata."""
+"""Package project source and dependency locks; consumers fetch Git dependencies."""
 import argparse
 import gzip
 import io
@@ -22,9 +22,10 @@ def main():
     verify()
     names = subprocess.check_output(['git', '-C', str(ROOT), 'ls-files', '-z']).decode().split('\0')
     plugins = locked()
-    names = set(filter(None, names))
+    names = {name for name in names if name and not name.startswith('vendor/')}
     for record in plugins['projects'].values():
-        names.update(str(Path(record['directory']) / name) for name in record['files'])
+        if record['source']['kind'] == 'builtin':
+            names.update(str(Path(record['directory']) / name) for name in record['files'])
     forbidden = {'.gba', '.rom', '.bin', '.ttf', '.otf', '.png', '.ppm', '.sav', '.state', '.ips', '.bps'}
     archive = io.BytesIO()
     with tarfile.open(fileobj=archive, mode='w', format=tarfile.PAX_FORMAT) as tar:

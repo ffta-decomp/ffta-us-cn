@@ -189,7 +189,7 @@ def export(retail_path, translated_path, output_dir, tool_prefix='arm-none-eabi-
                'tools/migrate_us_cn.py', 'tools/us_cn_text_layout.py',
                'tools/us_cn_resource_layout.py', 'tools/assemble_us_cn_hooks.py',
                'tools/ips_patch.py', 'config/us-cn-reference-layout.json',
-               'engine/us_cn_hooks.s', 'plugins.json', 'vendor/lock.json']
+               'engine/us_cn_hooks.s', 'plugins.json', 'config/dependencies.lock.json']
     write_json(output_dir / 'export-manifest.json', dict(
         schema=1, role='persistent-private-build-inputs',
         source_sha256={name: sha((ROOT / name).read_bytes()) for name in sources},

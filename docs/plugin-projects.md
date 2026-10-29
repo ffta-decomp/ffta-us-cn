@@ -96,7 +96,7 @@ The external repository has the same `plugins.json` declaration contract at its
 root and may export multiple plugins. `sync` fetches only when explicitly run,
 imports the manifest and union of declared file lists into `vendor/plugins/`,
 and removes its temporary checkout. Builds are offline and verify source
-hashes. Never edit imported snapshots. Source archives include locked exports.
+hashes. Never edit imported snapshots. Source archives contain declarations and locks; fetch external sources before building.
 
 Projects may maintain their own `vendor/`, tests and tools. These are not
 exported unless explicitly declared. Paths escaping the project and private

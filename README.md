@@ -48,8 +48,9 @@ hash reports are uploaded.
 CN C/ASM lives in `engine/`, including complete naming-entry replacements under
 `engine/extensions/`. Resources and pointer layout rules live in this project.
 Info is maintained and compiled directly in `plugins/info/`.
-`vendor/` contains immutable, hash-locked source exports of the official decomp
-source/toolkit, the compiler source and the licensed Rime dictionary. The pinyin core belongs to this project under `engine/pinyin/`.
+`vendor/` contains ignored Git checkouts fetched at locked revisions: the official
+decomp source/toolkit, its compiler submodule and the licensed Rime dictionary.
+Dependency sources are not committed or included in template source archives. The pinyin core belongs to this project under `engine/pinyin/`.
 No adjacent decomp checkout or environment variable is required.
 
 **Never edit vendor code.** Needed generic build options are submitted upstream;
@@ -57,7 +58,7 @@ see [the official extension-interface PR](https://github.com/ffta-decomp/fftadec
 The dependency lock pins merged upstream commit
 `4ecb640abb607decd2581383e27604e3caaee280`. This project consumes the official
 source without a local vendor patch.
-See [AGENTS.md](AGENTS.md) and [vendor provenance](vendor/README.md).
+See [AGENTS.md](AGENTS.md) and [dependency provenance](docs/dependencies.md).
 
 The compatibility build compiles five published decompiled native naming C
 entries (1,700 original bytes), checks their complete bytes against US retail,
@@ -70,7 +71,7 @@ No optional/mod output earns decomp recovery credit.
 
 ## Inputs and prerequisites
 
-Use Python 3.12+, Clang, Make and ARM binutils (`arm-none-eabi-as`, `ld`,
+Use Git, Python 3.12+, Clang, Make and ARM binutils (`arm-none-eabi-as`, `ld`,
 `objcopy`, `nm`). Core build tools use the Python standard library. Compiler
 bootstrap is serial, uses an external work directory and removes that owned
 work directory after success. An existing compatible compiler may be selected
@@ -97,6 +98,7 @@ Commands run from this repository root. Variables below name your external
 inputs and clean output directories; there is no automatic resource discovery.
 
 ```sh
+python3 tools/fetch_dependencies.py
 python3 tools/verify_vendor.py
 python3 tools/migrate_us_cn.py import \
   --retail "$US_ROM" --translated "$CN_ROM" --pack-dir "$PRIVATE_PACK"
@@ -105,7 +107,7 @@ python3 tools/map_native_pinyin_glyphs.py \
   --translated "$CN_ROM" --source-font "$SOURCE_FONT" \
   --source-charset "$SOURCE_CHARSET" --output-dir "$GLYPH_MAP_DIR"
 
-# Default: Chinese + pinyin. Rime source and its Apache license are vendored.
+# Default: Chinese + pinyin. Rime source and its Apache license were fetched above.
 python3 tools/build.py --retail "$US_ROM" --pack-dir "$PRIVATE_PACK" \
   --glyph-map "$GLYPH_MAP_DIR/glyph-map.json" \
   --map-report "$GLYPH_MAP_DIR/map-report.json" --output-dir "$OUTPUT"
@@ -140,9 +142,10 @@ PYTHONPATH=tools python3 -m unittest discover -s tools -p test_convert_ffta_us_c
 python3 tools/package_source.py --output "$SOURCE_ARCHIVE"
 ```
 
-The deterministic source archive includes the exact vendored dependencies and
-license notices, without `.git`, build caches, ROMs or private resources. It
-works without a second checkout. Verify dependencies before and after builds.
+The deterministic source archive includes project source and dependency locks,
+without `vendor/`, `.git`, build caches, ROMs or private resources. After
+extracting it, run `python3 tools/fetch_dependencies.py` to retrieve the pinned
+public source and original license notices. Verify dependencies before and after builds.
 For build determinism, use two clean external directories and compare final ROM
 hashes; source manifests may contain their distinct explicit output paths.
 

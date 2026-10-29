@@ -25,3 +25,6 @@ dist/
 
 # Immutable plugin snapshots imported from pinned Git commits.
 vendor/plugins/
+
+# External Git checkouts are fetched from config/dependencies.lock.json.
+/vendor/
