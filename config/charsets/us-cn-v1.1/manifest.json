@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "resource_role": "third-party-character-map",
+  "source_workbook_sha256": "473dd8d2bb43c17aab292a51e00fa5154b97bc5610d53cded1cb737d6d02e17e",
+  "translated_sha256": "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+  "files": {
+    "character-table.csv": "ce28873f55773521b99b86ea2e60ba578d269575aa6007372dc6dde639c87418",
+    "character-table.json": "635686a3b23aa786ff6ab0e289e1bd2fe875d31252ba556ebd9095ea5ee342cf",
+    "comparison-report.json": "dcbe66319eaf1229fc259938106367b32132c285aa87be2c09385de552815e3a",
+    "index-to-unicode.json": "362895daadc8ec1d54cdf88ff37b2a247f0ded4314802831eea8663e8cd7d246",
+    "unicode-to-tokens.json": "f2d172e10b50afd5f2032aba94ef39e2933c5548135659fe77f21a62e44628cd"
+  }
+}
