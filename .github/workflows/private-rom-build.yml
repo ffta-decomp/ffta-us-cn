@@ -20,28 +20,54 @@ jobs:
     if: ${{ vars.ENABLE_PRIVATE_ROM_BUILD == 'true' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: source
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Check out template or personal source clone
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
+          path: source
+          persist-credentials: false
+      - name: Validate private input configuration
+        env:
+          ROM_REPOSITORY: ${{ vars.PRIVATE_ROM_REPOSITORY }}
+          ROM_REVISION: ${{ vars.PRIVATE_ROM_REVISION }}
+        run: |
+          python3 - <<'PY'
+          import os, re
+          if not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+', os.environ['ROM_REPOSITORY']):
+              raise SystemExit('Set PRIVATE_ROM_REPOSITORY to your separate private ROM repository')
+          if not re.fullmatch(r'[0-9a-f]{40}', os.environ['ROM_REVISION']):
+              raise SystemExit('Set PRIVATE_ROM_REVISION to its complete commit SHA')
+          PY
+      - name: Check out separate private ROM repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          repository: ${{ vars.PRIVATE_ROM_REPOSITORY }}
+          ref: ${{ vars.PRIVATE_ROM_REVISION }}
+          ssh-key: ${{ secrets.PRIVATE_ROM_SSH_KEY }}
+          path: private-roms
           persist-credentials: false
       - name: Install build tools
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends clang make binutils-arm-none-eabi
           python3 --version
+      - name: Fetch pinned public Git dependencies
+        run: python3 tools/fetch_dependencies.py
       - name: Verify sources and run tests
         run: |
           python3 tools/verify_vendor.py
           python3 -m unittest discover -s tests
       - name: Build from private hash-identified ROMs
         env:
-          PRIVATE_ROM_ARCHIVE_URL: ${{ secrets.PRIVATE_ROM_ARCHIVE_URL }}
           BUILD_PROFILE: ${{ inputs.profile }}
-          GH_TOKEN: ${{ github.token }}
         run: |
           python3 tools/ci_private_build.py \
+            --rom-archive "$GITHUB_WORKSPACE/private-roms/inputs.zip" \
             --work-dir "$RUNNER_TEMP/ffta-private" \
             --publish-dir "$RUNNER_TEMP/ffta-publish" \
             --profile "$BUILD_PROFILE"
@@ -56,4 +82,5 @@ jobs:
           retention-days: 7
       - name: Remove private inputs and build outputs
         if: ${{ always() }}
-        run: rm -rf -- "$RUNNER_TEMP/ffta-private" "$RUNNER_TEMP/ffta-publish"
+        working-directory: ${{ github.workspace }}
+        run: rm -rf -- "$RUNNER_TEMP/ffta-private" "$RUNNER_TEMP/ffta-publish" "$GITHUB_WORKSPACE/private-roms"

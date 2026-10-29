@@ -1,11 +1,10 @@
 import hashlib
-import io
 import json
 from pathlib import Path
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch, Mock
+from unittest.mock import patch
 import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
@@ -47,32 +46,6 @@ class PrivateBuildTests(unittest.TestCase):
                     with self.assertRaisesRegex(ValueError, error):
                         ci.identify(archive, root / 'inputs')
 
-    def test_same_repo_release_token_does_not_follow_redirect(self):
-        url = 'https://api.github.com/repos/owner/private/releases/assets/123'
-        opener = Mock()
-        opener.open.return_value = io.BytesIO(b'zip')
-        with tempfile.TemporaryDirectory() as temporary, patch.dict(ci.os.environ, {
-            'PRIVATE_ROM_ARCHIVE_URL': url, 'GITHUB_REPOSITORY': 'owner/private',
-            'GH_TOKEN': 'synthetic-token'}, clear=True), \
-             patch.object(ci.urllib.request, 'build_opener', return_value=opener):
-            ci.download(Path(temporary) / 'input.zip')
-        request = opener.open.call_args.args[0]
-        self.assertEqual(request.get_header('Authorization'), 'Bearer synthetic-token')
-        redirected = ci.HTTPSRedirects().redirect_request(
-            request, None, 302, 'Found', {}, 'https://cdn.example.invalid/input.zip')
-        self.assertFalse(redirected.has_header('Authorization'))
-
-    def test_download_errors_hide_private_url(self):
-        url = 'https://private.example.invalid/archive.zip?secret=private'
-        opener = Mock()
-        opener.open.side_effect = RuntimeError(url)
-        with patch.dict(ci.os.environ, {'PRIVATE_ROM_ARCHIVE_URL': url}, clear=True), \
-             patch.object(ci.urllib.request, 'build_opener', return_value=opener):
-            with self.assertRaises(ValueError) as caught:
-                ci.download('unused.zip')
-        self.assertNotIn('secret', str(caught.exception))
-        self.assertIsNone(caught.exception.__cause__)
-
     def test_workflow_is_manual_opt_in_and_uploads_only_allowlisted_outputs(self):
         workflow = (ci.ROOT / '.github/workflows/private-rom-build.yml').read_text()
         self.assertIn('  workflow_dispatch:', workflow)
@@ -86,6 +59,9 @@ class PrivateBuildTests(unittest.TestCase):
         self.assertNotIn('.gba', upload)
         self.assertNotIn('ffta-private', upload)
         self.assertIn('always()', workflow)
+        self.assertIn('secrets.PRIVATE_ROM_SSH_KEY', workflow)
+        self.assertIn('vars.PRIVATE_ROM_REVISION', workflow)
+        self.assertIn('python3 tools/fetch_dependencies.py', workflow)
 
 
 if __name__ == '__main__':
