@@ -8,10 +8,10 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FEATURES = frozenset({'cjk', 'link_fix'})
+FEATURES = frozenset({'cjk', 'link_fix', 'info', 'italic_font'})
 
 
-def load_pages(features, path=None):
+def load_catalogue(path=None):
     path = ROOT / 'plugins.json' if path is None else Path(path)
     catalogue = json.loads(path.read_text(encoding='utf-8'))
     if not isinstance(catalogue, dict) or catalogue.get('schema') != 1:
@@ -19,6 +19,19 @@ def load_pages(features, path=None):
     plugins = catalogue.get('plugins')
     if not isinstance(plugins, list):
         raise ValueError('plugins must be an array')
+    expanded = []
+    for plugin in plugins:
+        if isinstance(plugin, dict) and 'project' in plugin:
+            from plugin_projects import describe
+            declaration = describe(plugin['project'], plugin['id'])
+            declaration.update(plugin)  # Explicit host settings override defaults.
+            plugin = declaration
+        expanded.append(plugin)
+    return expanded
+
+
+def load_pages(features, path=None):
+    plugins = load_catalogue(path)
     seen = set()
     pages = []
     for plugin in plugins:

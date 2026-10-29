@@ -38,7 +38,10 @@ def options(argv=None):
     info = parser.add_mutually_exclusive_group()
     info.add_argument('--enable-info', dest='info', action='store_true')
     info.add_argument('--disable-info', dest='info', action='store_false')
-    parser.set_defaults(cjk=True, pinyin=None, link_fix=None, info=None)
+    italic = parser.add_mutually_exclusive_group()
+    italic.add_argument('--enable-italic-font', dest='italic_font', action='store_true')
+    italic.add_argument('--disable-italic-font', dest='italic_font', action='store_false')
+    parser.set_defaults(cjk=True, pinyin=None, link_fix=None, info=None, italic_font=None)
     parser.add_argument('--patch-output', type=Path,
                         help='Optional local IPS against the authenticated US input')
     args = parser.parse_args(argv)
@@ -47,6 +50,11 @@ def options(argv=None):
     args.pinyin = args.cjk if args.pinyin is None else args.pinyin
     args.link_fix = args.cjk if args.link_fix is None else args.link_fix
     args.info = (args.pinyin or args.link_fix) if args.info is None else args.info
+    args.italic_font = (args.cjk and args.info) if args.italic_font is None else args.italic_font
+    if args.italic_font and not args.cjk:
+        parser.error('--enable-italic-font requires the uscn base font (--enable-cjk)')
+    if args.italic_font and not args.info:
+        parser.error('--enable-italic-font requires the info plugin (--enable-info)')
     if args.info and not (args.cjk or args.link_fix):
         parser.error('--enable-info requires at least one enabled plugin')
     if args.cjk and args.pack_dir is None:
@@ -80,7 +88,7 @@ def main():
         args.patch_output.write_bytes(patch)
         report['local_patch_sha256'] = hashlib.sha256(patch).hexdigest()
     (args.output_dir / 'features.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(json.dumps({key: report[key] for key in ['build_mode', 'cjk_enabled', 'pinyin_enabled', 'link_fix_enabled', 'info_enabled', 'output_bytes', 'output_sha256']}))
+    print(json.dumps({key: report[key] for key in ['build_mode', 'cjk_enabled', 'pinyin_enabled', 'link_fix_enabled', 'info_enabled', 'italic_font_enabled', 'output_bytes', 'output_sha256']}))
 
 
 if __name__ == '__main__':

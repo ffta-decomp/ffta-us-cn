@@ -14,6 +14,16 @@ from build_plugin_info import generate_assets, prepare, sha, title_label, FONT_S
 
 
 class PluginInfoTests(unittest.TestCase):
+    def test_exported_info_metadata_and_host_override(self):
+        pages = load_pages({'info': True})
+        self.assertEqual([p['id'] for p in pages], ['info'])
+        self.assertEqual(pages[0]['lines'], ['Plugin information', 'Developer bhe'])
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / 'plugins.json'
+            path.write_text(json.dumps(dict(schema=1, plugins=[
+                dict(id='info', project='builtin', content='Host credits')])) )
+            self.assertEqual(load_pages({'info': True}, path)[0]['lines'], ['Host credits'])
+
     def test_entry_retains_native_ink_outline_and_shadow(self):
         mask = bytearray(240 * 160)
         mask[7 * 240 + 3] = 2

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "plugins": [
+    {
+      "id": "info",
+      "feature": "info",
+      "name": "info",
+      "content": "Plugin information\nDeveloper bhe",
+      "priority": 100,
+      "font": {
+        "mode": "append",
+        "when": "italic_font",
+        "style": "italic",
+        "characters": "Info",
+        "transform": "row_shear",
+        "baseline": 13,
+        "rows_per_pixel": 3
+      },
+      "entry": "info/tools/build_plugin_info.py",
+      "files": [
+        "README.md",
+        "info/tools/build_plugin_info.py",
+        "info/tools/render_plugin_info.c",
+        "info/src/plugin_info_title.c",
+        "info/src/plugin_info_ui.c",
+        "info/src/plugin_info_ui.h",
+        "info/src/advance_title_with_info.c"
+      ]
+    }
+  ]
+}

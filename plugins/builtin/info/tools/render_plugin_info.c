@@ -1,4 +1,4 @@
-/* Private build-time renderer using the same layout core as host UI tests. */
+/* Info plugin build-time renderer using the same layout core as host UI tests. */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,9 +6,13 @@
 struct HostGlyph { unsigned code, advance; unsigned char cell[128]; };
 #include "plugin_info_render_data.h"
 static unsigned char pixels[240 * 160];
+static unsigned title_label;
 static const struct HostGlyph *Glyph(unsigned code)
 {
     unsigned i;
+    if (title_label)
+        for (i = 0; i < sizeof(host_label_glyphs) / sizeof(host_label_glyphs[0]); ++i)
+            if (host_label_glyphs[i].code == code) return host_label_glyphs + i;
     for (i = 0; i < sizeof(host_glyphs) / sizeof(host_glyphs[0]); ++i)
         if (host_glyphs[i].code == code) return host_glyphs + i;
     fprintf(stderr, "Missing native glyph U+%04X\n", code);
@@ -86,6 +90,7 @@ int main(int argc, char **argv)
         }
     }
     memset(pixels, 0, sizeof(pixels));
+    title_label = 1;
     Text("Info", 0, 0, 64, 0, 1);
     Save(argv[1], "gPluginInfoLabel");
     puts("]}");
