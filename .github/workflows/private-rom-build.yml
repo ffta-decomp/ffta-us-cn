@@ -1,0 +1,59 @@
+name: Private ROM build (manual opt-in)
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Build profile
+        type: choice
+        options:
+          - default
+          - exact-reference
+        default: default
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: ${{ vars.ENABLE_PRIVATE_ROM_BUILD == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Install build tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends clang make binutils-arm-none-eabi
+          python3 --version
+      - name: Verify sources and run tests
+        run: |
+          python3 tools/verify_vendor.py
+          python3 -m unittest discover -s tests
+      - name: Build from private hash-identified ROMs
+        env:
+          PRIVATE_ROM_ARCHIVE_URL: ${{ secrets.PRIVATE_ROM_ARCHIVE_URL }}
+          BUILD_PROFILE: ${{ inputs.profile }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 tools/ci_private_build.py \
+            --work-dir "$RUNNER_TEMP/ffta-private" \
+            --publish-dir "$RUNNER_TEMP/ffta-publish" \
+            --profile "$BUILD_PROFILE"
+      - name: Upload patch and hash report only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ffta-us-cn-${{ inputs.profile }}
+          path: |
+            ${{ runner.temp }}/ffta-publish/ffta-us-cn.ips
+            ${{ runner.temp }}/ffta-publish/build-report.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Remove private inputs and build outputs
+        if: ${{ always() }}
+        run: rm -rf -- "$RUNNER_TEMP/ffta-private" "$RUNNER_TEMP/ffta-publish"

@@ -25,6 +25,8 @@ class BuildOptionsTests(unittest.TestCase):
         self.assertTrue(args.cjk)
         self.assertTrue(args.pinyin)
         self.assertTrue(args.link_fix)
+        self.assertTrue(args.info)
+        self.assertTrue(args.italic_font)
 
     def test_english_automatically_disables_pinyin(self):
         args = options(self.base() + ['--disable-cjk'])
@@ -37,11 +39,32 @@ class BuildOptionsTests(unittest.TestCase):
         self.assertTrue(args.cjk)
         self.assertFalse(args.pinyin)
         self.assertFalse(args.link_fix)
+        self.assertFalse(args.info)
+        self.assertFalse(args.italic_font)
+
+    def test_appended_italic_font_is_independently_selectable(self):
+        args = options(self.base() + self.cn_inputs() + ['--disable-italic-font'])
+        self.assertFalse(args.italic_font)
+        args = options(self.base() + self.cn_inputs() + ['--disable-pinyin',
+                                     '--disable-link-fix', '--enable-info', '--enable-italic-font'])
+        self.assertTrue(args.italic_font)
+        self.assertTrue(args.info)
+        self.reject(self.base() + self.cn_inputs() + ['--disable-info', '--enable-italic-font'])
+        self.reject(self.base() + ['--disable-cjk', '--enable-italic-font'])
 
     def test_link_fix_is_independently_selectable(self):
-        args = options(self.base() + ['--disable-cjk', '--enable-link-fix'])
+        args = options(self.base() + ['--disable-cjk', '--enable-link-fix', '--disable-info'])
         self.assertFalse(args.cjk)
         self.assertTrue(args.link_fix)
+
+    def test_info_is_independently_selectable(self):
+        args = options(self.base() + self.cn_inputs() + ['--disable-info'])
+        self.assertTrue(args.cjk)
+        self.assertTrue(args.pinyin)
+        self.assertFalse(args.info)
+        self.reject(self.base() + ['--disable-cjk', '--enable-info'])
+        args = options(self.base() + self.cn_inputs() + ['--disable-cjk', '--enable-link-fix'])
+        self.assertTrue(args.info)
 
     def test_contradictory_explicit_flags_rejected(self):
         self.reject(self.base() + ['--disable-cjk', '--enable-pinyin'])

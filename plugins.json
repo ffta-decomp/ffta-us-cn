@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "plugins": [
+    {
+      "id": "uscn",
+      "feature": "cjk",
+      "name": "uscn",
+      "content": "美版汉化v1.1 集成\n作者 美版汉化v1.1 汉化组\n开发者bhe",
+      "priority": 1000,
+      "font": {
+        "mode": "base",
+        "glyph_table": "config/charsets/us-cn-v1.1/character-table.json",
+        "rom_offset": 4404016,
+        "widths_rom_offset": 4810416,
+        "glyph_count": 3175,
+        "cell_bytes": 128
+      }
+    },
+    {
+      "id": "netfix",
+      "feature": "link_fix",
+      "name": "netfix",
+      "content": "联机补丁\n作者闲王小周周",
+      "priority": 0
+    },
+    {
+      "id": "info",
+      "project": "builtin",
+      "priority": 100
+    }
+  ]
+}

@@ -9,17 +9,45 @@ keyboard page; the original second page remains available. No third tab is added
 
 | Invocation | Result |
 | --- | --- |
-| Default | CN resources/loading, pinyin naming, and the serial timeout fix |
+| Default | CN resources/loading, pinyin naming, serial timeout fix, title Info and appended italic entry glyphs |
 | `--disable-pinyin` | CN with the serial timeout fix, without pinyin |
 | `--disable-pinyin --disable-link-fix` | Exact pinned 16 MiB Chinese reference |
 | `--disable-cjk` | English baseline, with pinyin disabled automatically |
-| `--disable-cjk --enable-link-fix` | English with only the serial timeout fix |
+| `--disable-cjk --enable-link-fix --disable-info` | English with only the serial timeout fix |
 | `--disable-cjk --enable-pinyin` | Rejected as contradictory |
+| `--disable-italic-font` | Keep the original font and upright Info entry |
+
+Font plugins declare their glyph tables, source layout and priorities in
+`plugins.json`. The Chinese v1.1 base has the highest priority; style plugins
+append new cells and emit updated character tables without changing original
+glyph codes. See [font extensions](docs/font-plugins.md).
+One plugin project may export multiple plugins through a file-list manifest;
+local plugins are read directly from `plugins/`, while pinned Git projects
+are imported into `vendor/plugins/`. Only declared files are consumed. See [project layout](docs/plugin-projects.md).
+
+## Fork and add a plugin
+
+Fork this repository, copy `examples/plugin-template/build.py` into
+`plugins/my_plugin/build.py`, and add the example declaration to
+`plugins/plugins.json`. Run `python3 tools/plugin_projects.py sync`, then use
+the normal build command. The build loads enabled declarations automatically;
+no main build-script edits or second registration are required. The starter
+leaves the ROM unchanged until you implement its extension manifest.
+
+Edit local sources in `plugins/`; reserve `vendor/` for external pinned
+sources. See [the local plugin guide](plugins/README.md) and
+[the build-entry contract](docs/plugin-projects.md).
+
+The optional [private ROM workflow](docs/private-rom-workflow.md) builds from
+your own private ZIP using SHA-256 to identify both references. It is manual
+only and requires an explicit repository-variable opt-in; only patches and
+hash reports are uploaded.
 
 ## Source ownership
 
 CN C/ASM lives in `engine/`, including complete naming-entry replacements under
 `engine/extensions/`. Resources and pointer layout rules live in this project.
+Info is maintained and compiled directly in `plugins/info/`.
 `vendor/` contains immutable, hash-locked source exports of the official decomp
 source/toolkit, the compiler source and the licensed Rime dictionary. The pinyin core belongs to this project under `engine/pinyin/`.
 No adjacent decomp checkout or environment variable is required.
@@ -57,7 +85,9 @@ Keep these resources outside the repository and source archives:
 - The imported private component pack, native-glyph map and its provenance report.
 - The explicit source-font/charset inputs when deriving that glyph map.
 
-No ROM, extracted text, font, glyph map, save or screenshot is distributed here.
+No ROM, extracted game text, font, save or screenshot is distributed here.
+The owner-supplied third-party v1.1 character mapping is retained under
+`config/charsets/us-cn-v1.1/`, including its provenance and 18-sample comparison.
 The build reads US retail plus the private pack; it does not load a Chinese ROM
 as its output or import a whole-ROM binary diff.
 
@@ -122,3 +152,8 @@ See [native pinyin behavior and emulator-test limits](docs/native-pinyin-names.m
 The former ROM-only and 32 MiB demo tools remain historical diagnostics, not the
 current joint-build entry. Historical demos that require a full writable engine
 checkout must select a separate development checkout explicitly.
+
+The [persistent reference exporter](docs/us-cn-resource-export.md) exports native
+glyphs, text, resources and IPS metadata, then proves a full-ROM byte match.
+The optional [title Info UI](docs/plugin-info.md) reads plugin credits from
+`plugins.json`; use `--disable-info` to omit it.

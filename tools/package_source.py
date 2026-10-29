@@ -8,6 +8,7 @@ import subprocess
 import tarfile
 
 from verify_vendor import verify
+from plugin_projects import locked
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -20,6 +21,10 @@ def main():
         parser.error('Source archive must be external')
     verify()
     names = subprocess.check_output(['git', '-C', str(ROOT), 'ls-files', '-z']).decode().split('\0')
+    plugins = locked()
+    names = set(filter(None, names))
+    for record in plugins['projects'].values():
+        names.update(str(Path(record['directory']) / name) for name in record['files'])
     forbidden = {'.gba', '.rom', '.bin', '.ttf', '.otf', '.png', '.ppm', '.sav', '.state', '.ips', '.bps'}
     archive = io.BytesIO()
     with tarfile.open(fileobj=archive, mode='w', format=tarfile.PAX_FORMAT) as tar:

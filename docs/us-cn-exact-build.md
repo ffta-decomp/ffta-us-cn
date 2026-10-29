@@ -50,3 +50,20 @@ comparison. Reference SHA-256:
 `ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03`.
 Runtime screenshots are private external artifacts. Whole-image identity proves
 reconstruction identity, not linguistic quality or exhaustive game coverage.
+
+
+## Original modified resource loader
+
+The exact reference profile includes the Chinese ROM's changes to the original
+resource loader at `0x08005318`, its continuation at ROM `0x53BC`, the added
+copy/override functions, native replacement tables and all replacement payloads.
+They are reconstructed by this project's `engine/us_cn_hooks.s`,
+`config/us-cn-reference-layout.json` and typed resource exporter. At runtime the
+loader chooses replacement resources and copies them into RAM; it does not
+repatch the ROM. The original first-screen bitmap and startup display routine
+are included as reference resources/compatibility behavior.
+
+`tools/export_us_cn.py` checks these components explicitly and also compares all
+16,777,216 reconstructed bytes. `reference-components.json` records the loader,
+call sites, table/payload and 76,800-byte first-screen checks. Source is owned
+here; no vendored decomp source is modified and no new matching credit is earned.

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "projects": [
+    {
+      "id": "builtin",
+      "source": {"kind": "builtin", "path": "plugins"}
+    }
+  ]
+}

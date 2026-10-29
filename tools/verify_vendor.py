@@ -17,6 +17,10 @@ def verify():
             if hashlib.sha256(path.read_bytes()).hexdigest() != digest:
                 raise ValueError('Vendor hash mismatch: ' + str(path.relative_to(ROOT)))
             count += 1
+    if (ROOT / 'config/plugin-projects.lock.json').is_file():
+        from plugin_projects import locked
+        plugins = locked()
+        count += sum(len(project['files']) for project in plugins['projects'].values())
     return count
 
 
