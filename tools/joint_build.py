@@ -202,7 +202,7 @@ def build(args):
               'compiled_decomp_original_bytes': sum(row['bytes'] for row in compiled),
               'extension': extension_report, 'recovery_credit_eligible': False,
               'compiler_sha256': sha(compiler.read_bytes()),
-              'vendor_lock_sha256': sha((ROOT / 'vendor/lock.json').read_bytes()),
+              'vendor_lock_sha256': sha((ROOT / 'config/dependencies.lock.json').read_bytes()),
               'plugin_projects_lock_sha256': sha((ROOT / 'config/plugin-projects.lock.json').read_bytes()),
               'scope': 'Five published naming C entries plus optional CN source/resources. Other original game code remains supplied by the authenticated input; this is not a whole-game decomp claim.'}
     return bytes(image), report
