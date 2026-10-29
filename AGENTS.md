@@ -14,7 +14,8 @@ the lock; they must not carry unpublished local patches.
 
 Plugin projects use the separately managed `vendor/plugins/` namespace. The
 owner authorizes importing only files explicitly exported by a project's
-`plugins.json`, from builtin sources or a pinned Git commit. Create snapshots
+`plugins.json`, from a pinned Git commit. Local plugin sources stay in
+`plugins/` and are read directly. Create external snapshots
 with `tools/plugin_projects.py sync`; never edit snapshots in place. Existing
 engine/compiler dependencies and `vendor/lock.json` remain immutable.
 

@@ -22,15 +22,32 @@ Font plugins declare their glyph tables, source layout and priorities in
 append new cells and emit updated character tables without changing original
 glyph codes. See [font extensions](docs/font-plugins.md).
 One plugin project may export multiple plugins through a file-list manifest;
-builtin and pinned Git projects are imported into `vendor/plugins/`. Only
-declared files are consumed. See [project layout](docs/plugin-projects.md).
+local plugins are read directly from `plugins/`, while pinned Git projects
+are imported into `vendor/plugins/`. Only declared files are consumed. See [project layout](docs/plugin-projects.md).
+
+## Fork and add a plugin
+
+Fork this repository, copy `examples/plugin-template/build.py` into
+`plugins/my_plugin/build.py`, and add the example declaration to
+`plugins/plugins.json`. Run `python3 tools/plugin_projects.py sync`, then use
+the normal build command. The build loads enabled declarations automatically;
+no main build-script edits or second registration are required. The starter
+leaves the ROM unchanged until you implement its extension manifest.
+
+Edit local sources in `plugins/`; reserve `vendor/` for external pinned
+sources. See [the local plugin guide](plugins/README.md) and
+[the build-entry contract](docs/plugin-projects.md).
+
+The optional [private ROM workflow](docs/private-rom-workflow.md) builds from
+your own private ZIP using SHA-256 to identify both references. It is manual
+only and requires an explicit repository-variable opt-in; only patches and
+hash reports are uploaded.
 
 ## Source ownership
 
 CN C/ASM lives in `engine/`, including complete naming-entry replacements under
 `engine/extensions/`. Resources and pointer layout rules live in this project.
-Info is maintained in `plugins/builtin/info/` and compiled from its locked source
-snapshot under `vendor/plugins/`.
+Info is maintained and compiled directly in `plugins/info/`.
 `vendor/` contains immutable, hash-locked source exports of the official decomp
 source/toolkit, the compiler source and the licensed Rime dictionary. The pinyin core belongs to this project under `engine/pinyin/`.
 No adjacent decomp checkout or environment variable is required.

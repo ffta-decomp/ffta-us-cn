@@ -44,15 +44,12 @@ class PluginProjectTests(unittest.TestCase):
             self.assertEqual(set(record['plugins']), {'one', 'two'})
             self.assertEqual(set(record['files']), {'plugins.json', 'one.py', 'two.py'})
             snapshot = root / record['directory']
-            self.assertFalse((snapshot / 'vendor').exists())
-            self.assertFalse((snapshot / 'tests').exists())
+            self.assertEqual(snapshot, source)
+            self.assertFalse((root / 'vendor/plugins').exists())
             self.assertEqual(load_entry('one', root).VALUE, 1)
             self.assertEqual(load_entry('two', root).VALUE, 2)
             (source / 'vendor/private.bin').write_bytes(b'changed internal dependency')
             locked(root)  # Undeclared development files do not affect consumers.
-            shutil.rmtree(snapshot)
-            locked(root, restore_builtin=True)
-            self.assertTrue(snapshot.is_dir())
             (source / 'one.py').write_text('VALUE = 3\n')
             with self.assertRaisesRegex(ValueError, 'Builtin plugin changed'):
                 locked(root)
@@ -71,6 +68,9 @@ class PluginProjectTests(unittest.TestCase):
             lock = sync(root)
             self.assertEqual(lock['projects']['sample']['source']['revision'], revision)
             self.assertEqual(set(lock['projects']['sample']['files']), {'plugins.json', 'one.py', 'two.py'})
+            snapshot = root / lock['projects']['sample']['directory']
+            self.assertFalse((snapshot / 'vendor').exists())
+            self.assertFalse((snapshot / 'tests').exists())
             self.assertEqual(load_entry('two', root).VALUE, 2)
             self.registry(root, dict(kind='git', url=str(source), revision='main'))
             with self.assertRaisesRegex(ValueError, 'complete commit'):

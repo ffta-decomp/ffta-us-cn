@@ -189,10 +189,12 @@ def build(args):
             image, reference, config, info_manifest,
             lambda module: compile_source(module, 'info-source-extensions'))
         info_report['extension'] = info_extension
+    image, plugin_reports = apply_project_plugins(reference, image, args, out, config, compile_source)
     report = {'schema': 1, 'build_mode': 'joint-decomp-extension',
               'cjk_enabled': args.cjk, 'pinyin_enabled': args.pinyin,
               'link_fix_enabled': args.link_fix, 'link_fix': link_report,
               'info_enabled': args.info, 'plugin_info': info_report,
+              'project_plugins': plugin_reports,
               'italic_font_enabled': args.italic_font, 'font_extension': font_report,
               'output_bytes': len(image), 'output_sha256': sha(image),
               'english_baseline_sha256': baseline_hash,
@@ -204,3 +206,31 @@ def build(args):
               'plugin_projects_lock_sha256': sha((ROOT / 'config/plugin-projects.lock.json').read_bytes()),
               'scope': 'Five published naming C entries plus optional CN source/resources. Other original game code remains supplied by the authenticated input; this is not a whole-game decomp claim.'}
     return bytes(image), report
+
+
+def apply_project_plugins(reference, image, args, out, config, compile_source):
+    """Apply enabled project entries through the official extension API."""
+    from build_extensions import apply_extensions
+    from plugin_info import load_catalogue, enabled
+    from plugin_projects import load_entry
+    features = dict(cjk=args.cjk, link_fix=args.link_fix, info=args.info,
+                    italic_font=args.italic_font)
+    plugin_reports = []
+    written = {}
+    for plugin in sorted(load_catalogue(), key=lambda p: (p.get('priority', 0), p['id'])):
+        if plugin['id'] == 'info' or 'project' not in plugin or not enabled(plugin, features):
+            continue
+        identifier = plugin['id']
+        manifest, detail = load_entry(identifier, root=ROOT).prepare(
+            reference, bytes(image), args, out / 'plugins' / identifier, config)
+        before = bytes(image)
+        updated, applied = apply_extensions(image, reference, config, manifest,
+            lambda module: compile_source(module, 'plugin-' + identifier + '-source-extensions'))
+        for offset, (old, new) in enumerate(zip(before, updated)):
+            if old != new:
+                if offset in written and written[offset] != new:
+                    raise ValueError('Conflicting plugin writes at ROM offset ' + hex(offset))
+                written[offset] = new
+        image = updated
+        plugin_reports.append(dict(id=identifier, report=detail, extension=applied))
+    return image, plugin_reports

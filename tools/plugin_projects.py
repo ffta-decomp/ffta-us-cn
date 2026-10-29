@@ -114,39 +114,40 @@ def sync(root=ROOT):
             else:
                 raise ValueError('Plugin source must be builtin or git')
             exports, inventory = declared(directory)
-            records[identifier] = dict(source=source, directory=install(root, identifier, directory, inventory),
+            records[identifier] = dict(source=source, directory=(source['path'] if source['kind'] == 'builtin' else
+                                                  install(root, identifier, directory, inventory)),
                                        files=inventory, tree_sha256=tree_hash(inventory), plugins=exports)
     lock = dict(schema=1, registry_sha256=sha((root / REGISTRY).read_bytes()), projects=records)
     (root / LOCK).write_text(json.dumps(lock, indent=2) + '\n')
     return lock
 
 
-def locked(root=ROOT, restore_builtin=False):
+def locked(root=ROOT):
     root = Path(root).resolve()
     lock = json.loads((root / LOCK).read_text())
     if lock.get('schema') != 1 or lock['registry_sha256'] != sha((root / REGISTRY).read_bytes()):
         raise ValueError('Plugin registry changed; run tools/plugin_projects.py sync')
     for identifier, record in lock['projects'].items():
-        expected = Path('vendor/plugins') / identifier / record['tree_sha256']
+        source = record['source']
+        expected = (Path(source['path']) if source['kind'] == 'builtin' else
+                    Path('vendor/plugins') / identifier / record['tree_sha256'])
         if not ID.fullmatch(identifier) or Path(record['directory']) != expected or \
            tree_hash(record['files']) != record['tree_sha256']:
-            raise ValueError('Invalid plugin snapshot lock')
-        destination = root / expected
-        source = record['source']
+            raise ValueError('Invalid plugin source lock')
+        directory = (root / expected).resolve()
+        if not directory.is_relative_to(root):
+            raise ValueError('Plugin project must be inside the template')
         if source['kind'] == 'builtin':
-            directory = (root / source['path']).resolve()
-            if not directory.is_relative_to(root) or declared(directory) != (record['plugins'], record['files']):
+            if declared(directory) != (record['plugins'], record['files']):
                 raise ValueError('Builtin plugin changed; run tools/plugin_projects.py sync')
-            if not destination.exists() and restore_builtin:
-                install(root, identifier, directory, record['files'])
-        if not destination.exists() or not snapshot_matches(destination, record['files']):
+        elif source['kind'] != 'git' or not snapshot_matches(directory, record['files']):
             raise ValueError('Plugin snapshot missing/modified; run tools/plugin_projects.py sync')
     return lock
 
 
 def load_entry(identifier, root=ROOT):
     root = Path(root).resolve()
-    lock = locked(root, restore_builtin=True)
+    lock = locked(root)
     matches = [(project, record) for project, record in lock['projects'].items() if identifier in record['plugins']]
     if len(matches) != 1:
         raise ValueError('Plugin must have exactly one declared source: ' + identifier)
@@ -168,7 +169,7 @@ def load_entry(identifier, root=ROOT):
 
 def describe(project, identifier, root=ROOT):
     root = Path(root).resolve()
-    record = locked(root, restore_builtin=True)['projects'][project]
+    record = locked(root)['projects'][project]
     if identifier not in record['plugins']:
         raise ValueError('Plugin is not exported by the selected project: ' + identifier)
     data = json.loads((root / record['directory'] / 'plugins.json').read_text())
@@ -179,7 +180,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['sync', 'verify'])
     args = parser.parse_args()
-    result = sync() if args.command == 'sync' else locked(restore_builtin=True)
+    result = sync() if args.command == 'sync' else locked()
     print(json.dumps(dict(projects=list(result['projects']),
                           plugins=[p for r in result['projects'].values() for p in r['plugins']])))
 

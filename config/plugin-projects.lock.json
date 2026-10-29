@@ -1,15 +1,15 @@
 {
   "schema": 1,
-  "registry_sha256": "a9028b8a1c98059879032f16bb602d620da5f6e627dd50cd1d73baf6658380d1",
+  "registry_sha256": "c82af90849fa2f5d318bef23b1efdfbae584a3a02b623bb1e9e59a3692ae8631",
   "projects": {
     "builtin": {
       "source": {
         "kind": "builtin",
-        "path": "plugins/builtin"
+        "path": "plugins"
       },
-      "directory": "vendor/plugins/builtin/ed8cc2ec8468776b73d2177d4c28074af09a85d0abec8ff5142f12f89ee8c41d",
+      "directory": "plugins",
       "files": {
-        "README.md": "a44884ea8bea5317cee34a1379353a2c7e2981ef75e6c1e63d9d490f91783fbc",
+        "README.md": "774b7f25b983e9b448f74d1129b6c611e86d4d3570387af0cd80cf05f5964a12",
         "info/src/advance_title_with_info.c": "dd2f3ea759fdfc9701e0a600ecfdd994fa81dd730a14ef5c9ed2eaacd312390c",
         "info/src/plugin_info_title.c": "6aba1a332b58d67138ff560a449d5785d5fe947e68e6af43f2ced2cf7bb58235",
         "info/src/plugin_info_ui.c": "d5525c177750cb33a13fb8fa5ed7d5aa6151d2117023750225f05f9b34a1893f",
@@ -18,7 +18,7 @@
         "info/tools/render_plugin_info.c": "ad20e55eb46cfb2b592f412d3b209821e3bbc7aa24d7867297b1393da6c5e460",
         "plugins.json": "9ae8f2f00c44c352b82466b06bab3d344672b84154deb67db15e43f821e97478"
       },
-      "tree_sha256": "ed8cc2ec8468776b73d2177d4c28074af09a85d0abec8ff5142f12f89ee8c41d",
+      "tree_sha256": "d25095fa4ff639e3709d21ee0961dc24bd3c91076b83596f0ce27f24fade7297",
       "plugins": {
         "info": "info/tools/build_plugin_info.py"
       }
