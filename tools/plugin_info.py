@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FEATURES = frozenset({'cjk', 'link_fix', 'info', 'italic_font'})
+FEATURES = frozenset({'cjk', 'link_fix', 'info', 'italic_font', 'fastskip'})
 
 
 def load_catalogue(path=None):

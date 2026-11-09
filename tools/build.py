@@ -26,6 +26,14 @@ def options(argv=None):
     parser.add_argument('--tool-prefix', default='arm-none-eabi-')
     parser.add_argument('--clang', default='clang')
     parser.add_argument('--compiler', type=Path, help='Explicit existing pinned agbcc; otherwise bootstrap externally')
+    parser.add_argument('--author-file', type=Path, default=ROOT / 'author.txt',
+                        help='UTF-8 splash credit; applied only after detecting the CN patch')
+    author = parser.add_mutually_exclusive_group()
+    author.add_argument('--enable-author', dest='author', action='store_true')
+    author.add_argument('--disable-author', dest='author', action='store_false')
+    opening = parser.add_mutually_exclusive_group()
+    opening.add_argument('--enable-fastskip', dest='fastskip', action='store_true')
+    opening.add_argument('--disable-fastskip', dest='fastskip', action='store_false')
     cjk = parser.add_mutually_exclusive_group()
     cjk.add_argument('--enable-cjk', dest='cjk', action='store_true')
     cjk.add_argument('--disable-cjk', dest='cjk', action='store_false')
@@ -41,7 +49,7 @@ def options(argv=None):
     italic = parser.add_mutually_exclusive_group()
     italic.add_argument('--enable-italic-font', dest='italic_font', action='store_true')
     italic.add_argument('--disable-italic-font', dest='italic_font', action='store_false')
-    parser.set_defaults(cjk=True, pinyin=None, link_fix=None, info=None, italic_font=None)
+    parser.set_defaults(cjk=True, pinyin=None, link_fix=None, info=None, italic_font=None, author=None, fastskip=None)
     parser.add_argument('--patch-output', type=Path,
                         help='Optional local IPS against the authenticated US input')
     args = parser.parse_args(argv)
@@ -51,6 +59,11 @@ def options(argv=None):
     args.link_fix = args.cjk if args.link_fix is None else args.link_fix
     args.info = (args.pinyin or args.link_fix) if args.info is None else args.info
     args.italic_font = (args.cjk and args.info) if args.italic_font is None else args.italic_font
+    # Preserve the documented exact-reference feature-off combination.
+    args.author = (not args.cjk or args.pinyin or args.link_fix or args.info) if args.author is None else args.author
+    args.fastskip = (args.cjk and args.info) if args.fastskip is None else args.fastskip
+    if args.fastskip and not (args.cjk and args.info):
+        parser.error('--enable-fastskip requires CJK and the Info title extension')
     if args.italic_font and not args.cjk:
         parser.error('--enable-italic-font requires the uscn base font (--enable-cjk)')
     if args.italic_font and not args.info:
@@ -66,7 +79,7 @@ def options(argv=None):
     for path in [args.output_dir, args.patch_output]:
         if path is not None and path.resolve().is_relative_to(ROOT):
             parser.error('Generated output must be outside the source tree')
-    for name in ['retail', 'output_dir', 'pack_dir', 'glyph_map', 'map_report', 'rime_dictionary', 'compiler', 'patch_output']:
+    for name in ['retail', 'output_dir', 'pack_dir', 'glyph_map', 'map_report', 'rime_dictionary', 'compiler', 'patch_output', 'author_file']:
         value = getattr(args, name)
         if value is not None:
             setattr(args, name, value.resolve())
@@ -78,6 +91,12 @@ def main():
     args.output_dir.mkdir(parents=True, exist_ok=True)
     from joint_build import build
     image, report = build(args)
+    from splash_author import stamp, write_preview
+    image, author_report = stamp(image, args.author_file, enabled=args.author)
+    report['splash_author'] = author_report
+    report['output_sha256'] = hashlib.sha256(image).hexdigest()
+    if author_report['applied']:
+        write_preview(image, args.output_dir / 'splash-author.png')
     (args.output_dir / 'ffta-us-cn.gba').write_bytes(image)
     if args.patch_output:
         baseline = args.retail.read_bytes()

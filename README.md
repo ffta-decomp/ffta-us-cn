@@ -72,12 +72,40 @@ python3 tools/ci_private_build.py \
 
 | `--profile` / Actions 选项 | 适用场景 |
 | --- | --- |
-| `default` | 使用汉化、拼音、串行超时修复和 Info，或开发自己的插件 |
-| `exact-reference` | 仅保留参考汉化，关闭拼音、串行超时修复和 Info，检查输出是否逐字节一致 |
+| `default` | 使用汉化、拼音、串行超时修复、Info 和闪屏作者署名，或开发自己的插件 |
+| `exact-reference` | 仅保留参考汉化，关闭附加功能和作者署名，检查输出是否逐字节一致 |
 
 如果自行添加了会修改 ROM 的插件，复现参考版前也需要关闭这些插件。英文基线及独立功能开关见下方的高级选项。
 
+## 闪屏作者信息
+
+根目录 `author.txt` 保存一行 UTF-8 作者信息，默认是 `开发者：bheeee`。
+默认构建在生成 IPS 前主动检测 ROM 中的美版汉化 v1.1 启动补丁，
+然后在汉化闪屏左下角加入黑字和 2 像素白色粗描边，不添加底色，保留右侧汉化组署名及网址。
+文字复用原生字库；不支持的字符、过长文本或损坏的汉化闪屏会报错。
+英文 ROM 自动跳过；`exact-reference` 不添加作者信息，保持逐字节复现。
+可用 `--author-file` 指定其他文件，底层构建入口另支持 `--disable-author` / `--enable-author`。
+
+将已有的本地 ROM 打包成 ZIP，无需重新编译：
+
+```sh
+python3 tools/package_rom.py --rom "$LOCAL_ROM" --output-dir "$NEW_PRIVATE_OUTPUT"
+```
+
+可加 `--patch "$LOCAL_IPS"`，脚本先应用指定补丁，再检测汉化闪屏并添加作者信息。
+ZIP 包含 ROM、作者文件、闪屏预览、哈希及报告；输出必须在源码目录外，不会上传。
+修改署名时，请以未加作者信息的 ROM 重新打包；同一署名可重复打包。
+`--disable-author` 可用于打包精确参考版。实际模拟器显示及硬件运行需分别验证。
+
 ## 添加自己的插件
+
+内置 `fastskip` 插件在 **标题 → Info → Options** 中提供“雪球战跳过”选项，
+默认关闭，按 A 切换、B 返回。开启后，将雪球战关键人物及第二战的两个指定敌人
+当前血量降至 1；攻击后的原生退场流程接到第二场战斗，保留主角命名。
+选项只在当前运行中生效，不写入存档；重新初始化标题菜单会恢复关闭。
+普通中文构建自动包含选项页，底层 `--disable-fastskip` 可完全移除该补丁，
+`exact-reference` 也会关闭它。补丁经现有扩展清单应用，并包含在生成的 IPS 中。
+实现见 [fastskip](plugins/fastskip/README.md)，验证流程见[补丁与回放说明](docs/fastskip.md)。
 
 1. 将 `examples/plugin-template/build.py` 复制到 `plugins/my_plugin/build.py`。
 2. 把 `examples/plugin-template/declaration.json` 中的示例声明加入 `plugins/plugins.json`。

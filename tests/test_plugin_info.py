@@ -54,12 +54,13 @@ class PluginInfoTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'Unknown plugin feature'):
                 load_pages({}, path)
 
-    def fixture(self, out):
-        pages = load_pages({'cjk': True, 'link_fix': True})
+    def fixture(self, out, fastskip=False):
+        pages = load_pages({'cjk': True, 'link_fix': True, 'info': fastskip, 'fastskip': fastskip})
         needed = set('InfoB: Closea' + ''.join(p['name'] + ''.join(p['lines']) for p in pages))
         # Artificial cells with simple marks; these contain no game resources.
         image = bytearray(b'\xff' * 0x1000000)
         needed.discard(' ')
+        if fastskip: needed.add('开')
         mapping = {character: 0x8000 + i for i, character in enumerate(sorted(needed))}
         for token in mapping.values():
             i = token & 0x7fff
@@ -72,9 +73,21 @@ class PluginInfoTests(unittest.TestCase):
         map_report.write_text(json.dumps({'glyph_map_sha256': sha(glyph_map.read_bytes()),
                                          'native_font_sha256': sha(image[FONT_START:FONT_END])}))
         args = SimpleNamespace(cjk=True, link_fix=True, glyph_map=glyph_map,
+            fastskip=fastskip,
             map_report=map_report, clang='clang', output_dir=out,
             tool_prefix='/opt/homebrew/bin/arm-none-eabi-')
         return bytes(image), args, pages
+
+    @unittest.skipUnless(shutil.which('clang'), 'Host clang required')
+    def test_fastskip_adds_options_with_two_runtime_views(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            image, args, pages = self.fixture(out, fastskip=True)
+            self.assertEqual(pages[3]['id'], 'fastskip')
+            _, header, report = generate_assets(image, args, out, pages)
+            self.assertEqual(len([r for r in report['views'] if r['plugin'] == 'fastskip']), 2)
+            self.assertIn('#define PLUGIN_OPTIONS_PAGE 3u', header.read_text())
+            self.assertIn('#define FASTSKIP_AVAILABLE 1', header.read_text())
 
     @unittest.skipUnless(shutil.which('clang'), 'Host clang required')
     def test_assets_and_provenance_fail_closed(self):

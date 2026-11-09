@@ -27,12 +27,16 @@ class BuildOptionsTests(unittest.TestCase):
         self.assertTrue(args.link_fix)
         self.assertTrue(args.info)
         self.assertTrue(args.italic_font)
+        self.assertTrue(args.author)
+        self.assertTrue(args.fastskip)
+        self.assertEqual(args.author_file, ROOT / 'author.txt')
 
     def test_english_automatically_disables_pinyin(self):
         args = options(self.base() + ['--disable-cjk'])
         self.assertFalse(args.cjk)
         self.assertFalse(args.pinyin)
         self.assertFalse(args.link_fix)
+        self.assertFalse(args.fastskip)
 
     def test_exact_cn_does_not_require_pinyin_map(self):
         args = options(self.base() + ['--disable-pinyin', '--disable-link-fix', '--pack-dir', '/outside/pack'])
@@ -41,6 +45,23 @@ class BuildOptionsTests(unittest.TestCase):
         self.assertFalse(args.link_fix)
         self.assertFalse(args.info)
         self.assertFalse(args.italic_font)
+        self.assertFalse(args.author)
+        self.assertFalse(args.fastskip)
+
+    def test_fastskip_requires_the_cn_info_menu(self):
+        args = options(self.base() + self.cn_inputs() + ['--disable-fastskip'])
+        self.assertFalse(args.fastskip)
+        self.reject(self.base() + self.cn_inputs() + ['--enable-fastskip', '--disable-info'])
+        self.reject(self.base() + ['--disable-cjk', '--enable-fastskip'])
+
+    def test_author_can_be_selected_independently(self):
+        args = options(self.base() + self.cn_inputs() + ['--disable-author'])
+        self.assertFalse(args.author)
+        args = options(self.base() + ['--disable-pinyin', '--disable-link-fix',
+                       '--pack-dir', '/outside/pack', '--enable-author',
+                       '--author-file', '/outside/author.txt'])
+        self.assertTrue(args.author)
+        self.assertEqual(args.author_file, Path('/outside/author.txt'))
 
     def test_appended_italic_font_is_independently_selectable(self):
         args = options(self.base() + self.cn_inputs() + ['--disable-italic-font'])

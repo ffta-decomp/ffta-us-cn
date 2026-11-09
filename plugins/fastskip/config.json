@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "default_enabled": false,
+  "option_ram_address": "0x0203fff0",
+  "option_ram_bytes": 16,
+  "arena_rom_offset": "0x00e00000",
+  "arena_bytes": 8192,
+  "labels": {
+    "off": "雪球战跳过: 关",
+    "on": "雪球战跳过: 开"
+  },
+  "source": {
+    "repository": "https://github.com/hitsmaxft/ffta-roguelike-cn.git",
+    "revision": "54d221b8cda9a56bd80445085f6043f8cebeebbc",
+    "files": [
+      {
+        "path": "experiments/roguelike/native/opening_battle_hp.h",
+        "sha256": "1dc9507809a78f72510c6d83580b5e8f102660ce5aed8f840b45653f0202fa1c"
+      },
+      {
+        "path": "experiments/roguelike/native/opening_scene_gate.h",
+        "sha256": "a0ce747891cc5d60eed754667f5b9d1f1e2e5cb72a51f1047e1e9ac5e68788ef"
+      },
+      {
+        "path": "experiments/roguelike/native/opening_scene.c",
+        "sha256": "bed869ddc31f20ce3d18abe6b8c1a167b9f97a0c172e8df3d732b12a80689d5b"
+      }
+    ]
+  },
+  "hooks": [
+    {
+      "name": "frame",
+      "rom_offset": 618104,
+      "envelope_bytes": 92,
+      "sha256": "93c8d7b19ce2a2d17a39c666cebfbed5dfe72f87854fafb99af87d61e2543d04"
+    },
+    {
+      "name": "scene",
+      "rom_offset": 1186056,
+      "envelope_bytes": 236,
+      "sha256": "d9d8b7a4ac2bd4e80952c1bca9f828975177b96309b576ec64346bea48ec30bb"
+    },
+    {
+      "name": "heap",
+      "rom_offset": 141288,
+      "envelope_bytes": 68,
+      "sha256": "08927eaf71bf2128a7f7b182e0aaefccdc2cf8484bd7aec584add8cf449ed11d"
+    }
+  ],
+  "id": "fastskip"
+}

@@ -21,6 +21,14 @@ ffta-us-cn/
 
 ## Add a local plugin
 
+The built-in `fastskip` plugin is an example of a gameplay extension with a
+runtime setting. Its `feature: fastskip` gates both the extension and its Options
+page inside Info. Its runtime default is off, independently of build support.
+`--disable-fastskip` removes it. Frame, scene and menu-heap hooks are guarded
+against full reference envelopes; all writes are classified extension fragments.
+The Options page has two generated views reflecting the live switch. Its
+16-byte state is excluded from the native heap and is not part of save data.
+
 Copy `examples/plugin-template/build.py` to `plugins/my_plugin/build.py` and
 append the object in `examples/plugin-template/declaration.json` to the
 `plugins` array in `plugins/plugins.json`:

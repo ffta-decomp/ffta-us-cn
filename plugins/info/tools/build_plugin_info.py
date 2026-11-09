@@ -61,6 +61,14 @@ def title_label(pixels):
 
 
 def generate_assets(font_image, args, out, pages):
+    fastskip = getattr(args, 'fastskip', False)
+    options_page = next((i for i, page in enumerate(pages) if page['id'] == 'fastskip'), None)
+    if fastskip != (options_page is not None):
+        raise ValueError('fastskip feature and Options catalogue disagree')
+    options_on = ''
+    if fastskip:
+        spec = json.loads((PLUGIN_ROOT.parent / 'fastskip/config.json').read_text())
+        options_on = spec['labels']['on'] + '\nA: 切换'
     mapping = json.loads(args.glyph_map.read_text())
     provenance = json.loads(args.map_report.read_text())
     if provenance['glyph_map_sha256'] != sha(args.glyph_map.read_bytes()) or \
@@ -69,6 +77,7 @@ def generate_assets(font_image, args, out, pages):
     required = set('InfoB: Close')
     for page in pages:
         required.update(page['name'] + '\n'.join(page['lines']))
+    required.update(options_on)
     required -= {' ', '\n'}
     # Native full-glyph Latin/digit ranges, also used by the name editor.
     # Keep these token semantics separate from private Unicode/Hanzi maps.
@@ -123,7 +132,9 @@ def generate_assets(font_image, args, out, pages):
         # Unicode bytes rather than C universal escapes for surrogate pairs.
         page_rows.append('{%s,%s}' % (json.dumps(page['name'], ensure_ascii=False),
                                      json.dumps('\n'.join(page['lines']), ensure_ascii=False)))
-    render_data.write_text('static const struct HostGlyph host_glyphs[] = {' +
+    render_data.write_text('#define HOST_OPTIONS_PAGE %su\n' % (options_page if fastskip else '0xffffffff') +
+        'static const char host_options_on[] = ' + json.dumps(options_on, ensure_ascii=False) + ';\n' +
+        'static const struct HostGlyph host_glyphs[] = {' +
         ','.join(glyph_rows) + '};\nstatic const struct HostGlyph host_label_glyphs[] = {' +
         ','.join(label_glyphs) + '};\nstatic const struct PluginInfoPage host_pages[] = {' +
         ','.join(page_rows) + '};\n')
@@ -167,6 +178,8 @@ def generate_assets(font_image, args, out, pages):
                   ','.join('{page_%d,%d}' % (n, len(views)) for n, views in enumerate(page_views)))
     header = out / 'plugin_info_assets.h'
     header.write_text('#define PLUGIN_INFO_PAGE_COUNT %d\n' % len(pages) +
+        '#define FASTSKIP_AVAILABLE %d\n' % fastskip +
+        '#define PLUGIN_OPTIONS_PAGE %su\n' % (options_page if fastskip else '0xffffffff') +
         '#define PLUGIN_INFO_LABEL_CURSOR_X %d\n' % (154 + label_width + 4) +
         'struct PluginInfoAssetPage { const unsigned short *const *views; unsigned view_count; };\n'
         'extern const struct PluginInfoAssetPage gPluginInfoPages[];\n'
@@ -186,7 +199,9 @@ def prepare(reference, image, font_image, args, out, config):
         raise ValueError('Info build artifacts must be external')
     out.mkdir(parents=True, exist_ok=False)
     pages = load_pages({'cjk': args.cjk, 'link_fix': args.link_fix,
-                        'info': getattr(args, 'info', False)})
+                        'info': getattr(args, 'info', False), 'fastskip': getattr(args, 'fastskip', False)})
+    # A catalogue-level enabled:false also removes the runtime UI and hooks.
+    args.fastskip = getattr(args, 'fastskip', False) and any(p['id'] == 'fastskip' for p in pages)
     if not pages:
         raise ValueError('Info has no enabled plugins')
     generated, header, report = generate_assets(font_image, args, out, pages)
@@ -196,7 +211,8 @@ def prepare(reference, image, font_image, args, out, config):
         subprocess.run([args.clang, '--target=arm-none-eabi', '-mcpu=arm7tdmi',
                         '-mthumb', '-Os', '-std=c11', '-ffreestanding', '-fno-builtin',
                         '-fno-unwind-tables', '-fno-asynchronous-unwind-tables',
-                        '-Wall', '-Wextra', '-Werror', '-I', str(out), '-c', str(source),
+                        '-Wall', '-Wextra', '-Werror', '-I', str(out),
+                        '-I', str(PLUGIN_ROOT.parent / 'fastskip'), '-c', str(source),
                         '-o', str(obj)], check=True)
         objects.append(obj)
     linker = out / 'info.ld'
@@ -222,12 +238,18 @@ def prepare(reference, image, font_image, args, out, config):
        reference[module['offset']:module['offset'] + module['size']]:
         raise ValueError('Title module already modified')
     bindings = args.output_dir / 'decomp-build/generated/plugin_info_bindings.h'
-    bindings.write_text('#define PLUGIN_INFO_CALLBACK 0x%08xu\n' % callback)
+    bindings.write_text('#define PLUGIN_INFO_CALLBACK 0x%08xu\n' % callback +
+        '#define FASTSKIP_AVAILABLE %d\n' % getattr(args, 'fastskip', False) +
+        ('#include ' + json.dumps(str(PLUGIN_ROOT.parent / 'fastskip/runtime_option.h')) + '\n'
+         if getattr(args, 'fastskip', False) else ''))
     sources = [ROOT / 'plugins.json', ROOT / 'tools/plugin_info.py', Path(__file__),
                PLUGIN_ROOT / 'src/plugin_info_ui.c', PLUGIN_ROOT / 'src/plugin_info_ui.h',
                PLUGIN_ROOT / 'src/plugin_info_title.c', PLUGIN_ROOT / 'tools/render_plugin_info.c', args.glyph_map, args.map_report,
                generated, header, bindings]
     replacement = PLUGIN_ROOT / 'src/advance_title_with_info.c'
+    if getattr(args, 'fastskip', False):
+        sources.extend([PLUGIN_ROOT.parent / 'fastskip/config.json',
+                        PLUGIN_ROOT.parent / 'fastskip/runtime_option.h'])
     manifest = dict(schema='build-extension-v1', reference_sha256=sha(reference),
         sources=[pin(path) for path in sources],
         source_replacements=[dict(module=TITLE_MODULE, source=pin(replacement),

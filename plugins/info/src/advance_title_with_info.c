@@ -45,6 +45,9 @@ void Registered39_00136084(unsigned unused,u8 *state)
 {
  switch(*state){
  case 0:
+#if FASTSKIP_AVAILABLE
+  OpeningOptionWrite(OPENING_OPTION,0);
+#endif
   ctx=Allocate(0x89a8);ZeroDispatch(ctx,0x89a8,*(void **)0x0836d4b8);
   if((u8)Mode()==2 || *(u8 *)0x0300280c==1)*state=3;else *state=1;
   ctx->phase8620=0;break;

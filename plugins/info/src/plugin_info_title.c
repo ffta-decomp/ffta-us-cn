@@ -3,6 +3,9 @@
  * No native instructions or resource pointers are patched at runtime. */
 #include <stdint.h>
 #include "plugin_info_assets.h"
+#if FASTSKIP_AVAILABLE
+#include "runtime_option.h"
+#endif
 typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
@@ -80,11 +83,22 @@ static void Details(struct InfoState *info, unsigned accept_input)
         info->page = info->page + 1 < PLUGIN_INFO_PAGE_COUNT ? info->page + 1 : 0;
         info->scroll = 0; info->loaded = 0; Sound(109);
     } else if (accept_input && (KEYS[1] & 1)) {
+#if FASTSKIP_AVAILABLE
+        if (info->page == PLUGIN_OPTIONS_PAGE) {
+            OpeningOptionWrite(OPENING_OPTION, !OpeningOptionRead(OPENING_OPTION));
+            Sound(100);
+        } else
+#endif
+        {
         unsigned count = gPluginInfoPages[info->page].view_count;
         info->scroll = info->scroll + 1 < count ? info->scroll + 1 : 0;
+        }
         info->loaded = 0;
     }
     index = info->page;
+#if FASTSKIP_AVAILABLE
+    if (index == PLUGIN_OPTIONS_PAGE) info->scroll = OpeningOptionRead(OPENING_OPTION);
+#endif
     if (info->loaded != 2) {
         Copy(gPluginInfoPages[index].views[info->scroll], (u16 *)0x06013000, 10240);
         info->loaded = 2;

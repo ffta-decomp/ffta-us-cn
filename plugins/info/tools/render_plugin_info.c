@@ -62,12 +62,14 @@ static void Save(const char *directory, const char *name)
 int main(int argc, char **argv)
 {
     const unsigned count = sizeof(host_pages) / sizeof(host_pages[0]);
-    unsigned page, first, n, y, x, first_record = 1;
+    unsigned page, first, n, y, x, variant, first_record = 1;
     char name[64];
     if (argc != 2) return 2;
     printf("{\"views\":[");
     for (page = 0; page < count; ++page) {
-        unsigned lines = Text(host_pages[page].content, 96, 48, 120, 0, 0);
+      for (variant = 0; variant < (page == HOST_OPTIONS_PAGE ? 2u : 1u); ++variant) {
+        const char *content = variant ? host_options_on : host_pages[page].content;
+        unsigned lines = Text(content, 96, 48, 120, 0, 0);
         if (lines > 255 * 4) { fprintf(stderr, "Too many content lines\n"); return 1; }
         for (first = 0; first < lines; first += 4) {
             PluginInfoFrame(pixels, page, count);
@@ -76,18 +78,19 @@ int main(int argc, char **argv)
                     fprintf(stderr, "Plugin name exceeds sidebar width\n"); return 1;
                 }
             Text(host_pages[page].name, 96, 22, 120, 0, 1);
-            Text(host_pages[page].content, 96, 48, 120, first, 4);
+            Text(content, 96, 48, 120, first, 4);
             if (lines > 4)
                 for (y = 0; y < 4; ++y)
                     for (x = 0; x < 7 - y * 2; ++x)
                         pixels[(122 + y) * 240 + 212 + y + x] = 2;
             Text("B: Close", 92, 142, 140, 0, 1);
-            snprintf(name, sizeof(name), "info_view_%u_%u", page, first / 4);
+            snprintf(name, sizeof(name), "info_view_%u_%u", page, page == HOST_OPTIONS_PAGE ? variant : first / 4);
             Save(argv[1], name);
             printf("%s{\"page\":%u,\"first_line\":%u,\"symbol\":\"%s\"}",
                    first_record ? "" : ",", page, first, name);
             first_record = 0;
         }
+      }
     }
     memset(pixels, 0, sizeof(pixels));
     title_label = 1;

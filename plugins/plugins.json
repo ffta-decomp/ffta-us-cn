@@ -26,6 +26,26 @@
         "info/src/plugin_info_ui.h",
         "info/src/advance_title_with_info.c"
       ]
+    },
+    {
+      "id": "fastskip",
+      "feature": "fastskip",
+      "name": "Options",
+      "content": "雪球战跳过: 关\nA: 切换",
+      "enabled": true,
+      "priority": 200,
+      "entry": "fastskip/build.py",
+      "files": [
+        "fastskip/build.py",
+        "fastskip/config.json",
+        "fastskip/frame.c",
+        "fastskip/heap.c",
+        "fastskip/opening_scene.c",
+        "fastskip/opening_scene_gate.h",
+        "fastskip/opening_battle_hp.h",
+        "fastskip/runtime_option.h",
+        "fastskip/README.md"
+      ]
     }
   ]
 }

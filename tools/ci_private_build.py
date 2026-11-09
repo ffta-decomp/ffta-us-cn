@@ -124,6 +124,7 @@ def main():
     parser.add_argument('--work-dir', required=True, type=Path)
     parser.add_argument('--publish-dir', required=True, type=Path)
     parser.add_argument('--profile', choices=['default', 'exact-reference'], default='default')
+    parser.add_argument('--author-file', type=Path, default=ROOT / 'author.txt')
     args = parser.parse_args()
     work, publish = args.work_dir.resolve(), args.publish_dir.resolve()
     if work.is_relative_to(ROOT) or publish.is_relative_to(ROOT) or \
@@ -158,9 +159,10 @@ def main():
     command = ['--retail', roms['retail'], '--pack-dir', work / 'resources/pack',
                '--glyph-map', work / 'glyph-inputs/glyph-map.json',
                '--map-report', work / 'glyph-inputs/map-report.json',
-               '--output-dir', work / 'build', '--patch-output', work / 'output.ips']
+               '--output-dir', work / 'build', '--patch-output', work / 'output.ips',
+               '--author-file', args.author_file.resolve()]
     if args.profile == 'exact-reference':
-        command += ['--disable-pinyin', '--disable-link-fix', '--disable-info', '--disable-italic-font']
+        command += ['--disable-pinyin', '--disable-link-fix', '--disable-info', '--disable-italic-font', '--disable-author', '--disable-fastskip']
     run('build.py', *command)
     built = (work / 'build/ffta-us-cn.gba').read_bytes()
     if args.profile == 'exact-reference' and sha(built) != ROM_HASHES['translated']:
@@ -172,6 +174,8 @@ def main():
                   output_sha256=sha(built), patch_sha256=sha((work / 'output.ips').read_bytes()),
                   source_commit=os.environ.get('GITHUB_SHA'), private_input_commit=input_commit,
                   plugin_lock_sha256=sha((ROOT / 'config/plugin-projects.lock.json').read_bytes()),
+                  splash_author=json.loads((work / 'build/features.json').read_text())['splash_author'],
+                  fastskip_available=json.loads((work / 'build/features.json').read_text())['fastskip_available'],
                   reference_reconstruction=json.loads((work / 'resources/byte-match.json').read_text()))
     (publish / 'build-report.json').write_text(json.dumps(report, indent=2) + '\n')
 

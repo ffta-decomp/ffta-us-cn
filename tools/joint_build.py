@@ -195,6 +195,7 @@ def build(args):
               'link_fix_enabled': args.link_fix, 'link_fix': link_report,
               'info_enabled': args.info, 'plugin_info': info_report,
               'project_plugins': plugin_reports,
+              'fastskip_available': args.fastskip,
               'italic_font_enabled': args.italic_font, 'font_extension': font_report,
               'output_bytes': len(image), 'output_sha256': sha(image),
               'english_baseline_sha256': baseline_hash,
@@ -214,7 +215,7 @@ def apply_project_plugins(reference, image, args, out, config, compile_source):
     from plugin_info import load_catalogue, enabled
     from plugin_projects import load_entry
     features = dict(cjk=args.cjk, link_fix=args.link_fix, info=args.info,
-                    italic_font=args.italic_font)
+                    italic_font=args.italic_font, fastskip=getattr(args, 'fastskip', False))
     plugin_reports = []
     written = {}
     for plugin in sorted(load_catalogue(), key=lambda p: (p.get('priority', 0), p['id'])):

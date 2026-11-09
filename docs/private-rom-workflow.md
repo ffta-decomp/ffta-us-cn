@@ -83,5 +83,23 @@ ROM files are present. ZIP is not required for new repositories; member paths
 are never extracted, and the legacy archive limits remain 64 MiB/64 members.
 
 `default` builds CN/pinyin/link/Info/italic and enabled custom plugins.
+The local `fastskip` extension adds Info > Options with its runtime switch off.
+Its code and guarded native hooks are included in the IPS, alongside the title
+UI and an explicit 16-byte heap reservation. The switch never writes a save.
+It reads the root `author.txt` (or `--author-file`) and detects the installed
+CN splash patch before adding a native-font author credit with a two-pixel white
+outline and no background panel. Stamping happens before final ROM hashing and
+IPS generation. The report records the author-file hash, native glyph tokens,
+bitmap hashes and bounds. English output has no supported CN splash and is skipped.
 `exact-reference` disables optional built-in changes and requires byte identity
 with the CN reference; disable any custom plugins that change the output.
+It also disables the splash author credit explicitly.
+It omits fastskip and the Options page as well.
+
+`tools/package_rom.py --rom "$LOCAL_ROM" --output-dir "$NEW_PRIVATE_OUTPUT"`
+packages an existing ROM locally without compilation. Optional `--patch` selects
+an IPS to apply before CN detection; no patch or ROM is discovered automatically.
+The ZIP allowlist includes only the selected output ROM, author text when applied,
+its bitmap preview, package report and checksums. It never uploads the package.
+Use an unannotated source ROM when changing author text, or `--disable-author`
+to package an exact-reference image unchanged.

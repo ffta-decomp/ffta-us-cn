@@ -72,6 +72,44 @@ Other game code remains supplied by the authenticated original input. This is
 not a claim that this project rebuilds the entire game from recovered source.
 No optional/mod output earns decomp recovery credit.
 
+## Title options
+
+The built-in `fastskip` plugin adds **Info > Options** to the title. Its snowball
+fast-skip switch defaults off; A toggles and B closes Info. When on, only the
+signature-checked snowball target and two second-battle enemies are limited to
+1 HP. Native attack/KO handling leads into the second battle, preserving naming.
+The switch survives starting a game, is reset when the title is initialized,
+and never writes a save. `--disable-fastskip` removes build support completely;
+exact-reference and English builds omit it. It uses the existing extension
+manifest pipeline and is included in the generated IPS. See
+[fastskip](plugins/fastskip/README.md) for provenance and
+[the patch/replay guide](docs/fastskip.md) for acceptance boundaries.
+
+## Splash author credit
+
+The root `author.txt` contains one UTF-8 credit line. Default builds detect the
+installed US CN v1.1 startup patch before adding the credit at the bottom left
+of its splash, before IPS generation. Native black glyphs have a two-pixel white
+outline and no background panel; the translation group's credits stay visible.
+Unsupported glyphs, excessive width and damaged splash contracts fail explicitly.
+English ROMs are skipped. The exact-reference profile retains the original bytes.
+Both build entry points accept `--author-file`; `tools/build.py` also supports
+`--disable-author` and `--enable-author`. The documented feature-off combination
+continues to select exact-reference CN without the credit.
+
+To package an existing explicit local ROM without compilation:
+
+```sh
+python3 tools/package_rom.py --rom "$LOCAL_ROM" --output-dir "$NEW_PRIVATE_OUTPUT"
+```
+
+Optional `--patch "$LOCAL_IPS"` applies the selected IPS before detecting and
+annotating the CN splash. The private ZIP includes the ROM, credit, bitmap preview,
+hashes and report. Outputs must be external and are never uploaded. Start from an
+unannotated ROM when changing the credit; repeating the same credit is idempotent.
+Use `--disable-author` for exact-reference packaging. Bitmap preview validation
+does not establish emulator or physical-hardware acceptance.
+
 ## Inputs and prerequisites
 
 Use Git, Python 3.12+, Clang, Make and ARM binutils (`arm-none-eabi-as`, `ld`,
