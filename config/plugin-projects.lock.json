@@ -10,16 +10,20 @@
       "directory": "plugins",
       "files": {
         "README.md": "774b7f25b983e9b448f74d1129b6c611e86d4d3570387af0cd80cf05f5964a12",
+        "battle_speed/README.md": "9a820183cb6d2680ccf2b9318d43689864ed3fedb5556dc0a3bd14b4e64e9204",
+        "battle_speed/animation.c": "7202752f579cc702c30b5cd75996006f9b92a3ab61bd13fa78a9a88b8767adae",
+        "battle_speed/build.py": "6da40e2ccbc273f323b1dc3f1e7d362076b4d2235c4f1817f02cae61c8bebce0",
+        "battle_speed/options.json": "b9e8a1772f46b88484f711d9abc5b182efec7e129354f2e2ce12d80ec3612ea7",
         "cn2026/README.md": "644b35cc08e34e26831bfef402c79a9838b945dcef3721ce46ccea6de9f140d1",
         "cn2026/build.py": "33c8163dea30ac2fafe7ea830eb81690c04dc46cff9fe90825d8b34fcea7c7ea",
         "cn2026/images.json": "8ddb3a53e3aaa57fac0e610140fb05e4d7c254b008419bbd6b274023386455f0",
         "cn2026/revisions.json": "638018093dd9d85faeb1290272fd225950d3f1d139169bdb0de579614c051d9f",
         "cn2026/save-layout.json": "c7676605ee1da4edc8dda41f0665b03951bf2670a7123103da9adf2af1da8baa",
-        "common/options/README.md": "30c36aa5bbe90de418807a2aea9bba90f7b58a554a0390d0f852984dd2bc73f3",
+        "common/options/README.md": "e363ee04f7dda68a987a4acbd762217b41965a632d7d93083defeb82cb86b890",
         "common/options/bridges.s": "2d70c03b8863e6786eb494c5160ed77e9370fd65a0071f532a5b1272c1bf3e77",
-        "common/options/build.py": "3bc3085e17833788bdc28312d1943001bbec8c8359327aeaf4a82b5bbb8b8f7f",
-        "common/options/options.c": "fd202a9ee09db31358fda290456e68e89603f56fcadc79dd9a9fe472fe45978e",
-        "common/options/options.h": "ef863588e931fa3ddd72b4b7120e32786d499e3e2e63f5477012587b02ebdf59",
+        "common/options/build.py": "377e1de22126ec9cdec6653640e8e69dc7627f9ac335b3d3f0da0ceff2fdd9da",
+        "common/options/options.c": "3dc5623337e2c4f7bb637601d6f1f3636edb11892421f247d5c3f8614e3bfb2d",
+        "common/options/options.h": "82bd6db98cdb0e8bbb320fbc1ef46301b677def3be1461bd616adae6423c14da",
         "enhancements/README.md": "5d63bf4ec65e65ef96c2e91d79791dc66ee85d8f7532fe2b05ef036e1600bd23",
         "enhancements/bridges.s": "5713095bda9fe6c3caf5796639d65f5637041c715ef8e444df627e53199c4d83",
         "enhancements/build.py": "8cb938d6a6532f6f34780bc9bbcef5e52f2c679321c86cfcf9c166dff1734152",
@@ -40,22 +44,23 @@
         "info/src/plugin_info_ui.h": "bcfdfddab5f3b611d76d80933d39b20fbabb8b31bd4af101a68458369c16cbf8",
         "info/tools/build_plugin_info.py": "af2dac4cf30feb47c34551410c4df98f3f3180f125b2449f983a698d3bf6fa29",
         "info/tools/render_plugin_info.c": "275306e954658751f3533e6b25855917983ab5ac6c7735bb5c1426a33dfbc63e",
-        "plugins.json": "562edb0e1afd23b5721f7a5c2ed98012affaaee963b11ffa3611a7cbc5a2efd6",
+        "plugins.json": "f10552285e90eb35efcebea65b733be6441076aaf182b4adce555534a7546e2e",
         "recruit_rename/README.md": "4b56f2c2cc4f38386e226a05501cbb339df2aab72c7d2abfc2389f91ce1dd097",
         "recruit_rename/bridges.s": "a36e4f5879b7e613f21d67e9f0ef8ff02fcaeeb6f8fe443f78d327155472fa68",
-        "recruit_rename/build.py": "4b3e752e840006756277f5088b1eec707727fdaab1b50604c263fe7654aa404a",
+        "recruit_rename/build.py": "af0bf17691c84e4278df67eda0229565f466ffccf8d29a37ccda902194029f28",
         "recruit_rename/migrate_save.py": "6b13e71778a02db8b665159a5f2d35aa53c2ab185c325b1c8e85e9482297ff31",
         "recruit_rename/native.h": "fff1e394e77195d4904b6f76b6d7f637b85291fef762fd5d6ac5859ba271aa76",
         "recruit_rename/recruit.c": "00f69d990371d792331fcd2415a26308d89f6c7663d081ae79906f79382ab84a"
       },
-      "tree_sha256": "1d8945b2306e2c5f658695ee61a1622f701c4cddf27a8976c7b399b368c4c61a",
+      "tree_sha256": "d1d496146e8855ad08dd8f57ac464aa9b267176b51bb1c55dffa149488d3c24e",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
         "fastskip": "fastskip/build.py",
         "recruit_rename": "recruit_rename/build.py",
         "cn2026": "cn2026/build.py",
         "enhancements": "enhancements/build.py",
-        "options": "common/options/build.py"
+        "options": "common/options/build.py",
+        "battle_speed": "battle_speed/build.py"
       }
     }
   }

@@ -158,6 +158,7 @@ python3 tools/package_source.py --output "$SOURCE_ARCHIVE"
 | `--disable-pinyin` | 保留汉化和串行超时修复，关闭拼音输入 |
 | `--disable-pinyin --disable-link-fix` | 精确复现汉化参考版，同时关闭默认 Info 和斜体扩展 |
 | `--enable-recruit-rename` | 开启招募起名。mGBA 启动时自动扩容至 128 KiB，VBA-M 导入 64 KiB 旧档前需手动扩容。详见[存档说明](plugins/recruit_rename/README.md) |
+| `--enable-battle-speed` | 独立战场精灵动画加速插件；选单内按 A 切换 1× / 2× / 4× / 8×，随正常存档记忆。支持英文、cn2025 和 cn2026，默认原速。详见[范围与限制](plugins/battle_speed/README.md) |
 | `--disable-vbam-save-fix` | 关闭 VBA-M Flash 128 KiB 芯片 ID 兼容。默认汉化构建开启该兼容，原版进度仍保存在低 64 KiB |
 | `--disable-cjk` | 构建英文基线，默认关闭拼音、串行超时修复和 Info |
 | `--disable-cjk --enable-link-fix --disable-info` | 英文基线，仅启用串行超时修复 |

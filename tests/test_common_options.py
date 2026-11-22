@@ -34,6 +34,32 @@ class CommonOptionsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'Duplicate or invalid'):
             self.load([self.row('first',1),self.row('second',1)])
 
+    def test_multibit_values_reserve_their_full_range(self):
+        speed = dict(self.row('speed',3),width=2,values=['1x','2x','4x','8x'])
+        rows, _, used = self.load([speed])
+        self.assertEqual(used,{3,4})
+        with self.assertRaisesRegex(ValueError,'Duplicate or invalid'):
+            self.load([speed,self.row('collision',4)])
+        with self.assertRaisesRegex(ValueError,'complete stored bit range'):
+            self.load([dict(speed,values=['1x','2x'])])
+
+    def test_language_selection_and_native_latin_encoding(self):
+        self.assertEqual(module.localized({'en':'Speed','zh-Hans':'速度'},'en'),'Speed')
+        self.assertEqual(module.encode_text('2x'),bytes.fromhex('80a880e100'))
+        self.assertEqual(module.encode_text(' '),bytes.fromhex('407300'))
+        with self.assertRaisesRegex(ValueError,'Missing Options translation'):
+            module.localized({'en':'Speed'},'zh-Hans')
+        with self.assertRaisesRegex(ValueError,'Missing native option glyph'):
+            module.encode_text('速度')
+
+    def test_saved_bit_capacity_is_a_hard_build_boundary(self):
+        rows=[self.row('flag'+str(n),n) for n in range(8)]
+        self.assertEqual(self.load(rows)[2],set(range(8)))
+        for extra in (self.row('ninth',8),dict(self.row('crosses_end',7),width=2,
+                values=['1x','2x','4x','8x'])):
+            with self.subTest(extra=extra), self.assertRaisesRegex(ValueError,'Duplicate or invalid'):
+                self.load(rows+[extra])
+
     def test_duplicate_ids_fail(self):
         with self.assertRaisesRegex(ValueError,'Duplicate common Options ID'):
             self.load([self.row('same',1),self.row('same',2)])

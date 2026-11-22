@@ -1,0 +1,25 @@
+{
+  "schema": "ffta-common-options-v1",
+  "storage_byte": 3,
+  "options": [
+    {
+      "id": "battle_animation_speed",
+      "bit": 3,
+      "width": 2,
+      "label": {
+        "zh-Hans": "战斗动画速度",
+        "en": "Animation speed"
+      },
+      "hint": {
+        "zh-Hans": "战场精灵动画播放速度。",
+        "en": "Battle sprite animation speed."
+      },
+      "values": [
+        "1x",
+        "2x",
+        "4x",
+        "8x"
+      ]
+    }
+  ]
+}

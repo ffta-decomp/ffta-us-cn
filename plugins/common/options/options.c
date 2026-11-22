@@ -54,11 +54,12 @@ u32 EnhancedQuery(u32 option, u32 query)
     }
     if (!p || option >= COMMON_OPTION_COUNT) return 0;
     if (!query) {
-        u32 mask = 1u << CommonOptionBits[option-10];
+        u32 shift = CommonOptionBits[option-10];
+        u32 mask = CommonOptionMasks[option-10] << shift;
         p[SETTINGS+3] = (p[SETTINGS+3] & ~mask) |
-            (p[CELLS+option*4] ? mask : 0);
+            ((p[CELLS+option*4] << shift) & mask);
     }
-    return (p[SETTINGS+3] >> CommonOptionBits[option-10]) & 1;
+    return (p[SETTINGS+3] >> CommonOptionBits[option-10]) & CommonOptionMasks[option-10];
 }
 
 /* Keep native option IDs stable while presenting Reset as the final row. */

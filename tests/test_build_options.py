@@ -93,6 +93,17 @@ class BuildOptionsTests(unittest.TestCase):
         self.assertTrue(options(args + ['--enable-recruit-rename']).recruit_rename)
         self.reject(args + ['--enable-recruit-rename', '--disable-vbam-save-fix'])
 
+    def test_battle_speed_is_opt_in_and_independent_of_translation(self):
+        args = self.base() + self.cn_inputs()
+        self.assertFalse(options(args).battle_speed)
+        self.assertTrue(options(args + ['--enable-battle-speed']).common_options)
+        us = options(self.base() + ['--disable-cjk', '--enable-battle-speed'])
+        self.assertTrue(us.battle_speed)
+        self.assertTrue(us.common_options)
+        self.assertFalse(us.cn2026)
+        self.assertTrue(options(args + ['--cn-version', 'cn2026',
+            '--cn2026-pack', '/outside/images', '--enable-battle-speed']).battle_speed)
+
     def test_recruit_rename_works_with_native_keyboard(self):
         us = options(self.base() + ['--disable-cjk', '--enable-recruit-rename'])
         self.assertTrue(us.recruit_rename)

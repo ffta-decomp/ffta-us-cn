@@ -15,6 +15,7 @@ keyboard page; the original second page remains available. No third tab is added
 | `--disable-pinyin` | CN with the serial timeout fix, without pinyin |
 | `--disable-pinyin --disable-link-fix` | Exact pinned 16 MiB Chinese reference |
 | `--enable-recruit-rename` | Enable recruit naming. mGBA expands the battery save to 128 KiB at boot. See [save setup for other emulators](plugins/recruit_rename/README.md). |
+| `--enable-battle-speed` | Add the independent battlefield sprite animation plugin. Press A in Options to select 1x/2x/4x/8x; normal saves retain the mode. Supports English, CN2025 and CN2026. See [scope and limits](plugins/battle_speed/README.md). |
 | `--disable-vbam-save-fix` | Disable the VBA-M Flash 128 KiB chip-ID alias enabled in the default Chinese build. Native game progress stays in the lower 64 KiB. |
 | `--disable-cjk` | English baseline, with pinyin disabled automatically |
 | `--disable-cjk --enable-link-fix --disable-info` | English with only the serial timeout fix |

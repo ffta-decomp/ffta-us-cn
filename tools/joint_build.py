@@ -232,6 +232,8 @@ def apply_project_plugins(reference, image, args, out, config, compile_source):
     features = dict(cjk=args.cjk, link_fix=args.link_fix, info=args.info,
                     cn2026=getattr(args, 'cn2026', False),
                     italic_font=args.italic_font, fastskip=getattr(args, 'fastskip', False),
+                    battle_speed=getattr(args, 'battle_speed', False),
+                    common_options=getattr(args, 'common_options', getattr(args, 'cn2026', False)),
                     recruit_rename=getattr(args, 'recruit_rename', False))
     plugin_reports = []
     written = {}

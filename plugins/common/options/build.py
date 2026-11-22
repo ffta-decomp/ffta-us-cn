@@ -10,6 +10,7 @@ PLUGIN = Path(__file__).resolve().parent
 BASE = 0x08000000
 ORIGIN = 0xE10000
 BRIDGE = 0x36D454
+STORAGE_BITS = 8
 
 
 def sha(data):
@@ -41,36 +42,68 @@ def load_options(catalogue, features, project):
             raise ValueError('Unsupported common Options declaration')
         registration_sources.append(path)
         for row in spec['options']:
-            if type(row['bit']) is not int or row['bit'] in used or not 0 <= row['bit'] < 8:
+            bit, width = row['bit'], row.get('width', 1)
+            if (type(bit) is not int or type(width) is not int or
+                    not 1 <= width <= 3 or not 0 <= bit <= STORAGE_BITS-width or
+                    any(n in used for n in range(bit, bit+width))):
                 raise ValueError('Duplicate or invalid persistent Options bit')
-            used.add(row['bit'])
+            values = row.get('values')
+            if values is not None and (not isinstance(values, list) or len(values) != 1 << width):
+                raise ValueError('Option values must cover the complete stored bit range')
+            if width != 1 and values is None:
+                raise ValueError('Multibit Options require explicit values')
+            used.update(range(bit, bit+width))
             registrations.append(row)
     if len({r["id"] for r in registrations}) != len(registrations):
         raise ValueError("Duplicate common Options ID")
     if not registrations:
         raise ValueError('No registered common Options')
+    if len(used) > STORAGE_BITS:
+        raise ValueError('Shared Options exceeds its saved bit capacity')
     return registrations, registration_sources, used
 
 
+def localized(value, language):
+    if isinstance(value, dict):
+        if language not in value:
+            raise ValueError('Missing Options translation: ' + language)
+        value = value[language]
+    if not isinstance(value, str) or not value:
+        raise ValueError('Option text must be nonempty')
+    return value
+
+
+def encode_text(value, tokens=None):
+    """Native Latin tokens are shared; Chinese tokens require the CN font."""
+    result = bytearray()
+    for c in value:
+        if c == ' ':
+            code = 0x4073
+        elif 'A' <= c <= 'Z':
+            code = 0x80B0 + ord(c)-ord('A')
+        elif 'a' <= c <= 'z':
+            code = 0x80CA + ord(c)-ord('a')
+        elif '0' <= c <= '9':
+            code = 0x80A6 + ord(c)-ord('0')
+        elif c in '.:':
+            code = {'.': 0x80E4, ':': 0x80EE}[c]
+        elif tokens is not None and c in tokens:
+            code = int(tokens[c][0], 16)
+        else:
+            raise ValueError('Missing native option glyph: ' + c)
+        result.extend(code.to_bytes(2, 'big'))
+    return bytes(result) + b'\0'
+
+
 def prepare(reference, image, args, output, config):
-    if not args.cjk or not args.cn2026:
-        raise ValueError('Enhancements require CN2026')
     output.mkdir(parents=True, exist_ok=False)
     root = PLUGIN.parents[2]
     charset = root / 'config/charsets/us-cn-v1.1/unicode-to-tokens.json'
-    tokens = json.loads(charset.read_text())
+    tokens = json.loads(charset.read_text()) if args.cjk else None
+    language = 'zh-Hans' if args.cjk else 'en'
 
     def text(value):
-        result = bytearray()
-        for c in value:
-            if c in tokens:
-                code = int(tokens[c][0], 16)
-            elif 'A' <= c <= 'Z':
-                code = 0x80B0 + ord(c)-ord('A')
-            else:
-                raise ValueError('Missing native option glyph: ' + c)
-            result.extend(code.to_bytes(2, 'big'))
-        return bytes(result) + b'\0'
+        return encode_text(localized(value, language), tokens)
 
     sys.path.insert(0, str(root / 'tools'))
     from plugin_info import load_catalogue, enabled
@@ -79,21 +112,39 @@ def prepare(reference, image, args, output, config):
     labels = [r['label'] for r in registrations]
     hints = [r['hint'] for r in registrations]
     count = 10 + len(registrations)
+    if count > 29:
+        raise ValueError('Shared Options context cell capacity exceeded')
     rows = [image[0x36d4d4+i*20:0x36d4d4+(i+1)*20] for i in range(10)]
-    rows += [struct.pack('<10H', 2, 16, 766, 765, 0, 0, 0, 0, 0, 0)] * len(registrations)
+    custom_values = []
+    for registration in registrations:
+        values = registration.get('values')
+        if values is None:
+            rows.append(struct.pack('<10H', 2, 16, 766, 765, 0, 0, 0, 0, 0, 0))
+        else:
+            identifiers = list(range(767+len(custom_values),767+len(custom_values)+len(values)))
+            custom_values.extend(values)
+            rows.append(struct.pack('<10H', len(values), 16, *identifiers, *([0]*(8-len(values)))))
     header = output / 'bindings.h'
-    data = [f'#define COMMON_OPTION_COUNT {count}', f'const unsigned char CommonOptionCount = {count};', 'extern unsigned int NativeQuery(unsigned int, unsigned int);']
+    data = [f'#define COMMON_OPTION_COUNT {count}',
+            f'#define COMMON_OPTION_STORAGE_MASK {sum(1 << bit for bit in used)}u',
+            'typedef char CommonOptionCapacityGuard[(COMMON_OPTION_STORAGE_MASK & ~255u) ? -1 : 1];',
+            f'const unsigned char CommonOptionCount = {count};', 'extern unsigned int NativeQuery(unsigned int, unsigned int);']
     data.append('const unsigned short EnhancedDefinitions[] = {' +
                 ','.join(str(n) for n in struct.unpack('<'+str(count*10)+'H', b''.join(rows))) + '};')
     for i, value in enumerate(labels):
         data.append(f'static const unsigned char Label{i}[] __attribute__((aligned(2))) = {{' + ','.join(map(str, text(value))) + '};')
     pointers = [f'(const unsigned char *){struct.unpack_from("<I", image, 0x5567f0+(745+i)*4)[0]:#x}' for i in range(10)]
     data.append('const unsigned char * const EnhancedLabels[] = {' + ','.join(pointers + [f'Label{i}' for i in range(len(registrations))]) + '};')
+    if custom_values:
+        for i, value in enumerate(custom_values):
+            data.append(f'static const unsigned char Value{i}[] __attribute__((aligned(2))) = {{' + ','.join(map(str,text(value))) + '};')
+        pointers = [f'(const unsigned char *){struct.unpack_from("<I", image, 0x5567f0+i*4)[0]:#x}' for i in range(767)]
+        data.append('const unsigned char * const EnhancedValues[] = {' + ','.join(pointers + [f'Value{i}' for i in range(len(custom_values))]) + '};')
     sys.path.insert(0, str(root / 'tools'))
     from us_cn_text_layout import page_layout, decode_record, encode_record
     page = struct.unpack_from('<I', image, 0x94b8)[0] - BASE
     _, offsets = page_layout(image, page)
-    if len(offsets) != 11:
+    if len(offsets) not in (10, 11):
         raise ValueError('Unexpected native Options hint count')
     records = [encode_record(decode_record(image, page+at)) for at in offsets[:10]]
     records += [b'\0\0' + text(value) for value in hints]
@@ -106,6 +157,7 @@ def prepare(reference, image, args, output, config):
     hints_blob = struct.pack('<'+str(count+2)+'H', *offsets, 65535) + b''.join(records)
     data.append('const unsigned char EnhancedHints[] __attribute__((aligned(2))) = {' + ','.join(map(str, hints_blob)) + '};')
     data.append('static const unsigned char CommonOptionBits[] = {' + ','.join(str(r['bit']) for r in registrations) + '};')
+    data.append('static const unsigned char CommonOptionMasks[] = {' + ','.join(str((1 << r.get('width',1))-1) for r in registrations) + '};')
     header.write_text('\n'.join(data)+'\n')
     objects = []
     for source in (PLUGIN / 'options.c', PLUGIN / 'bridges.s'):
@@ -172,9 +224,17 @@ ASSERT(SIZEOF(.bridge)<=0x1c && SIZEOF(.text)<=0x8000, "Enhancement ROM reservat
     for name, at, symbol in (('defs-init',0x8914,'EnhancedDefinitions'),('defs-render',0x9128,'EnhancedDefinitions'),('labels',0x9028,'EnhancedLabels'),('hints',0x94b8,'EnhancedHints')):
         add(name, at, struct.pack('<I', symbols[symbol]))
     add('label-base', 0x902c, bytes(4))
+    if custom_values:
+        if struct.unpack_from('<I', reference, 0x912c)[0] != 0x085567f0:
+            raise ValueError('Unexpected native Options value table')
+        add('value-table', 0x912c, struct.pack('<I', symbols['EnhancedValues']))
     manifest = output/'extension.json'
-    sources = [PLUGIN/'build.py', PLUGIN/'options.c', PLUGIN/'bridges.s', PLUGIN/'options.h', charset, header, *registration_sources]
+    sources = [PLUGIN/'build.py', PLUGIN/'options.c', PLUGIN/'bridges.s', PLUGIN/'options.h', header, *registration_sources]
+    if args.cjk: sources.append(charset)
     manifest.write_text(json.dumps(dict(schema='build-extension-v1',reference_sha256=sha(reference),
         sources=[dict(path=str(p.resolve()),sha256=sha(p.read_bytes())) for p in sources],fragments=fragments),indent=2)+'\n')
     return manifest, dict(id='options', settings_byte=0x2fc3, settings_mask=sum(1 << bit for bit in used),
-        original_settings_bytes=4, rows=count, symbols={k:hex(v) for k,v in symbols.items()})
+        original_settings_bytes=4, storage_capacity_bits=STORAGE_BITS,
+        storage_used_bits=sorted(used), storage_remaining_bits=sorted(set(range(STORAGE_BITS))-used),
+        storage_layout_checked=True, rows=count, language=language,
+        symbols={k:hex(v) for k,v in symbols.items()})

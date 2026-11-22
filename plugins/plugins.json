@@ -102,7 +102,7 @@
     },
     {
       "id": "options",
-      "feature": "cn2026",
+      "feature": "common_options",
       "name": "Options",
       "content": "Shared native Options extension",
       "show_in_info": false,
@@ -114,6 +114,23 @@
         "common/options/options.h",
         "common/options/bridges.s",
         "common/options/README.md"
+      ]
+    },
+    {
+      "id": "battle_speed",
+      "feature": "battle_speed",
+      "name": "Battle animation speed",
+      "content": "Experimental battle sprite clocks",
+      "show_in_info": false,
+      "priority": 960,
+      "entry": "battle_speed/build.py",
+      "options": "battle_speed/options.json",
+      "files": [
+        "battle_speed/build.py",
+        "battle_speed/animation.c",
+        "battle_speed/options.json",
+        "battle_speed/README.md",
+        "common/options/options.h"
       ]
     }
   ]

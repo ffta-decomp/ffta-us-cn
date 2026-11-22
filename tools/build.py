@@ -43,6 +43,8 @@ def options(argv=None):
     opening.add_argument('--disable-fastskip', dest='fastskip', action='store_false')
     parser.add_argument('--enable-recruit-rename', dest='recruit_rename', action='store_true',
                         help='Name recruits using the keyboard selected by the build')
+    parser.add_argument('--enable-battle-speed', dest='battle_speed', action='store_true',
+                        help='Install the experimental 1x/2x/4x/8x battle sprite animation option')
     cjk = parser.add_mutually_exclusive_group()
     cjk.add_argument('--enable-cjk', dest='cjk', action='store_true')
     cjk.add_argument('--disable-cjk', dest='cjk', action='store_false')
@@ -66,6 +68,7 @@ def options(argv=None):
                         help='Optional local IPS against the authenticated US input')
     args = parser.parse_args(argv)
     args.cn2026 = args.cn_version == 'cn2026'
+    args.common_options = args.cn2026 or args.battle_speed
     if args.cn2026 and not args.cjk:
         parser.error('--cn-version cn2026 requires CJK')
     if args.cn2026 and args.image_enhancement_pack is None:

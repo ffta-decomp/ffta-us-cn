@@ -106,7 +106,7 @@ SECTIONS {{
     /DISCARD/ : {{ *(.ARM.exidx*) *(.ARM.extab*) *(.comment*) *(.note*) }}
 }}
 ASSERT(SIZEOF(.data) == 0 && SIZEOF(.bss) == 0, "Unexpected static RAM")
-ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 0xc8, "Recruit ROM reservation")
+ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 0x40, "Recruit ROM reservation")
 ''')
     subprocess.run([prefix + 'ld', '-T', str(script), str(obj), str(bridge_obj), '-o', str(elf)], check=True)
     symbols = {}
