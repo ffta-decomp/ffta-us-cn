@@ -10,11 +10,26 @@
       "directory": "plugins",
       "files": {
         "README.md": "774b7f25b983e9b448f74d1129b6c611e86d4d3570387af0cd80cf05f5964a12",
+        "cn2026/README.md": "644b35cc08e34e26831bfef402c79a9838b945dcef3721ce46ccea6de9f140d1",
+        "cn2026/build.py": "33c8163dea30ac2fafe7ea830eb81690c04dc46cff9fe90825d8b34fcea7c7ea",
+        "cn2026/images.json": "4dd3958c077d57f7273a4f8268e4f37c12917921d37bcea8fbcc743a6568dba1",
+        "cn2026/revisions.json": "638018093dd9d85faeb1290272fd225950d3f1d139169bdb0de579614c051d9f",
+        "cn2026/save-layout.json": "c7676605ee1da4edc8dda41f0665b03951bf2670a7123103da9adf2af1da8baa",
+        "common/options/README.md": "30c36aa5bbe90de418807a2aea9bba90f7b58a554a0390d0f852984dd2bc73f3",
+        "common/options/bridges.s": "2d70c03b8863e6786eb494c5160ed77e9370fd65a0071f532a5b1272c1bf3e77",
+        "common/options/build.py": "3bc3085e17833788bdc28312d1943001bbec8c8359327aeaf4a82b5bbb8b8f7f",
+        "common/options/options.c": "fd202a9ee09db31358fda290456e68e89603f56fcadc79dd9a9fe472fe45978e",
+        "common/options/options.h": "ef863588e931fa3ddd72b4b7120e32786d499e3e2e63f5477012587b02ebdf59",
+        "enhancements/README.md": "5d63bf4ec65e65ef96c2e91d79791dc66ee85d8f7532fe2b05ef036e1600bd23",
+        "enhancements/bridges.s": "5713095bda9fe6c3caf5796639d65f5637041c715ef8e444df627e53199c4d83",
+        "enhancements/build.py": "8cb938d6a6532f6f34780bc9bbcef5e52f2c679321c86cfcf9c166dff1734152",
+        "enhancements/gameplay.c": "6bb1b2838802d87291bc6b88afa6de52596f43918ec023221564c218ccefad52",
+        "enhancements/options.json": "f6a2da420984a37f9352179328036531a96b335f855aee52e9f0abb7ce058be8",
         "fastskip/README.md": "4737de7ee6bd66c9bbf5a0bd5485abc6fb65272e64acb34badec98c19f88f34c",
-        "fastskip/build.py": "4a37b95e4901e576b07020f9b0cc71aec480565b0c1b715614284101fde91663",
+        "fastskip/build.py": "70e712efad819568fcc9edcc0f5396e94214edc051ddf4cf62abce52b64c1fc8",
         "fastskip/config.json": "6db5ae7a177202817aee0532d75e188ce5abeba6d036a9840f3e9c4b54315909",
         "fastskip/frame.c": "88f2f51c60af8efa28d790165fc511368825b28199909a1bd52bb6027ea02aa4",
-        "fastskip/heap.c": "53f9b0c87af3e15061d3d444ca38505811904f0af2110d0e03c0192372a31e32",
+        "fastskip/heap.c": "50252de10f969ea2fafc9f12970bf195192d1816f74278816c63216dfd48f06f",
         "fastskip/opening_battle_hp.h": "1dc9507809a78f72510c6d83580b5e8f102660ce5aed8f840b45653f0202fa1c",
         "fastskip/opening_scene.c": "8f58934082db13fcf1694f882e0fd9be15fe424525e9910b02eaba794ec13927",
         "fastskip/opening_scene_gate.h": "a0ce747891cc5d60eed754667f5b9d1f1e2e5cb72a51f1047e1e9ac5e68788ef",
@@ -23,14 +38,24 @@
         "info/src/plugin_info_title.c": "b59d5dea8621784c39e78eb2e373fa5cff58a51bf18a00449d17ea333b7a6ec6",
         "info/src/plugin_info_ui.c": "d5525c177750cb33a13fb8fa5ed7d5aa6151d2117023750225f05f9b34a1893f",
         "info/src/plugin_info_ui.h": "bcfdfddab5f3b611d76d80933d39b20fbabb8b31bd4af101a68458369c16cbf8",
-        "info/tools/build_plugin_info.py": "50da10ed0eb9e38da9e694291b69970df08c80a3e52c8bcae591cd34f0990edd",
+        "info/tools/build_plugin_info.py": "af2dac4cf30feb47c34551410c4df98f3f3180f125b2449f983a698d3bf6fa29",
         "info/tools/render_plugin_info.c": "275306e954658751f3533e6b25855917983ab5ac6c7735bb5c1426a33dfbc63e",
-        "plugins.json": "279b7223132423c247b11cad9670e8d47271b2588148bde5034c025d7d365487"
+        "plugins.json": "562edb0e1afd23b5721f7a5c2ed98012affaaee963b11ffa3611a7cbc5a2efd6",
+        "recruit_rename/README.md": "4b56f2c2cc4f38386e226a05501cbb339df2aab72c7d2abfc2389f91ce1dd097",
+        "recruit_rename/bridges.s": "a36e4f5879b7e613f21d67e9f0ef8ff02fcaeeb6f8fe443f78d327155472fa68",
+        "recruit_rename/build.py": "4b3e752e840006756277f5088b1eec707727fdaab1b50604c263fe7654aa404a",
+        "recruit_rename/migrate_save.py": "6b13e71778a02db8b665159a5f2d35aa53c2ab185c325b1c8e85e9482297ff31",
+        "recruit_rename/native.h": "fff1e394e77195d4904b6f76b6d7f637b85291fef762fd5d6ac5859ba271aa76",
+        "recruit_rename/recruit.c": "00f69d990371d792331fcd2415a26308d89f6c7663d081ae79906f79382ab84a"
       },
-      "tree_sha256": "e3ac4c642d195c93e0dc8a26bfccdc908ceb93c45d319fe75daa95ce31f3b995",
+      "tree_sha256": "95fe80c5915065ad1efa0d97fe07faadcba80afa1036900b7454220d3639189a",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
-        "fastskip": "fastskip/build.py"
+        "fastskip": "fastskip/build.py",
+        "recruit_rename": "recruit_rename/build.py",
+        "cn2026": "cn2026/build.py",
+        "enhancements": "enhancements/build.py",
+        "options": "common/options/build.py"
       }
     }
   }

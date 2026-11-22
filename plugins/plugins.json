@@ -46,6 +46,75 @@
         "fastskip/runtime_option.h",
         "fastskip/README.md"
       ]
+    },
+    {
+      "id": "recruit_rename",
+      "feature": "recruit_rename",
+      "name": "Recruit naming",
+      "content": "Name new recruits",
+      "show_in_info": false,
+      "priority": 300,
+      "entry": "recruit_rename/build.py",
+      "files": [
+        "recruit_rename/build.py",
+        "recruit_rename/native.h",
+        "recruit_rename/recruit.c",
+        "recruit_rename/migrate_save.py",
+        "recruit_rename/README.md",
+        "recruit_rename/bridges.s"
+      ]
+    },
+    {
+      "id": "cn2026",
+      "feature": "cn2026",
+      "name": "cn2026",
+      "content": "cn2025 汉化基础\n原汉化 美版汉化v1.1 汉化组\n汉化修订 隼\n图片汉化和打包 bhe\n拼音输入法",
+      "priority": 900,
+      "supersedes": [
+        "cn2025"
+      ],
+      "entry": "cn2026/build.py",
+      "files": [
+        "cn2026/build.py",
+        "cn2026/images.json",
+        "cn2026/README.md",
+        "cn2026/revisions.json",
+        "cn2026/save-layout.json"
+      ]
+    },
+    {
+      "id": "enhancements",
+      "feature": "cn2026",
+      "name": "Enhancements",
+      "content": "Native Options enhancements",
+      "show_in_info": false,
+      "priority": 950,
+      "entry": "enhancements/build.py",
+      "files": [
+        "enhancements/build.py",
+        "enhancements/gameplay.c",
+        "enhancements/bridges.s",
+        "enhancements/options.json",
+        "common/options/options.h",
+        "enhancements/README.md"
+      ],
+      "options": "enhancements/options.json"
+    },
+    {
+      "id": "options",
+      "feature": "cn2026",
+      "name": "Options",
+      "content": "Shared native Options extension",
+      "show_in_info": false,
+      "priority": 980,
+      "entry": "common/options/build.py",
+      "files": [
+        "common/options/build.py",
+        "common/options/options.c",
+        "common/options/options.h",
+        "common/options/bridges.s",
+        "common/options/README.md"
+      ]
     }
   ]
 }

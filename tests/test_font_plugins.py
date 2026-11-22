@@ -16,7 +16,7 @@ from extract_resources import decode_word
 class FontPluginTests(unittest.TestCase):
     def test_info_inherits_font_declaration_and_respects_internal_flag(self):
         base, selected, _ = resolve({'cjk': True, 'info': True, 'italic_font': False})
-        self.assertEqual(base['id'], 'uscn')
+        self.assertEqual(base['id'], 'cn2025')
         self.assertEqual(selected, [])
         _, selected, _ = resolve({'cjk': True, 'info': True, 'italic_font': True})
         self.assertEqual(len(selected), 4)
@@ -39,12 +39,12 @@ class FontPluginTests(unittest.TestCase):
                     font=dict(mode=mode, style='italic', characters='I', transform='row_shear',
                               baseline=13, rows_per_pixel=3))
 
-    def test_uscn_priority_and_order_independent_style_resolution(self):
-        base = self.plugin('uscn', 1000, 'base')
+    def test_cn2025_priority_and_order_independent_style_resolution(self):
+        base = self.plugin('cn2025', 1000, 'base')
         high, low = self.plugin('high', 100), self.plugin('low', 10)
         for plugins in ([low, base, high], [high, low, base]):
             owner, selected, ignored = self.catalogue(plugins, {'cjk': True, 'italic_font': True})
-            self.assertEqual(owner['id'], 'uscn')
+            self.assertEqual(owner['id'], 'cn2025')
             self.assertEqual([(p['id'], c) for p, c in selected], [('high', 'I')])
             self.assertEqual(ignored[0]['owner'], 'high')
         high['priority'] = 1000
@@ -52,7 +52,7 @@ class FontPluginTests(unittest.TestCase):
             self.catalogue([base, high], {'cjk': True, 'italic_font': True})
 
     def test_equal_priority_style_conflicts_and_missing_base_fail(self):
-        plugins = [self.plugin('uscn', 1000, 'base'), self.plugin('a', 100), self.plugin('b', 100)]
+        plugins = [self.plugin('cn2025', 1000, 'base'), self.plugin('a', 100), self.plugin('b', 100)]
         with self.assertRaisesRegex(ValueError, 'Equal-priority'):
             self.catalogue(plugins, {'cjk': True, 'italic_font': True})
         with self.assertRaisesRegex(ValueError, 'base font'):
@@ -76,7 +76,7 @@ class FontPluginTests(unittest.TestCase):
         font, widths = bytes(cell) * 2, bytes([3, 3])
         rows = [dict(index=i, unicode='I', glyph_sha256=hashlib.sha256(cell).hexdigest(), advance=3)
                 for i in range(2)]
-        base, plugin = self.plugin('uscn', 1000, 'base'), self.plugin('italic', 100)
+        base, plugin = self.plugin('cn2025', 1000, 'base'), self.plugin('italic', 100)
         expanded, advances, table, normal, styles = extend(font, widths, rows, base, [(plugin, 'I')])
         self.assertEqual(expanded[:len(font)], font)
         self.assertEqual(advances[:2], widths)

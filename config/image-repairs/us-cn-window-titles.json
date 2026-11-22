@@ -1,0 +1,1490 @@
+{
+  "schema": "ffta-us-cn-native-window-repairs-v1",
+  "input": {
+    "rom_bytes": 16777216,
+    "accepted_sha256": [
+      "8f4b46e8b11db9754389ae592de5b0c0d72ee8229b6401f27a692dbb6f308d13",
+      "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03"
+    ],
+    "retail_sha256": "43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19"
+  },
+  "font": {
+    "filename": "fusion-pixel-8px-monospaced-zh_hans.bdf",
+    "sha256": "31f654b8348f0d531d0aafe37364edd708eee7e4c6388ec700f77b5f6bf1b43c",
+    "family": "Fusion Pixel 8px Monospaced zh_Hans",
+    "version": "2026.10.25",
+    "upstream": "https://github.com/TakWolf/fusion-pixel-font",
+    "license": "SIL-OFL-1.1",
+    "copyright": "Copyright (c) 2022, TakWolf (https://takwolf.com)",
+    "cell": [
+      8,
+      8
+    ],
+    "ascent": 7,
+    "scaling": "none",
+    "resolution": "Explicit --font path; no search or embedded font data."
+  },
+  "bank": {
+    "offset": 4018288,
+    "length": 2476,
+    "sha256": "ccd626fd3762e97eb7fe6beeaa922324dd653d1dbfb99c65d8b5ec437f788b5d",
+    "entry_count": 30,
+    "decoded_entry_bytes": 192,
+    "dictionary_offset": 4020348,
+    "dictionary_bytes_observed": 412,
+    "codec_entries_cpu": [
+      8409880,
+      8409540
+    ],
+    "policy": "Keep the original bank intact. Relocate the expanded translated bank into an explicitly reserved and authenticated FF span; change only the two native bank-address literals."
+  },
+  "palette": {
+    "offset": 4301024,
+    "bytes": 32,
+    "sha256": "59e6666fd569b2705ca08cc7934f27f4af129ccb2ffaf5a9afe262ee2dcbae3b",
+    "native_bank": 12,
+    "runtime_verified_entry": 26
+  },
+  "repairs": [
+    {
+      "entry": 2,
+      "label": "MENU",
+      "translation": "选单",
+      "visible_tiles": 4,
+      "source_sha256": "d31f6a406304b3bb5d38b246a8ae029fb1918941c26f37443ea112aadc9802c7",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 3,
+      "label": "ABILITIES",
+      "translation": "能力",
+      "visible_tiles": 6,
+      "source_sha256": "a3fc888a742fa3407b092ad09dfc532a7751a2d872531abddeaf286158a39985",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 4,
+      "label": "EQUIP",
+      "translation": "装备",
+      "visible_tiles": 5,
+      "source_sha256": "5985066d77db8e1eab6f17f109b4bb69193d49a9a15b55d7a72695ced1fea86a",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        40,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 10,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 5,
+      "label": "PENALTY",
+      "translation": "处罚",
+      "visible_tiles": 6,
+      "source_sha256": "b4951e3aae32cc2d4123155c8d31b537a1351d99c105f6263375eed8b79f3318",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 7,
+      "label": "LIST",
+      "translation": "列表",
+      "visible_tiles": 3,
+      "source_sha256": "10c74f31456e303fb677ab63a2734bc892b097d7b14c1e0131317fe8defa6f2f",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        24,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 4,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 8,
+      "label": "OPTIONS",
+      "translation": "选项",
+      "visible_tiles": 6,
+      "source_sha256": "c75511ec06cbdbd9563d9849e498271c57d9a8c13bae96b77ba395899aa48f45",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 9,
+      "label": "PRICE",
+      "translation": "价格",
+      "visible_tiles": 4,
+      "source_sha256": "ff82c63947f8d1d6d4b75f448bbedc392ca3627cce12d534612d129d9dc7d194",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 10,
+      "label": "SWAP",
+      "translation": "交换",
+      "visible_tiles": 6,
+      "source_sha256": "eeae6d7f06d017c9a659fcc97c6183640ad1b9c8957ecd2bcb0ab3672dd62c7b",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 11,
+      "label": "STATUS",
+      "translation": "状态",
+      "visible_tiles": 6,
+      "source_sha256": "5dee8ea7412ad12e6a234dc22cc845f8cbd7da35f0846cff97de9fbe1432197d",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 12,
+      "label": "ITEMS",
+      "translation": "道具",
+      "visible_tiles": 4,
+      "source_sha256": "3b7baf843f9212c1549d879e766c4f8d3d1ab8178a9fa459f4425f7c5218e9d6",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 13,
+      "label": "CARDS",
+      "translation": "卡片",
+      "visible_tiles": 4,
+      "source_sha256": "bec898d8be4737603edc67a0c84683d3018d46415dfa3e0afe1fdad54f53424b",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 14,
+      "label": "RESULTS",
+      "translation": "结果",
+      "visible_tiles": 6,
+      "source_sha256": "8c9c81cefc60e74615bef22b3093747cdc0045bcfc0127a6f7c1fd44cc273d56",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 15,
+      "label": "INFO",
+      "translation": "信息",
+      "visible_tiles": 4,
+      "source_sha256": "5427798b7a6a870b1fadf512d1cd21936d6a555299ca85d3980783ceac166185",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 16,
+      "label": "SYMBOL",
+      "translation": "标志",
+      "visible_tiles": 6,
+      "source_sha256": "4a8000b372d9757e8379218fe66a20f923d7ef13adc48a79de87a06e586aa546",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 17,
+      "label": "SYSTEM",
+      "translation": "系统",
+      "visible_tiles": 6,
+      "source_sha256": "9fb5811d2cbe887cf4abb624be6f6c0ed408c9dcc760346a259ce69e66f9dc88",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 18,
+      "label": "ALL",
+      "translation": "全部",
+      "visible_tiles": 3,
+      "source_sha256": "59e92027b90521e7b67094878a94af569a043a09327806f7767a1453c7c76948",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        24,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 4,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 19,
+      "label": "DAYS",
+      "translation": "天数",
+      "visible_tiles": 4,
+      "source_sha256": "284b98860425a7c996757cc13bddb1943f7fafb660062c2f5cca05a17654914b",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 20,
+      "label": "DETAILS",
+      "translation": "详情",
+      "visible_tiles": 5,
+      "source_sha256": "2b963fc06f2aa9ece2721fd569a23269e55da068268830f52635e7d08ff29478",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        40,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 10,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 21,
+      "label": "REPORT",
+      "translation": "报告",
+      "visible_tiles": 6,
+      "source_sha256": "8be680a19c0b790547310ad42c7f72b9bf7eb0ca7468518d3206f360ff720769",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 22,
+      "label": "CLANS",
+      "translation": "战队",
+      "visible_tiles": 6,
+      "source_sha256": "25a712206f5825c4afecc9f6bc753697e4cef6df63a1f2024998cf11558b6160",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 23,
+      "label": "MEMBERS",
+      "translation": "成员",
+      "visible_tiles": 6,
+      "source_sha256": "b203093c00b2b6fd4ce42b99cc7a58f4e905244976bd360dd4087e41eaabcc9d",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 14,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 24,
+      "label": "ACTION",
+      "translation": "行动",
+      "visible_tiles": 5,
+      "source_sha256": "65f80e0a81115a0070c67c4d5fab722169ae4e5371fda16558b7b7597600ea99",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        40,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 10,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 25,
+      "label": "MISSION",
+      "translation": "任务",
+      "visible_tiles": 5,
+      "source_sha256": "ec0f9675057aa36dd4fb352e56d9b3f9d60603ec0a7f59175f0dcea7dc89447d",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        40,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 10,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 26,
+      "label": "EQUIP",
+      "translation": "装备",
+      "visible_tiles": 4,
+      "source_sha256": "fe5de8172669dc4f9c6b3b17bbf52d6710eb9dc1bd7fca215778957a2c734f91",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        32,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Equipment panel replay verified; native selector and VRAM bytes match.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 6,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 27,
+      "label": "EQP",
+      "translation": "装备",
+      "visible_tiles": 3,
+      "source_sha256": "ada5b44456f605b3280f2f0a698afe3b407e69ed90f8ab185e188b7b827eddc3",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        24,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Native loader output verified; natural target menu pending.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 4,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 28,
+      "label": "FILEMENU",
+      "translation": "存档一",
+      "visible_tiles": 6,
+      "source_sha256": "50a6797d038407bf4be9efb0f471417e011860d2567b3bb53e96e32a4f2da01f",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Save slot 1/2 confirmed in the native file picker; identical left padding and glyph spacing.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 4,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    },
+    {
+      "entry": 29,
+      "label": "FILETITLE",
+      "translation": "存档二",
+      "visible_tiles": 6,
+      "source_sha256": "5d70355a4996987047c48f2a777149c5e8d314d7d6d6ea94654087b56bbcdcf4",
+      "enabled": true,
+      "erase_rect": [
+        0,
+        0,
+        48,
+        6
+      ],
+      "erase_indices": [
+        11,
+        15
+      ],
+      "background_index": 12,
+      "ink_index": 15,
+      "glyph_crop": [
+        0,
+        1,
+        8,
+        8
+      ],
+      "glyph_top": 0,
+      "alignment": "left",
+      "runtime_status": "Save slot 1/2 confirmed in the native file picker; identical left padding and glyph spacing.",
+      "horizontal_layout": {
+        "source_ink_width": 7,
+        "glyph_width": 7,
+        "gap": 4,
+        "method": "native-pixels-spacing-only",
+        "height": 7
+      },
+      "left_padding": 2
+    }
+  ],
+  "descriptor_changes": [
+    {
+      "offset": 3594076,
+      "expected_hex": "06121b00",
+      "replacement_hex": "061b1200",
+      "reason": "Native selector 30 loads B2 then B1. Reverse the two three-tile pieces so shared translated ALL + EQP reads 全部装备; retain both standalone labels.",
+      "depends_on_entries": [
+        18,
+        27
+      ]
+    }
+  ],
+  "prior_enhancement": {
+    "ips_sha256": "7808569be8530dba67899544181e19465f71b742e455db6e3171d29d16f8ac8c",
+    "input_sha256": "8f4b46e8b11db9754389ae592de5b0c0d72ee8229b6401f27a692dbb6f308d13",
+    "output_sha256": "a9381c889a22e25a9f455d649ae18de6ceac22bee9725b78dd634f4d670e4c27",
+    "labels": [
+      "RANK",
+      "PRICE"
+    ]
+  },
+  "deferred": [
+    {
+      "entries": [
+        0,
+        1
+      ],
+      "reason": "HELP/INPUT include button/key artwork; preserve until their complete layout and palette are established."
+    },
+    {
+      "entries": [
+        6
+      ],
+      "reason": "Multiple descriptors select separate tile subranges from this entry; identify each logical label before enabling."
+    }
+  ],
+  "private_workflow": "Decode the explicitly authenticated CN ROM. PNGs are outputs only. Keep code, font, ROM, graphics and patches outside Git. Commit no implementation or assets.",
+  "relocation": {
+    "offset": 15728640,
+    "capacity_bytes": 8192,
+    "expected_fill": 255,
+    "expected_sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+    "pointer_offsets": [
+      99708,
+      99760
+    ],
+    "expected_pointer": 138236016,
+    "replacement_pointer": 149946368,
+    "evidence": "Both literals belong to the native 0x08018524 loader; exhaustive raw ROM pointer search finds precisely these two references. Full input ROM hashes constrain compatibility."
+  },
+  "overlay": {
+    "input_sha256": "aa35e3d47dc4e5b06d1ffd6480e83ca826d53c1e4d1362f7ede80b340e7a2a10",
+    "window_arena_sha256": "515c66ab216204ee66bba553cf5019fffb348750ab7f24a01c7a82087f2b443a",
+    "category_arena_sha256": "001a088832e9250adaf1e09c4aa6add22d27bed122e8bd2eb0840a766af0e0ec",
+    "policy": "Replace only authenticated existing window/category arenas; preserve every other completed enhancement."
+  },
+  "category_layout": {
+    "bank_offset": 3954500,
+    "relocation_offset": 15826944,
+    "capacity_bytes": 8192,
+    "tiles": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "surface_tiles": [
+      5,
+      2
+    ],
+    "erase_rect": [
+      0,
+      0,
+      40,
+      16
+    ],
+    "glyph_width": 7,
+    "glyph_height": 7,
+    "gap": 10,
+    "origin": [
+      11,
+      4
+    ],
+    "ink_index": 3,
+    "edge_index": 1,
+    "background_index": 0,
+    "translations": [
+      "行动",
+      "反应",
+      "援助",
+      "连击"
+    ],
+    "policy": "Left-align every category to the same 11px native text inset; preserve glyph pixels, vertical placement and the repaired Action arrow.",
+    "action_arrow": {
+      "entry": 0,
+      "source_rect": [
+        7,
+        2,
+        22,
+        11
+      ],
+      "source_decoded_sha256": "0c6d9029c9f79c987ead0aafb244dddc0255832d9a9a18daecde7d56cf9270ea",
+      "destination": [
+        11,
+        0
+      ],
+      "pixel_edits": [
+        {
+          "x": 2,
+          "y": 4,
+          "expected": 6,
+          "value": 7
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "expected": 4,
+          "value": 7
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "expected": 4,
+          "value": 7
+        },
+        {
+          "x": 5,
+          "y": 4,
+          "expected": 5,
+          "value": 7
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "expected": 6,
+          "value": 7
+        },
+        {
+          "x": 2,
+          "y": 5,
+          "expected": 4,
+          "value": 7
+        },
+        {
+          "x": 3,
+          "y": 5,
+          "expected": 3,
+          "value": 7
+        },
+        {
+          "x": 4,
+          "y": 5,
+          "expected": 3,
+          "value": 7
+        },
+        {
+          "x": 5,
+          "y": 5,
+          "expected": 3,
+          "value": 7
+        },
+        {
+          "x": 6,
+          "y": 5,
+          "expected": 5,
+          "value": 7
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "expected": 4,
+          "value": 1
+        },
+        {
+          "x": 1,
+          "y": 6,
+          "expected": 4,
+          "value": 1
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "expected": 4,
+          "value": 1
+        },
+        {
+          "x": 3,
+          "y": 6,
+          "expected": 3,
+          "value": 1
+        },
+        {
+          "x": 4,
+          "y": 6,
+          "expected": 5,
+          "value": 1
+        },
+        {
+          "x": 5,
+          "y": 6,
+          "expected": 3,
+          "value": 1
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "expected": 5,
+          "value": 1
+        },
+        {
+          "x": 7,
+          "y": 6,
+          "expected": 4,
+          "value": 1
+        },
+        {
+          "x": 8,
+          "y": 6,
+          "expected": 4,
+          "value": 1
+        },
+        {
+          "x": 9,
+          "y": 6,
+          "expected": 4,
+          "value": 6
+        },
+        {
+          "x": 10,
+          "y": 6,
+          "expected": 4,
+          "value": 3
+        },
+        {
+          "x": 11,
+          "y": 6,
+          "expected": 5,
+          "value": 7
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 1,
+          "y": 7,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 2,
+          "y": 7,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 3,
+          "y": 7,
+          "expected": 5,
+          "value": 0
+        },
+        {
+          "x": 4,
+          "y": 7,
+          "expected": 5,
+          "value": 0
+        },
+        {
+          "x": 5,
+          "y": 7,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 6,
+          "y": 7,
+          "expected": 5,
+          "value": 0
+        },
+        {
+          "x": 7,
+          "y": 7,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "expected": 3,
+          "value": 1
+        },
+        {
+          "x": 9,
+          "y": 7,
+          "expected": 3,
+          "value": 6
+        },
+        {
+          "x": 10,
+          "y": 7,
+          "expected": 3,
+          "value": 7
+        },
+        {
+          "x": 12,
+          "y": 7,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 13,
+          "y": 7,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 14,
+          "y": 7,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 1,
+          "y": 8,
+          "expected": 4,
+          "value": 0
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 3,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 5,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "expected": 5,
+          "value": 0
+        },
+        {
+          "x": 7,
+          "y": 8,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 8,
+          "y": 8,
+          "expected": 3,
+          "value": 1
+        },
+        {
+          "x": 11,
+          "y": 8,
+          "expected": 1,
+          "value": 0
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "expected": 3,
+          "value": 0
+        }
+      ],
+      "text_origin": [
+        11,
+        5
+      ],
+      "policy": "Restore the repaired native arrow, then overlay the native unscaled Chinese ink at [11,5], 4px gap. Match original Action colors: ink index 3, one-pixel dark outline index 1. Text and its outline intentionally cover the lower arrow region; retain the arrow everywhere else.",
+      "text_gap": 4,
+      "alignment_evidence": {
+        "original_action_text_rows": [
+          8,
+          14
+        ],
+        "requested_chinese_ink_rows": [
+          5,
+          11
+        ],
+        "requested_outline_rows": [
+          4,
+          12
+        ],
+        "gap": 4,
+        "reason": "Place the Chinese phrase over the middle/lower arrow region with the native Action cream ink and dark one-pixel outline."
+      },
+      "text_ink_index": 3,
+      "text_outline": {
+        "width": 1,
+        "index": 1,
+        "neighbors": "eight-connected"
+      },
+      "composition_order": [
+        "native-arrow-with-pixel-repairs",
+        "text-outline",
+        "text-ink"
+      ],
+      "allow_text_over_arrow": true
+    },
+    "alignment": "left",
+    "left_padding": 11
+  },
+  "alignment_policy": "Left-align translated menu text within its native text region using explicit pixel padding, independent of label width."
+}

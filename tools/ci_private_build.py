@@ -124,8 +124,16 @@ def main():
     parser.add_argument('--work-dir', required=True, type=Path)
     parser.add_argument('--publish-dir', required=True, type=Path)
     parser.add_argument('--profile', choices=['default', 'exact-reference'], default='default')
+    parser.add_argument('--cn-version', choices=['cn2025', 'cn2026'], default='cn2025')
+    parser.add_argument('--cn2026-pack', '--image-enhancement-pack', dest='image_enhancement_pack', type=Path)
     parser.add_argument('--author-file', type=Path, default=ROOT / 'author.txt')
     args = parser.parse_args()
+    if args.profile == 'exact-reference' and args.cn_version != 'cn2025':
+        parser.error('Exact-reference requires cn2025 without image enhancements')
+    if (args.cn_version == 'cn2026') != (args.image_enhancement_pack is not None):
+        parser.error('cn2026 requires an explicit --image-enhancement-pack; cn2025 does not use one')
+    if args.image_enhancement_pack is not None and args.image_enhancement_pack.resolve().is_relative_to(ROOT):
+        parser.error('Private image resources must be outside the source repository')
     work, publish = args.work_dir.resolve(), args.publish_dir.resolve()
     if work.is_relative_to(ROOT) or publish.is_relative_to(ROOT) or \
        work.is_relative_to(publish) or publish.is_relative_to(work):
@@ -161,8 +169,11 @@ def main():
                '--map-report', work / 'glyph-inputs/map-report.json',
                '--output-dir', work / 'build', '--patch-output', work / 'output.ips',
                '--author-file', args.author_file.resolve()]
+    command += ['--cn-version', args.cn_version]
+    if args.image_enhancement_pack is not None:
+        command += ['--image-enhancement-pack', args.image_enhancement_pack.resolve()]
     if args.profile == 'exact-reference':
-        command += ['--disable-pinyin', '--disable-link-fix', '--disable-info', '--disable-italic-font', '--disable-author', '--disable-fastskip']
+        command += ['--disable-pinyin', '--disable-link-fix', '--disable-vbam-save-fix', '--disable-info', '--disable-italic-font', '--disable-author', '--disable-fastskip']
     run('build.py', *command)
     built = (work / 'build/ffta-us-cn.gba').read_bytes()
     if args.profile == 'exact-reference' and sha(built) != ROM_HASHES['translated']:
@@ -171,6 +182,7 @@ def main():
     publish.mkdir(parents=True, exist_ok=False)
     shutil.copyfile(work / 'output.ips', publish / 'ffta-us-cn.ips')
     report = dict(schema=1, profile=args.profile, input_sha256=ROM_HASHES,
+                  cn_version=args.cn_version,
                   output_sha256=sha(built), patch_sha256=sha((work / 'output.ips').read_bytes()),
                   source_commit=os.environ.get('GITHUB_SHA'), private_input_commit=input_commit,
                   plugin_lock_sha256=sha((ROOT / 'config/plugin-projects.lock.json').read_bytes()),

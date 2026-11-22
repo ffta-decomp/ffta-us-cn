@@ -129,5 +129,41 @@ class SplashAuthorTests(unittest.TestCase):
         self.assertNotEqual(final, self.image)
 
 
+class SplashVersionTests(unittest.TestCase):
+    def fixture(self):
+        config = json.loads(splash.VERSION_CONFIG.read_text())
+        bitmap = bytearray(b'\xff\x7f' * (240 * 160))
+        bitmap[2:4] = b'\x34\x12'
+        x, y, width, height = config['bounds']
+        for row, mask in enumerate(config['versions']['1.1']):
+            for col, value in enumerate(mask):
+                if value == '#':
+                    struct.pack_into('<H', bitmap, ((y+row)*240+x+col)*2,
+                                     config['foreground_rgb555'])
+        return bytes(bitmap), config
+
+    def test_version_change_is_bounded_and_round_trips(self):
+        before, config = self.fixture()
+        after, current = splash.version_pixels(before, config, '1.2')
+        self.assertEqual(current, '1.1')
+        x, y, width, height = config['bounds']
+        allowed = {((y+j)*240+x+i)*2+k for j in range(height)
+                   for i in range(width) for k in range(2)}
+        changes = {i for i,(a,b) in enumerate(zip(before,after)) if a != b}
+        self.assertTrue(changes)
+        self.assertLessEqual(changes, allowed)
+        restored, current = splash.version_pixels(after, config)
+        self.assertEqual(current, '1.2')
+        self.assertEqual(restored, before)
+
+    def test_unknown_version_artwork_fails_closed(self):
+        before, config = self.fixture()
+        altered = bytearray(before)
+        x, y, _, _ = config['bounds']
+        struct.pack_into('<H', altered, (y*240+x)*2, 0x1234)
+        with self.assertRaisesRegex(ValueError, 'preimage'):
+            splash.version_pixels(altered, config, '1.2')
+
+
 if __name__ == '__main__':
     unittest.main()

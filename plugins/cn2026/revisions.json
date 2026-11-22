@@ -1,0 +1,4174 @@
+{
+  "schema": "ffta-cn2026-translation-revisions-v1",
+  "version": "cn2026-revisions-1",
+  "author": "隼",
+  "source_archive_sha256": "b0be04b18947cc1bc0e88a6eeb3fc9ae1e0de687b2a9b8e9a4251cdefec3c311",
+  "source_segments_sha256": "c17b6efb84defdae3965257fe82555dc360e3ff1be7b31eb6ae448052e76e912",
+  "base_translation_sha256": "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+  "source_target_claim_sha256": "30f07a30ab17e0154914421b79d44f000f76525f286e02b516a12244bb2ccbda",
+  "scope": "Translation text, its native pointer tables and 16 formerly blank glyph slots. No gameplay, save, shop, growth, AP or fixed-name hooks.",
+  "source_segment_count": 455,
+  "skipped_residue_segments": 1,
+  "patched_bytes": 120624,
+  "glyph_slots": [
+    2690,
+    2691,
+    2692,
+    2693,
+    2694,
+    2695,
+    2696,
+    2697,
+    2698,
+    2699,
+    2700,
+    2701,
+    2702,
+    2742,
+    2743,
+    2744
+  ],
+  "native_font_offset": 4404016,
+  "font_pointer_offset": 78964,
+  "relocation": {
+    "source_offset": 11534336,
+    "destination_offset": 15876096,
+    "bytes": 60,
+    "pointer_rows": [
+      {
+        "table": "content",
+        "index": 13,
+        "rom_offset": 5400244,
+        "original_target": "0x8b00000",
+        "relocated_target": "0x8f24000"
+      },
+      {
+        "table": "content",
+        "index": 62,
+        "rom_offset": 5400440,
+        "original_target": "0x8b00010",
+        "relocated_target": "0x8f24010"
+      },
+      {
+        "table": "content",
+        "index": 296,
+        "rom_offset": 5401376,
+        "original_target": "0x8b00020",
+        "relocated_target": "0x8f24020"
+      },
+      {
+        "table": "content",
+        "index": 694,
+        "rom_offset": 5402968,
+        "original_target": "0x8b00030",
+        "relocated_target": "0x8f24030"
+      }
+    ],
+    "reason": "Avoid overwriting the existing pinyin program at ROM 0xB00000"
+  },
+  "validation": {
+    "decoded_native_records": 14040,
+    "changed_decoded_records": 1115,
+    "new_decode_failures": 0,
+    "pointer_bounds_passed": true,
+    "unchanged_opaque_entries": 13,
+    "limits": "Structural/token round trips; changed dialogue scenes and native save/reload have not been played through."
+  },
+  "fragments": [
+    {
+      "file": "text-0036d691.bin",
+      "rom_offset": 3593873,
+      "bytes": 2,
+      "category": "ptr",
+      "kind": "data",
+      "preimage_sha256": "dd372b4f5f8648aa0baca248ada6e91e90c07a4ad0f5b6353c6c7fa4a45bab1e",
+      "sha256": "9a55edca7a08139a553ccf6273da31accb25152fcd62da8e67701fae1e6ea0ac"
+    },
+    {
+      "file": "text-0036d6bc.bin",
+      "rom_offset": 3593916,
+      "bytes": 7,
+      "category": "ptr",
+      "kind": "data",
+      "preimage_sha256": "606a8289ffa27aadf37a62bf9426447794dbffea29defde128a169e4614e94b6",
+      "sha256": "efaf64cac21b7ec94ce322b53ba37bcf23c87530de1fc475b968329c6117a106"
+    },
+    {
+      "file": "text-00487438.bin",
+      "rom_offset": 4748344,
+      "bytes": 1646,
+      "category": "glyph",
+      "kind": "resource",
+      "preimage_sha256": "534525ac2dde9842b3eb03f7c71936139c8688dfe1f8e62e5d2b175b0fc71a7a",
+      "sha256": "0f3af89bc047cf1d554e2aa1f961e29d7e0933be6395b5da25788072c3615e1b"
+    },
+    {
+      "file": "text-00488e38.bin",
+      "rom_offset": 4755000,
+      "bytes": 366,
+      "category": "glyph",
+      "kind": "resource",
+      "preimage_sha256": "72b4b76fd1bd36a80b7954b98883477e08f98fcccba0852692f4c6741d27d753",
+      "sha256": "4f2e80bb2deca9dfe261880d201732f57a1272f9c54b1873fcedf49484d9960c"
+    },
+    {
+      "file": "text-0052668c.bin",
+      "rom_offset": 5400204,
+      "bytes": 2997,
+      "category": "ptr",
+      "kind": "data",
+      "preimage_sha256": "9d5d4decf7d8dbb18a7241d4ba4b23dc8caa989afde4c5c154313bb82d0b0233",
+      "sha256": "7faeef436a48d6e79fa2681fa7e9fc65ab7e0fa3d8d2e055e6cf8545a9396f45"
+    },
+    {
+      "file": "text-005569ec.bin",
+      "rom_offset": 5597676,
+      "bytes": 2557,
+      "category": "ptr",
+      "kind": "data",
+      "preimage_sha256": "073d3641db6b26b3ea33b7daf36ef1dc86ba9591029dccc781b87bdbca004670",
+      "sha256": "2937ea3e1618db632c362739106ff8436d809e4cc84f530a3b9484679c355f3d"
+    },
+    {
+      "file": "text-0055a7d4.bin",
+      "rom_offset": 5613524,
+      "bytes": 1653,
+      "category": "ptr",
+      "kind": "data",
+      "preimage_sha256": "b7931cc27ee599b97aec270cf8586d3c0e941605262778e151a8cee0e5cb18a9",
+      "sha256": "4c9c2137cd6e3d01dbeec1b2c7e5c8b0dd806bab67bf7936fd97d985b3648933"
+    },
+    {
+      "file": "text-005680e8.bin",
+      "rom_offset": 5669096,
+      "bytes": 2886,
+      "category": "ptr",
+      "kind": "data",
+      "preimage_sha256": "d8408eb0d3784ef59c4b151b380db5a7fb7d7c1768e2c06331bd270e31053231",
+      "sha256": "e9c0b1e1c3eb00349b4e06a2afa9160f0db08b3fbb8ac97d4dac519932de0921"
+    },
+    {
+      "file": "text-009f12c4.bin",
+      "rom_offset": 10425028,
+      "bytes": 46,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "089e48c971e6337a6dc366dee1005e53055ca9e67762cbf3c08f100b66d299fb",
+      "sha256": "35bf741d0a4e0f2f840d8c2f6bfe3fa7c4497c1eb420a9ef6aaacd18f3ecafc4"
+    },
+    {
+      "file": "text-00a39a00.bin",
+      "rom_offset": 10721792,
+      "bytes": 25665,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "53b1f0f7266faa9496c1fb65d3622570e911af86ba6a2ff88dc3e71c4e402614",
+      "sha256": "3efd8fac1dbe5b5266a2a501785a83ae94a90c68e5b44b806135159294cad1ec"
+    },
+    {
+      "file": "text-00a80241.bin",
+      "rom_offset": 11010625,
+      "bytes": 6371,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "51f730271cc2eb4952f6617dca8c2e5f6c68bcd5dd2fc3e205bdd9d8c5c9f2f7",
+      "sha256": "db9a68794a25a0f0ce958b6146f8185e383c2979cba87af11bfffa55efeb3e8c"
+    },
+    {
+      "file": "text-00a824f2.bin",
+      "rom_offset": 11019506,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5209dd6b46fba45afe78717615aa427781625e7a15398c9173714ee38a158be4",
+      "sha256": "37db59cac356cfec5808521b721fcb1c02c678730b652e9fc97e677c8c8756fe"
+    },
+    {
+      "file": "text-00a8273b.bin",
+      "rom_offset": 11020091,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "8ece0dfab69a8bf798dd9dd198f4f2be3ce64cee62b15113a3baea46a7a39790",
+      "sha256": "f67fe57d1a81160fa2d1042a24a9a2bad0906e3640eb0cf8cef43434698fb83c"
+    },
+    {
+      "file": "text-00a82796.bin",
+      "rom_offset": 11020182,
+      "bytes": 3,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "537d85d921a4c68d9482eb8f4e9a23efe4128e7dfe8929271c46db66bcf5acca",
+      "sha256": "297b4ad716f355be5ffbbfc2f2aafd3bdea8d05e3da25870325a203977c5e3c5"
+    },
+    {
+      "file": "text-00a82c60.bin",
+      "rom_offset": 11021408,
+      "bytes": 26,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3171851de644da2dba2d9e3f0d1f07745eae54c6586e17f3a3bf204c992f9166",
+      "sha256": "377d64d8875bdccf75bd30d1195d03fa4088d37ba90fc7755db9960e0d77d15e"
+    },
+    {
+      "file": "text-00a82f88.bin",
+      "rom_offset": 11022216,
+      "bytes": 22,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1db9924aab10e51ddd6cad94ce87e1e53b4457049a5fde153f62ce28125aaad3",
+      "sha256": "8c62b6401102fd578ce0f16eb1966d270bdadb1e026c86d8cbf1eff3ac87941c"
+    },
+    {
+      "file": "text-00a836da.bin",
+      "rom_offset": 11024090,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a837c0.bin",
+      "rom_offset": 11024320,
+      "bytes": 3836,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bb12a572830bf7a14b5efa8c94069e530d94c8946d82335918300f0d5bc814fe",
+      "sha256": "7e0e646184b3ffdb719cb01d679e019b6a0b8581e6ec0acc92b49a690d336640"
+    },
+    {
+      "file": "text-00a84be6.bin",
+      "rom_offset": 11029478,
+      "bytes": 878,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "365ccc075397b81798ca3b43f795921e145aae0325093b044a07f2a13c9a2f33",
+      "sha256": "6280aa696f40f32ff184f55928ce46459597a8929858b645930f7e7584accb0c"
+    },
+    {
+      "file": "text-00a8549c.bin",
+      "rom_offset": 11031708,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a8558e.bin",
+      "rom_offset": 11031950,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cdb32491d892c41ab45e959f4d30efb3db3b88a626529a7b6fbcd941f007b3d8",
+      "sha256": "85738f070ef5187418a277a8e855b3134df68e3dfcbdd28b46a1c844fde5e13b"
+    },
+    {
+      "file": "text-00a855c9.bin",
+      "rom_offset": 11032009,
+      "bytes": 3,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "537d85d921a4c68d9482eb8f4e9a23efe4128e7dfe8929271c46db66bcf5acca",
+      "sha256": "297b4ad716f355be5ffbbfc2f2aafd3bdea8d05e3da25870325a203977c5e3c5"
+    },
+    {
+      "file": "text-00a8589e.bin",
+      "rom_offset": 11032734,
+      "bytes": 4918,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ae029d86a4806ac8225e04677a37bb3da86c848f7b02106242e0d1e5345f2505",
+      "sha256": "5a03b69cfa4bc8051eb2cf75106f76d9f6c1f2c932e8e8cd027dfa585e53027b"
+    },
+    {
+      "file": "text-00a8714a.bin",
+      "rom_offset": 11039050,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a8780a.bin",
+      "rom_offset": 11040778,
+      "bytes": 7358,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "59e1b3791679cbaf4702682566c0ab16c4edd3941c03f8c8672e82f6c86691c2",
+      "sha256": "e19e3ca356da5d23627a569ca57253bfcd13fe0ea7ec6d9427161508d7085656"
+    },
+    {
+      "file": "text-00a898dc.bin",
+      "rom_offset": 11049180,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a899f6.bin",
+      "rom_offset": 11049462,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "78108b2c85a9a976853fc182b8f376e240df0184439c0c526f7a727518773d64",
+      "sha256": "ceb31d4697a6ea6c5b1f1c11d5e80712847b7d989d9b337eaaa24eea470708a2"
+    },
+    {
+      "file": "text-00a8a196.bin",
+      "rom_offset": 11051414,
+      "bytes": 70,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "955396b2341a135a6d502ad6e2878f099922e0efbd7317c884b14fe2f748495b",
+      "sha256": "db08825cb6612ef9850b574fef5bb92ec810389c7b1869f50bcb0c72a5ad3e21"
+    },
+    {
+      "file": "text-00a8a2cb.bin",
+      "rom_offset": 11051723,
+      "bytes": 26,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f19974ffc0381f9dcac2605d46ad9d7cedbc6951c8624fc47a171b06895e757c",
+      "sha256": "886f845bdb4818dd265dc005a1187f66c7d2b4827fdebafc95227f0a51ce3994"
+    },
+    {
+      "file": "text-00a8a3ee.bin",
+      "rom_offset": 11052014,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "727e2fc6604c5c25402880a87285837aef1b0b12efaa5e684e94f155efb12adb",
+      "sha256": "f164ce6a53f4cc651f137bbf512f6d950a7dffc75e38d7c5e709b1f6859821fc"
+    },
+    {
+      "file": "text-00a8a596.bin",
+      "rom_offset": 11052438,
+      "bytes": 16,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "dac8b952d26321fb7f6c8fac65f7de29778666d35700020bfd61913786c7300b",
+      "sha256": "10b8e8b2f5eb22c832c3f113ed8f6b603e98a5565c6d147ad2a700845ecb1a39"
+    },
+    {
+      "file": "text-00a8a66e.bin",
+      "rom_offset": 11052654,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a8b0d6.bin",
+      "rom_offset": 11055318,
+      "bytes": 73,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "275933c2a576d57b6ec7683da9f636a595f03ff81fe064adb943623a9d0fbb01",
+      "sha256": "7a290a15f16fdbcabcccf5a18c8b8bc491dc39489c86e5646e87bcea45567b1d"
+    },
+    {
+      "file": "text-00a8b37a.bin",
+      "rom_offset": 11055994,
+      "bytes": 45,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c31e7a618ef892b8d0d91be72274717bedd08cfd2ae4b8de20f27afbb394fef0",
+      "sha256": "cab08996125acb1fbfc41d01f82108be9f3055bbbb38112d710e298aad8729c5"
+    },
+    {
+      "file": "text-00a8c56a.bin",
+      "rom_offset": 11060586,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "38aa85e0425db7dcd3c85345e4809656f80f4b62c1111282d157ead93fe92c44",
+      "sha256": "5c6afeeb4457720fe350a51dacc329384fe81c8be62207b013b512e3db29c1f2"
+    },
+    {
+      "file": "text-00a8c79a.bin",
+      "rom_offset": 11061146,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d7781e2a666323e1a88305571443d89e0223b3571c4af428a1468371189feff9",
+      "sha256": "f22d9a93bfb1e8bf634f5126f9b7e2571efe7c64fe9bcfad7340368f0961f60d"
+    },
+    {
+      "file": "text-00a8c7ff.bin",
+      "rom_offset": 11061247,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "38aa85e0425db7dcd3c85345e4809656f80f4b62c1111282d157ead93fe92c44",
+      "sha256": "5c6afeeb4457720fe350a51dacc329384fe81c8be62207b013b512e3db29c1f2"
+    },
+    {
+      "file": "text-00a8c8a7.bin",
+      "rom_offset": 11061415,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f3d3a36636da7f316d8a15d12386bb0eda969bf2780b97ed9e2a9c320fe527d6",
+      "sha256": "153fbe57011b0359ffe8bc85268587bb913e4820e5370adcca7e5292072d7af7"
+    },
+    {
+      "file": "text-00a8ca0f.bin",
+      "rom_offset": 11061775,
+      "bytes": 56,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "94bc915616ba1b82c45cac41067ea8ed61e956e2428b60dc2df8216a27333738",
+      "sha256": "29fcd3b3bbccec13d3ed7b5ab9fc3a1a75197b486b28b5dc6cc0a0e131cc8ff6"
+    },
+    {
+      "file": "text-00a8ca69.bin",
+      "rom_offset": 11061865,
+      "bytes": 33,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "57dd238fb261bfed24a767c62f45d6388053474e358d4081aaa710c7e63b0109",
+      "sha256": "58850e69f7bda1ee0ba6635a39f736ac86ba42fc6f86aefe02c0d75b513e53c3"
+    },
+    {
+      "file": "text-00a8cae9.bin",
+      "rom_offset": 11061993,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3cc60a847aa3ecbda481320aa06d3f9f65321bfbd1fa022c9a340495b0049111",
+      "sha256": "562da8962f36bd4d20872c765cc8b2bb24f77e4930df747750eb6bee9da1b863"
+    },
+    {
+      "file": "text-00a8cbc7.bin",
+      "rom_offset": 11062215,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "dcda0dcd06194246f4fdc6bf58242b0df933a8733fcc3f0fe129559f5a326ee7",
+      "sha256": "daf5f63825c2dcd209f8e37911c52ef87364a51e3bd2304f064dc00bc55f878b"
+    },
+    {
+      "file": "text-00a8d239.bin",
+      "rom_offset": 11063865,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d7781e2a666323e1a88305571443d89e0223b3571c4af428a1468371189feff9",
+      "sha256": "f22d9a93bfb1e8bf634f5126f9b7e2571efe7c64fe9bcfad7340368f0961f60d"
+    },
+    {
+      "file": "text-00a8d288.bin",
+      "rom_offset": 11063944,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c5a786cf6902c791a4b2424755dfbb0450300298f2b9d5cd9be32094736b225e",
+      "sha256": "da67f50b6f6f9cbc5524846a6ce5a317c8490969da623a695b2c44a621a5fa29"
+    },
+    {
+      "file": "text-00a8d30b.bin",
+      "rom_offset": 11064075,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c5a786cf6902c791a4b2424755dfbb0450300298f2b9d5cd9be32094736b225e",
+      "sha256": "da67f50b6f6f9cbc5524846a6ce5a317c8490969da623a695b2c44a621a5fa29"
+    },
+    {
+      "file": "text-00a8d3c5.bin",
+      "rom_offset": 11064261,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9aa6ef5efa2db0f301133b8861b18c43a6cfdf1817bd71caab435e416520a02f",
+      "sha256": "80c411da1c6ddff6297bf4ea31e1c5374d13c1d204352092a189f865e0aa4060"
+    },
+    {
+      "file": "text-00a8d673.bin",
+      "rom_offset": 11064947,
+      "bytes": 67,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3b235ad4c00aeb0050bca6000b3e666542ead01b75577505eba2eb90875bdde8",
+      "sha256": "4eb1fe8d21f5a6f03e11798ee5a022661d5e5227998fb18435d7a08267ab1fbf"
+    },
+    {
+      "file": "text-00a8e517.bin",
+      "rom_offset": 11068695,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a8ea48.bin",
+      "rom_offset": 11070024,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "eb04d241b7e68b49eecf1a04940408938405f4baf63305cfa9487c50f0041b79",
+      "sha256": "d7fd429e82be28e4e868f0a9754dd0ec22385772528c5e15d3f32f71d9852fd6"
+    },
+    {
+      "file": "text-00a8ebcb.bin",
+      "rom_offset": 11070411,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a8ed02.bin",
+      "rom_offset": 11070722,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "eb04d241b7e68b49eecf1a04940408938405f4baf63305cfa9487c50f0041b79",
+      "sha256": "d7fd429e82be28e4e868f0a9754dd0ec22385772528c5e15d3f32f71d9852fd6"
+    },
+    {
+      "file": "text-00a8f3b5.bin",
+      "rom_offset": 11072437,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f7afe250e96693e6f9efdc686fd36b87da74c0b868773ab1343f607fb398a69b",
+      "sha256": "8e8b7082c8ab64b2af79c0f4dc030544e781564f4402ac8fd0ecf91df630ae8a"
+    },
+    {
+      "file": "text-00a8f6a7.bin",
+      "rom_offset": 11073191,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a912ea.bin",
+      "rom_offset": 11080426,
+      "bytes": 11,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cc13305b470dfa538985032cefb6fe019797bc421b19324a48892533b626ceb8",
+      "sha256": "9c3d868e44b2a9512919c4fe12f5f95ede404d08d613abfc8c92e4bedc7eacc6"
+    },
+    {
+      "file": "text-00a91474.bin",
+      "rom_offset": 11080820,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ce97fdf2e651497299ac20b18cfbc814b4c86f45bffc48144a2f5538ccd61f6e",
+      "sha256": "27de413925d2b27f65173013d7307223ad83fd6a41a6b46586f6da72403d2478"
+    },
+    {
+      "file": "text-00a915b0.bin",
+      "rom_offset": 11081136,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a915e8.bin",
+      "rom_offset": 11081192,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6178d1d6da1ed3e836aa11704f65062faa5c7f09e006c8c6efa0f5d776305be0",
+      "sha256": "639f9b79e8c2f9cc0af090b3519f9a642bc36afc24db2023575d33e64f37061c"
+    },
+    {
+      "file": "text-00a916c0.bin",
+      "rom_offset": 11081408,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "004661cbc913ca9778763de5aa2d4a91ff6b865ec198ae1b382444b946394952",
+      "sha256": "f953a32567b4e964690424c424db58cc8deb3904435f0f24fdb98b9f6c039939"
+    },
+    {
+      "file": "text-00a91800.bin",
+      "rom_offset": 11081728,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a93982.bin",
+      "rom_offset": 11090306,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ce97fdf2e651497299ac20b18cfbc814b4c86f45bffc48144a2f5538ccd61f6e",
+      "sha256": "27de413925d2b27f65173013d7307223ad83fd6a41a6b46586f6da72403d2478"
+    },
+    {
+      "file": "text-00a93f52.bin",
+      "rom_offset": 11091794,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cb839666c5e50d8309c8fec1935eaf61d9c22b81337e60a6baf7e526ae3662c0",
+      "sha256": "6b391aa7824bd8a6666ba70c062371a3a163396134c6fd238ef0ea21dca3c49f"
+    },
+    {
+      "file": "text-00a9404d.bin",
+      "rom_offset": 11092045,
+      "bytes": 38,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d760133759a71cce5365f2f8aa7b54ec2087c7d1a3954b68eb808d7f6a48615c",
+      "sha256": "a1c5846ca1c81d35464d5e0dec0e774eb5b51790781d0e08e9b425afd52d42bb"
+    },
+    {
+      "file": "text-00a941c8.bin",
+      "rom_offset": 11092424,
+      "bytes": 31,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "b0a82d7a139b8ef8ca70b6f89ecc82c2a2ce66b6e21d894a359812a3bd1ed1ec",
+      "sha256": "fe94680266916c69a9b536c1ef5bb537c28d82eade38d1ed8dd954ae2d5bf095"
+    },
+    {
+      "file": "text-00a9424d.bin",
+      "rom_offset": 11092557,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a94288.bin",
+      "rom_offset": 11092616,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a9433a.bin",
+      "rom_offset": 11092794,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a943d0.bin",
+      "rom_offset": 11092944,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a945d2.bin",
+      "rom_offset": 11093458,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a94644.bin",
+      "rom_offset": 11093572,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a947a1.bin",
+      "rom_offset": 11093921,
+      "bytes": 33,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7a4d76fe42630d01e5cd4e431de9536a4a28806096b8b23711d15813501c7317",
+      "sha256": "66c4aa64ffb82d9159fdf307ce255885449bebe3226ef92c8ae5289069800363"
+    },
+    {
+      "file": "text-00a9485a.bin",
+      "rom_offset": 11094106,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00a948bd.bin",
+      "rom_offset": 11094205,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "33fe8d28db8083508945c7fbd06ecadd1c569702de45c7766439e1710cbe5e62",
+      "sha256": "7c29c8dc89c4068fb7e0337a2f458e2167077036c93ab7b0e6052a2c480ceae9"
+    },
+    {
+      "file": "text-00a949d1.bin",
+      "rom_offset": 11094481,
+      "bytes": 16,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "305ba834a65f25d8f8542dab7f8b8e363b263ea2d5a9839814106295e7ec1541",
+      "sha256": "f7b6b50de4ef7199ecdfe435b21d7901a58b79e10a1370e60181ad5f25dd03aa"
+    },
+    {
+      "file": "text-00a94f73.bin",
+      "rom_offset": 11095923,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9518f.bin",
+      "rom_offset": 11096463,
+      "bytes": 605,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1064713d0d14289a766f49c00b1735db19abc8bfd89ada00e451deaa0dfe00fe",
+      "sha256": "e3902e7e971158ea9d721178de1b3ae6e85cca7f92c61fb7942e6877c7a7c147"
+    },
+    {
+      "file": "text-00a961f6.bin",
+      "rom_offset": 11100662,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a96303.bin",
+      "rom_offset": 11100931,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a97a26.bin",
+      "rom_offset": 11106854,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6b65897f823bb27b9893da4adc0d918ce86206abd8bd6356cb448bc6be1f94d5",
+      "sha256": "5c0e084a8303550e3a2089f4b7684780750d001859f95ed6ff21b2c78cf3536f"
+    },
+    {
+      "file": "text-00a97a86.bin",
+      "rom_offset": 11106950,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a97be5.bin",
+      "rom_offset": 11107301,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a97ced.bin",
+      "rom_offset": 11107565,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a97d45.bin",
+      "rom_offset": 11107653,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a97ded.bin",
+      "rom_offset": 11107821,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a97f3a.bin",
+      "rom_offset": 11108154,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a98019.bin",
+      "rom_offset": 11108377,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "59258988ecb5903e96bf85dd4ce25d2502f2fec7fcd099e587911a80d3726fd3",
+      "sha256": "1d15abc561f0c14dea7f824893d73ae3d2b2ebb1af600e7075da7c9ae543129c"
+    },
+    {
+      "file": "text-00a980ac.bin",
+      "rom_offset": 11108524,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6073cf832c6f5189c235019aa584d0c80192f8e38c0624430f398534147f5769",
+      "sha256": "74d695fdb74d3f74307b76440c32e01d05a6e427e5949021b35fd50d63068aff"
+    },
+    {
+      "file": "text-00a9824a.bin",
+      "rom_offset": 11108938,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9842d.bin",
+      "rom_offset": 11109421,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a98459.bin",
+      "rom_offset": 11109465,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a98582.bin",
+      "rom_offset": 11109762,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a987a0.bin",
+      "rom_offset": 11110304,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ce97fdf2e651497299ac20b18cfbc814b4c86f45bffc48144a2f5538ccd61f6e",
+      "sha256": "27de413925d2b27f65173013d7307223ad83fd6a41a6b46586f6da72403d2478"
+    },
+    {
+      "file": "text-00a988b2.bin",
+      "rom_offset": 11110578,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9a428.bin",
+      "rom_offset": 11117608,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9a7cc.bin",
+      "rom_offset": 11118540,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9a830.bin",
+      "rom_offset": 11118640,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9ab1a.bin",
+      "rom_offset": 11119386,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9ac32.bin",
+      "rom_offset": 11119666,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9ac58.bin",
+      "rom_offset": 11119704,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9ad86.bin",
+      "rom_offset": 11120006,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9b009.bin",
+      "rom_offset": 11120649,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9bb7b.bin",
+      "rom_offset": 11123579,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9c9bb.bin",
+      "rom_offset": 11127227,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ce97fdf2e651497299ac20b18cfbc814b4c86f45bffc48144a2f5538ccd61f6e",
+      "sha256": "27de413925d2b27f65173013d7307223ad83fd6a41a6b46586f6da72403d2478"
+    },
+    {
+      "file": "text-00a9cace.bin",
+      "rom_offset": 11127502,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9cf29.bin",
+      "rom_offset": 11128617,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9d589.bin",
+      "rom_offset": 11130249,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9e2da.bin",
+      "rom_offset": 11133658,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9e4b4.bin",
+      "rom_offset": 11134132,
+      "bytes": 48,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2012fcf6b78469e3bf433fede9ee2f54574c9f023cdb62e65b6ac69721fb2e18",
+      "sha256": "280976b392a1a8e16439473f70ab8f06e815853609c5ec9fcf67d4160e12f0be"
+    },
+    {
+      "file": "text-00a9eb24.bin",
+      "rom_offset": 11135780,
+      "bytes": 44,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e6e822d6b098572973a7f49e65147c7ead23e4ce844ed728c7e7c2a46faf39a5",
+      "sha256": "a94cca3d6e162a2d3ba9c424313b29bcae9f5db21a00d5eb1d58d982d4095424"
+    },
+    {
+      "file": "text-00a9f6a7.bin",
+      "rom_offset": 11138727,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9f6d2.bin",
+      "rom_offset": 11138770,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00a9f982.bin",
+      "rom_offset": 11139458,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00aa0491.bin",
+      "rom_offset": 11142289,
+      "bytes": 846,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1b9224a147fae592e1eee5bae16ff4b5974df6b5f53599a8a3f42c97995282f1",
+      "sha256": "51382a01c1331cf549844077ed66f33883a3615883f3eb8b989666b39423935f"
+    },
+    {
+      "file": "text-00aa09c1.bin",
+      "rom_offset": 11143617,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00aa24db.bin",
+      "rom_offset": 11150555,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3dd5b3bc8566e631e1c94d8020aa846bbecda418f2fb91c35703d5ba5af78f0b",
+      "sha256": "4133eb3fcda1845009a403c9c399d7e231b0f16b22b4c4c62b87170eb37fc9bd"
+    },
+    {
+      "file": "text-00aa25ec.bin",
+      "rom_offset": 11150828,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "727e2fc6604c5c25402880a87285837aef1b0b12efaa5e684e94f155efb12adb",
+      "sha256": "f164ce6a53f4cc651f137bbf512f6d950a7dffc75e38d7c5e709b1f6859821fc"
+    },
+    {
+      "file": "text-00aa2c26.bin",
+      "rom_offset": 11152422,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "fc00d657a8c0daa4e0c3d2f63e8beeb21911957b687c4536888ff37a15599b24",
+      "sha256": "25cc765bc6d57437958a08f848735559ec8b65d681cc4870f5033ead1a38cc78"
+    },
+    {
+      "file": "text-00aa356a.bin",
+      "rom_offset": 11154794,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2c4a8fec4014bb503549ece9f136cf846517d3294b1440163002a38fecb3c9b4",
+      "sha256": "e5481df4c60e300c2f26bc95b7aefbaabb6a4a13aaea75de9b366aecf178e83c"
+    },
+    {
+      "file": "text-00aa3b07.bin",
+      "rom_offset": 11156231,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "8558d093373af3d2a48380436cbf1278577020cb354e369c7712e06d96b84d91",
+      "sha256": "b6f465af9409457c7eff0a8db31851a098c2a8b2cbb962430452014658ad9397"
+    },
+    {
+      "file": "text-00aa4a7c.bin",
+      "rom_offset": 11160188,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3c27140e6e3d4d74f2f672000317bcfd4573bb499b317112d3fc48c381ecae5e",
+      "sha256": "1a89fdd43229292cf9fd6414c7416d43b9153f7b68fed388347de0d811cf18e7"
+    },
+    {
+      "file": "text-00aa4cb3.bin",
+      "rom_offset": 11160755,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7890bcef95aa94b4c5449e51de2396e295796583a7d13c801b216d6ae2a15e3c",
+      "sha256": "d6c1b374d0be8761874e7fd736980e63bc9003165064d1384e82399f83e2cfed"
+    },
+    {
+      "file": "text-00aa54da.bin",
+      "rom_offset": 11162842,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7429ae25761dc9d9b7f3699a399bfaf82f1be8d3586c484fd90eb8a09e83de5a",
+      "sha256": "f0eae1a55b9e67f27e0ba80ca14feb1e7de0de89734cc75275971b4c2e7b4bce"
+    },
+    {
+      "file": "text-00aa59c2.bin",
+      "rom_offset": 11164098,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ebe560efec0a9d86b4cd8dc2c33e9af274318c2c039aae41dbdde4ee0e1ed141",
+      "sha256": "0137165b8660a0a72e3fb196a42a8121921e582bbcc5b6755f367e5135ff410a"
+    },
+    {
+      "file": "text-00aa5a1a.bin",
+      "rom_offset": 11164186,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "517252baff27b8cf98960fe1dcab94b5fcd52e62c6b892268897f556b7ac3051",
+      "sha256": "c79b80b3b3fb13517c142726d8a5eac140af7a35951cda310829ba3357730c4d"
+    },
+    {
+      "file": "text-00aa5b35.bin",
+      "rom_offset": 11164469,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5af89335278bc3ecaef2ae80e422d89067452edde508cbf2af49be00b2a4a093",
+      "sha256": "1a1bd803cb4c8bcd8dd85be90260e9d1481b6e659ae790b506f08e80d889d454"
+    },
+    {
+      "file": "text-00aa5bd7.bin",
+      "rom_offset": 11164631,
+      "bytes": 38,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9cd2ef5a177777e444b699cfded99cade4344f14fd824f58fb05929a1fb8dec3",
+      "sha256": "61b360175c2343dffeccdc8bb40df3fec7becf0f56e8a37609631ed8b90454b8"
+    },
+    {
+      "file": "text-00aa628a.bin",
+      "rom_offset": 11166346,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6ea24ca3e6a9f53c3eabbe688c080b2d54a8ccd1988fa38379755c2add7545b9",
+      "sha256": "277d78827a58c7241536ba2d9a8ea8d15569e163af720ed20715d188425649ad"
+    },
+    {
+      "file": "text-00aa64ad.bin",
+      "rom_offset": 11166893,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a14a7ccd61fc1f5dfe9ff4a6f28bf265d63317748d7a50fe0c1faa288afe3161",
+      "sha256": "93f1a2a4642b2efd7b8aa81d2c1fba23461beed9223df7e4b7edbe7966173459"
+    },
+    {
+      "file": "text-00aa6631.bin",
+      "rom_offset": 11167281,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a14a7ccd61fc1f5dfe9ff4a6f28bf265d63317748d7a50fe0c1faa288afe3161",
+      "sha256": "93f1a2a4642b2efd7b8aa81d2c1fba23461beed9223df7e4b7edbe7966173459"
+    },
+    {
+      "file": "text-00aa6820.bin",
+      "rom_offset": 11167776,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a14a7ccd61fc1f5dfe9ff4a6f28bf265d63317748d7a50fe0c1faa288afe3161",
+      "sha256": "93f1a2a4642b2efd7b8aa81d2c1fba23461beed9223df7e4b7edbe7966173459"
+    },
+    {
+      "file": "text-00aa6c60.bin",
+      "rom_offset": 11168864,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "0e64f20bec8c14c0c159a0f8155b1afb4ae9feba8a41b0ff8b467d852698184c",
+      "sha256": "6acc6c2330348826da8eb6fbe46684153eb93e6910210c71956efe8b255f83a6"
+    },
+    {
+      "file": "text-00aa6df8.bin",
+      "rom_offset": 11169272,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ddf48d461292e4588322706afd912c5000cef80bcc958b35ba0883e00541af5a",
+      "sha256": "6a5a035651d6a2e8a3e4dd38ef9114f9560d99efd58a069f9b5cb35706f14d5f"
+    },
+    {
+      "file": "text-00aa6fdf.bin",
+      "rom_offset": 11169759,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ddf48d461292e4588322706afd912c5000cef80bcc958b35ba0883e00541af5a",
+      "sha256": "6a5a035651d6a2e8a3e4dd38ef9114f9560d99efd58a069f9b5cb35706f14d5f"
+    },
+    {
+      "file": "text-00aa7026.bin",
+      "rom_offset": 11169830,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e0034345b870232f4eaa97e686ec1d7109a6c48f2e4b1d7df89d03b36e6212af",
+      "sha256": "6306949c12e886e1c99ef6c9b08acb67e9daf31e6d261b743aa8d369252f3da3"
+    },
+    {
+      "file": "text-00aa72c8.bin",
+      "rom_offset": 11170504,
+      "bytes": 22,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "0f35cad3f0b1c221dbda8cb9451de953c2c605790437c83f6c220e3e3db2e7c8",
+      "sha256": "7a4fe3ec79d469b1cbe1840e9180ef048833cfcd87e8253e708c64a6e5b6fb9a"
+    },
+    {
+      "file": "text-00aa7682.bin",
+      "rom_offset": 11171458,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "569a9fcd35e13c1a37ce0fb3d39a8ab7db4d8fa258ada1f04dee69ab80d5b4ac",
+      "sha256": "372e9d478f20c7a5b461c2ca2062f9f6b586fb3ad95bdec3348462140d866bf2"
+    },
+    {
+      "file": "text-00aa784e.bin",
+      "rom_offset": 11171918,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "569a9fcd35e13c1a37ce0fb3d39a8ab7db4d8fa258ada1f04dee69ab80d5b4ac",
+      "sha256": "372e9d478f20c7a5b461c2ca2062f9f6b586fb3ad95bdec3348462140d866bf2"
+    },
+    {
+      "file": "text-00aa7af9.bin",
+      "rom_offset": 11172601,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "b2803eb8f81f2a7154a4713e44d822a3320c62e126f0e33122919c0e0da1593c",
+      "sha256": "487af31aa785146cef15dabbda4e722d60a5cb2860333686dd82a05329fa24a1"
+    },
+    {
+      "file": "text-00aa9f54.bin",
+      "rom_offset": 11181908,
+      "bytes": 77,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "10e4d6316bde6df9966bd066616e6fdc75c0a954c0e0680f6bff2a07383ef310",
+      "sha256": "831a9492feddcfdf65965f0dac871816e2e64e6027a9847014befd94ab1a16b0"
+    },
+    {
+      "file": "text-00aaa203.bin",
+      "rom_offset": 11182595,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00aaa294.bin",
+      "rom_offset": 11182740,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00aaa2c8.bin",
+      "rom_offset": 11182792,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00aaa31a.bin",
+      "rom_offset": 11182874,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00aaa36e.bin",
+      "rom_offset": 11182958,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00aaa971.bin",
+      "rom_offset": 11184497,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaa9c9.bin",
+      "rom_offset": 11184585,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaa9f3.bin",
+      "rom_offset": 11184627,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaaa21.bin",
+      "rom_offset": 11184673,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaaa7b.bin",
+      "rom_offset": 11184763,
+      "bytes": 34,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ed8b05f29e7b180dbcf1d3b9f8d68254f64fa912f2751338ade9de497496ab11",
+      "sha256": "6afbea9d5585a2233e7e7c6907c9d53603eb9f059c318d4d836f309a278a5d1c"
+    },
+    {
+      "file": "text-00aaaac3.bin",
+      "rom_offset": 11184835,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaab50.bin",
+      "rom_offset": 11184976,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaaba2.bin",
+      "rom_offset": 11185058,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aaac89.bin",
+      "rom_offset": 11185289,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab0e2.bin",
+      "rom_offset": 11186402,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab185.bin",
+      "rom_offset": 11186565,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab1ce.bin",
+      "rom_offset": 11186638,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab266.bin",
+      "rom_offset": 11186790,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab292.bin",
+      "rom_offset": 11186834,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab2ce.bin",
+      "rom_offset": 11186894,
+      "bytes": 38,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5780a41a7dbc2c1b1c126665b6b3bd8ea4c5a6ad06694b353eb7aa86646cd712",
+      "sha256": "5218fbf812814c2b9b21cb08fc2b3784340b5e74beb8346f5384fb696f956e65"
+    },
+    {
+      "file": "text-00aab334.bin",
+      "rom_offset": 11186996,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab371.bin",
+      "rom_offset": 11187057,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab3df.bin",
+      "rom_offset": 11187167,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab42a.bin",
+      "rom_offset": 11187242,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3cb65531585ba07eed0c72c88ff9ca0eb38da9bd527a23bf81248911eb5e27d3",
+      "sha256": "5a74664608b3d5b3a8840db9c4c29cf81515346d3d0ababd450704850bcef41f"
+    },
+    {
+      "file": "text-00aab494.bin",
+      "rom_offset": 11187348,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab4d3.bin",
+      "rom_offset": 11187411,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab54c.bin",
+      "rom_offset": 11187532,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab572.bin",
+      "rom_offset": 11187570,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab63c.bin",
+      "rom_offset": 11187772,
+      "bytes": 56,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "235b657043049a85d571f5b728a8ed1de689c55bdd16aca3be4801e6c5d89072",
+      "sha256": "23268aef22ee1e6241a32c700fbcaeee804f4ba9ec8fdcc5a193d66f57291f74"
+    },
+    {
+      "file": "text-00aab694.bin",
+      "rom_offset": 11187860,
+      "bytes": 138,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "90d48fbfefee544b71948ce0be466ebca639ecc0d7a03c082e54f02776db4dea",
+      "sha256": "91712f28b01ff57f4facf1d42d5a326c0ec629feeff637d590d997f868d3eaf6"
+    },
+    {
+      "file": "text-00aab81e.bin",
+      "rom_offset": 11188254,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab850.bin",
+      "rom_offset": 11188304,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00aab9a3.bin",
+      "rom_offset": 11188643,
+      "bytes": 1090,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "547f66d9e99a94fa71411923ef84ea362c9e773dcd4f359b2daa2ae110769f7d",
+      "sha256": "6898f4c5e3ac1eea84a62899bb69f6f7a7a116c9a2f170c975e471b432f5e384"
+    },
+    {
+      "file": "text-00aad51f.bin",
+      "rom_offset": 11195679,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00aae43b.bin",
+      "rom_offset": 11199547,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00aae4e8.bin",
+      "rom_offset": 11199720,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a82a4d1e3586b05e15c1cc5ee7149460fbc63ec38db5e23aded7ce495c1df6f9",
+      "sha256": "2f4eabec8fd7940734c0cbaa41762d3866884cbcbf3d163d04c2eb80145e5eb5"
+    },
+    {
+      "file": "text-00ab018b.bin",
+      "rom_offset": 11207051,
+      "bytes": 74,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d624a17709de708d914b81d7164ea377040dfab08de638fce72923231a9e7be8",
+      "sha256": "e7a831342e390c964695f07018e7f01568a6deb77941a7cbc036c33f18c7ad91"
+    },
+    {
+      "file": "text-00ab0d9f.bin",
+      "rom_offset": 11210143,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ab0e1b.bin",
+      "rom_offset": 11210267,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ab0eca.bin",
+      "rom_offset": 11210442,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c9883ea1495a61a8104f1774786a69316a86f67fb6d2becb2d47f1083437e0fa",
+      "sha256": "ebd32edb173bb10466c0706346e25a925cfea3641ca550c576b3b1955adda930"
+    },
+    {
+      "file": "text-00ab0f46.bin",
+      "rom_offset": 11210566,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "96a2ff82420691b1e2870342e11ae9fca0c94c605c73fd8c4eafd3755ca30c21",
+      "sha256": "11cfdd5b603b41466d471348f8c6ebf83d53adb7688f1d9d703710be2c8edd2f"
+    },
+    {
+      "file": "text-00ab190c.bin",
+      "rom_offset": 11213068,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e18d4262a86dcd66cdb0beffcadab4bb6c70cd8b08b4aabcb6c0ba36429e0409",
+      "sha256": "d13608335015629fce638d16a1e6384eb879bd002e73973f777499d35d0f7b4c"
+    },
+    {
+      "file": "text-00ab1940.bin",
+      "rom_offset": 11213120,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e18d4262a86dcd66cdb0beffcadab4bb6c70cd8b08b4aabcb6c0ba36429e0409",
+      "sha256": "d13608335015629fce638d16a1e6384eb879bd002e73973f777499d35d0f7b4c"
+    },
+    {
+      "file": "text-00ab1971.bin",
+      "rom_offset": 11213169,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e18d4262a86dcd66cdb0beffcadab4bb6c70cd8b08b4aabcb6c0ba36429e0409",
+      "sha256": "d13608335015629fce638d16a1e6384eb879bd002e73973f777499d35d0f7b4c"
+    },
+    {
+      "file": "text-00ab19ad.bin",
+      "rom_offset": 11213229,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e18d4262a86dcd66cdb0beffcadab4bb6c70cd8b08b4aabcb6c0ba36429e0409",
+      "sha256": "d13608335015629fce638d16a1e6384eb879bd002e73973f777499d35d0f7b4c"
+    },
+    {
+      "file": "text-00ab19d9.bin",
+      "rom_offset": 11213273,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e18d4262a86dcd66cdb0beffcadab4bb6c70cd8b08b4aabcb6c0ba36429e0409",
+      "sha256": "d13608335015629fce638d16a1e6384eb879bd002e73973f777499d35d0f7b4c"
+    },
+    {
+      "file": "text-00ab1a09.bin",
+      "rom_offset": 11213321,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e18d4262a86dcd66cdb0beffcadab4bb6c70cd8b08b4aabcb6c0ba36429e0409",
+      "sha256": "d13608335015629fce638d16a1e6384eb879bd002e73973f777499d35d0f7b4c"
+    },
+    {
+      "file": "text-00ab42fb.bin",
+      "rom_offset": 11223803,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3cc60a847aa3ecbda481320aa06d3f9f65321bfbd1fa022c9a340495b0049111",
+      "sha256": "562da8962f36bd4d20872c765cc8b2bb24f77e4930df747750eb6bee9da1b863"
+    },
+    {
+      "file": "text-00ab445b.bin",
+      "rom_offset": 11224155,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3cc60a847aa3ecbda481320aa06d3f9f65321bfbd1fa022c9a340495b0049111",
+      "sha256": "cb6d320d4a19c7769f4d91cce7f5e3e44d25e9dcb6e410d8e2cce5c6f43d98c0"
+    },
+    {
+      "file": "text-00ab44e7.bin",
+      "rom_offset": 11224295,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3cc60a847aa3ecbda481320aa06d3f9f65321bfbd1fa022c9a340495b0049111",
+      "sha256": "4e5318ea94134dad7495a7ed6c71b34991bb1c41de26eb9ca2f3b5e1a479478d"
+    },
+    {
+      "file": "text-00ab485a.bin",
+      "rom_offset": 11225178,
+      "bytes": 50,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6909ac1586d2cfe50f193f384f77161e94e0827c527a3b0ebb98ad8a0c34855a",
+      "sha256": "5f8788bf1711098dfc30cef251c888d37b6ceee05e64fc289fab4456caac92e4"
+    },
+    {
+      "file": "text-00ab4fce.bin",
+      "rom_offset": 11227086,
+      "bytes": 54,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "abe3d216874eaa8de8efa0dc7be264d054c0f5d7a109fbb0b309c53371eea508",
+      "sha256": "3323a9e296bfaf0197e8be7d261d17d864480fcfa9cd6073a3a2c49643c29148"
+    },
+    {
+      "file": "text-00ab509a.bin",
+      "rom_offset": 11227290,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cb3736919de5cb5375c01843f70e27df61442b9c312726e247537129afe85665",
+      "sha256": "c59f268b9eb0090346035aef7aae50f96203535202ecc7f8144121772695358a"
+    },
+    {
+      "file": "text-00ab5a9c.bin",
+      "rom_offset": 11229852,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ab5bad.bin",
+      "rom_offset": 11230125,
+      "bytes": 64,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3543e122d7017cf0b4bef09c09e0402732ba913bf871aeca45ad4577c57afaee",
+      "sha256": "e99d0fee44a0eeca61a6579113f236384a1c217f6f4b25dee2e9ba6fff287321"
+    },
+    {
+      "file": "text-00ab5c2b.bin",
+      "rom_offset": 11230251,
+      "bytes": 157,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "51607c6a6bc05b8ebef513bc7db540696aa8c84c49e408982c1c2ff71522089a",
+      "sha256": "3d990a76d25972c3e6ed5f18328542f770ce8bb78fe0585add8c74effbfa5788"
+    },
+    {
+      "file": "text-00ab616f.bin",
+      "rom_offset": 11231599,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ce97fdf2e651497299ac20b18cfbc814b4c86f45bffc48144a2f5538ccd61f6e",
+      "sha256": "27de413925d2b27f65173013d7307223ad83fd6a41a6b46586f6da72403d2478"
+    },
+    {
+      "file": "text-00ab86b2.bin",
+      "rom_offset": 11241138,
+      "bytes": 24,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "420748039e409142a134b045d33e3655db11c44add061b2dd21e32510ca16446",
+      "sha256": "3c4b3131b1e402a289e033a6addcd05571f4cb75fc194c18cf2812d370d7da60"
+    },
+    {
+      "file": "text-00ab8833.bin",
+      "rom_offset": 11241523,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ab88c2.bin",
+      "rom_offset": 11241666,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ab892a.bin",
+      "rom_offset": 11241770,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ce97fdf2e651497299ac20b18cfbc814b4c86f45bffc48144a2f5538ccd61f6e",
+      "sha256": "27de413925d2b27f65173013d7307223ad83fd6a41a6b46586f6da72403d2478"
+    },
+    {
+      "file": "text-00ab9237.bin",
+      "rom_offset": 11244087,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ab9a68.bin",
+      "rom_offset": 11246184,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9177c783dd6b7a877dd2854ca188e904d8d5d340252edb5a26a31109739f9ed5",
+      "sha256": "c44e106a03f05770b68d2f8e387fd1ecaf65fb07b336b846598e4594de735b36"
+    },
+    {
+      "file": "text-00ab9b00.bin",
+      "rom_offset": 11246336,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "8a3e2c80e53a5150eee37dd9b8257b5980596c83e80b0bf83f8983fd6faacd3e",
+      "sha256": "5966bcae4f202bdff391564b018e844eed80ed868e5994808ff2593782b2707a"
+    },
+    {
+      "file": "text-00ab9b35.bin",
+      "rom_offset": 11246389,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "8a3e2c80e53a5150eee37dd9b8257b5980596c83e80b0bf83f8983fd6faacd3e",
+      "sha256": "5966bcae4f202bdff391564b018e844eed80ed868e5994808ff2593782b2707a"
+    },
+    {
+      "file": "text-00abb0f8.bin",
+      "rom_offset": 11251960,
+      "bytes": 31,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f29a116426bb6fa53ac9e78379a71d16bd5e90f53220450d79ce859b0c4e0333",
+      "sha256": "b871bd19049b2dc336016b47d8ec6ad9d3ec42b8ea5f48da56029fe92012b5b0"
+    },
+    {
+      "file": "text-00abb202.bin",
+      "rom_offset": 11252226,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "85c6d1a43b19bccfcaccf0018f4fd5b928933504c6c859d3eb996e450103d0d3",
+      "sha256": "73dca43683335f01a9eff7074d2adb63a5d56ba0f885638c141c8b1eec21d2e2"
+    },
+    {
+      "file": "text-00abb6d1.bin",
+      "rom_offset": 11253457,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1af7c6a63a618c4d26c5cf4e9f21f59f519651cc192e2738a58786086dd84e00",
+      "sha256": "31dc5a2c9644884aac355955569805c11ddbd75ac91573fb365cd186d06d761c"
+    },
+    {
+      "file": "text-00abbecb.bin",
+      "rom_offset": 11255499,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cad20b49a4ffc212b430e52f4ff6d53ddba7e75bdca918014f82903e0e2fdc56",
+      "sha256": "bad7b1adace7c01a765424ff291f65b62f62c7e099cd177cde044ec126dad35a"
+    },
+    {
+      "file": "text-00abbf68.bin",
+      "rom_offset": 11255656,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cad20b49a4ffc212b430e52f4ff6d53ddba7e75bdca918014f82903e0e2fdc56",
+      "sha256": "bad7b1adace7c01a765424ff291f65b62f62c7e099cd177cde044ec126dad35a"
+    },
+    {
+      "file": "text-00abc26f.bin",
+      "rom_offset": 11256431,
+      "bytes": 31,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "24e76b7c01fef9e9686a67f4f382f29cd92c56b725a6cdd4c81a5898090b42c4",
+      "sha256": "135b8f2a8ba177532231b355d0766117a8c952972e33471516c2c48142ceeb5a"
+    },
+    {
+      "file": "text-00abc3ff.bin",
+      "rom_offset": 11256831,
+      "bytes": 50,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d744446cc3723815022c8a429b1992342ba91425ab4da3e2885b5c09cc6ee558",
+      "sha256": "c6ff08f0ff2fd53f63808e9f51e5cb7cf2147c9748ee0196849adf0065f23f3d"
+    },
+    {
+      "file": "text-00abc531.bin",
+      "rom_offset": 11257137,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d9af57c0cd69b1650de2616015f7e323b0260585e0adaac7007eb84962fc5c88",
+      "sha256": "530273f2b40c8813b39edfc2707825ec7f9de3cdc2fea08b9c3225a1e96fa164"
+    },
+    {
+      "file": "text-00abc5e4.bin",
+      "rom_offset": 11257316,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3de5c53517c8a66e45802298846011a6d18626b71b26cb997fd5e67e02b66f68",
+      "sha256": "9ce293062252ce26db48d4242f060f7a339260acae2bc2b1d6451a88a2256623"
+    },
+    {
+      "file": "text-00abc6b6.bin",
+      "rom_offset": 11257526,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d9af57c0cd69b1650de2616015f7e323b0260585e0adaac7007eb84962fc5c88",
+      "sha256": "530273f2b40c8813b39edfc2707825ec7f9de3cdc2fea08b9c3225a1e96fa164"
+    },
+    {
+      "file": "text-00abcbea.bin",
+      "rom_offset": 11258858,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "be52d955657e17732960f6f3bbeb2fa3611124d55ba630a49a58f19816de3e9a",
+      "sha256": "f4758c0d185c421e6fe87f0eee7a90d203a97b9604f161a0421bc27608691e70"
+    },
+    {
+      "file": "text-00abcfab.bin",
+      "rom_offset": 11259819,
+      "bytes": 47,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1b123d7c311c0af4fa6d566d2b8151b79f0b030a39a6bc29bc8b91d49541cd14",
+      "sha256": "6ca05db89e5cb2884d0e873ada0983eafd35cdf594ca395c3430962f21a13421"
+    },
+    {
+      "file": "text-00abd6e7.bin",
+      "rom_offset": 11261671,
+      "bytes": 16,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3b0a46215d79aae3cc1f35f305dd6883fde64130a12ceed26aed2b77353b9052",
+      "sha256": "53c1c9e8573b65db0e3e1c44586d5f9f21cc1ab4062e5bd4b50e5fe6560b2da3"
+    },
+    {
+      "file": "text-00abd781.bin",
+      "rom_offset": 11261825,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9dc59192b75426893a5ddeabe18e4fb92dc81b227e72f8b8f785deb7139a2075",
+      "sha256": "ef34590492aecde205484956b74d98db524b01ce505f27c5cfd16418ad88831f"
+    },
+    {
+      "file": "text-00abd8d1.bin",
+      "rom_offset": 11262161,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6ccb637c8387b4efab6f7c6cd1576606ba428f581ed37e6727f141e464f51a48",
+      "sha256": "c15df91ac0152bb1df65c3f276eebb867f864b0166ad5998c265466468706688"
+    },
+    {
+      "file": "text-00abdd49.bin",
+      "rom_offset": 11263305,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "024ba760978699fc2640d92c811a6680bb4386501a7e496459ad284a616387ff",
+      "sha256": "061e9a48c05ceaf1330a5e1636c1b0c40412d8a3304d4865fec291c1603f94eb"
+    },
+    {
+      "file": "text-00abdf3f.bin",
+      "rom_offset": 11263807,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "024ba760978699fc2640d92c811a6680bb4386501a7e496459ad284a616387ff",
+      "sha256": "061e9a48c05ceaf1330a5e1636c1b0c40412d8a3304d4865fec291c1603f94eb"
+    },
+    {
+      "file": "text-00abe0b3.bin",
+      "rom_offset": 11264179,
+      "bytes": 26,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7053119f9bf22e741e05ad6939c15bdcccdba075e0dbf2afd90e2ef3bb613e7a",
+      "sha256": "416fcab1e235efe271cdb5e5e21be4bf1cdf583898c3a35da05e4b3d64204ca9"
+    },
+    {
+      "file": "text-00abe35b.bin",
+      "rom_offset": 11264859,
+      "bytes": 48,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c9195f65312655461d4cd852c18aa2e2b6f8409ec1766bc9e6f6baf68e27b0ea",
+      "sha256": "bc4769b03971d74d6f7af418af9bedbb3aa1f8cb5518630024191d674bb11667"
+    },
+    {
+      "file": "text-00abe525.bin",
+      "rom_offset": 11265317,
+      "bytes": 58,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5447daf628f109f1e076e5f3ca26b289b9c6bf51a6d5efef8419e71370f28fe8",
+      "sha256": "e9c8387e37a30aa5f7493924cf588fbdd46d9e2d3136b6eb8d865cc0d07811d6"
+    },
+    {
+      "file": "text-00abe5bf.bin",
+      "rom_offset": 11265471,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00abe655.bin",
+      "rom_offset": 11265621,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "312c97a722307b4c76eaab5858c6c2c09d996ce0442223d6e490264194a7ab76",
+      "sha256": "31dc5a2c9644884aac355955569805c11ddbd75ac91573fb365cd186d06d761c"
+    },
+    {
+      "file": "text-00abe67d.bin",
+      "rom_offset": 11265661,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "143a527d70d03957c54a7288a2255e833cd20c0ab55056dc137f0e187dfaa490",
+      "sha256": "60daa3a5f7dbfa200f8c82840ecf5b42640b70f3b7218a4c6bbd67db542e75a4"
+    },
+    {
+      "file": "text-00abe6e5.bin",
+      "rom_offset": 11265765,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00abe787.bin",
+      "rom_offset": 11265927,
+      "bytes": 24,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3217f70a01a30f94700c266ae722946c68f8121ef8c1748a28002f3363b45d88",
+      "sha256": "594d2886d0087a0b7733084c8706496ddc1c1379816b95f96df78dbb1b7aad0a"
+    },
+    {
+      "file": "text-00abecaf.bin",
+      "rom_offset": 11267247,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "68262a7019f5b35e2a57f66e22e74daddba8032c59715b28d5105f20ccb2cba4",
+      "sha256": "1a9b4aa9eb8d580d16d5d2fd589b323eae9c1fb5a992a3e9dab01df6af194b37"
+    },
+    {
+      "file": "text-00abef49.bin",
+      "rom_offset": 11267913,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "924b8133a8542273b49c15112e8f74b8ce8a22c483f9da6192b71bfd66464128",
+      "sha256": "864c82ee5ac928c79215a34a4eb40892fce8ac65048a23d8d45a910d20b96fda"
+    },
+    {
+      "file": "text-00abf0a7.bin",
+      "rom_offset": 11268263,
+      "bytes": 16,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5209d3e7bc291c82c2634f4ed49fe509be428230a2f1d634ec32ebf34213222b",
+      "sha256": "8c67c157f8efbee76c9be823d080ea0d321af870dfb40a0a46b18597772b4c5e"
+    },
+    {
+      "file": "text-00abf544.bin",
+      "rom_offset": 11269444,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "984c85fe4b9d3d72561476fb7a3b7ecbe547c50d8b0d57453fd8ded4e08eadb0",
+      "sha256": "de818dacb2df4b0fc7bc329ce076489f89a7ff1ae23b41d5010838ca9f113c74"
+    },
+    {
+      "file": "text-00abf5d4.bin",
+      "rom_offset": 11269588,
+      "bytes": 42,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c56c6f48c42bdcd4a531035fbe04f0faf303fdcf1e69ca5e20e5335a7d7935d3",
+      "sha256": "201711da6064c7106e726d8f0477c7a7477c58f335e868025fbde80ad9befb38"
+    },
+    {
+      "file": "text-00ac11c3.bin",
+      "rom_offset": 11276739,
+      "bytes": 60,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ae70bccd741cdad2aef08a3fb1689da3c4ec2a4381f6f0954c2fe9693e0bd2b5",
+      "sha256": "7f6ec8283bc4d213b5d3d5644a8dc1f4ab6d17e10793baf7bc0b3bb5c8059358"
+    },
+    {
+      "file": "text-00ac1830.bin",
+      "rom_offset": 11278384,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d5d1cbd1b167e79289486d4bf48452725688b2e8ecc343872ebf1cb01cd5f7ac",
+      "sha256": "9c0188e7a3c7b2c8fdb403cd410c4bdeb84d40d214cfec8758b9be098c6a0183"
+    },
+    {
+      "file": "text-00ac1903.bin",
+      "rom_offset": 11278595,
+      "bytes": 11,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6be08a913a6bca9312738674f45a33282c531c8c6a5a02f988be0dec18af411d",
+      "sha256": "fc61ec08a8456dc9ddd6037c40ad930a22d97e15d527ccb8a89ab64835981f51"
+    },
+    {
+      "file": "text-00ac1a4b.bin",
+      "rom_offset": 11278923,
+      "bytes": 37,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6b69671f971d2d3f02dd46c74bb4d79dc8c5dd0aad15eb13d6607471e8a98870",
+      "sha256": "4c2e741709c224052ad2ed4d51941d2b741f8f9d80061823fe5f382b3466dcee"
+    },
+    {
+      "file": "text-00ac284a.bin",
+      "rom_offset": 11282506,
+      "bytes": 327,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "468c4c294111e0df13e02b5be4dceaef902aa4009cd0632ba53cbd0229ab2766",
+      "sha256": "338c92d753f5963b0d3ea4a8c6d4b4adae9a60686ff544188e36fe109ec50d21"
+    },
+    {
+      "file": "text-00ac2acc.bin",
+      "rom_offset": 11283148,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "75d61feb4664a8d4b1c81e20edef7d06ca8c7d0382885785ea85caea1de42175",
+      "sha256": "5d160d8a58bf8fa276f00179c820be3da2a399e37cdefdcda5e36b0dedeb9603"
+    },
+    {
+      "file": "text-00ac2c21.bin",
+      "rom_offset": 11283489,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4bbe52cae5791665502f93ed0cc2d9ae21afa439a5f23423e5d0e3eaf9b12a0d",
+      "sha256": "f48e1f5620954eb0d30ad0275c724cc820b6c73335b16d1f206eef985724438a"
+    },
+    {
+      "file": "text-00ac2d0e.bin",
+      "rom_offset": 11283726,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "915a3427fceaad322581cfec0c09c5167f5da59c97131a3e9ea619d972db6d5d",
+      "sha256": "fecad83f833a03abb7087d677b7e5f9125234e102a49cf672f25d3ce493da6de"
+    },
+    {
+      "file": "text-00ac2d8f.bin",
+      "rom_offset": 11283855,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1e86071901c999a958b00762bfb5c86af9fd543decbac0398687b4ba3860c77a",
+      "sha256": "92a457e978196011a161fe9d353ec16ccaac26f9617cca18175efc2a7fb4f9b9"
+    },
+    {
+      "file": "text-00ac2e3e.bin",
+      "rom_offset": 11284030,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4eca5e2127c0e2a3d0bc1be6a397494386e105b5f10c634e5b593e6f93f0297a",
+      "sha256": "f17718b07e44ec61e0810b453f2fa8d0081c87ab1931d9d5dcccdcc62060c28c"
+    },
+    {
+      "file": "text-00ac2ee9.bin",
+      "rom_offset": 11284201,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "263dcd0ad4499fba36454e2b109483d849f694c8428f1222543e1a0254980a05",
+      "sha256": "f8fcf4515b0e9da54dac01fbe2e867d4c58afea028d9eb9e724d92843da29b90"
+    },
+    {
+      "file": "text-00ac3010.bin",
+      "rom_offset": 11284496,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ac3130.bin",
+      "rom_offset": 11284784,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ac3245998aec90e5bd80b7994e179567b172a5c1f23b3762b44d453b9f686392",
+      "sha256": "e6c93bd8a4f1dcb9b0726d16897718afc66b283844c86ffc3bec7b3e876342e3"
+    },
+    {
+      "file": "text-00ac3165.bin",
+      "rom_offset": 11284837,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3e5751f856fa37d21dcda5664f4466eaf7af569f9db6a63172050e8eb852103f",
+      "sha256": "562da8962f36bd4d20872c765cc8b2bb24f77e4930df747750eb6bee9da1b863"
+    },
+    {
+      "file": "text-00ac3436.bin",
+      "rom_offset": 11285558,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "025d224f6cbf431a4558deda0e613007bda05a71536bb79e4d38c29a80155579",
+      "sha256": "bf118c1728b476897a5f276bfed451b550fd1eee88e4d6a867b68df795b87ba9"
+    },
+    {
+      "file": "text-00ac356e.bin",
+      "rom_offset": 11285870,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "07d38129ba6bcd6a04b2e67954e08cc7582a81dceae2d7784ac0ac91f1d8fe5e",
+      "sha256": "3644711db12ce5081ef1189f79da66c04ecb2baab255f375379f46bec8608868"
+    },
+    {
+      "file": "text-00ac3712.bin",
+      "rom_offset": 11286290,
+      "bytes": 90,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f4cc6ccf988b690fda1b2c1b89063e78a241b9d23b556aee203018dfe4bf6782",
+      "sha256": "213dfd5b622166d152d28cfcdb770442a601c8ce7f6b4017de11d3cf3d285e75"
+    },
+    {
+      "file": "text-00ac3797.bin",
+      "rom_offset": 11286423,
+      "bytes": 86,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f86f279c84b7e4d2cf0cf070a366aa3155bce1bd7e4b4a2368c9bf05761ed23f",
+      "sha256": "3289032fac05ce81717636da5208a1e4a8f75153280a4f5ed1af2edce43983ca"
+    },
+    {
+      "file": "text-00ac383c.bin",
+      "rom_offset": 11286588,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "eead525a76c8ccfb4c2d14ddc4070c6744d320c6b814616a2ef69a1ed9505634",
+      "sha256": "f610214bd330f35805c194cc32f719e398c5f766979712e422b684e311a84f4f"
+    },
+    {
+      "file": "text-00ac3886.bin",
+      "rom_offset": 11286662,
+      "bytes": 54,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "8a0478a4bc63c035412ccf5e1f07ff9aed82c776685b8498f8c36cec55edbb29",
+      "sha256": "868afd6cd5a0445b86941bbd4b9cf5b10300de5f4a52fba75dac4a1dd08d0ad3"
+    },
+    {
+      "file": "text-00ac3935.bin",
+      "rom_offset": 11286837,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ac39af.bin",
+      "rom_offset": 11286959,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ac39eb.bin",
+      "rom_offset": 11287019,
+      "bytes": 79,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "0724b38589bc643cf49c2dd852aea69716cdabd72d25eb881517897a455e570c",
+      "sha256": "93199b352fcb9d391a0987a5ae83625a2d4b74042f57516578d1ae2cb5fd69e6"
+    },
+    {
+      "file": "text-00ac3a79.bin",
+      "rom_offset": 11287161,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00ac3ab0.bin",
+      "rom_offset": 11287216,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00ac3adc.bin",
+      "rom_offset": 11287260,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00ac3b54.bin",
+      "rom_offset": 11287380,
+      "bytes": 9551,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "505d66d23c7a48087747058b9a45e26bf41bf0065a7a0c2d9261851774d1cbda",
+      "sha256": "a2b6e72e3c4152e888c53fb059e7a1d936a409c40769890ae676459b50795440"
+    },
+    {
+      "file": "text-00ac60c9.bin",
+      "rom_offset": 11296969,
+      "bytes": 146,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f382915b86472da7dd8d0e9b7faffe5078795a4cd9f881e42ff8d761f2038e39",
+      "sha256": "94bdd14e978b2fccd1d96c3236bc2ef65ca5be0c8ba851172371f9e98bf770bf"
+    },
+    {
+      "file": "text-00ac6181.bin",
+      "rom_offset": 11297153,
+      "bytes": 124,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "acfecb98172503663f645a93f1e8197d49267cfe5e2cb30ace2d3e4736293ff3",
+      "sha256": "3ae5eea3da47922fd03fed10ec343716534e888dd79b4e3f91f4c8ee0793238f"
+    },
+    {
+      "file": "text-00ac6223.bin",
+      "rom_offset": 11297315,
+      "bytes": 130,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cb8fe346ad33dfec97e6771d60d42dcfe6bbaec944ea96ef91cd58fb343c35cf",
+      "sha256": "7b81d5a7177f108a3bd6d9884797ee272aa8cefb4ef5ae7b04c3f7ebf894eff6"
+    },
+    {
+      "file": "text-00ac62cb.bin",
+      "rom_offset": 11297483,
+      "bytes": 12902,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5f9db2bc63677674b72ea523fed776bc70b0e2d4f812db685d4d2cb1f2b8c90c",
+      "sha256": "a6ec91087a5e45ed6ca5b46272f144b2d2209f7d97db95316bee254c1a27452e"
+    },
+    {
+      "file": "text-00ac978a.bin",
+      "rom_offset": 11310986,
+      "bytes": 451,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "87d8baddd2014ebbee126e793e39ef4ae388f3c459c87758f093ee99ee75ed3b",
+      "sha256": "8d5fbb711d477ee236fe5d1dacd681fdd0b12665121d182e585d9649be75c126"
+    },
+    {
+      "file": "text-00ac9c45.bin",
+      "rom_offset": 11312197,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4ac597fc47584ef640d46e5b7ab4187ea44977e800d395de5423867db07c4d3a",
+      "sha256": "855e295222d40bcf55db26fab3435b201e629f7f6fdc4e123996a94e84ce3d4c"
+    },
+    {
+      "file": "text-00ac9f1a.bin",
+      "rom_offset": 11312922,
+      "bytes": 14,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "859efe9dd9c1aecbe1e8e3847dc5ad864f55f70f8d57fcfc50e02089d09e864b",
+      "sha256": "c0cdf73631bf8f96e065f9d8d8eaa5ba8c8b48e91926fa004e04cb6c8b2bad30"
+    },
+    {
+      "file": "text-00ac9f66.bin",
+      "rom_offset": 11312998,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "999acc231240300e4d999bab8084d94702b3e4824bb9fea0b8873dd1ff954421",
+      "sha256": "8f40444ed137e5229bfde538b98ba015263b9c8e445d2204109e489fe080edef"
+    },
+    {
+      "file": "text-00ac9f9d.bin",
+      "rom_offset": 11313053,
+      "bytes": 14,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "36cf97f480c7e65bb63138946244e2870d6205739061fbcff205edd518601f04",
+      "sha256": "7a28a04412ae0641c5e91696fd5027ffa092f07a2ad5c854f695dfc10d9cbfa0"
+    },
+    {
+      "file": "text-00ac9fe9.bin",
+      "rom_offset": 11313129,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cbd9397396c2a5e32be5a25fee438b19557f3e8fd4a9524b1733b30bad291098",
+      "sha256": "66975844667d819f8b17823a2bf714155397682266c25f60068ae61c38e9a64f"
+    },
+    {
+      "file": "text-00aca030.bin",
+      "rom_offset": 11313200,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f3232918cb3978bb7b775734ac1d42f3b23478ba4f4c6a2b188aabb21664500c",
+      "sha256": "83c27ed9585a8ff3b4baa68238f4ced2f327a061da41e274ac6a46143b033224"
+    },
+    {
+      "file": "text-00aca531.bin",
+      "rom_offset": 11314481,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f5810d799cf602fba2c3d75cd3a42a79c915ca88ae977a098c253bd1fcf12125",
+      "sha256": "6c4e0e2dd34a630ff322e1f7bff25bb08ae0481065d2c425fd858c89a9569a8c"
+    },
+    {
+      "file": "text-00acabf3.bin",
+      "rom_offset": 11316211,
+      "bytes": 87,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6deb1fe7d35651c16a9cf4a53fe82fc60faccddbed0dcd152d58b1c47ea26523",
+      "sha256": "530d768404bd3c9c8bb1a8c436c59de1d52fab37ab546a443a150f76ecd5496e"
+    },
+    {
+      "file": "text-00acaf41.bin",
+      "rom_offset": 11317057,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00acaf67.bin",
+      "rom_offset": 11317095,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00acb514.bin",
+      "rom_offset": 11318548,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00acb5e6.bin",
+      "rom_offset": 11318758,
+      "bytes": 14,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e4ac7b591efab88d1afa98b62c2b7a15949a0d0102de26a4671720a5bdbabda9",
+      "sha256": "29147a51509efdfcb066ba104d27ddfd6eecf3a59e16e8fbc056220f1e6c400f"
+    },
+    {
+      "file": "text-00acb6f3.bin",
+      "rom_offset": 11319027,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00acb7e1.bin",
+      "rom_offset": 11319265,
+      "bytes": 16,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e60af5ea4b4dff0cf100b6e592c9f6aac2ec64a55625946119d653dfed5e762c",
+      "sha256": "83266309de5f4614e2c29255993ef82835dd3c575f701e7c44e518ac0f14a203"
+    },
+    {
+      "file": "text-00acb9ca.bin",
+      "rom_offset": 11319754,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52c4890a59b65efd41b0d3f01f9694fc6d99a2597943bc15be8441711997a7e1",
+      "sha256": "9c2305714db9ff6668d023df45824914fd73107acefc3a1a291b59e5207ae4cc"
+    },
+    {
+      "file": "text-00acbbcd.bin",
+      "rom_offset": 11320269,
+      "bytes": 3,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6477378a559be35b61a7d6d9d53ebe08a3b93828372f4840872d8bd5a37780b1",
+      "sha256": "556b2c0d386f56e4868c457d861c7d2b0f0a3b397a4f22a50718d4d4f268e90e"
+    },
+    {
+      "file": "text-00acbc12.bin",
+      "rom_offset": 11320338,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "135a70b1a5b10c5b6dbab0da43eafd116d75c1dfd1a7e378b6b5e0fae6919434",
+      "sha256": "1d36316896a32b728f9bbc4d110ca8d1220192c8af8a7d5cb1fabc6394eb90e8"
+    },
+    {
+      "file": "text-00acc02e.bin",
+      "rom_offset": 11321390,
+      "bytes": 16336,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "88af5cb1d850230f2cdcc4160854331b9368a9c267f36e8301483a025a462df9",
+      "sha256": "c6a8f5d80615a2b4be12ba32e628017e6a59ad456e0ed23bb625d8b57b7133c1"
+    },
+    {
+      "file": "text-00ad03fd.bin",
+      "rom_offset": 11338749,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5c9f0d5376fe134b45e73dc4e5bef98f4888a4fc16ff86ad5fc47e3bb3b6cb29",
+      "sha256": "4ebdea8a6f1f0fa45de818b15a0a424888580fa110b63644ceafc0d2e868f707"
+    },
+    {
+      "file": "text-00ad0c10.bin",
+      "rom_offset": 11340816,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "31a1528ab27164802fffadd519015b1adf00e54310cccdf09f42b21d49c541e8",
+      "sha256": "acdce2c664dbe9c9b13d17fe264dfcd7a6db9eac3eabb8a21f17a3a64847b0ad"
+    },
+    {
+      "file": "text-00ad12a2.bin",
+      "rom_offset": 11342498,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e7c763111547c2113c5a9b3998e784657a644b6b184231d4be3a23d728d1a312",
+      "sha256": "8ae853b32689d48e440c5336580b54a5c587ce60911d331bff1550e15a9348a9"
+    },
+    {
+      "file": "text-00ad178a.bin",
+      "rom_offset": 11343754,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d8854a3b872dd622690db8047f633557497118d4678720827481869402ce0e3c",
+      "sha256": "c5b25e11f4290036c039fda617fc01d26c34d36b6ae3fbaf7d05c345dd9e990d"
+    },
+    {
+      "file": "text-00ad17b0.bin",
+      "rom_offset": 11343792,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2765adaba354f183d4b10304df3695736ba95cc7f71d1d194566f3221fcb0577",
+      "sha256": "00c788444547ae2b09e361b74c25fe9287d3db4becbda75a9ac8d2ac8d427f41"
+    },
+    {
+      "file": "text-00ad1d9c.bin",
+      "rom_offset": 11345308,
+      "bytes": 86,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c8411a1e785c2468ee25dd45963a5db24f01ce2f4f28cfcbea5ff5f3fd74b5ba",
+      "sha256": "dc6b10253d5b7066451947ae05dd05e13bc16b893e53f97d2c3e9295c663204a"
+    },
+    {
+      "file": "text-00ad1e76.bin",
+      "rom_offset": 11345526,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ad1ea8.bin",
+      "rom_offset": 11345576,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ad246f.bin",
+      "rom_offset": 11347055,
+      "bytes": 1,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "956062137518b270d730d4753000896de17c100a42f9e24f5acee2faa75d5fdd",
+      "sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+    },
+    {
+      "file": "text-00ad24b2.bin",
+      "rom_offset": 11347122,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f8d4952dacd08a47909f70fe062e44d8b744fafe873d7c71a6234a80de0da432",
+      "sha256": "1b6abb350ce01602f93a34f4cdce9fdba8cf978fd9a9d05806ee27ccbf75f377"
+    },
+    {
+      "file": "text-00ad2663.bin",
+      "rom_offset": 11347555,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "b110743548250ec74270318c224c895db1804b57d40101776338e2a3b855f45a",
+      "sha256": "4d821e648b5ecd839bd7c8b5fa3c480ffbea04e29b0d9b5ebe50b243f172b8ed"
+    },
+    {
+      "file": "text-00ad2db5.bin",
+      "rom_offset": 11349429,
+      "bytes": 79,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "33af11422ba2a6f2944a3b8e1880a9bcd9043981941df1986b5c005abce16db1",
+      "sha256": "332619d198cc791a9eee1319ac56e5983053a75279a2e47e2aa80a458158f2c4"
+    },
+    {
+      "file": "text-00ad3294.bin",
+      "rom_offset": 11350676,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ccc16c1380656ad99e077bb513016efe84a0dbd7e1bd0f5e179f1871dfc88fd4",
+      "sha256": "20c40b47b3c9371097884fde4a17fc66d547305bfebab54db105c6b9155e0f23"
+    },
+    {
+      "file": "text-00ad3406.bin",
+      "rom_offset": 11351046,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9beb8a0e1ba6505ca8523b9bad6946b212205043b0e8766b7cbea4c168e6b69c",
+      "sha256": "b4e33312bc4ade340c9899085b1846f2226107a110b17057d45f21d26a801657"
+    },
+    {
+      "file": "text-00ad357e.bin",
+      "rom_offset": 11351422,
+      "bytes": 34,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "215ad7b179b875a064a89252137eefb047b2c55547d7d16b759fac9448c3d8e1",
+      "sha256": "536aa226eec9cacd7f858309877a9106b5dbe041352356526054c3d753c564cd"
+    },
+    {
+      "file": "text-00ad363d.bin",
+      "rom_offset": 11351613,
+      "bytes": 13,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5b867dba63be9098c691c7f3b74ddac512305ca4c7ce2b57c52018aa436d6100",
+      "sha256": "154543ccf00d69c04659d574adf04da673069bc248989ba2ace23cdb90cae2b1"
+    },
+    {
+      "file": "text-00ad4d3f.bin",
+      "rom_offset": 11357503,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ad4dcd.bin",
+      "rom_offset": 11357645,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ad4e01.bin",
+      "rom_offset": 11357697,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c0860e5203c83f46ac5c16253f2a029d8857e70e07bf3b7e3ea6d9d6d53241ad",
+      "sha256": "00182e4e15104d7e967e583b0bf8b73731381557ff97a6ae588dc6b88168e5b4"
+    },
+    {
+      "file": "text-00ad4e93.bin",
+      "rom_offset": 11357843,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ad4f91.bin",
+      "rom_offset": 11358097,
+      "bytes": 24,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4fe88ca7a24268a75fd0f470bd77f16355c1b3eb382eac9330061c5eff24a622",
+      "sha256": "9498c6729414f32adb17c886e9b6f0ed727702e89aebc35c1d223ccaab95e870"
+    },
+    {
+      "file": "text-00ad5251.bin",
+      "rom_offset": 11358801,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9297b49801076e8bd605d6492b5974695f1495fd93d9746be24174d59cdea6d3",
+      "sha256": "f0d2c5b85b7035d99464662b0ea9d3804ee7aaed5c1f74c33b7f4f2891210333"
+    },
+    {
+      "file": "text-00ad5760.bin",
+      "rom_offset": 11360096,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ad58a6.bin",
+      "rom_offset": 11360422,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c8fac3dc80b92f4097fe7316ef9bfa0d9b2fd07ba7327fcaafb148a91bed60bf",
+      "sha256": "3df16aec1892372b307ac7f3f4034807ad3945d6dc200b99d7ae2c5e97a9d497"
+    },
+    {
+      "file": "text-00ad58f2.bin",
+      "rom_offset": 11360498,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c8fac3dc80b92f4097fe7316ef9bfa0d9b2fd07ba7327fcaafb148a91bed60bf",
+      "sha256": "3df16aec1892372b307ac7f3f4034807ad3945d6dc200b99d7ae2c5e97a9d497"
+    },
+    {
+      "file": "text-00ad5b03.bin",
+      "rom_offset": 11361027,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f3232918cb3978bb7b775734ac1d42f3b23478ba4f4c6a2b188aabb21664500c",
+      "sha256": "83c27ed9585a8ff3b4baa68238f4ced2f327a061da41e274ac6a46143b033224"
+    },
+    {
+      "file": "text-00ad5b55.bin",
+      "rom_offset": 11361109,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "cbfdc6ec3bec82f331f887796c8a9b0102417cfe11c9c60b923e80a716d9e76a",
+      "sha256": "9f8dee4809e4d870bb573cfccbc35bef1608baeade960eb48cf745c1fa3537c3"
+    },
+    {
+      "file": "text-00ad5eeb.bin",
+      "rom_offset": 11362027,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1ff722cbc95d7f18986dc7fec4579e2cb64ba32941cc44e12f89dec9fe0fd190",
+      "sha256": "f47375c6911cf587dc51b80b62414bfda3c99f54a78237a93ae45ee8feedece0"
+    },
+    {
+      "file": "text-00ad5fdd.bin",
+      "rom_offset": 11362269,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "13cc33bbaa9ae428812db6203eb49b7a265b5d65fe3e639425a56efb50b32deb",
+      "sha256": "beb7bd210b858ddacf90f2d87656d55eec0fc5b045585eab3739bd6bf679c52f"
+    },
+    {
+      "file": "text-00ad6487.bin",
+      "rom_offset": 11363463,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c1c302c77f7c51cf265a78f55251b18c4266e027577f19fc26be887d7ff3a912",
+      "sha256": "fead17f460e170fe4340e93ec87a218beb2f64c8b6542db5e7375e31ef1e81e8"
+    },
+    {
+      "file": "text-00ad67ad.bin",
+      "rom_offset": 11364269,
+      "bytes": 494,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7d1a4d2920a669aea8b0095d1981bb87dd905562ef5bd43baec87420a3cff90f",
+      "sha256": "bf38e8079feca80bf201dbbc00ee0cb7b13f1343933db39f473ccd1ba9e4405c"
+    },
+    {
+      "file": "text-00ad6d73.bin",
+      "rom_offset": 11365747,
+      "bytes": 192,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6a028b07f91e216beee81ff4c04e73198416efd73604961161e1f056ef955057",
+      "sha256": "d5ef281cfee8c28c98952f3ebe3196230f6ccdf1b44d46710d9c85c0a6680b16"
+    },
+    {
+      "file": "text-00ad75c5.bin",
+      "rom_offset": 11367877,
+      "bytes": 298,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "078b272652ea92e8869750e161d4186ca2dffb6767232159edb41e4bb9c15d70",
+      "sha256": "5f1fdf870d73b98675f39720204f413bf7013aed7365de3208f6a89b55bd54b5"
+    },
+    {
+      "file": "text-00ad7a39.bin",
+      "rom_offset": 11369017,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ad7a91.bin",
+      "rom_offset": 11369105,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ad8029.bin",
+      "rom_offset": 11370537,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "783aef83b6f68b0c6dfb9b17e8115e3a706ee030d5331cc8e730f0eac04c7f74",
+      "sha256": "b8b42aceed01f117114a5338a7a136ef734d13e7bc4b76906098eded958c63e3"
+    },
+    {
+      "file": "text-00ad84ae.bin",
+      "rom_offset": 11371694,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "df5a24f0afb47e8d0cc955e45029564fc3d0545812b4c8670e8cb26422fa0085",
+      "sha256": "b4500f9ce29e23d3eb0024008b656a586e0c90d227f6245e31f5735150535f99"
+    },
+    {
+      "file": "text-00ad852e.bin",
+      "rom_offset": 11371822,
+      "bytes": 7,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9312fa9fadaeab459e23165e139c52d32c053565b116c344ce0bbf0ea9128e04",
+      "sha256": "a2c5bce60841938de6e00e6634ad5fe3085c8caef209c4f3b98764744e937907"
+    },
+    {
+      "file": "text-00ad86c6.bin",
+      "rom_offset": 11372230,
+      "bytes": 15,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4eab596b7e15604e62623fba3868fbb3526fc294798f23bb6cf48342ad1e600e",
+      "sha256": "03f41f74048adf7f0ac3957ebe1a0ebcb005195ca256c7963129f6006287c18f"
+    },
+    {
+      "file": "text-00ad8d30.bin",
+      "rom_offset": 11373872,
+      "bytes": 1,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c",
+      "sha256": "8c2574892063f995fdf756bce07f46c1a5193e54cd52837ed91e32008ccf41ac"
+    },
+    {
+      "file": "text-00ad8d71.bin",
+      "rom_offset": 11373937,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "28fedcaf01f1545d8686d5a2a09afe72651915841346277837ce6a0824839c44",
+      "sha256": "a9da2fbac06e9cb66580aee5433f6eb3729a85012f7a9c453dfc3897a7c88968"
+    },
+    {
+      "file": "text-00ad8db1.bin",
+      "rom_offset": 11374001,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "00fc34d953314456578f645c22edf65c85a018673a8d960de04319f85d5fbe0a",
+      "sha256": "e88d7b78add9a074ecccb45d4d7c0b22655b7354e1041863f9adaa5fcc411d56"
+    },
+    {
+      "file": "text-00ad8de5.bin",
+      "rom_offset": 11374053,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "00fc34d953314456578f645c22edf65c85a018673a8d960de04319f85d5fbe0a",
+      "sha256": "e88d7b78add9a074ecccb45d4d7c0b22655b7354e1041863f9adaa5fcc411d56"
+    },
+    {
+      "file": "text-00ad8e17.bin",
+      "rom_offset": 11374103,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "00fc34d953314456578f645c22edf65c85a018673a8d960de04319f85d5fbe0a",
+      "sha256": "e88d7b78add9a074ecccb45d4d7c0b22655b7354e1041863f9adaa5fcc411d56"
+    },
+    {
+      "file": "text-00ad8e4b.bin",
+      "rom_offset": 11374155,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "00fc34d953314456578f645c22edf65c85a018673a8d960de04319f85d5fbe0a",
+      "sha256": "e88d7b78add9a074ecccb45d4d7c0b22655b7354e1041863f9adaa5fcc411d56"
+    },
+    {
+      "file": "text-00ad8e7d.bin",
+      "rom_offset": 11374205,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "00fc34d953314456578f645c22edf65c85a018673a8d960de04319f85d5fbe0a",
+      "sha256": "e88d7b78add9a074ecccb45d4d7c0b22655b7354e1041863f9adaa5fcc411d56"
+    },
+    {
+      "file": "text-00ad8ebd.bin",
+      "rom_offset": 11374269,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d3b1775ce335c01269bfd98171e094eda3dd250bf88cdeeff50ca460a73aa5a5",
+      "sha256": "2278585449c025637e137c8a20fbec5e45f2cb5dc55c44c6f53243190368eb7d"
+    },
+    {
+      "file": "text-00ad8f16.bin",
+      "rom_offset": 11374358,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7bc9d3dc4739303d67f3e23fcc82cc330f4a598807fe53cec1ff542b37f2f329",
+      "sha256": "5cd4d0f54a58c431059a2b44aafbae978e63ef4a36d8912811a97a9eaff94d26"
+    },
+    {
+      "file": "text-00ad93be.bin",
+      "rom_offset": 11375550,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ef59685eda5e94bf197514e48e90f02e62ac7ab035986d866971e74399d614b1",
+      "sha256": "10295f838b8d1dcb9c176d8eaae0d6671632c7e3aad305777a55fdb8bb4bd03a"
+    },
+    {
+      "file": "text-00ad942e.bin",
+      "rom_offset": 11375662,
+      "bytes": 104,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "fdfbd6cadaeb4cf7d4e2433d19f9a940fc4c0dbca20c176ccf36d2f421029a0e",
+      "sha256": "e12f2e70283037ad99b3650755b2dc39c974551b78475274c9c06ad883f5fb61"
+    },
+    {
+      "file": "text-00ada76e.bin",
+      "rom_offset": 11380590,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e390e2535b848198279f4c63730856da2cbf4246ffe6eba46f3712c880a3a773",
+      "sha256": "af6b36b0d2f22195aaaf4462f53d6a1242a3fbd8a282b30b687b103bcc79d94f"
+    },
+    {
+      "file": "text-00ada810.bin",
+      "rom_offset": 11380752,
+      "bytes": 76,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e91755b43e2b5b6d31fbfe2f354a802604d7b8b9fc40a722a87c421674871570",
+      "sha256": "04cd76e555f442c37424cd53dc3b1cc769015a5f8bee27a6484419ef7fc9aad9"
+    },
+    {
+      "file": "text-00ada8e2.bin",
+      "rom_offset": 11380962,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adac7e.bin",
+      "rom_offset": 11381886,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f2c05e981d82222c0920d58012297a21d1b9db01ec24b18dd568bb837532a09a",
+      "sha256": "834f7bce7b01dbbc2a452df3ddafef80f7f4a375c49a3c979b3dc791e025bbf4"
+    },
+    {
+      "file": "text-00adad38.bin",
+      "rom_offset": 11382072,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "00c7f80a9c6395ccccc4342d8f16f100e27b45b56697c2d5250be8745094ab7e",
+      "sha256": "cab2af8d39441e68cd2842a753d87bea3dc9122fc6643bc36c26ad165932648b"
+    },
+    {
+      "file": "text-00adae98.bin",
+      "rom_offset": 11382424,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adafdc.bin",
+      "rom_offset": 11382748,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "167cdeddae23674b73668f92e6e4cee5796c540bd3bf30ca0fb1f73aff137fa1",
+      "sha256": "9b445059dac612933cc7064d9ff3dd45d40d40a2ff8f9a1585f4436518391b92"
+    },
+    {
+      "file": "text-00adb026.bin",
+      "rom_offset": 11382822,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adb23e.bin",
+      "rom_offset": 11383358,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adb360.bin",
+      "rom_offset": 11383648,
+      "bytes": 46,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "32691010f5caea145594077a57b4742320f09703c0da21b5073d91350a2a9eba",
+      "sha256": "a9f3bf970f29c970dfdd4de55c95f73f93da23343e77f3a6930e58878630a695"
+    },
+    {
+      "file": "text-00adb456.bin",
+      "rom_offset": 11383894,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "639f9b79e8c2f9cc0af090b3519f9a642bc36afc24db2023575d33e64f37061c",
+      "sha256": "f2a7a8a2081d23a7d258d84005783f728480e15cda342d84b09ddbdcab0e2d06"
+    },
+    {
+      "file": "text-00adbb8b.bin",
+      "rom_offset": 11385739,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adbe0c.bin",
+      "rom_offset": 11386380,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adc736.bin",
+      "rom_offset": 11388726,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adc7d6.bin",
+      "rom_offset": 11388886,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "72588584eb2925e76dd896093db3a9a065d38841b00b29e4c55f904999f1f129",
+      "sha256": "b25c30f8455bfaa224ad030ce1dcb28c8f3cba10beaf63e80143f3571b909621"
+    },
+    {
+      "file": "text-00adc81e.bin",
+      "rom_offset": 11388958,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bfbf589fdd75c2d88c5a380fbdf11d4e3dc2d0933b2d76b7918c3bac0d1dad01",
+      "sha256": "7d2a56a6780e50f9f8501dd443e8ed0becdd1a4b9b3b9be5be43ae953a939468"
+    },
+    {
+      "file": "text-00adc870.bin",
+      "rom_offset": 11389040,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adc95e.bin",
+      "rom_offset": 11389278,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "fda86a1790c6658c86b149773038ee5f5c616514ae776f55f38bbe35fe248d72",
+      "sha256": "73e1d0276fa571841d12a9c7530fef87a5f542c1d0024e9029144217697dcfea"
+    },
+    {
+      "file": "text-00adcb54.bin",
+      "rom_offset": 11389780,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adcc54.bin",
+      "rom_offset": 11390036,
+      "bytes": 88,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1233a5f02bc7ee004a2223c5e47d3bf3e1fc2ec1449973d4d4035c2cbda3005b",
+      "sha256": "874ecbefab523654aa4a3a92723a114693960686d073fbec4ed7cac51c3a7a7a"
+    },
+    {
+      "file": "text-00adce58.bin",
+      "rom_offset": 11390552,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "593355d1b11a97165ba053b9c353d24e48bb3c88d11e023ce3b398d14fc82e34",
+      "sha256": "b25c30f8455bfaa224ad030ce1dcb28c8f3cba10beaf63e80143f3571b909621"
+    },
+    {
+      "file": "text-00adcf50.bin",
+      "rom_offset": 11390800,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "8de223c11ade33ef0911abeafd7f4e00b162dd87a5805a8600cb844283d7cbaf",
+      "sha256": "47780701e6de1abba275fcb25cc1f0049f70999d202fabba3493e483f72946ee"
+    },
+    {
+      "file": "text-00add2d8.bin",
+      "rom_offset": 11391704,
+      "bytes": 44,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "369d4b657535c86b7270420dbc6e229269e50ead83ffba32804a098fd3f4d175",
+      "sha256": "608435bae75389bc8c86d22a909a6ef7ca484f814b48cb6803d968a49b30f004"
+    },
+    {
+      "file": "text-00add3ca.bin",
+      "rom_offset": 11391946,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a0691c61391363ff78bec133a7354dc3f9753c2e36a84e9093c4109a9db63fba",
+      "sha256": "327e8c34a993e717e7456dcc87208924408bc9ebaba15a03f03453f6f995e9d2"
+    },
+    {
+      "file": "text-00add504.bin",
+      "rom_offset": 11392260,
+      "bytes": 20,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "72588584eb2925e76dd896093db3a9a065d38841b00b29e4c55f904999f1f129",
+      "sha256": "dca5f881c204eda98b271fd008a2e1fe6521eef8c30f1a18add5d8b59f2409ae"
+    },
+    {
+      "file": "text-00add704.bin",
+      "rom_offset": 11392772,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00add846.bin",
+      "rom_offset": 11393094,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00addb18.bin",
+      "rom_offset": 11393816,
+      "bytes": 68,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2df63b189af5accc49b2949d029e97db7795e0472c99c04fb11c4be782b02850",
+      "sha256": "a24b7e03c247e7a7525901085bd13289b98d34d60d179eeb959a07411c6a0095"
+    },
+    {
+      "file": "text-00addbdc.bin",
+      "rom_offset": 11394012,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00addea2.bin",
+      "rom_offset": 11394722,
+      "bytes": 24,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1f3c7d157ec69fb2d46f8e889b7a9ab0f273e9c46c95817cec04aea8abadb539",
+      "sha256": "cdc94540d42e09b3813b1b32cbefbafa65772e85164c67ea237e2c5a75c98cc4"
+    },
+    {
+      "file": "text-00ade70a.bin",
+      "rom_offset": 11396874,
+      "bytes": 44,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "369d4b657535c86b7270420dbc6e229269e50ead83ffba32804a098fd3f4d175",
+      "sha256": "608435bae75389bc8c86d22a909a6ef7ca484f814b48cb6803d968a49b30f004"
+    },
+    {
+      "file": "text-00ade804.bin",
+      "rom_offset": 11397124,
+      "bytes": 128,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f4451ce173865a0da75b9f82d5ce344ff1e7b78b9b7fcbee8e1f6708bbe8fb3c",
+      "sha256": "2e120495152f03bd76f2277110f5229dfe74bae2b97efb3c38d961cd442e8ab2"
+    },
+    {
+      "file": "text-00adf172.bin",
+      "rom_offset": 11399538,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adf1c0.bin",
+      "rom_offset": 11399616,
+      "bytes": 50,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "08f3fda723adec5be2f995ab644812cc6c89dd895eb676fe9d471158fd97f8e5",
+      "sha256": "4c89c66545dffe23b99fcb7ab1b5dfd49b769226dfdf31a4a6cc34260fe820e7"
+    },
+    {
+      "file": "text-00adf254.bin",
+      "rom_offset": 11399764,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adf2e0.bin",
+      "rom_offset": 11399904,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00adf5ae.bin",
+      "rom_offset": 11400622,
+      "bytes": 38,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1edbd48ded8a7c4541bca07272e0ea80ccee91cd305552d070c867404c906e9b",
+      "sha256": "5082663380df7a09ac2fc8662092006775f01d5f964f31f4d78d349b6a7e47ad"
+    },
+    {
+      "file": "text-00adf614.bin",
+      "rom_offset": 11400724,
+      "bytes": 48,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e26f3e02bd6f9a263fee310eb021ce1a9049ce7da96b80f1e4b7608c3293a924",
+      "sha256": "cade1af15bcae37f191277e95e5457358612de191f6e7ca4842320367b2735c7"
+    },
+    {
+      "file": "text-00adf8fc.bin",
+      "rom_offset": 11401468,
+      "bytes": 104,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7488f74bf6633b07d46085369ae8ddb35342a4d3c5d6c272c0fdb956deacf891",
+      "sha256": "cf7b85285c4494ac09f1664a89569269c279f2c54ada1ec3edc0a00a642dfdea"
+    },
+    {
+      "file": "text-00adfb02.bin",
+      "rom_offset": 11401986,
+      "bytes": 50,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a49c61e5c03576a8182423fd5d950c709f0c123dd2f583ab4caf7164886f1f95",
+      "sha256": "f03dbb911d11e80af3e076631d542c188e3125e8942cec58c01387afbb3ccd5c"
+    },
+    {
+      "file": "text-00adfe56.bin",
+      "rom_offset": 11402838,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3cc60a847aa3ecbda481320aa06d3f9f65321bfbd1fa022c9a340495b0049111",
+      "sha256": "4e5318ea94134dad7495a7ed6c71b34991bb1c41de26eb9ca2f3b5e1a479478d"
+    },
+    {
+      "file": "text-00adfed2.bin",
+      "rom_offset": 11402962,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3e5751f856fa37d21dcda5664f4466eaf7af569f9db6a63172050e8eb852103f",
+      "sha256": "562da8962f36bd4d20872c765cc8b2bb24f77e4930df747750eb6bee9da1b863"
+    },
+    {
+      "file": "text-00adff28.bin",
+      "rom_offset": 11403048,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3e5751f856fa37d21dcda5664f4466eaf7af569f9db6a63172050e8eb852103f",
+      "sha256": "562da8962f36bd4d20872c765cc8b2bb24f77e4930df747750eb6bee9da1b863"
+    },
+    {
+      "file": "text-00adff5a.bin",
+      "rom_offset": 11403098,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3e5751f856fa37d21dcda5664f4466eaf7af569f9db6a63172050e8eb852103f",
+      "sha256": "562da8962f36bd4d20872c765cc8b2bb24f77e4930df747750eb6bee9da1b863"
+    },
+    {
+      "file": "text-00ae04c4.bin",
+      "rom_offset": 11404484,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bc7cf60a620f0ce6499e9c7d1fce766d18d99a26f490e9bdf0a126926d7bbe53",
+      "sha256": "05c2ddc3092146e3d2da0ff71659371818dab85bdd19513886d535883146d2cc"
+    },
+    {
+      "file": "text-00ae0520.bin",
+      "rom_offset": 11404576,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "556b15f4089004663cf69dc86e0b1066f0832ce1293bcbabc5cbe6e5c574d56f",
+      "sha256": "9fa4a73737e9a8f1e1f9626014b52e4b4be8408db9ef61a39d424549eccf3cd5"
+    },
+    {
+      "file": "text-00ae054a.bin",
+      "rom_offset": 11404618,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bc7cf60a620f0ce6499e9c7d1fce766d18d99a26f490e9bdf0a126926d7bbe53",
+      "sha256": "05c2ddc3092146e3d2da0ff71659371818dab85bdd19513886d535883146d2cc"
+    },
+    {
+      "file": "text-00ae1106.bin",
+      "rom_offset": 11407622,
+      "bytes": 32,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2ed22d7063d135b0ea3c7e0818dfc226e5d91ba18189916eef1514786e040c66",
+      "sha256": "ecacfe88c93c42f1be02440bdd104ed1d57e01ab873d5dc501ca48dc4129b9a8"
+    },
+    {
+      "file": "text-00ae11c8.bin",
+      "rom_offset": 11407816,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d541aa9ad091a6a3aa7ddb0e3d992bcb4a29f7a2c68bb52671abb9b67d757a95",
+      "sha256": "12711bdefc129a2e012354fd5a45a8df608cc0683af34d24b8efb5013d407add"
+    },
+    {
+      "file": "text-00ae130e.bin",
+      "rom_offset": 11408142,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e61559d5a40a04d4fa1b853153192272f5dea25b199ea4db220794cf7445668a",
+      "sha256": "be75fec6e2c07f7b59b1cc13c4cf8daeb6aaf8bad1379b40109752e6f71095b8"
+    },
+    {
+      "file": "text-00ae13b4.bin",
+      "rom_offset": 11408308,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e12f0a39a86b09f23b1541574aa81da654270d8a5ee497cd12556b5e02601608",
+      "sha256": "aee238a08e93f16a63adb26bd9de999d305a3eecc4e200bd3ebf2150e3be15d4"
+    },
+    {
+      "file": "text-00ae1409.bin",
+      "rom_offset": 11408393,
+      "bytes": 16,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "25bf90c7f7de92d553b0abd2c5712cd4a9070b34e3232d169d69ce4be523de66",
+      "sha256": "c490fd278c9111ab9c69f7d351aa0d49b6a709d93439d4e6210a3c3d8d5fd8a1"
+    },
+    {
+      "file": "text-00ae1502.bin",
+      "rom_offset": 11408642,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "1ca84c163f9b120c2f4ec8bf42d8de68ee4de4fbbc5ecf434a1732820253be37",
+      "sha256": "f9a672723ddb6f52674a23d2ca27f41117fb9a55af211f211c4ff2579d951f47"
+    },
+    {
+      "file": "text-00ae197b.bin",
+      "rom_offset": 11409787,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "7b6b698cf071fb52cbd37134d936d723c15ee2a734e060502261b34fefcfd01f",
+      "sha256": "df3df3d5258b2c849076a17d8cd79eea394dd38a6cadfd10f96296d965c759bd"
+    },
+    {
+      "file": "text-00ae19f4.bin",
+      "rom_offset": 11409908,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "643ff0c95a4adf21f3d2d72ada9a3641dc9f8a817a14d4cf21067b3461cc74df",
+      "sha256": "b126bb6fd5cc79dfe3f2e09bcb17dae034fe3530e6b82124cca3e57b1a667807"
+    },
+    {
+      "file": "text-00ae1b19.bin",
+      "rom_offset": 11410201,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00ae1b84.bin",
+      "rom_offset": 11410308,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00ae20f3.bin",
+      "rom_offset": 11411699,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "250f0c1d607a73b6fd43352775e0a2f9f0d75bef4962bab3e5b48e08cdcc3efb",
+      "sha256": "96279b7be456b58a20154274134c9455927d35363ede299b540ffea5b33daafa"
+    },
+    {
+      "file": "text-00ae216a.bin",
+      "rom_offset": 11411818,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ffaa73ae99546d71182bb8f46349e422fe104b84b2913d0b68650442efe3defe",
+      "sha256": "9a5acb02f7dfe2df08abf6b57a184532cff1c72dd013df7eeef3d073441af69d"
+    },
+    {
+      "file": "text-00ae21d1.bin",
+      "rom_offset": 11411921,
+      "bytes": 14,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5612b0c094a6049aa48a8b6de387d315e0de7bc4066138fd244b186024f3f5a1",
+      "sha256": "a449fe1acebe7a95c78cf00df5e680eb8b058c280414330f0c91aa897bfb3b45"
+    },
+    {
+      "file": "text-00ae2cad.bin",
+      "rom_offset": 11414701,
+      "bytes": 40,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ed23d03feed1c2456fee184497495986412eabf7cd689fe87861791cdf51c348",
+      "sha256": "c559b66ceff5e9b153d944ba9e773915aee4d6b9e1ee992b6824d67880400101"
+    },
+    {
+      "file": "text-00ae318e.bin",
+      "rom_offset": 11415950,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d012dcc72cce984fb30c4352172a7dc3269aeed4792008fcc239ac036fa7f079",
+      "sha256": "081015cdd4315fff1a570e1a9f9e883db136048fa173364860a9a608656a768f"
+    },
+    {
+      "file": "text-00ae3928.bin",
+      "rom_offset": 11417896,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "85a8f23a5e00d01c7b057e637ad86d8d787a3306de929e5ab1c1a8e945224cf0",
+      "sha256": "339d980df2da762c569ff96d985270892be8effa76f2029f7fea1b56da6f548e"
+    },
+    {
+      "file": "text-00ae4586.bin",
+      "rom_offset": 11421062,
+      "bytes": 36,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9cf5d5f5e19e7313a2e46e3d0a7100958e51c8e9789ebefcb0ac3cf10db691df",
+      "sha256": "3f66ebc7843ec669a2d1bbcb43b62096806fc0bb17b1c37c9d00a300155deb67"
+    },
+    {
+      "file": "text-00ae4b9e.bin",
+      "rom_offset": 11422622,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00ae5c8b.bin",
+      "rom_offset": 11426955,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d49c650ad377cd389b492e5ba8f7bcdbd98b490ec9f83b14ae5376bf36190715",
+      "sha256": "83cd5eb44329fecaa2dfaf6e8717797c7fc4fdcf14f36f643841ef1f0dd8cf07"
+    },
+    {
+      "file": "text-00ae5cda.bin",
+      "rom_offset": 11427034,
+      "bytes": 14,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "12105fe04d5d970c38d6fac6060b7dd25c1affc281058aa2f6836cafe08d6973",
+      "sha256": "b931cd2f71c69278b3f63c67d5160133a7e2a28024d9f13ae818c048cf1d2e5b"
+    },
+    {
+      "file": "text-00ae61e1.bin",
+      "rom_offset": 11428321,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00ae67c1.bin",
+      "rom_offset": 11429825,
+      "bytes": 1,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bb7208bc9b5d7c04f1236a82a0093a5e33f40423d5ba8d4266f7092c3ba43b62",
+      "sha256": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068"
+    },
+    {
+      "file": "text-00ae68f9.bin",
+      "rom_offset": 11430137,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ffa98847b83daafd17a946478e372700a85e34659322aa9d8a4e4ad382fa449a",
+      "sha256": "0fcd1fd6ed18f938f1eb8c1ccf8772c25c82547c645e9046a801c7fdafd4acc6"
+    },
+    {
+      "file": "text-00ae6959.bin",
+      "rom_offset": 11430233,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c660207a6d683d8c564d42f3893f8d0e5600efdce6ecbcf15cf1db67acbc870e",
+      "sha256": "6c342178e954f7b706b0ff9d4075fc59a301efe868d03b249d08c85a593cb2cb"
+    },
+    {
+      "file": "text-00ae69f9.bin",
+      "rom_offset": 11430393,
+      "bytes": 139,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ade7d69d6b055411ea1b085a6aa6086d6630c5ca92a18a621bfa0c5911f4b136",
+      "sha256": "7d3c826a15976b7c6e81c1efc34de4fde5efd353536407821bc3a350646ab601"
+    },
+    {
+      "file": "text-00ae6f18.bin",
+      "rom_offset": 11431704,
+      "bytes": 135,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "fa2e4f14e2d0daf97ae6b06ecc722d127653d48d1eee69f64f0368fcd031099b",
+      "sha256": "41a9a42d8072d429502781344a47e9c041ccfcd5455d014064c9227ae54e0187"
+    },
+    {
+      "file": "text-00ae720d.bin",
+      "rom_offset": 11432461,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6d971fb663201b8317bdfa4fdf8dc74eca73ff3e88dd455cc78d2f0de39e3bb7",
+      "sha256": "f729af5ca701a4d50dcd509e721d76001a34eeff7312f0c7a403ee58c94ff033"
+    },
+    {
+      "file": "text-00ae7692.bin",
+      "rom_offset": 11433618,
+      "bytes": 14,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "191e696d162cc9b8090048e60f6992573b7bacc592122df05e65756d006f40b9",
+      "sha256": "9f330b90e1f89222f144bdbd8c6fef6e1a9225e25be33fd4ad63043b95a0cd0b"
+    },
+    {
+      "file": "text-00ae7a6b.bin",
+      "rom_offset": 11434603,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "532e72244cacd9c7dad17d8aec23adcbf08c417af51599c96972b78ea35a8ebf",
+      "sha256": "1b8e6eb8b5b662292025e4823da1e512f935410b863115990ddfa46a18fdb230"
+    },
+    {
+      "file": "text-00ae7cb6.bin",
+      "rom_offset": 11435190,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "a804de46808950a706f7656acb5913b0835e1274514c3abbd7881c21ef456202",
+      "sha256": "6afaf15f8390b1d63e7080eba4accb1c47f903dfdde8effc8774c1e881c75231"
+    },
+    {
+      "file": "text-00ae83ac.bin",
+      "rom_offset": 11436972,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2af81e364711dc47f3642ea5ad3c9a1c90929cd75d76f79d93474bab31c2159",
+      "sha256": "7d11ec50ba7f9d46d7d2b6a83c21dc7711b0aecde7248cc5f418c7de886bc88f"
+    },
+    {
+      "file": "text-00ae83fb.bin",
+      "rom_offset": 11437051,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bebc6e936dd848a1445117c9632a72486dfbc88669528adffceb692d4371ab05",
+      "sha256": "f6a237a9f991f770ca7c8a5c2c1393d8ea98c7112d22907f4d3b840d43cfbb47"
+    },
+    {
+      "file": "text-00ae84f0.bin",
+      "rom_offset": 11437296,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2af81e364711dc47f3642ea5ad3c9a1c90929cd75d76f79d93474bab31c2159",
+      "sha256": "7d11ec50ba7f9d46d7d2b6a83c21dc7711b0aecde7248cc5f418c7de886bc88f"
+    },
+    {
+      "file": "text-00ae853b.bin",
+      "rom_offset": 11437371,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "9595ffd4bee297b465664ad080849e93394e42d27389cd63820e3be32a17a0fb",
+      "sha256": "1a2e1e91ddb38fc186157f66018b8e8793fceb764d038f1aead0c4a32bf54af8"
+    },
+    {
+      "file": "text-00ae867e.bin",
+      "rom_offset": 11437694,
+      "bytes": 8,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bebc6e936dd848a1445117c9632a72486dfbc88669528adffceb692d4371ab05",
+      "sha256": "f6a237a9f991f770ca7c8a5c2c1393d8ea98c7112d22907f4d3b840d43cfbb47"
+    },
+    {
+      "file": "text-00ae892b.bin",
+      "rom_offset": 11438379,
+      "bytes": 256,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2fb4162e969bfbe07777613a5694f5f4117305e1b48ec3d330d64361d34f07ee",
+      "sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1"
+    },
+    {
+      "file": "text-00ae8d40.bin",
+      "rom_offset": 11439424,
+      "bytes": 407,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e8f415864397b4c450ae2b37a8a6596312c9d20b34de20d6799a94e99a40643f",
+      "sha256": "19f2ee4f819c0edf4dced45fdf9ea79b33b71333a94a4d883ade0dbc0aa87584"
+    },
+    {
+      "file": "text-00ae8fc8.bin",
+      "rom_offset": 11440072,
+      "bytes": 104,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c9f51c5d7e6a0e6c32ae40a5be2624a2ba267b3a37d74edbdecf94b64339f085",
+      "sha256": "dc3d97254020239f97ed53603ba3a80b328df96780da665a2483c116db2ea072"
+    },
+    {
+      "file": "text-00ae93d0.bin",
+      "rom_offset": 11441104,
+      "bytes": 46,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "5588e440837312ddc2a55e05898be960a6cae36082be305271c9b86569289faf",
+      "sha256": "cc65f0c470fad0aa9caae96383cc28a8bbcce3d6dd91fd50694ff7d0c1a6c407"
+    },
+    {
+      "file": "text-00ae941e.bin",
+      "rom_offset": 11441182,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00ae948a.bin",
+      "rom_offset": 11441290,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00aea030.bin",
+      "rom_offset": 11444272,
+      "bytes": 34,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "790d89de140a1acdba8d9635e34609e588b8228be71449e86d570d350abf6457",
+      "sha256": "fcd7591afa6414a49d99fe60b3d3d025332f06ed5f5c77b9adc40020a558c8c4"
+    },
+    {
+      "file": "text-00aea994.bin",
+      "rom_offset": 11446676,
+      "bytes": 55,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e6c62086bf590143a2f3e10f1f911d84b331e556dc9b222a6769c7fa4b73747f",
+      "sha256": "8a00aa94c4d3f7e6b5263df6fcf34e373d025d7d95ec4ba94c9419fa0a4527eb"
+    },
+    {
+      "file": "text-00aeac39.bin",
+      "rom_offset": 11447353,
+      "bytes": 24,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4f43c3f1cfe4c538fe75c956c649640d680d8a0d35e7754c5c8cb7702abe3d0c",
+      "sha256": "c468f6f67288d14c3e776a6e08de1ac43e0a3756498fbe8093113f063c2d6a20"
+    },
+    {
+      "file": "text-00aeacbe.bin",
+      "rom_offset": 11447486,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "453d976089c47fc216a3dfdf35dd3408ae92a9bbe74a575d30f221f88931ea20",
+      "sha256": "c7d926e5487ed890b86fc8805506558238770e177a111752321181d7b334dc70"
+    },
+    {
+      "file": "text-00aeace0.bin",
+      "rom_offset": 11447520,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f8d4952dacd08a47909f70fe062e44d8b744fafe873d7c71a6234a80de0da432",
+      "sha256": "1b6abb350ce01602f93a34f4cdce9fdba8cf978fd9a9d05806ee27ccbf75f377"
+    },
+    {
+      "file": "text-00aeae28.bin",
+      "rom_offset": 11447848,
+      "bytes": 48,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "10b1b67befbe7fd0cd1437eeeedc5cc141ef9bd0f01bf4696c590dc5e73e8388",
+      "sha256": "fba89b62bb2a4bc2e46763f0a107e795637d36e41d76c3566148161cbfcee336"
+    },
+    {
+      "file": "text-00aeae7e.bin",
+      "rom_offset": 11447934,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f8d4952dacd08a47909f70fe062e44d8b744fafe873d7c71a6234a80de0da432",
+      "sha256": "1b6abb350ce01602f93a34f4cdce9fdba8cf978fd9a9d05806ee27ccbf75f377"
+    },
+    {
+      "file": "text-00aeaea6.bin",
+      "rom_offset": 11447974,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "452e6a03e2e57596967f4c0cedcf2e4de5995dabaae9803c50df1badc9feda49",
+      "sha256": "48ef0d02ee084ba9165c84f87e8399cabbbc459d4c1f4cfbf665e822fca54b28"
+    },
+    {
+      "file": "text-00aeb23a.bin",
+      "rom_offset": 11448890,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c8af61228107338194f0b9520d76a11d5445a8b6761d2e28591113bb98a65183",
+      "sha256": "eeee50849093aff2efcf555b37aa7e7635ea922bbf62f7df40d5e82ccb99da43"
+    },
+    {
+      "file": "text-00aeb2d2.bin",
+      "rom_offset": 11449042,
+      "bytes": 226,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ba0f3773e0e8b4767ed11cd924b1a60b24fabe1d2beea5e334f83a08c32e64b7",
+      "sha256": "5ee74d725c229cdf5f8792cd1c317a120dbea5a04b6a9ce7685519dd1d54c6f5"
+    },
+    {
+      "file": "text-00aebfda.bin",
+      "rom_offset": 11452378,
+      "bytes": 28,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f7516045da8ab03161cebb7c96ed319d020be499521654b97d3c23f54dc4371d",
+      "sha256": "eca74bfd6d329c98aec2e9156006cf93513a00cba6722eeb57db93942ea404a1"
+    },
+    {
+      "file": "text-00aec11c.bin",
+      "rom_offset": 11452700,
+      "bytes": 44,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bc228218d38138e6f40d22a697857a8423c89e42b6dd68d138927ded2144393a",
+      "sha256": "c0c0ba3eb5bfce18de9c40a03157ed502dd7c07aa20fa956a5c0538bfb413d45"
+    },
+    {
+      "file": "text-00aec168.bin",
+      "rom_offset": 11452776,
+      "bytes": 30,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3f160d35ad8a5fc6c15f823bfcb853d22d8a981dfcc8d6f354b48250be29a388",
+      "sha256": "e10ac11270c1a0c376a8ceb79aa3288da86cae1e0e469db9d0b500fe6034ca60"
+    },
+    {
+      "file": "text-00aed1b9.bin",
+      "rom_offset": 11456953,
+      "bytes": 17,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "db6ed0e6862861b82bbb378881da4b1d63552ef470f1e3aade0ae950f49441a8",
+      "sha256": "d530d0a83c5379d69e9c9e46bad286ac4b00a14af3251eae1eeccc87d06dd346"
+    },
+    {
+      "file": "text-00aed1ef.bin",
+      "rom_offset": 11457007,
+      "bytes": 71,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3991d0fa0e6ec141d0d75913aa912cf6421c87bde67aa70be86793c34a379c9d",
+      "sha256": "511534b494fb99e9073009f177357dac7d9cce7681554f78fc3bf0263fe115a3"
+    },
+    {
+      "file": "text-00aed25b.bin",
+      "rom_offset": 11457115,
+      "bytes": 17,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e257d23d2f899b44c2b30c3a6b4508845fee9fd9c439e1ca41e2015fa7eebbdc",
+      "sha256": "538ef7b79e7e481bee27b76860a735aa8f9e024e24a0617e65b9501b0d9fbcf3"
+    },
+    {
+      "file": "text-00aed291.bin",
+      "rom_offset": 11457169,
+      "bytes": 17,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3f043a6e8eca18746a64a8c747c81148e673714446b1d4ea2644fb09465908d6",
+      "sha256": "402819dae5f1e010daddb17a2aec9c07f904cd1ffa490e4d9c654618f9221290"
+    },
+    {
+      "file": "text-00aed2c7.bin",
+      "rom_offset": 11457223,
+      "bytes": 17,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3e2c60348277e9780cc4553a2686b5e1c394fb323aa4cc858b59f10bb0d65574",
+      "sha256": "0b2b227923ecf860d8e1dc379ad6664263a75b844081d20d06d97711c75437f9"
+    },
+    {
+      "file": "text-00aed2fd.bin",
+      "rom_offset": 11457277,
+      "bytes": 485,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "0ac104b610df1363c857dd9b7b7df774f211c427b25820cba2766ac8c2535a35",
+      "sha256": "ac531a7ff14a3a78d822a8dcde399e2d2cff2dd1391e5e2c75f836a35e4e3a30"
+    },
+    {
+      "file": "text-00aeef78.bin",
+      "rom_offset": 11464568,
+      "bytes": 115,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4d027c12a8b575195585139cdde3e957d0af94ab0294c389f8205c30060b0e50",
+      "sha256": "ff68e730375e2c9d7039a8cc1032f0c4429640da8d7c4f2cb73ffc7dc5916a9a"
+    },
+    {
+      "file": "text-00aef58d.bin",
+      "rom_offset": 11466125,
+      "bytes": 131,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "2c4745744af301fb244578e0c35c4825843f1e4e6f0a4387c87f357289191d0f",
+      "sha256": "db695f93087451240b418f840c2fa5f935cfd8a3ffb5c9b32343c7d7355e49d3"
+    },
+    {
+      "file": "text-00aef64d.bin",
+      "rom_offset": 11466317,
+      "bytes": 74,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4074be46aca7b3d331b96409afd9c75f1c9833fd4e99109989d95dd73d8e89c6",
+      "sha256": "818209d2e221791a4a7770a17da25f492cca4bc32e5821e43967fca3f6f36950"
+    },
+    {
+      "file": "text-00aef6d4.bin",
+      "rom_offset": 11466452,
+      "bytes": 72,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "6e38fee42959a6dea2a9c8c064d94397248d2ce03935428e1b1dc6f3150597bb",
+      "sha256": "f311087a23cfe068d416e22720a2ec509d1fc133fcb06c7a5f79ec2d1d310d05"
+    },
+    {
+      "file": "text-00aef807.bin",
+      "rom_offset": 11466759,
+      "bytes": 27,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "d20950b6d59017c3e04b3e7ec979eb499a2730dffe22a8e01a8f95a4a757b4ed",
+      "sha256": "f4046f079b83398fa33270f2c79348a23cf7adb305856520e014a88a241eabec"
+    },
+    {
+      "file": "text-00af0058.bin",
+      "rom_offset": 11468888,
+      "bytes": 12,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "f3881ad8853657bf06f9681a142fb6e097ef1f270e9f535208bf7bb0523a077c",
+      "sha256": "327678038f6ed4e89da4c3e8ec9849601043959595c28d81c7e999af376860e2"
+    },
+    {
+      "file": "text-00af03d0.bin",
+      "rom_offset": 11469776,
+      "bytes": 18,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "ae12e8c57c700f410837b6f517f5bca3ba3db7fb2883e88bcb8b6cfac657d4db",
+      "sha256": "ccf711499064b37a1ab973becbb58fa8d984c3303a63ad1268ee00e0c2e76677"
+    },
+    {
+      "file": "text-00af05b3.bin",
+      "rom_offset": 11470259,
+      "bytes": 1,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "3e151409ace91cb3394fecd59e92b5dc42c0aad29993a1858f2f70a0866a539b",
+      "sha256": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf"
+    },
+    {
+      "file": "text-00af1455.bin",
+      "rom_offset": 11474005,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "c2b9adf054afc8e3b9abe766a778d629e3cea714d24359a7b8c3645bd3a53e7a",
+      "sha256": "5ebb6d948e0208e6a3109fb159d8733afc95c9c112cdad76db2cfe7ba8b6befd"
+    },
+    {
+      "file": "text-00af1609.bin",
+      "rom_offset": 11474441,
+      "bytes": 4,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "4397311cc1a2f33fae058a2e97196be02430cfe560efa78dfa72ae8fc6d25c75",
+      "sha256": "2da6d0e41bef7da89f2551baa2a4d18531e988c8d84d73d3fcca998a91e2b4ab"
+    },
+    {
+      "file": "text-00af1732.bin",
+      "rom_offset": 11474738,
+      "bytes": 2,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "52b8198400f2f9bde7a2acf08c7e10ebca26cbf6a13bd303997520405afc2828",
+      "sha256": "caab66e89fd4b52509396c22666c9f5a73ce5f4abe4b17dad6dc41a7f051c93f"
+    },
+    {
+      "file": "text-00af25ab.bin",
+      "rom_offset": 11478443,
+      "bytes": 10,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "e8e53664cec695e471f76e830af81177ac3146cea960cb3158f624c9e3187be6",
+      "sha256": "545337c78b473e6557577de767eca2ac6fa4d911094ddc93d66377d86440e42b"
+    },
+    {
+      "file": "text-00af2b09.bin",
+      "rom_offset": 11479817,
+      "bytes": 6,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "467861bdc308dbc8f339f18460d12ce97e318b8fc33b5cac1e42648b4b3ef9dc",
+      "sha256": "a6d4c7756ca8c2641e94e25fbf1ce008ab4b9e88f15da27c5dfc6b43a503e95e"
+    },
+    {
+      "file": "text-00af38dc.bin",
+      "rom_offset": 11483356,
+      "bytes": 6932,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "bacfecd4cbf5b2abdc01187e3ce95b9ac2d1d129f9f3bc397dcd4cc2698b6a37",
+      "sha256": "6832daa802fc0cdd6b2c6b82646ec5dcb4dcb9ca34df56d4eef44af84d4787d9"
+    },
+    {
+      "file": "text-00f24000.bin",
+      "rom_offset": 15876096,
+      "bytes": 60,
+      "category": "text",
+      "kind": "data",
+      "preimage_sha256": "629a5c51b535fbed8cf66fe66ca7d893116c7b7a851db41f079e929680540f58",
+      "sha256": "da0a1e5e43f1ec8428af5eadbaaae224ab3eda09360c150f6e642b608a96e198"
+    }
+  ]
+}

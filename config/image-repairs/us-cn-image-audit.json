@@ -1,0 +1,599 @@
+{
+  "schema": "ffta-us-cn-image-audit-v1",
+  "scope": "Explicit CN resource manifest only, not a complete ROM graphics inventory. Raw tile-atlas recognition is provisional until native layout and active consumers are verified.",
+  "rom_sha256": "8f4b46e8b11db9754389ae592de5b0c0d72ee8229b6401f27a692dbb6f308d13",
+  "resource_spans_reviewed": 57,
+  "resources": [
+    {
+      "id": "scene-base-graphics",
+      "rom_offset": 3925684,
+      "bytes": 2112,
+      "sha256": "2deb035baeaf5fba8eaeea457370887d6e50e308012aa663cf050c121246806a"
+    },
+    {
+      "id": "registered-scene-graphics",
+      "rom_offset": 9848888,
+      "bytes": 11640,
+      "sha256": "0abe5ae929824bff4d600916866effe3ee449caada6f1abe5f59193fe03ec03f"
+    },
+    {
+      "id": "copy-A50000-payload",
+      "rom_offset": 10813444,
+      "bytes": 7264,
+      "sha256": "082fb6a8b4ed2979a84ed10a3a972b179bd4fd770216ef7cf7c8363d97784380"
+    },
+    {
+      "id": "unresolved-storage-A51C64",
+      "rom_offset": 10820708,
+      "bytes": 412,
+      "sha256": "d0ea334c8e486afb4c8dd060304268ce8469e2d6bb46c45b9bdaf4e173db7c3c"
+    },
+    {
+      "id": "copy-A51E00-payload",
+      "rom_offset": 10821124,
+      "bytes": 896,
+      "sha256": "c080f8baa5badcdfef5259ecd688c4a25b616f2a8886b00d7e10b0ad1d2e4cd2"
+    },
+    {
+      "id": "copy-A52200-payload",
+      "rom_offset": 10822148,
+      "bytes": 896,
+      "sha256": "c080f8baa5badcdfef5259ecd688c4a25b616f2a8886b00d7e10b0ad1d2e4cd2"
+    },
+    {
+      "id": "unresolved-storage-A52584",
+      "rom_offset": 10823044,
+      "bytes": 1660,
+      "sha256": "719696b2d95ee55baf3681cf43db3361f6c8c674def31625c31668056a4b0120"
+    },
+    {
+      "id": "copy-A52C00-payload",
+      "rom_offset": 10824708,
+      "bytes": 4352,
+      "sha256": "a79951d06ff1292a25c6dd55a5b9ea5278f548026899c28ca5cd6fb41fa15cc8"
+    },
+    {
+      "id": "copy-A54000-payload",
+      "rom_offset": 10829828,
+      "bytes": 2176,
+      "sha256": "2f028197d75ff2ae34f09c94bfeea57a76af712aa6b661d20dd2b0c5219139f2"
+    },
+    {
+      "id": "unresolved-storage-A54884",
+      "rom_offset": 10832004,
+      "bytes": 1916,
+      "sha256": "e4e668512dccdbc866a336e2ad3961f499dd72de879c22df3a321a2a676b3ae8"
+    },
+    {
+      "id": "copy-A55000-payload",
+      "rom_offset": 10833924,
+      "bytes": 2880,
+      "sha256": "a770cc205fc97b1b0e20698499f3deafc895e6006488cd482bc991fa4cbe735c"
+    },
+    {
+      "id": "unresolved-storage-A55B44",
+      "rom_offset": 10836804,
+      "bytes": 700,
+      "sha256": "523cb6472899713c459001db8c84522775344e82c5163657ea69a257b2aea96b"
+    },
+    {
+      "id": "copy-A55E00-payload",
+      "rom_offset": 10837508,
+      "bytes": 4000,
+      "sha256": "b9911fba79c1d1c51c1265f4fbe14638af43bcb8ac4a644efdb5d2c6858f0ba0"
+    },
+    {
+      "id": "copy-A56E00-payload",
+      "rom_offset": 10841604,
+      "bytes": 2176,
+      "sha256": "e310851798c877a24e699f39a4e9223bf2402b93762c5609cd3fd7fb17db9264"
+    },
+    {
+      "id": "copy-A57800-payload",
+      "rom_offset": 10844164,
+      "bytes": 1472,
+      "sha256": "ca77d592f4f7a17145dce1af9807bc04a9e78faad44cb13f33a6fe3caa456287"
+    },
+    {
+      "id": "copy-A58120-payload",
+      "rom_offset": 10846500,
+      "bytes": 7072,
+      "sha256": "6d2ecccc01ad0de081a9c31346b3dfb6418cbff94381eed3aec0cc6c13c738b3"
+    },
+    {
+      "id": "unresolved-storage-A59CC4",
+      "rom_offset": 10853572,
+      "bytes": 20384,
+      "sha256": "f331853f89717bb5e4f5b8f595776111a9be6d230584b9e79c74639a87dbabf7"
+    },
+    {
+      "id": "override-0-0",
+      "rom_offset": 10873956,
+      "bytes": 768,
+      "sha256": "1cd7d98cf3b57d76fd6dbd02d325c61f9bfd077c051f738d020caa8e6c697f9e"
+    },
+    {
+      "id": "override-0-6",
+      "rom_offset": 10875172,
+      "bytes": 768,
+      "sha256": "f42f68a45333fb91b3acbc8667620d052628ca2bad4196e0b1c98cdae02540ca"
+    },
+    {
+      "id": "override-0-12",
+      "rom_offset": 10876388,
+      "bytes": 768,
+      "sha256": "455a46db962e62a5d12f6afdf7750b503c10920ebe26809bd7b5c59e47412f27"
+    },
+    {
+      "id": "override-0-18",
+      "rom_offset": 10877604,
+      "bytes": 768,
+      "sha256": "129e5a4c50b37753b6c529da0e435f61aa492fa0db14d12d22071b68116dd3fb"
+    },
+    {
+      "id": "override-0-24",
+      "rom_offset": 10878820,
+      "bytes": 768,
+      "sha256": "4ef8e61c8aded2b819d9e2ada4c19f3b1d7b2698c920352eb884c3da1cd18997"
+    },
+    {
+      "id": "override-1-0",
+      "rom_offset": 10880036,
+      "bytes": 576,
+      "sha256": "e2cce242011feaeeff465e3fcab5c370acf7f2426df10883e6e0b1d26b29f189"
+    },
+    {
+      "id": "override-1-9",
+      "rom_offset": 10881060,
+      "bytes": 576,
+      "sha256": "95e8a70cc5d77a8dc96e32ddd7466a47387de90264fb52767fc7883c6ba088f0"
+    },
+    {
+      "id": "override-1-14",
+      "rom_offset": 10882084,
+      "bytes": 576,
+      "sha256": "c49902124f097317521c1ec6a22203459f9b5be686c77cffd620e7f0d4056177"
+    },
+    {
+      "id": "override-1-19",
+      "rom_offset": 10883108,
+      "bytes": 576,
+      "sha256": "77cc4ed2d11b03991c2346e1f455199639564b29ef548e777642767eda435431"
+    },
+    {
+      "id": "override-1-25",
+      "rom_offset": 10884132,
+      "bytes": 576,
+      "sha256": "4e94bc5299a149c056b060b8b11a2a110f598f0d21dcbacaaea196a62786d6dc"
+    },
+    {
+      "id": "override-1-30",
+      "rom_offset": 10885156,
+      "bytes": 576,
+      "sha256": "0f23bf5db0bee06a63934590d594c445a90ba285faa77a9028626249eea33caf"
+    },
+    {
+      "id": "override-1-38",
+      "rom_offset": 10886180,
+      "bytes": 576,
+      "sha256": "434a150192f6eb21095b120e9a68964c0d1a4fa85c36f6630ed3c31e34263ad8"
+    },
+    {
+      "id": "override-1-45",
+      "rom_offset": 10887204,
+      "bytes": 576,
+      "sha256": "d5521f1925d0c9d952fe657e50b43cfb1f4623c3f8aa0e9b5c5523cba8fa8c07"
+    },
+    {
+      "id": "override-1-53",
+      "rom_offset": 10888228,
+      "bytes": 576,
+      "sha256": "beda669a374fd4e5c6811bf0e0b945ca3102b764b822d84a93e4af1c59393857"
+    },
+    {
+      "id": "override-1-61",
+      "rom_offset": 10889252,
+      "bytes": 576,
+      "sha256": "e50ce398196709f62049b4b4276b9f08178238c755a20d7bd765ca2cbeb1be80"
+    },
+    {
+      "id": "override-1-69",
+      "rom_offset": 10890276,
+      "bytes": 576,
+      "sha256": "ec5b34a46280f2f9074fe5cdef74a9e8decb7a45602f5288d607df9712f8f812"
+    },
+    {
+      "id": "override-1-78",
+      "rom_offset": 10891300,
+      "bytes": 576,
+      "sha256": "c138838239dfa01f024856d27aa9e4afd9540b0ba7e1972299b7038658a34eed"
+    },
+    {
+      "id": "override-1-85",
+      "rom_offset": 10892324,
+      "bytes": 576,
+      "sha256": "67368172c977067fb7ecab3b3549d21e2e4208d645636908b3849c05e5fbdf0a"
+    },
+    {
+      "id": "override-1-93",
+      "rom_offset": 10893348,
+      "bytes": 576,
+      "sha256": "581b7d8569541b9fc1367ae48bbbee5e20ae6759e8fae497bc6fe731b31f550f"
+    },
+    {
+      "id": "override-1-100",
+      "rom_offset": 10894372,
+      "bytes": 576,
+      "sha256": "27a3dcbe94c4c8c500bd64d421117271151125642b62bbe99ebf3eaf3653a8a9"
+    },
+    {
+      "id": "override-1-107",
+      "rom_offset": 10895396,
+      "bytes": 576,
+      "sha256": "4057a6be06c5ffedf1911ad108bbca5964c88071ca9aa2bfbf78399e4efa12f7"
+    },
+    {
+      "id": "override-1-116",
+      "rom_offset": 10896420,
+      "bytes": 576,
+      "sha256": "baf2e970c8cf841ce04ec312c5910b2ae68c01ef2eb696301a7c7cdda470866a"
+    },
+    {
+      "id": "override-1-124",
+      "rom_offset": 10897444,
+      "bytes": 576,
+      "sha256": "263b89eab6d5f1947f18dc91d8bb2192c25411388cd606d3dc40d7d9a61f4eb6"
+    },
+    {
+      "id": "override-1-132",
+      "rom_offset": 10898468,
+      "bytes": 576,
+      "sha256": "69acb49e4d1261f6ac504665dea462b01379601aee93e298133d693f59190c8f"
+    },
+    {
+      "id": "override-1-140",
+      "rom_offset": 10899492,
+      "bytes": 576,
+      "sha256": "6aca843ea6852980dee56d7b60e639df4af5b28a51926cd77d9980f9605f78e8"
+    },
+    {
+      "id": "override-1-148",
+      "rom_offset": 10900516,
+      "bytes": 576,
+      "sha256": "7bf08592d110d2184d1d7b6d6d10d75327c7971f7739064ba02db6f18f14ec0a"
+    },
+    {
+      "id": "override-1-156",
+      "rom_offset": 10901540,
+      "bytes": 576,
+      "sha256": "310542829fdf716a156bd1181b3588d7a70350e61ae4f789f54b5944f168652c"
+    },
+    {
+      "id": "override-1-164",
+      "rom_offset": 10902564,
+      "bytes": 576,
+      "sha256": "3d041404e78415ba5f73a9bec8c36c8b4c537198e7dc832427a01152014d62ef"
+    },
+    {
+      "id": "override-1-171",
+      "rom_offset": 10903588,
+      "bytes": 576,
+      "sha256": "c8be5bb156ad6aa96e1a54e57ea63e33bf5ae75cdfe31f0b20781c2f28411aec"
+    },
+    {
+      "id": "override-1-179",
+      "rom_offset": 10904612,
+      "bytes": 576,
+      "sha256": "aa59a07e543bf3ab0086e55eaa11d0c181e3253dd5a9aa977e8aca91893d5168"
+    },
+    {
+      "id": "override-1-187",
+      "rom_offset": 10905636,
+      "bytes": 576,
+      "sha256": "8338c444fb23856326557c223e838da4326e3f78cc331bca3535c97fc41e9551"
+    },
+    {
+      "id": "override-1-195",
+      "rom_offset": 10906660,
+      "bytes": 576,
+      "sha256": "83dde28d84f6d0c67ee1d885061c2f2516949449abb831b3d86151c2f64cdf24"
+    },
+    {
+      "id": "override-1-203",
+      "rom_offset": 10907684,
+      "bytes": 576,
+      "sha256": "521db48e338cf606f467c5946ccad2aeff16bd7447d8798b29587c4d8cadaee2"
+    },
+    {
+      "id": "override-1-210",
+      "rom_offset": 10908708,
+      "bytes": 576,
+      "sha256": "48a9cd3fb306a60078a072ebbbfb9f9c45ef3bbe38ae1a2607ed7c682d5f9736"
+    },
+    {
+      "id": "override-1-217",
+      "rom_offset": 10909732,
+      "bytes": 576,
+      "sha256": "0dc95694b70a3004ad4e0663e1ff18afe184e878184e4cf23de65551d7f45090"
+    },
+    {
+      "id": "override-2-0",
+      "rom_offset": 10910756,
+      "bytes": 1472,
+      "sha256": "251c2b5a57efce8c62cff880795df0fbcd288e15658eaac9b57a12bfb8a1113f"
+    },
+    {
+      "id": "override-2-1",
+      "rom_offset": 10912804,
+      "bytes": 1472,
+      "sha256": "adf9d53d82cae42615ebd4df84920abb9c77107c6410a501b34d0a708385d734"
+    },
+    {
+      "id": "override-2-2",
+      "rom_offset": 10914852,
+      "bytes": 1472,
+      "sha256": "692925815168ee5db28ec4ae3b9be68fee4f0f3f2235fa89575b50394bcf916a"
+    },
+    {
+      "id": "override-2-3",
+      "rom_offset": 10916900,
+      "bytes": 1472,
+      "sha256": "b805cdd6216e99fe2b15645007396212f1395fa3d16bf83798dc82aa93aa0043"
+    },
+    {
+      "id": "override-2-5",
+      "rom_offset": 10918948,
+      "bytes": 1472,
+      "sha256": "e0925f1df585cef3f916f142c15fefd8ad5f0f82cea47e624feb5dfc0322fa11"
+    }
+  ],
+  "findings": [
+    {
+      "id": "rank",
+      "label": "RANK",
+      "translation": "等级",
+      "resources": [
+        "copy-A55000-payload"
+      ],
+      "visible_instances": 1,
+      "status": "candidate-rendered",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "price",
+      "label": "PRICE",
+      "translation": "价格",
+      "resources": [
+        "copy-A55000-payload"
+      ],
+      "visible_instances": 1,
+      "status": "candidate-rendered",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "clan-funds",
+      "label": "CLAN FUNDS",
+      "translation": "战队资金",
+      "resources": [
+        "copy-A55000-payload",
+        "copy-A55E00-payload"
+      ],
+      "visible_instances": 2,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "action",
+      "label": "Action",
+      "translation": "行动",
+      "resources": [
+        "copy-A50000-payload"
+      ],
+      "visible_instances": 1,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "reaction",
+      "label": "Reaction",
+      "translation": "反应",
+      "resources": [
+        "copy-A50000-payload"
+      ],
+      "visible_instances": 1,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "support",
+      "label": "Support",
+      "translation": "援助",
+      "resources": [
+        "copy-A50000-payload"
+      ],
+      "visible_instances": 1,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen.",
+      "terminology_note": "Native CN tutorial fixed page 8 entry 61 calls Support 援助技能. This raw resource copy still requires separate consumer/layout validation."
+    },
+    {
+      "id": "cleared",
+      "label": "CLEARED",
+      "translation": "已完成",
+      "resources": [
+        "copy-A55000-payload"
+      ],
+      "visible_instances": null,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "battle",
+      "label": "Battle",
+      "translation": "战斗",
+      "resources": [
+        "copy-A55000-payload"
+      ],
+      "visible_instances": null,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "days",
+      "label": "DAYS",
+      "translation": "天数",
+      "resources": [
+        "copy-A55E00-payload"
+      ],
+      "visible_instances": null,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "card",
+      "label": "CARD",
+      "translation": "卡片",
+      "resources": [
+        "copy-A52C00-payload"
+      ],
+      "visible_instances": null,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "join-mission",
+      "label": "Join! Mission",
+      "translation": "参加任务",
+      "resources": [
+        "copy-A54000-payload"
+      ],
+      "visible_instances": null,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    },
+    {
+      "id": "mode",
+      "label": "MODE",
+      "translation": "模式",
+      "resources": [
+        "scene-base-graphics"
+      ],
+      "visible_instances": null,
+      "status": "pending-layout",
+      "runtime_use": "Unverified; atlas presence alone does not establish an active screen."
+    }
+  ],
+  "review_separately": [
+    {
+      "category": "button-and-stat-abbreviations",
+      "labels": [
+        "START",
+        "L",
+        "R",
+        "HP",
+        "MP",
+        "AP",
+        "EXP",
+        "Lv"
+      ],
+      "policy": "Review in context; do not automatically replace physical button labels or standard compact stats."
+    },
+    {
+      "category": "logos-and-intro",
+      "resources": [
+        "registered-scene-graphics",
+        "copy-A58120-payload"
+      ],
+      "policy": "Separate product/company logos, already translated overlays and residual intro artwork; reconstruct complete scenes before deciding."
+    }
+  ],
+  "assembly_contract": {
+    "input": "Authenticated native decoded tiles and configuration, never reference PNGs.",
+    "canvas": "Logical image coordinates; explicit tile order and per-cell H/V flips.",
+    "scatter": "Inverse mapping to original tile nibbles with unchanged dimensions and allocation.",
+    "palette": "Retain native indices and record palette bank; unknown banks require runtime verification.",
+    "shared_tiles": "Reject divergent writes to aliased tiles; relocation requires explicit native map/loader updates.",
+    "validation": [
+      "assemble/scatter identity",
+      "reversed and non-contiguous pieces",
+      "H/V flips",
+      "shared-tile conflict rejection",
+      "protected neighbor identity",
+      "all active consumers and runtime reconstruction"
+    ]
+  },
+  "native_split_loader_example": {
+    "loader_cpu": 134317348,
+    "descriptor_cpu": 137811804,
+    "descriptor_hex": "06121b00",
+    "selector": 30,
+    "bank_cpu": 138236016,
+    "pieces_in_destination_order": [
+      {
+        "bank_entry": 27,
+        "source_tile": 0,
+        "tiles": 3,
+        "destination_tile": 0,
+        "copy_halfwords": 48,
+        "destination_byte_offset": 0
+      },
+      {
+        "bank_entry": 18,
+        "source_tile": 0,
+        "tiles": 3,
+        "destination_tile": 3,
+        "copy_halfwords": 48,
+        "destination_byte_offset": 96
+      }
+    ],
+    "source_evidence": [
+      {
+        "path": "vendor/fftadecomp/src/native_ui_362/load_native_window_descriptor_tiles.c",
+        "sha256": "3b961378866f157ffea0c50ec9a14f82175b35fb5db05398386f1554562d6816"
+      },
+      {
+        "path": "vendor/fftadecomp/src/native_ui_362/get_native_window_descriptor.c",
+        "sha256": "f0a22e49036e811b121f16605001ed1b4990b675369a55d54dd3f3f34015260e"
+      }
+    ],
+    "status": "Native load order established; this example does not assert screen coordinates, active CN usage or a raw ROM payload offset.",
+    "piece_bytes": 96,
+    "total_destination_bytes": 192
+  },
+  "additional_native_bank": {
+    "offset": 4018288,
+    "original_bytes": 2476,
+    "restored_entries": 30,
+    "repaired_entries": 27,
+    "configuration": "us-cn-window-titles.json",
+    "split_composite": "EQP ALL -> 全部装备; reorder selector-30 pieces, retain standalone ALL and EQP meanings.",
+    "validation": "32 direct native loader selectors match reconstructed images; actual equipment panel replay changes only its title pixels.",
+    "remaining_entries": [
+      0,
+      1,
+      6
+    ]
+  },
+  "expanded_container_survey": {
+    "signature": "4137",
+    "validated_banks": 37,
+    "decoded_entries": 1859,
+    "scope": "These are native container entries, not 1859 images needing translation. They include icons, glyphs, portraits, animation/control data and resources redirected by the existing CN patch.",
+    "job_icon_bank": {
+      "offset": 3903492,
+      "entries": 44,
+      "playable_job_icons": 42,
+      "generic_fallbacks": 2,
+      "native_surface": [
+        32,
+        16
+      ],
+      "configuration": "us-cn-job-icons.json"
+    },
+    "existing_cn_override_banks": [
+      3853672,
+      3847212,
+      3938356
+    ]
+  }
+}

@@ -3,7 +3,7 @@
 `plugins.json` declares plugin priority and font ownership. Font generation uses
 Python's standard library; it introduces no font engine, OCR or Swift dependency.
 
-`uscn` owns the base font and its character table at priority 1000. Every other
+`cn2025` owns the base font and its character table at priority 1000. Every other
 plugin must have a lower priority. Its 3,175 native glyphs and widths are checked
 against every row of `config/charsets/us-cn-v1.1/character-table.json` before an
 extension is built. Unknown labels and duplicate Unicode aliases remain in the
@@ -14,7 +14,7 @@ Font declarations use these modes:
 
 - `base`: an explicit glyph table, ROM font/width offsets, glyph count and cell
   size. The highest-priority enabled base owns the original indices; this project
-  requires that base to be `uscn`.
+  requires that base to be `cn2025`.
 - `append`: a named style, selected Unicode characters and a transform. The
   `row_shear` transform shifts every nonzero pixel in a row by
   `max(0, baseline - y) // rows_per_pixel`, retaining its original 4bpp shade.

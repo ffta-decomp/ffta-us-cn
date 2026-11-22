@@ -1,0 +1,205 @@
+{
+  "schema": "ffta-us-cn-image-repairs-v1",
+  "description": "Declarative enhancement repairs for native FFTA US CN 4bpp resources. Private tooling and all extracted/generated assets remain outside this repository.",
+  "input": {
+    "rom_bytes": 16777216,
+    "accepted_sha256": [
+      "8f4b46e8b11db9754389ae592de5b0c0d72ee8229b6401f27a692dbb6f308d13",
+      "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03"
+    ],
+    "retail_sha256": "43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19"
+  },
+  "font": {
+    "filename": "fusion-pixel-8px-monospaced-zh_hans.bdf",
+    "sha256": "31f654b8348f0d531d0aafe37364edd708eee7e4c6388ec700f77b5f6bf1b43c",
+    "family": "Fusion Pixel 8px Monospaced zh_Hans",
+    "version": "2026.10.25",
+    "upstream": "https://github.com/TakWolf/fusion-pixel-font",
+    "license": "SIL-OFL-1.1",
+    "copyright": "Copyright (c) 2022, TakWolf (https://takwolf.com)",
+    "cell": [
+      8,
+      8
+    ],
+    "ascent": 7,
+    "scaling": "none",
+    "resolution": "Explicit --font path; no search or embedded font data."
+  },
+  "resource": {
+    "id": "shared-menu-labels",
+    "format": "gba-4bpp-tiled-low-nibble-first",
+    "header_offset": 10833920,
+    "header_hex": "400b0000",
+    "payload_offset": 10833924,
+    "payload_bytes": 2880,
+    "payload_sha256": "a770cc205fc97b1b0e20698499f3deafc895e6006488cd482bc991fa4cbe735c",
+    "pointer_literals": [
+      {
+        "offset": 141952,
+        "value": 145051648
+      },
+      {
+        "offset": 201536,
+        "value": 145051648
+      },
+      {
+        "offset": 318776,
+        "value": 145051648
+      },
+      {
+        "offset": 378200,
+        "value": 145051648
+      },
+      {
+        "offset": 453352,
+        "value": 145051648
+      },
+      {
+        "offset": 573760,
+        "value": 145051648
+      }
+    ]
+  },
+  "repairs": [
+    {
+      "id": "rank",
+      "enabled": true,
+      "translation": "等级",
+      "tiles": [
+        47,
+        48,
+        49,
+        50
+      ],
+      "surface_tiles": [
+        4,
+        1
+      ],
+      "source_sha256": "9983901dc7ddec8e490415b3b79aa64fc764a1f0e4a222e541d72de5f1c80c94",
+      "writable_rect": [
+        0,
+        0,
+        29,
+        8
+      ],
+      "erase_indices": [
+        7,
+        6,
+        4
+      ],
+      "background_index": 1,
+      "ink_index": 7,
+      "alignment": "left",
+      "vertical_offset": 0,
+      "tile_transforms": [
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        },
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        },
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        },
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        }
+      ],
+      "assembly_status": "Logical row reconstructed from native tile pixels; final runtime placement and palette bank remain unverified.",
+      "shared_use_policy": "Keep native tile allocation and inspect every consumer; never repurpose a shared tile without relocation support.",
+      "left_padding": 2
+    },
+    {
+      "id": "price",
+      "enabled": true,
+      "translation": "价格",
+      "tiles": [
+        51,
+        52,
+        53,
+        54
+      ],
+      "surface_tiles": [
+        4,
+        1
+      ],
+      "source_sha256": "08cf786347b72169338c92db094a2e7603ae15aedc0f0b086786b3d922644f0d",
+      "writable_rect": [
+        2,
+        0,
+        23,
+        8
+      ],
+      "erase_indices": [
+        3,
+        10,
+        11
+      ],
+      "background_index": 1,
+      "ink_index": 3,
+      "alignment": "left",
+      "vertical_offset": 0,
+      "tile_transforms": [
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        },
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        },
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        },
+        {
+          "hflip": false,
+          "vflip": false,
+          "palette_bank": null
+        }
+      ],
+      "assembly_status": "Logical row reconstructed from native tile pixels; final runtime placement and palette bank remain unverified.",
+      "shared_use_policy": "Keep native tile allocation and inspect every consumer; never repurpose a shared tile without relocation support.",
+      "left_padding": 2
+    }
+  ],
+  "pending": [
+    {
+      "id": "clan-funds",
+      "label": "CLAN FUNDS",
+      "enabled": false,
+      "reason": "Window border and label pixels share tiles; establish native object bounds and background reconstruction before enabling."
+    },
+    {
+      "id": "ability-categories",
+      "label": "Action / Reaction / Support",
+      "enabled": false,
+      "reason": "Establish interleaved native object tile ownership and palette banks before enabling."
+    }
+  ],
+  "validation": {
+    "required": [
+      "input and resource identity",
+      "native tile round trip",
+      "unchanged non-label tiles and adjacent graphic",
+      "font metrics and glyph coverage",
+      "deterministic rendering",
+      "IPS round trip",
+      "upstream resource extension equivalence"
+    ],
+    "emulator_status": "Not yet accepted in the actual rank and price menus.",
+    "hardware_status": "Not tested."
+  },
+  "alignment_policy": "Left-align translated menu text within its native text region using explicit pixel padding, independent of label width."
+}

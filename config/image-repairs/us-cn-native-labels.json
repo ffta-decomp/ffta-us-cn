@@ -1,0 +1,3721 @@
+{
+  "schema": "ffta-us-cn-native-label-repairs-v1",
+  "input": {
+    "rom_bytes": 16777216,
+    "sha256": "ca62f10d21c466778c3ca88fb71976e9547859189c9c62f3c1915de4dff1d71c",
+    "retail_sha256": "43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19"
+  },
+  "font": {
+    "filename": "fusion-pixel-8px-monospaced-zh_hans.bdf",
+    "sha256": "31f654b8348f0d531d0aafe37364edd708eee7e4c6388ec700f77b5f6bf1b43c",
+    "family": "Fusion Pixel 8px Monospaced zh_Hans",
+    "version": "2026.10.25",
+    "upstream": "https://github.com/TakWolf/fusion-pixel-font",
+    "license": "SIL-OFL-1.1",
+    "copyright": "Copyright (c) 2022, TakWolf (https://takwolf.com)",
+    "cell": [
+      8,
+      8
+    ],
+    "ascent": 7,
+    "scaling": "none",
+    "resolution": "Explicit --font path; no search or embedded font data."
+  },
+  "banks": [
+    {
+      "id": "result-sprites",
+      "offset": 3928840,
+      "entry_count": 4,
+      "decoded_entry_bytes": 6144,
+      "decoded_sha256": "86fe3af0352db0d42af2e4b8f704f3e0380d780b6cc16854c4f1d0e026e3a0d3",
+      "pointer_offsets": [
+        592784,
+        593100,
+        593412,
+        593728
+      ],
+      "relocation": {
+        "offset": 15761408,
+        "capacity_bytes": 32768,
+        "fill": 255,
+        "sha256": "2d864c0b789a43214eee8524d3182075125e5ca2cd527f3582ec87ffd94076bc"
+      },
+      "repairs": [
+        {
+          "entry": 0,
+          "translation": "任务完成",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 7,
+          "edge_index": 2
+        },
+        {
+          "entry": 1,
+          "translation": "任务失败",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 7,
+          "edge_index": 2
+        },
+        {
+          "entry": 2,
+          "translation": "战斗胜利",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 7,
+          "edge_index": 2
+        },
+        {
+          "entry": 3,
+          "translation": "战斗失败",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 7,
+          "edge_index": 2
+        }
+      ]
+    },
+    {
+      "id": "result-backgrounds",
+      "offset": 3933672,
+      "entry_count": 4,
+      "decoded_entry_bytes": 3840,
+      "decoded_sha256": "3e3dee36e9fdbec47068aa6500a8098fc7329e71669977cb6f32635016f3b77e",
+      "pointer_offsets": [
+        592788,
+        593104,
+        593416,
+        593732
+      ],
+      "relocation": {
+        "offset": 15794176,
+        "capacity_bytes": 32768,
+        "fill": 255,
+        "sha256": "2d864c0b789a43214eee8524d3182075125e5ca2cd527f3582ec87ffd94076bc"
+      },
+      "repairs": [
+        {
+          "entry": 0,
+          "translation": "任务完成",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 10,
+          "edge_index": 11
+        },
+        {
+          "entry": 1,
+          "translation": "任务失败",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 10,
+          "edge_index": 11
+        },
+        {
+          "entry": 2,
+          "translation": "战斗胜利",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 10,
+          "edge_index": 11
+        },
+        {
+          "entry": 3,
+          "translation": "战斗失败",
+          "enabled": true,
+          "scale": 3,
+          "ink_index": 10,
+          "edge_index": 11
+        }
+      ]
+    },
+    {
+      "id": "ability-categories",
+      "offset": 3954500,
+      "entry_count": 4,
+      "decoded_entry_bytes": 320,
+      "decoded_sha256": "a6175320bb926ee926b4d358aa3434b4d515ede50f92f2c4753d9bd6a8a689a7",
+      "pointer_offsets": [
+        507376,
+        507896,
+        575016
+      ],
+      "relocation": {
+        "offset": 15826944,
+        "capacity_bytes": 8192,
+        "fill": 255,
+        "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+      },
+      "repairs": [
+        {
+          "entry": 0,
+          "translation": "行动",
+          "enabled": true,
+          "scale": 1,
+          "ink_index": 3,
+          "erase_rect": [
+            0,
+            8,
+            40,
+            16
+          ],
+          "origin": [
+            12,
+            8
+          ],
+          "note": "Retain the upper icon row; replace the lower text row."
+        },
+        {
+          "entry": 1,
+          "translation": "反应",
+          "enabled": true,
+          "scale": 1,
+          "ink_index": 3,
+          "erase_rect": [
+            0,
+            8,
+            40,
+            16
+          ],
+          "origin": [
+            12,
+            8
+          ],
+          "note": "Retain the upper icon row; replace the lower text row."
+        },
+        {
+          "entry": 2,
+          "translation": "援助",
+          "enabled": true,
+          "scale": 1,
+          "ink_index": 3,
+          "erase_rect": [
+            0,
+            8,
+            40,
+            16
+          ],
+          "origin": [
+            12,
+            8
+          ],
+          "note": "Retain the upper icon row; replace the lower text row."
+        },
+        {
+          "entry": 3,
+          "translation": "连击",
+          "enabled": true,
+          "scale": 1,
+          "ink_index": 3,
+          "erase_rect": [
+            0,
+            8,
+            40,
+            16
+          ],
+          "origin": [
+            12,
+            8
+          ],
+          "note": "Retain the upper icon row; replace the lower text row."
+        }
+      ],
+      "tiles": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        1,
+        3,
+        5,
+        7,
+        9
+      ],
+      "layout_evidence": {
+        "native_tile_pair_writer": 134789056,
+        "code_sha256": "939ba8393ffe26aff323126dde3ccd290d59bdbd7dc3247a251b33c76587c541",
+        "note": "Native writer places consecutive tile IDs in vertical pairs, advancing source ID by two per column."
+      }
+    },
+    {
+      "id": "battle-labels",
+      "offset": 3917976,
+      "entry_count": 85,
+      "decoded_entry_bytes": 64,
+      "decoded_sha256": "01c10cdbf0d0e224a0709bf7b7a37b31b95746c564cdf79cde5e294c8dab9376",
+      "pointer_offsets": [
+        691132
+      ],
+      "relocation": {
+        "offset": 15835136,
+        "capacity_bytes": 8192,
+        "fill": 255,
+        "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+      },
+      "repairs": [
+        {
+          "type": 2,
+          "source_label": "Recover",
+          "translation": "恢复",
+          "enabled": true,
+          "source_tile": 10,
+          "source_bytes": 128,
+          "source_sha256": "766d4b1154b2adef44e625e1bd9797977d5a43674a392c78f1861a2a517697ea",
+          "frames_table": 4313536,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 3,
+          "source_label": "Dispel",
+          "translation": "驱散",
+          "enabled": true,
+          "source_tile": 14,
+          "source_bytes": 128,
+          "source_sha256": "60ea63b75fd5c20637dc3d6953a9097113d19f8f2abe1588ac96671f98e9806f",
+          "frames_table": 4313856,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 4,
+          "source_label": "Attack up",
+          "translation": "武攻",
+          "enabled": true,
+          "source_tile": 18,
+          "source_bytes": 256,
+          "source_sha256": "2e6827bbc09019efa0758ff9ba05690b8a95b9814384d7fc68706339a1095c43",
+          "frames_table": 4314176,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 5,
+          "source_label": "Attack down",
+          "translation": "武攻",
+          "enabled": true,
+          "source_tile": 26,
+          "source_bytes": 256,
+          "source_sha256": "cd6e00f4b937bf8f4ae35c75b7956c8caa3edaccd8262cc1256568dc5fd872ef",
+          "frames_table": 4314496,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 6,
+          "source_label": "Defense up",
+          "translation": "武防",
+          "enabled": true,
+          "source_tile": 34,
+          "source_bytes": 256,
+          "source_sha256": "2f0a542e0a227a20c6872832402e30524ee20f95a56276f26f9358cfa5203213",
+          "frames_table": 4314816,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 7,
+          "source_label": "Defense down",
+          "translation": "武防",
+          "enabled": true,
+          "source_tile": 42,
+          "source_bytes": 256,
+          "source_sha256": "547f4f4cba85a459bdcc2ba8a67eae040ea3bd556df47cc072c5e999c68f6aa8",
+          "frames_table": 4315136,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 8,
+          "source_label": "Speed up",
+          "translation": "速度",
+          "enabled": true,
+          "source_tile": 50,
+          "source_bytes": 256,
+          "source_sha256": "649c9d5a2ba616d062e7363688df46d206b7d4b953cc4d5b4ea394c0fc441a60",
+          "frames_table": 4315456,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 9,
+          "source_label": "Slow",
+          "translation": "缓慢",
+          "enabled": true,
+          "source_tile": 58,
+          "source_bytes": 96,
+          "source_sha256": "d923bd95d78b9c49ed2b1f07410b67ce625145929687f51c9006e8aca1e92bcc",
+          "frames_table": 4315776,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 10,
+          "source_label": "Stop",
+          "translation": "停止",
+          "enabled": true,
+          "source_tile": 61,
+          "source_bytes": 128,
+          "source_sha256": "343ec769ced1f51cd4266e53ac6dca2f445d68f514f25cfd9f5aa1bc86d10565",
+          "frames_table": 4316064,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 11,
+          "source_label": "Fast",
+          "translation": "加速",
+          "enabled": true,
+          "source_tile": 65,
+          "source_bytes": 96,
+          "source_sha256": "c65b6dd9890ca82d660750a360739b6574d341c00bd25029cb4c752079a69c31",
+          "frames_table": 4316944,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 13,
+          "source_label": "Shift",
+          "translation": "转移",
+          "enabled": true,
+          "source_tile": 74,
+          "source_bytes": 160,
+          "source_sha256": "6023d88bb5b51349f818821c068f061122f4cde6e9cf93c63673720017e3533b",
+          "frames_table": 4317720,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 15,
+          "source_label": "Critical Up!",
+          "translation": "会心提升",
+          "enabled": true,
+          "source_tile": 87,
+          "source_bytes": 224,
+          "source_sha256": "9aa47eb00d6bad9f8fcf4e5073a831ed585cf47fe55e600c2c4ba4bcd0e93397",
+          "frames_table": 4319120,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 16,
+          "source_label": "Sweet Spot!",
+          "translation": "命中要害",
+          "enabled": true,
+          "source_tile": 94,
+          "source_bytes": 256,
+          "source_sha256": "3741a13587c2f98b0ff196429d74c1430cb511206d6ff1309191509031e25132",
+          "frames_table": 4319468,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 17,
+          "source_label": "Catch!",
+          "translation": "接住",
+          "enabled": true,
+          "source_tile": 102,
+          "source_bytes": 192,
+          "source_sha256": "62b08e18c0977d1c7ff7f5df8f18ed659cc753e0586ea04a8e03909948b4bad1",
+          "frames_table": 4320180,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 18,
+          "source_label": "Hide",
+          "translation": "隐身",
+          "enabled": true,
+          "source_tile": 108,
+          "source_bytes": 96,
+          "source_sha256": "f379698569860bbca99a78301f4db05521f67da571444caa37b15464422e811d",
+          "frames_table": 4320956,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 20,
+          "source_label": "Critical",
+          "translation": "会心",
+          "enabled": true,
+          "source_tile": 119,
+          "source_bytes": 256,
+          "source_sha256": "877ac114d38961c598c2867463ff99a4e6d5fed19cc43d7a655680e8bd532dfa",
+          "frames_table": 4322312,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 21,
+          "source_label": "Miss!",
+          "translation": "未中",
+          "enabled": true,
+          "source_tile": 127,
+          "source_bytes": 128,
+          "source_sha256": "c532764c103f72f392f9272c9d76e9b5ae69119cce57d960af40ade994636fef",
+          "frames_table": 4323172,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 22,
+          "source_label": "Poison",
+          "translation": "中毒",
+          "enabled": true,
+          "source_tile": 131,
+          "source_bytes": 192,
+          "source_sha256": "8a21376460dc2af4f47a3bffc7e5a8c21f7bb655052b7e607fe99cd5b856d746",
+          "frames_table": 4323720,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 23,
+          "source_label": "Level Up!",
+          "translation": "等级提升",
+          "enabled": true,
+          "source_tile": 137,
+          "source_bytes": 256,
+          "source_sha256": "e1091c58f6662c4088aeab4646234be7f07096017b6d72981e51a04abfdadd25",
+          "frames_table": 4324356,
+          "preserve_arrow": false,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 24,
+          "source_label": "Magic up",
+          "translation": "魔攻",
+          "enabled": true,
+          "source_tile": 145,
+          "source_bytes": 256,
+          "source_sha256": "a7866237d141212a52b8fdab09d5e8214908c385ee384a0dedc53e578578fbac",
+          "frames_table": 4325556,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        },
+        {
+          "type": 25,
+          "source_label": "Magic down",
+          "translation": "魔攻",
+          "enabled": true,
+          "source_tile": 153,
+          "source_bytes": 288,
+          "source_sha256": "a43fdce15eaf2a0f1a77870909c8b9cf29a4b4f7e438452526d2f40e6b7ed89c",
+          "frames_table": 4325876,
+          "preserve_arrow": true,
+          "scale": 1,
+          "ink_index": 10,
+          "edge_index": 1,
+          "note": "Preserve source range size and native frame schedule. Non-arrow labels animate as a complete Chinese phrase; spare objects reference a transparent tile."
+        }
+      ]
+    }
+  ],
+  "data_changes": [
+    {
+      "id": "result-0-sprite-placement",
+      "depends_on": {
+        "bank": "result-sprites",
+        "entry": 0
+      },
+      "offset": 3752116,
+      "expected_hex": "aa4039080000060000000000aa403908100006000d000000aa4039082000060017000000aa4039082000060022000000aa403908100006002a000000aa4039083000060036000000aa4039084000060045000000aa4039087000060067000000aa4039086000060078000000aa4039088000060087000000aa4039089000060097000000aa403908a0000600a9000000aa40390880000600b9000000aa40390850000600cb000000aa403908b0000600d9000000",
+      "replacement_hex": "aa4039080000060038000000aa4039081000060058000000aa4039082000060078000000aa4039083000060098000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000"
+    },
+    {
+      "id": "result-1-sprite-placement",
+      "depends_on": {
+        "bank": "result-sprites",
+        "entry": 1
+      },
+      "offset": 3752416,
+      "expected_hex": "aa4039080000060010000000aa403908100006001d000000aa4039082000060027000000aa4039082000060032000000aa403908100006003a000000aa4039083000060044000000aa4039084000060055000000aa4039089000060073000000aa4039087000060080000000aa403908100006008e000000aa403908600006009b000000aa40390880000600a9000000aa40390850000600bb000000aa403908a0000600c9000000",
+      "replacement_hex": "aa4039080000060038000000aa4039081000060058000000aa4039082000060078000000aa4039083000060098000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000"
+    },
+    {
+      "id": "result-2-sprite-placement",
+      "depends_on": {
+        "bank": "result-sprites",
+        "entry": 2
+      },
+      "offset": 3752296,
+      "expected_hex": "aa403908600006001e000000aa403908300006002b000000aa4039085000060039000000aa4039085000060045000000aa4039082000060051000000aa403908400006005d000000aa403908800006007a000000aa403908100006008f000000aa40390800000600a3000000aa40390870000600b4000000",
+      "replacement_hex": "aa4039080000060038000000aa4039081000060058000000aa4039082000060078000000aa4039083000060098000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000"
+    },
+    {
+      "id": "result-3-sprite-placement",
+      "depends_on": {
+        "bank": "result-sprites",
+        "entry": 3
+      },
+      "offset": 3752584,
+      "expected_hex": "aa403908600006001e000000aa403908300006002b000000aa4039085000060039000000aa4039085000060045000000aa4039082000060051000000aa403908400006005d000000aa4039082000060077000000aa4039081000060088000000aa403908000006009b000000aa40390850000600ab000000aa40390870000600b8000000",
+      "replacement_hex": "aa4039080000060038000000aa4039081000060058000000aa4039082000060078000000aa4039083000060098000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000aa403908b000060000000000"
+    },
+    {
+      "id": "battle-2-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313588,
+      "expected_hex": "01000600fc010000",
+      "replacement_hex": "01000640f8010000"
+    },
+    {
+      "id": "battle-2-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313596,
+      "expected_hex": "02000500fc0100000600fc010100",
+      "replacement_hex": "02000640f8010000060000000300"
+    },
+    {
+      "id": "battle-2-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313612,
+      "expected_hex": "03000200fb0100000500fc0101000600fc010200",
+      "replacement_hex": "03000440f8010000040000000300040000000300"
+    },
+    {
+      "id": "battle-2-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313632,
+      "expected_hex": "0400ff00f90100000200fc0101000500fc0102000600fc010300",
+      "replacement_hex": "04000340f8010000030000000300030000000300030000000300"
+    },
+    {
+      "id": "battle-2-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313660,
+      "expected_hex": "0400fc00f5010000fe00fa0101000200fc0102000300fc010300",
+      "replacement_hex": "04000040f8010000000000000300000000000300000000000300"
+    },
+    {
+      "id": "battle-2-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313688,
+      "expected_hex": "0400fa00f2010000fb00f9010100fe00fe010200ff00ff010300",
+      "replacement_hex": "0400fc40f8010000fc0000000300fc0000000300fc0000000300"
+    },
+    {
+      "id": "battle-2-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313716,
+      "expected_hex": "0400f900f1010000fa00f8010100fb00ff010200fc0002000300",
+      "replacement_hex": "0400fa40f8010000fa0000000300fa0000000300fa0000000300"
+    },
+    {
+      "id": "battle-2-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313744,
+      "expected_hex": "0400f800f0010000f900f8010100fa0000000200fb0004000300",
+      "replacement_hex": "0400fa40f8010000fa0000000300fa0000000300fa0000000300"
+    },
+    {
+      "id": "battle-2-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313772,
+      "expected_hex": "0400f800f0010000f800f8010100f90000000200fa0005000300",
+      "replacement_hex": "0400f940f8010000f90000000300f90000000300f90000000300"
+    },
+    {
+      "id": "battle-2-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313800,
+      "expected_hex": "0400f800f0010000f800f8010100f80000000200f90007000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-2-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 2
+      },
+      "offset": 4313828,
+      "expected_hex": "0400f800f0010000f800f8010100f80000000200f80008000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-3-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4313908,
+      "expected_hex": "01000400fc010000",
+      "replacement_hex": "01000440f8010000"
+    },
+    {
+      "id": "battle-3-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4313916,
+      "expected_hex": "02000300fc0100000400fc010100",
+      "replacement_hex": "02000440f8010000040000000300"
+    },
+    {
+      "id": "battle-3-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4313932,
+      "expected_hex": "03000000fb0100000300fc0101000400fc010200",
+      "replacement_hex": "03000240f8010000020000000300020000000300"
+    },
+    {
+      "id": "battle-3-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4313952,
+      "expected_hex": "0400fd00f90100000000fc0101000300fc0102000400fc010300",
+      "replacement_hex": "04000140f8010000010000000300010000000300010000000300"
+    },
+    {
+      "id": "battle-3-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4313980,
+      "expected_hex": "0400fa00f5010000fc00fa0101000000fc0102000100fc010300",
+      "replacement_hex": "0400fe40f8010000fe0000000300fe0000000300fe0000000300"
+    },
+    {
+      "id": "battle-3-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4314008,
+      "expected_hex": "0400f800f2010000f900f9010100fc00fe010200fd00ff010300",
+      "replacement_hex": "0400fa40f8010000fa0000000300fa0000000300fa0000000300"
+    },
+    {
+      "id": "battle-3-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4314036,
+      "expected_hex": "0400f700f1010000f800f8010100f900ff010200fa0002000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-3-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4314064,
+      "expected_hex": "0400f600f0010000f700f8010100f80000000200f90004000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-3-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4314092,
+      "expected_hex": "0400f600f0010000f600f8010100f70000000200f80005000300",
+      "replacement_hex": "0400f740f8010000f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-3-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4314120,
+      "expected_hex": "0400f600f0010000f600f8010100f60000000200f70007000300",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-3-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 3
+      },
+      "offset": 4314148,
+      "expected_hex": "0400f600f0010000f600f8010100f60000000200f60008000300",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-9-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315840,
+      "expected_hex": "02000540f5010010050005000210",
+      "replacement_hex": "02000540f8010010050000000210"
+    },
+    {
+      "id": "battle-9-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315856,
+      "expected_hex": "02000440f5010010040005000210",
+      "replacement_hex": "02000440f8010010040000000210"
+    },
+    {
+      "id": "battle-9-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315872,
+      "expected_hex": "02000340f5010010030005000210",
+      "replacement_hex": "02000340f8010010030000000210"
+    },
+    {
+      "id": "battle-9-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315888,
+      "expected_hex": "02000240f5010010020005000210",
+      "replacement_hex": "02000240f8010010020000000210"
+    },
+    {
+      "id": "battle-9-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315904,
+      "expected_hex": "02000140f5010010010005000210",
+      "replacement_hex": "02000140f8010010010000000210"
+    },
+    {
+      "id": "battle-9-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315920,
+      "expected_hex": "02000040f5010010000005000210",
+      "replacement_hex": "02000040f8010010000000000210"
+    },
+    {
+      "id": "battle-9-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315936,
+      "expected_hex": "0200ff40f5010010ff0005000210",
+      "replacement_hex": "0200ff40f8010010ff0000000210"
+    },
+    {
+      "id": "battle-9-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315952,
+      "expected_hex": "0200fe40f5010010fe0005000210",
+      "replacement_hex": "0200fe40f8010010fe0000000210"
+    },
+    {
+      "id": "battle-9-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315968,
+      "expected_hex": "0200fd40f5010010fd0005000210",
+      "replacement_hex": "0200fd40f8010010fd0000000210"
+    },
+    {
+      "id": "battle-9-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4315984,
+      "expected_hex": "0200fc40f5010010fc0005000210",
+      "replacement_hex": "0200fc40f8010010fc0000000210"
+    },
+    {
+      "id": "battle-9-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4316000,
+      "expected_hex": "0200fb40f5010010fb0005000210",
+      "replacement_hex": "0200fb40f8010010fb0000000210"
+    },
+    {
+      "id": "battle-9-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4316016,
+      "expected_hex": "0200fa40f5010010fa0005000210",
+      "replacement_hex": "0200fa40f8010010fa0000000210"
+    },
+    {
+      "id": "battle-9-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4316032,
+      "expected_hex": "0200f940f5010010f90005000210",
+      "replacement_hex": "0200f940f8010010f90000000210"
+    },
+    {
+      "id": "battle-9-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 9
+      },
+      "offset": 4316048,
+      "expected_hex": "0200f840f5010010f80005000210",
+      "replacement_hex": "0200f840f8010010f80000000210"
+    },
+    {
+      "id": "battle-10-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316208,
+      "expected_hex": "0100080009000000",
+      "replacement_hex": "01000840f8010000"
+    },
+    {
+      "id": "battle-10-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316216,
+      "expected_hex": "0100070008000000",
+      "replacement_hex": "01000740f8010000"
+    },
+    {
+      "id": "battle-10-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316224,
+      "expected_hex": "0100080009000000",
+      "replacement_hex": "01000840f8010000"
+    },
+    {
+      "id": "battle-10-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316232,
+      "expected_hex": "0100070008000000",
+      "replacement_hex": "01000740f8010000"
+    },
+    {
+      "id": "battle-10-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316240,
+      "expected_hex": "0100fe00fb010000",
+      "replacement_hex": "0100fe40f8010000"
+    },
+    {
+      "id": "battle-10-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316248,
+      "expected_hex": "0100fb00f7010000",
+      "replacement_hex": "0100fb40f8010000"
+    },
+    {
+      "id": "battle-10-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316256,
+      "expected_hex": "0200f900f5010000080005000100",
+      "replacement_hex": "02000040f8010000000000000300"
+    },
+    {
+      "id": "battle-10-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316272,
+      "expected_hex": "0200f700f3010000090006000100",
+      "replacement_hex": "02000040f8010000000000000300"
+    },
+    {
+      "id": "battle-10-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316288,
+      "expected_hex": "0200f800f4010000080005000100",
+      "replacement_hex": "02000040f8010000000000000300"
+    },
+    {
+      "id": "battle-10-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316304,
+      "expected_hex": "0200f800f4010000010001000100",
+      "replacement_hex": "0200fc40f8010000fc0000000300"
+    },
+    {
+      "id": "battle-10-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316320,
+      "expected_hex": "0300f800f40100000800f5010200fa00fd010100",
+      "replacement_hex": "0300fe40f8010000fe0000000300fe0000000300"
+    },
+    {
+      "id": "battle-10-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316340,
+      "expected_hex": "0300f800f40100000600f6010200f900fc010100",
+      "replacement_hex": "0300fd40f8010000fd0000000300fd0000000300"
+    },
+    {
+      "id": "battle-10-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316360,
+      "expected_hex": "0300f800f40100000000fa010200f700fb010100",
+      "replacement_hex": "0300fa40f8010000fa0000000300fa0000000300"
+    },
+    {
+      "id": "battle-10-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316380,
+      "expected_hex": "0300f800f4010000f800fc010100fc00fd010200",
+      "replacement_hex": "0300f940f8010000f90000000300f90000000300"
+    },
+    {
+      "id": "battle-10-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316400,
+      "expected_hex": "0300f800f4010000f800fc010100f900ff010200",
+      "replacement_hex": "0300f840f8010000f80000000300f80000000300"
+    },
+    {
+      "id": "battle-10-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316420,
+      "expected_hex": "0300f800f4010000f800fc010100f70001000200",
+      "replacement_hex": "0300f840f8010000f80000000300f80000000300"
+    },
+    {
+      "id": "battle-10-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316440,
+      "expected_hex": "0400f800f4010000f800fc010100f800000002000800f0010300",
+      "replacement_hex": "0400fc40f8010000fc0000000300fc0000000300fc0000000300"
+    },
+    {
+      "id": "battle-10-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316468,
+      "expected_hex": "0400f800f4010000f800fc010100f800000002000600f2010300",
+      "replacement_hex": "0400fc40f8010000fc0000000300fc0000000300fc0000000300"
+    },
+    {
+      "id": "battle-10-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316496,
+      "expected_hex": "0400f800f4010000f800fc010100f800000002000300f4010300",
+      "replacement_hex": "0400fb40f8010000fb0000000300fb0000000300fb0000000300"
+    },
+    {
+      "id": "battle-10-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316524,
+      "expected_hex": "0400f800f4010000f800fc010100f80000000200ff00f9010300",
+      "replacement_hex": "0400fa40f8010000fa0000000300fa0000000300fa0000000300"
+    },
+    {
+      "id": "battle-10-frame-21",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316552,
+      "expected_hex": "0400f800f4010000f800fc010100f80000000200fc00fe010300",
+      "replacement_hex": "0400f940f8010000f90000000300f90000000300f90000000300"
+    },
+    {
+      "id": "battle-10-frame-22",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316580,
+      "expected_hex": "0400f800f4010000f800fc010100f80000000200f90003000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-10-frame-23",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316608,
+      "expected_hex": "0400f800f4010000f800fc010100f80000000200f70006000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-10-frame-24",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316636,
+      "expected_hex": "0400f800f4010000f800fc010100f80000000200f80005000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-10-frame-25",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316664,
+      "expected_hex": "0400f900f3010000f900fc010100fa00ff010200f70006000300",
+      "replacement_hex": "0400f940f8010000f90000000300f90000000300f90000000300"
+    },
+    {
+      "id": "battle-10-frame-26",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316692,
+      "expected_hex": "0400f600f2010000f600fc010100f80001000200fc0005000300",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-10-frame-27",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316720,
+      "expected_hex": "0400f200f2010000f200fd010100f60006000200010000000300",
+      "replacement_hex": "0400f740f8010000f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-10-frame-28",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316748,
+      "expected_hex": "0400f000f3010000ed0003000100fa000b0002000300fb010300",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-10-frame-29",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316776,
+      "expected_hex": "04000000f5010300ec00f7010000ec0009000100000009000200",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-10-frame-30",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316804,
+      "expected_hex": "0400fd00f2010300ea00f9010000ee000c000100030005000200",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-10-frame-31",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316832,
+      "expected_hex": "0400f700f1010300e900fe010000f3000d000100040000000200",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-10-frame-32",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316860,
+      "expected_hex": "0400f500f1010300e90000000000f5000d0001000400fe010200",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-10-frame-33",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316888,
+      "expected_hex": "0400f300f2010300ea0002000000f7000c0001000300fb010200",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-10-frame-34",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 10
+      },
+      "offset": 4316916,
+      "expected_hex": "0400f200f3010300eb0003000000f9000c0001000200fa010200",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-11-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317032,
+      "expected_hex": "02000740f5010000070005000200",
+      "replacement_hex": "02000740f8010000070000000200"
+    },
+    {
+      "id": "battle-11-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317048,
+      "expected_hex": "02000640f5010000060005000200",
+      "replacement_hex": "02000640f8010000060000000200"
+    },
+    {
+      "id": "battle-11-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317064,
+      "expected_hex": "02000540f5010000050005000200",
+      "replacement_hex": "02000540f8010000050000000200"
+    },
+    {
+      "id": "battle-11-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317080,
+      "expected_hex": "02000440f5010000040005000200",
+      "replacement_hex": "02000440f8010000040000000200"
+    },
+    {
+      "id": "battle-11-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317096,
+      "expected_hex": "02000340f5010000030005000200",
+      "replacement_hex": "02000340f8010000030000000200"
+    },
+    {
+      "id": "battle-11-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317112,
+      "expected_hex": "02000240f5010000020005000200",
+      "replacement_hex": "02000240f8010000020000000200"
+    },
+    {
+      "id": "battle-11-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317128,
+      "expected_hex": "02000140f5010000010005000200",
+      "replacement_hex": "02000140f8010000010000000200"
+    },
+    {
+      "id": "battle-11-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317144,
+      "expected_hex": "02000040f5010000000005000200",
+      "replacement_hex": "02000040f8010000000000000200"
+    },
+    {
+      "id": "battle-11-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317160,
+      "expected_hex": "0200ff40f5010000ff0005000200",
+      "replacement_hex": "0200ff40f8010000ff0000000200"
+    },
+    {
+      "id": "battle-11-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317176,
+      "expected_hex": "0200fe40f5010000fe0005000200",
+      "replacement_hex": "0200fe40f8010000fe0000000200"
+    },
+    {
+      "id": "battle-11-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317192,
+      "expected_hex": "0200fd40f5010000fd0005000200",
+      "replacement_hex": "0200fd40f8010000fd0000000200"
+    },
+    {
+      "id": "battle-11-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317208,
+      "expected_hex": "0200fc40f5010000fc0005000200",
+      "replacement_hex": "0200fc40f8010000fc0000000200"
+    },
+    {
+      "id": "battle-11-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317224,
+      "expected_hex": "0200fb40f5010000fb0005000200",
+      "replacement_hex": "0200fb40f8010000fb0000000200"
+    },
+    {
+      "id": "battle-11-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317240,
+      "expected_hex": "0200fa40f5010000fa0005000200",
+      "replacement_hex": "0200fa40f8010000fa0000000200"
+    },
+    {
+      "id": "battle-11-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317256,
+      "expected_hex": "0200f940f5010000f90005000200",
+      "replacement_hex": "0200f940f8010000f90000000200"
+    },
+    {
+      "id": "battle-11-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317272,
+      "expected_hex": "0200f840f5010000f80005000200",
+      "replacement_hex": "0200f840f8010000f80000000200"
+    },
+    {
+      "id": "battle-11-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317288,
+      "expected_hex": "0200f640f5010000f60005000200",
+      "replacement_hex": "0200f640f8010000f60000000200"
+    },
+    {
+      "id": "battle-11-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317304,
+      "expected_hex": "0200f340f5010000f30005000200",
+      "replacement_hex": "0200f340f8010000f30000000200"
+    },
+    {
+      "id": "battle-11-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317320,
+      "expected_hex": "0200f040f5010000f00005000200",
+      "replacement_hex": "0200f040f8010000f00000000200"
+    },
+    {
+      "id": "battle-11-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 11
+      },
+      "offset": 4317336,
+      "expected_hex": "0200ec40f5010000ec0005000200",
+      "replacement_hex": "0200ec40f8010000ec0000000200"
+    },
+    {
+      "id": "battle-13-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4317840,
+      "expected_hex": "0100f800fc010000",
+      "replacement_hex": "0100f840f8010000"
+    },
+    {
+      "id": "battle-13-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4317848,
+      "expected_hex": "0500f800fc010000f800fa010100f800fc010200f80001000300f800ff010400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4317880,
+      "expected_hex": "0500f800fc010000f800f8010100f800fc010200f80004000300f80000000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4317912,
+      "expected_hex": "0500f800fc010000f800f6010100f800fa010200f80005000300f80001000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4317944,
+      "expected_hex": "0500f800fc010000f800f2010100f800f8010200f80009000300f80003000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4317976,
+      "expected_hex": "0500f900fc010000f700f2010100f800f8010200f80009000300f80003000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318008,
+      "expected_hex": "0500f500fc010000f800f2010100f800f8010200f80009000300f80003000400",
+      "replacement_hex": "0500f740f8010000f70000000400f70000000400f70000000400f70000000400"
+    },
+    {
+      "id": "battle-13-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318040,
+      "expected_hex": "0500f000fc010000fb00f2010100f800f8010200f90009000300f70003000400",
+      "replacement_hex": "0500f740f8010000f70000000400f70000000400f70000000400f70000000400"
+    },
+    {
+      "id": "battle-13-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318072,
+      "expected_hex": "0500f000fb010000ff00f2010100f800f8010200f60009000300fa0003000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318104,
+      "expected_hex": "0500f000f50100000000f2010100f800f8010200f30009000300fd0003000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318136,
+      "expected_hex": "0500f000f20100000000f3010100f800f8010200f30008000300fd0004000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318168,
+      "expected_hex": "0500f000f00100000000f8010100f800f8010200f30005000300fd0005000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318200,
+      "expected_hex": "0500f100f00100000000fa010100f800f8010200f30001000300fd0006000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318232,
+      "expected_hex": "0500f400f00100000000fb010100f800f8010200f30000000300fc0006000400",
+      "replacement_hex": "0500f940f8010000f90000000400f90000000400f90000000400f90000000400"
+    },
+    {
+      "id": "battle-13-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318264,
+      "expected_hex": "0500f800f0010000fc00fb010100f700f8010200f70000000300f80006000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318296,
+      "expected_hex": "0500f800f0010000f700fb010100f900f8010200f80000000300f80006000400",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318328,
+      "expected_hex": "0500fd00f8010200f600fb010100f800f0010000f80000000300f80006000400",
+      "replacement_hex": "0500f940f8010000f90000000400f90000000400f90000000400f90000000400"
+    },
+    {
+      "id": "battle-13-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318360,
+      "expected_hex": "0500fd00f9010200f600fa010100f800f0010000f80000000300f80006000400",
+      "replacement_hex": "0500f940f8010000f90000000400f90000000400f90000000400f90000000400"
+    },
+    {
+      "id": "battle-13-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318392,
+      "expected_hex": "0500fd00fc010200f600f7010100f800f0010000f80000000300f80006000400",
+      "replacement_hex": "0500f940f8010000f90000000400f90000000400f90000000400f90000000400"
+    },
+    {
+      "id": "battle-13-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318424,
+      "expected_hex": "0500f800f0010000f80000000300f80006000400fa00fc010200f800f7010100",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-21",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318456,
+      "expected_hex": "0500f800f0010000f80000000300f80006000400f800f7010100f800fc010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-22",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318488,
+      "expected_hex": "0500f800f1010000f800ff010300f80005000400f800f8010100f800fd010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-23",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318520,
+      "expected_hex": "0500f800f3010000f800ff010300f80004000400f800fa010100f800fe010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-24",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318552,
+      "expected_hex": "0500f800f2010000f80001000300f80006000400f800f9010100f800fe010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-25",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318584,
+      "expected_hex": "0500f800ee010000f80004000300f8000a000400f800f6010100f800fe010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-26",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318616,
+      "expected_hex": "0500f800ec010000f80005000300f8000c000400f800f5010100f800fe010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-27",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318648,
+      "expected_hex": "0500f800f3010000f800ff010300f80004000400f800fa010100f800fe010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-13-frame-28",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 13
+      },
+      "offset": 4318680,
+      "expected_hex": "0500f800f2010000f80001000300f80006000400f800f9010100f800fe010200",
+      "replacement_hex": "0500f840f8010000f80000000400f80000000400f80000000400f80000000400"
+    },
+    {
+      "id": "battle-15-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319176,
+      "expected_hex": "0200fd40ed410000fd000c000600",
+      "replacement_hex": "0200fd40f0410000fd0000000600"
+    },
+    {
+      "id": "battle-15-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319192,
+      "expected_hex": "0200fc40ed410000fc000c000600",
+      "replacement_hex": "0200fc40f0410000fc0000000600"
+    },
+    {
+      "id": "battle-15-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319208,
+      "expected_hex": "0200fa40ed410000fa000c000600",
+      "replacement_hex": "0200fa40f0410000fa0000000600"
+    },
+    {
+      "id": "battle-15-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319224,
+      "expected_hex": "0300f340ed4100000200f8010400f3000c000600",
+      "replacement_hex": "0300f840f0410000f80000000600f80000000600"
+    },
+    {
+      "id": "battle-15-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319244,
+      "expected_hex": "0400f140ed4100000300f8010400020000000500f1000c000600",
+      "replacement_hex": "0400fa40f0410000fa0000000600fa0000000600fa0000000600"
+    },
+    {
+      "id": "battle-15-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319272,
+      "expected_hex": "0400f040ed410000fc00f8010400030000000500f0000c000600",
+      "replacement_hex": "0400f840f0410000f80000000600f80000000600f80000000600"
+    },
+    {
+      "id": "battle-15-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319300,
+      "expected_hex": "0400f600f8010400f040ed410000fc0000000500f0000c000600",
+      "replacement_hex": "0400f440f0410000f40000000600f40000000600f40000000600"
+    },
+    {
+      "id": "battle-15-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319328,
+      "expected_hex": "0400f500f8010400f60000000500f040ed410000f0000c000600",
+      "replacement_hex": "0400f340f0410000f30000000600f30000000600f30000000600"
+    },
+    {
+      "id": "battle-15-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319356,
+      "expected_hex": "0400f600f8010400f50000000500f040ed410000f0000c000600",
+      "replacement_hex": "0400f340f0410000f30000000600f30000000600f30000000600"
+    },
+    {
+      "id": "battle-15-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319384,
+      "expected_hex": "0400f040ed410000f900f8010400f60000000500f0000c000600",
+      "replacement_hex": "0400f440f0410000f40000000600f40000000600f40000000600"
+    },
+    {
+      "id": "battle-15-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319412,
+      "expected_hex": "0400f040ed410000f800f8010400f90000000500f0000c000600",
+      "replacement_hex": "0400f440f0410000f40000000600f40000000600f40000000600"
+    },
+    {
+      "id": "battle-15-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 15
+      },
+      "offset": 4319440,
+      "expected_hex": "0400f040ed410000f800f8010400f80000000500f0000c000600",
+      "replacement_hex": "0400f440f0410000f40000000600f40000000600f40000000600"
+    },
+    {
+      "id": "battle-16-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319592,
+      "expected_hex": "01000400fc010010",
+      "replacement_hex": "01000440f0410010"
+    },
+    {
+      "id": "battle-16-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319600,
+      "expected_hex": "01000600fc010010",
+      "replacement_hex": "01000640f0410010"
+    },
+    {
+      "id": "battle-16-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319608,
+      "expected_hex": "02000000fc0100100400fc010010",
+      "replacement_hex": "02000240f0410010020000000710"
+    },
+    {
+      "id": "battle-16-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319624,
+      "expected_hex": "0300ef00fc0100100600fc010010fa00fc010010",
+      "replacement_hex": "0300fa40f0410010fa0000000710fa0000000710"
+    },
+    {
+      "id": "battle-16-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319644,
+      "expected_hex": "0300ee00fc0100100000fc010010f200fc010010",
+      "replacement_hex": "0300f540f0410010f50000000710f50000000710"
+    },
+    {
+      "id": "battle-16-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319664,
+      "expected_hex": "0200f000fc010010ef00fc010010",
+      "replacement_hex": "0200f040f0410010f00000000710"
+    },
+    {
+      "id": "battle-16-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319680,
+      "expected_hex": "0400f000fc010010ee00fc0100100000fc010010f800fc010010",
+      "replacement_hex": "0400f640f0410010f60000000710f60000000710f60000000710"
+    },
+    {
+      "id": "battle-16-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319708,
+      "expected_hex": "0200f000fc010010f400fc010010",
+      "replacement_hex": "0200f240f0410010f20000000710"
+    },
+    {
+      "id": "battle-16-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319724,
+      "expected_hex": "0200f000fc010010ee00fc010010",
+      "replacement_hex": "0200ef40f0410010ef0000000710"
+    },
+    {
+      "id": "battle-16-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319740,
+      "expected_hex": "0200f000fc010010ef00fc010010",
+      "replacement_hex": "0200f040f0410010f00000000710"
+    },
+    {
+      "id": "battle-16-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319756,
+      "expected_hex": "0400f000fc010010f000fc010110f000fc010210f000fc010310",
+      "replacement_hex": "0400f040f0410010f00000000710f00000000710f00000000710"
+    },
+    {
+      "id": "battle-16-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319784,
+      "expected_hex": "0400f000fb010010f000fc010110f000fc010210f000fc010310",
+      "replacement_hex": "0400f040f0410010f00000000710f00000000710f00000000710"
+    },
+    {
+      "id": "battle-16-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319812,
+      "expected_hex": "0400f000f9010010f000fb010110f000fd010210f000fe010310",
+      "replacement_hex": "0400f040f0410010f00000000710f00000000710f00000000710"
+    },
+    {
+      "id": "battle-16-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319840,
+      "expected_hex": "0400f000f5010010f000f9010110f000ff010210f00002000310",
+      "replacement_hex": "0400f040f0410010f00000000710f00000000710f00000000710"
+    },
+    {
+      "id": "battle-16-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319868,
+      "expected_hex": "0400f000ef010010f000f7010110f00001000210f00009000310",
+      "replacement_hex": "0400f040f0410010f00000000710f00000000710f00000000710"
+    },
+    {
+      "id": "battle-16-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319896,
+      "expected_hex": "0400f000f0010010f000f8010110f00000000210f00008000310",
+      "replacement_hex": "0400f040f0410010f00000000710f00000000710f00000000710"
+    },
+    {
+      "id": "battle-16-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319924,
+      "expected_hex": "0200f040f0410010ee00f4010410",
+      "replacement_hex": "0200ef40f0410010ef0000000710"
+    },
+    {
+      "id": "battle-16-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319940,
+      "expected_hex": "0200f040f0410010f300f4010410",
+      "replacement_hex": "0200f240f0410010f20000000710"
+    },
+    {
+      "id": "battle-16-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319956,
+      "expected_hex": "0200f040f0410010f900f4010410",
+      "replacement_hex": "0200f440f0410010f40000000710"
+    },
+    {
+      "id": "battle-16-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319972,
+      "expected_hex": "0300f040f0410010f800f4010410ee40fc010510",
+      "replacement_hex": "0300f240f0410010f20000000710f20000000710"
+    },
+    {
+      "id": "battle-16-frame-21",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4319992,
+      "expected_hex": "0300f040f0410010f800f4010410f340fc010510",
+      "replacement_hex": "0300f440f0410010f40000000710f40000000710"
+    },
+    {
+      "id": "battle-16-frame-22",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4320012,
+      "expected_hex": "0300f040f0410010f800f4010410f940fc010510",
+      "replacement_hex": "0300f640f0410010f60000000710f60000000710"
+    },
+    {
+      "id": "battle-16-frame-23",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4320032,
+      "expected_hex": "0400f040f0410010f800f4010410f840fc010510ee000c000710",
+      "replacement_hex": "0400f440f0410010f40000000710f40000000710f40000000710"
+    },
+    {
+      "id": "battle-16-frame-24",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4320060,
+      "expected_hex": "0400f040f0410010f800f4010410f840fc010510f2000c000710",
+      "replacement_hex": "0400f440f0410010f40000000710f40000000710f40000000710"
+    },
+    {
+      "id": "battle-16-frame-25",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4320088,
+      "expected_hex": "0400f040f0410010f800f4010410f840fc010510fa000c000710",
+      "replacement_hex": "0400f640f0410010f60000000710f60000000710f60000000710"
+    },
+    {
+      "id": "battle-16-frame-26",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4320116,
+      "expected_hex": "0400f040f0410010f800f4010410f840fc010510f7000c000710",
+      "replacement_hex": "0400f640f0410010f60000000710f60000000710f60000000710"
+    },
+    {
+      "id": "battle-16-frame-27",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 16
+      },
+      "offset": 4320144,
+      "expected_hex": "0400f040f0410010f800f4010410f840fc010510f8000c000710",
+      "replacement_hex": "0400f640f0410010f60000000710f60000000710f60000000710"
+    },
+    {
+      "id": "battle-17-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320280,
+      "expected_hex": "01000000f2010000",
+      "replacement_hex": "01000040f8010000"
+    },
+    {
+      "id": "battle-17-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320288,
+      "expected_hex": "01000200f2010000",
+      "replacement_hex": "01000240f8010000"
+    },
+    {
+      "id": "battle-17-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320296,
+      "expected_hex": "0100f800f2010000",
+      "replacement_hex": "0100f840f8010000"
+    },
+    {
+      "id": "battle-17-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320304,
+      "expected_hex": "0200f000f20100000000f8010100",
+      "replacement_hex": "0200f840f8010000f80000000500"
+    },
+    {
+      "id": "battle-17-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320320,
+      "expected_hex": "0200e900f20100000200f8010100",
+      "replacement_hex": "0200f640f8010000f60000000500"
+    },
+    {
+      "id": "battle-17-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320336,
+      "expected_hex": "0300e800f2010000f800f80101000000fd010200",
+      "replacement_hex": "0300f540f8010000f50000000500f50000000500"
+    },
+    {
+      "id": "battle-17-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320356,
+      "expected_hex": "0300ea00f2010000f000f80101000200fd010200",
+      "replacement_hex": "0300f440f8010000f40000000500f40000000500"
+    },
+    {
+      "id": "battle-17-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320376,
+      "expected_hex": "0300f800f2010000e900f8010100f800fd010200",
+      "replacement_hex": "0300f340f8010000f30000000500f30000000500"
+    },
+    {
+      "id": "battle-17-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320396,
+      "expected_hex": "0400f900f2010000e800f8010100f000fd010200000002000300",
+      "replacement_hex": "0400f440f8010000f40000000500f40000000500f40000000500"
+    },
+    {
+      "id": "battle-17-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320424,
+      "expected_hex": "0400f700f2010000ea00f8010100e900fd010200020002000300",
+      "replacement_hex": "0400f340f8010000f30000000500f30000000500f30000000500"
+    },
+    {
+      "id": "battle-17-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320452,
+      "expected_hex": "0500f800f2010000f800f8010100e800fd010200f80002000300000007000400",
+      "replacement_hex": "0500f640f8010000f60000000500f60000000500f60000000500f60000000500"
+    },
+    {
+      "id": "battle-17-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320484,
+      "expected_hex": "0500f800f2010000f900f8010100e900fd010200f00002000300020007000400",
+      "replacement_hex": "0500f640f8010000f60000000500f60000000500f60000000500f60000000500"
+    },
+    {
+      "id": "battle-17-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320516,
+      "expected_hex": "0600f800f2010000f700f8010100f800fd010200e90002000300f8000700040000000e000500",
+      "replacement_hex": "0600f740f8010000f70000000500f70000000500f70000000500f70000000500f70000000500"
+    },
+    {
+      "id": "battle-17-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320556,
+      "expected_hex": "0600f800f2010000f800f8010100f900fd010200e80002000300f0000700040002000e000500",
+      "replacement_hex": "0600f640f8010000f60000000500f60000000500f60000000500f60000000500f60000000500"
+    },
+    {
+      "id": "battle-17-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320596,
+      "expected_hex": "0600f800f2010000f800f8010100f700fd010200e90002000300e90007000400f8000e000500",
+      "replacement_hex": "0600f340f8010000f30000000500f30000000500f30000000500f30000000500f30000000500"
+    },
+    {
+      "id": "battle-17-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320636,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f80002000300e80007000400f0000e000500",
+      "replacement_hex": "0600f440f8010000f40000000500f40000000500f40000000500f40000000500f40000000500"
+    },
+    {
+      "id": "battle-17-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320676,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f90002000300e90007000400e9000e000500",
+      "replacement_hex": "0600f340f8010000f30000000500f30000000500f30000000500f30000000500f30000000500"
+    },
+    {
+      "id": "battle-17-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320716,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f70002000300f80007000400e8000e000500",
+      "replacement_hex": "0600f540f8010000f50000000500f50000000500f50000000500f50000000500f50000000500"
+    },
+    {
+      "id": "battle-17-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320756,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f80002000300f90007000400e9000e000500",
+      "replacement_hex": "0600f640f8010000f60000000500f60000000500f60000000500f60000000500f60000000500"
+    },
+    {
+      "id": "battle-17-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320796,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f80002000300f70007000400f8000e000500",
+      "replacement_hex": "0600f840f8010000f80000000500f80000000500f80000000500f80000000500f80000000500"
+    },
+    {
+      "id": "battle-17-frame-21",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320836,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f80002000300f80007000400f9000e000500",
+      "replacement_hex": "0600f840f8010000f80000000500f80000000500f80000000500f80000000500f80000000500"
+    },
+    {
+      "id": "battle-17-frame-22",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320876,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f80002000300f80007000400f7000e000500",
+      "replacement_hex": "0600f840f8010000f80000000500f80000000500f80000000500f80000000500f80000000500"
+    },
+    {
+      "id": "battle-17-frame-23",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 17
+      },
+      "offset": 4320916,
+      "expected_hex": "0600f800f2010000f800f8010100f800fd010200f80002000300f80007000400f8000e000500",
+      "replacement_hex": "0600f840f8010000f80000000500f80000000500f80000000500f80000000500f80000000500"
+    },
+    {
+      "id": "battle-18-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321028,
+      "expected_hex": "02000740f5010010070005000210",
+      "replacement_hex": "02000740f8010010070000000210"
+    },
+    {
+      "id": "battle-18-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321044,
+      "expected_hex": "02000640f5010010060005000210",
+      "replacement_hex": "02000640f8010010060000000210"
+    },
+    {
+      "id": "battle-18-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321060,
+      "expected_hex": "02000540f5010010050005000210",
+      "replacement_hex": "02000540f8010010050000000210"
+    },
+    {
+      "id": "battle-18-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321076,
+      "expected_hex": "02000440f5010010040005000210",
+      "replacement_hex": "02000440f8010010040000000210"
+    },
+    {
+      "id": "battle-18-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321092,
+      "expected_hex": "02000340f5010010030005000210",
+      "replacement_hex": "02000340f8010010030000000210"
+    },
+    {
+      "id": "battle-18-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321108,
+      "expected_hex": "02000240f5010010020005000210",
+      "replacement_hex": "02000240f8010010020000000210"
+    },
+    {
+      "id": "battle-18-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321124,
+      "expected_hex": "02000140f5010010010005000210",
+      "replacement_hex": "02000140f8010010010000000210"
+    },
+    {
+      "id": "battle-18-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321140,
+      "expected_hex": "02000040f5010010000005000210",
+      "replacement_hex": "02000040f8010010000000000210"
+    },
+    {
+      "id": "battle-18-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321156,
+      "expected_hex": "0200ff40f5010010ff0005000210",
+      "replacement_hex": "0200ff40f8010010ff0000000210"
+    },
+    {
+      "id": "battle-18-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321172,
+      "expected_hex": "0200fe40f5010010fe0005000210",
+      "replacement_hex": "0200fe40f8010010fe0000000210"
+    },
+    {
+      "id": "battle-18-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321188,
+      "expected_hex": "0200fd40f5010010fd0005000210",
+      "replacement_hex": "0200fd40f8010010fd0000000210"
+    },
+    {
+      "id": "battle-18-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321204,
+      "expected_hex": "0200fc40f5010010fc0005000210",
+      "replacement_hex": "0200fc40f8010010fc0000000210"
+    },
+    {
+      "id": "battle-18-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321220,
+      "expected_hex": "0200fb40f5010010fb0005000210",
+      "replacement_hex": "0200fb40f8010010fb0000000210"
+    },
+    {
+      "id": "battle-18-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321236,
+      "expected_hex": "0200fa40f5010010fa0005000210",
+      "replacement_hex": "0200fa40f8010010fa0000000210"
+    },
+    {
+      "id": "battle-18-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321252,
+      "expected_hex": "0200f940f5010010f90005000210",
+      "replacement_hex": "0200f940f8010010f90000000210"
+    },
+    {
+      "id": "battle-18-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 18
+      },
+      "offset": 4321268,
+      "expected_hex": "0200f840f5010010f80005000210",
+      "replacement_hex": "0200f840f8010010f80000000210"
+    },
+    {
+      "id": "battle-20-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322440,
+      "expected_hex": "01000400fc010500",
+      "replacement_hex": "01000440f8010000"
+    },
+    {
+      "id": "battle-20-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322448,
+      "expected_hex": "01000500fc010500",
+      "replacement_hex": "01000540f8010000"
+    },
+    {
+      "id": "battle-20-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322456,
+      "expected_hex": "01000300fc010500",
+      "replacement_hex": "01000340f8010000"
+    },
+    {
+      "id": "battle-20-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322464,
+      "expected_hex": "0100ff00fb010500",
+      "replacement_hex": "0100ff40f8010000"
+    },
+    {
+      "id": "battle-20-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322472,
+      "expected_hex": "0100fc00fa010600",
+      "replacement_hex": "0100fc40f8010000"
+    },
+    {
+      "id": "battle-20-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322480,
+      "expected_hex": "0200fa00f90106000400fc010500",
+      "replacement_hex": "0200ff40f8010000ff0000000700"
+    },
+    {
+      "id": "battle-20-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322496,
+      "expected_hex": "0200f700f60107000500fc010500",
+      "replacement_hex": "0200fe40f8010000fe0000000700"
+    },
+    {
+      "id": "battle-20-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322512,
+      "expected_hex": "0200f500f10107000200fc010500",
+      "replacement_hex": "0200fc40f8010000fc0000000700"
+    },
+    {
+      "id": "battle-20-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322528,
+      "expected_hex": "0200f400ed010000ff00fb010500",
+      "replacement_hex": "0200fa40f8010000fa0000000700"
+    },
+    {
+      "id": "battle-20-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322544,
+      "expected_hex": "0300f500ed010000fc00fa0106000400fc010500",
+      "replacement_hex": "0300fc40f8010000fc0000000700fc0000000700"
+    },
+    {
+      "id": "battle-20-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322564,
+      "expected_hex": "0300f900ed010000f800f90106000500fc010500",
+      "replacement_hex": "0300fd40f8010000fd0000000700fd0000000700"
+    },
+    {
+      "id": "battle-20-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322584,
+      "expected_hex": "0300f600ed010000f400f70107000200fc010500",
+      "replacement_hex": "0300f940f8010000f90000000700f90000000700"
+    },
+    {
+      "id": "battle-20-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322604,
+      "expected_hex": "0400f700ed010000f100f5010700fe00fc0105000400fc010500",
+      "replacement_hex": "0400fa40f8010000fa0000000700fa0000000700fa0000000700"
+    },
+    {
+      "id": "battle-20-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322632,
+      "expected_hex": "0400f000f5010100f800ed010000f800fd0106000500fc010500",
+      "replacement_hex": "0400f940f8010000f90000000700f90000000700f90000000700"
+    },
+    {
+      "id": "battle-20-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322660,
+      "expected_hex": "0500f100f5010100f800ed010000f600fd0106000200fc0105000400fc010500",
+      "replacement_hex": "0500fb40f8010000fb0000000700fb0000000700fb0000000700fb0000000700"
+    },
+    {
+      "id": "battle-20-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322692,
+      "expected_hex": "0500f800ed010000f500f5010100f100fd010700fd00fd0105000500fc010500",
+      "replacement_hex": "0500fa40f8010000fa0000000700fa0000000700fa0000000700fa0000000700"
+    },
+    {
+      "id": "battle-20-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322724,
+      "expected_hex": "0500f800ed010000f900f5010100ef00fd010700f800000006000200fd010500",
+      "replacement_hex": "0500f840f8010000f80000000700f80000000700f80000000700f80000000700"
+    },
+    {
+      "id": "battle-20-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322756,
+      "expected_hex": "0500f800ed010000f500f5010100ef00fd010200f50002000600ff00fe010500",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322788,
+      "expected_hex": "0500f800ed010000f700f5010100f000fd010200f20003000700fb0001000600",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322820,
+      "expected_hex": "0500f800ed010000f800f5010100f600fd010200f00004000700f90003000600",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-21",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322852,
+      "expected_hex": "0500f800ed010000f900fd010200f800f5010100ef0005000300f70006000600",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-22",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322884,
+      "expected_hex": "0500f800ed010000f800f5010100fa00fd010200f00005000300f50007000700",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-23",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322916,
+      "expected_hex": "0500f800ed010000f800f5010100f500fd010200f60005000300f20009000700",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-24",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322948,
+      "expected_hex": "0500f800ed010000f800f5010100f700fd010200f90005000300f1000a000700",
+      "replacement_hex": "0500f740f8010000f70000000700f70000000700f70000000700f70000000700"
+    },
+    {
+      "id": "battle-20-frame-25",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4322980,
+      "expected_hex": "0500f800ed010000f800f5010100f800fd010200f60005000300f0000d000400",
+      "replacement_hex": "0500f640f8010000f60000000700f60000000700f60000000700f60000000700"
+    },
+    {
+      "id": "battle-20-frame-26",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4323012,
+      "expected_hex": "0500f800ed010000f800f5010100f800fd010200f80005000300f1000d000400",
+      "replacement_hex": "0500f740f8010000f70000000700f70000000700f70000000700f70000000700"
+    },
+    {
+      "id": "battle-20-frame-27",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4323044,
+      "expected_hex": "0500f800ed010000f800f5010100f800fd010200f5000d000400f80005000300",
+      "replacement_hex": "0500f740f8010000f70000000700f70000000700f70000000700f70000000700"
+    },
+    {
+      "id": "battle-20-frame-28",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4323076,
+      "expected_hex": "0500f800ed010000f800f5010100f800fd010200f80005000300f9000d000400",
+      "replacement_hex": "0500f840f8010000f80000000700f80000000700f80000000700f80000000700"
+    },
+    {
+      "id": "battle-20-frame-29",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4323108,
+      "expected_hex": "0500f800ed010000f800f5010100f800fd010200f80005000300f6000d000400",
+      "replacement_hex": "0500f840f8010000f80000000700f80000000700f80000000700f80000000700"
+    },
+    {
+      "id": "battle-20-frame-30",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 20
+      },
+      "offset": 4323140,
+      "expected_hex": "0500f800ed010000f800f5010100f800fd010200f80005000300f8000d000400",
+      "replacement_hex": "0500f840f8010000f80000000700f80000000700f80000000700f80000000700"
+    },
+    {
+      "id": "battle-21-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323256,
+      "expected_hex": "0100f900ef010000",
+      "replacement_hex": "0100f940f8010000"
+    },
+    {
+      "id": "battle-21-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323264,
+      "expected_hex": "0100f800f0010000",
+      "replacement_hex": "0100f840f8010000"
+    },
+    {
+      "id": "battle-21-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323272,
+      "expected_hex": "0200f900f7010100fa00ee010000",
+      "replacement_hex": "0200fa40f8010000fa0000000300"
+    },
+    {
+      "id": "battle-21-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323288,
+      "expected_hex": "0200f800f8010100fb00ed010000",
+      "replacement_hex": "0200fa40f8010000fa0000000300"
+    },
+    {
+      "id": "battle-21-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323304,
+      "expected_hex": "0200fa00f6010100fa00ea010000",
+      "replacement_hex": "0200fa40f8010000fa0000000300"
+    },
+    {
+      "id": "battle-21-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323320,
+      "expected_hex": "0300fb00f7010200fb00f5010100f900e9010000",
+      "replacement_hex": "0300fa40f8010000fa0000000300fa0000000300"
+    },
+    {
+      "id": "battle-21-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323340,
+      "expected_hex": "0300fa00f9010200fa00f2010100f400e9010000",
+      "replacement_hex": "0300f840f8010000f80000000300f80000000300"
+    },
+    {
+      "id": "battle-21-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323360,
+      "expected_hex": "0400fb00fc010200fb00f8010200f900f1010100f200ec010000",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-21-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323388,
+      "expected_hex": "0400fa00fe010200fa00f5010200f400f1010100f500f0010000",
+      "replacement_hex": "0400f740f8010000f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323416,
+      "expected_hex": "0400fb00fd010200f900f4010200f200f4010100f800f2010000",
+      "replacement_hex": "0400f840f8010000f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-21-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323444,
+      "expected_hex": "0400fa00fa010200f400f4010200f500f8010100f800f2010000",
+      "replacement_hex": "0400f740f8010000f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323472,
+      "expected_hex": "0400f900f9010200f200f7010200f800fa010100f800f2010000",
+      "replacement_hex": "0400f740f8010000f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323500,
+      "expected_hex": "0400f400f9010200f500fb010200f800fa010100f800f2010000",
+      "replacement_hex": "0400f640f8010000f60000000300f60000000300f60000000300"
+    },
+    {
+      "id": "battle-21-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323528,
+      "expected_hex": "0500f200fc010200f800fd010200f800fa010100f800f2010000fa0003000300",
+      "replacement_hex": "0500f740f8010000f70000000300f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323560,
+      "expected_hex": "0500f50000000200f800fd010200f800fa010100f800f2010000f80004000300",
+      "replacement_hex": "0500f740f8010000f70000000300f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323592,
+      "expected_hex": "0500f80002000200f800fd010200f800fa010100f800f2010000f30005000300",
+      "replacement_hex": "0500f740f8010000f70000000300f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323624,
+      "expected_hex": "0500f80002000200f800fd010200f800fa010100f800f2010000f20006000300",
+      "replacement_hex": "0500f740f8010000f70000000300f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323656,
+      "expected_hex": "0500f80002000200f800fd010200f800fa010100f800f2010000f30007000300",
+      "replacement_hex": "0500f740f8010000f70000000300f70000000300f70000000300f70000000300"
+    },
+    {
+      "id": "battle-21-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 21
+      },
+      "offset": 4323688,
+      "expected_hex": "0500f80002000200f800fd010200f800fa010100f800f2010000f80008000300",
+      "replacement_hex": "0500f840f8010000f80000000300f80000000300f80000000300f80000000300"
+    },
+    {
+      "id": "battle-22-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323796,
+      "expected_hex": "01000800f0010010",
+      "replacement_hex": "01000840f8010010"
+    },
+    {
+      "id": "battle-22-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323804,
+      "expected_hex": "02000700f00100100800fe010310",
+      "replacement_hex": "02000840f8010010080000000510"
+    },
+    {
+      "id": "battle-22-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323820,
+      "expected_hex": "02000500f00100100700fe010310",
+      "replacement_hex": "02000640f8010010060000000510"
+    },
+    {
+      "id": "battle-22-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323836,
+      "expected_hex": "04000200f00100100800f60101100500fe010310080003000410",
+      "replacement_hex": "04000640f8010010060000000510060000000510060000000510"
+    },
+    {
+      "id": "battle-22-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323864,
+      "expected_hex": "0400fe00f00100100700f60101100200fe010310070003000410",
+      "replacement_hex": "04000440f8010010040000000510040000000510040000000510"
+    },
+    {
+      "id": "battle-22-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323892,
+      "expected_hex": "0500fb00f00100100500f6010110fe00fe010310050003000410080008000510",
+      "replacement_hex": "05000240f8010010020000000510020000000510020000000510020000000510"
+    },
+    {
+      "id": "battle-22-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323924,
+      "expected_hex": "0500f900f00100100200f6010110fb00fe010310020003000410070008000510",
+      "replacement_hex": "05000040f8010010000000000510000000000510000000000510000000000510"
+    },
+    {
+      "id": "battle-22-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323956,
+      "expected_hex": "0600f800f0010010fe00f60101100500fb010210f900fe010310fe0003000410050008000510",
+      "replacement_hex": "0600fe40f8010010fe0000000510fe0000000510fe0000000510fe0000000510fe0000000510"
+    },
+    {
+      "id": "battle-22-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4323996,
+      "expected_hex": "0600f800ef010010fb00f60101100200fb010210f800fe010310fb0003000410020008000510",
+      "replacement_hex": "0600fc40f8010010fc0000000510fc0000000510fc0000000510fc0000000510fc0000000510"
+    },
+    {
+      "id": "battle-22-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324036,
+      "expected_hex": "0600f800f2010010f900f6010110fe00fb010210f800fd010310f90003000410fe0008000510",
+      "replacement_hex": "0600fa40f8010010fa0000000510fa0000000510fa0000000510fa0000000510fa0000000510"
+    },
+    {
+      "id": "battle-22-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324076,
+      "expected_hex": "0600f800f1010010f800f6010110fb00fb010210f80000000310f80003000410fb0008000510",
+      "replacement_hex": "0600f940f8010010f90000000510f90000000510f90000000510f90000000510f90000000510"
+    },
+    {
+      "id": "battle-22-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324116,
+      "expected_hex": "0600f800f0010010f800f5010110f900fb010210f800ff010310f80002000410f90008000510",
+      "replacement_hex": "0600f840f8010010f80000000510f80000000510f80000000510f80000000510f80000000510"
+    },
+    {
+      "id": "battle-22-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324156,
+      "expected_hex": "0600f800f0010010f800f8010110f800fb010210f800fe010310f80005000410f80008000510",
+      "replacement_hex": "0600f840f8010010f80000000510f80000000510f80000000510f80000000510f80000000510"
+    },
+    {
+      "id": "battle-22-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324196,
+      "expected_hex": "0600f800f0010010f800f7010110f800fa010210f800fe010310f80004000410f80007000510",
+      "replacement_hex": "0600f840f8010010f80000000510f80000000510f80000000510f80000000510f80000000510"
+    },
+    {
+      "id": "battle-22-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324236,
+      "expected_hex": "0600f800f0010010f800f6010110f800fe010210f800fe010310f80003000410f8000a000510",
+      "replacement_hex": "0600f840f8010010f80000000510f80000000510f80000000510f80000000510f80000000510"
+    },
+    {
+      "id": "battle-22-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324276,
+      "expected_hex": "0600f800f0010010f800f6010110f800fc010210f800fe010310f80003000410f80009000510",
+      "replacement_hex": "0600f840f8010010f80000000510f80000000510f80000000510f80000000510f80000000510"
+    },
+    {
+      "id": "battle-22-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 22
+      },
+      "offset": 4324316,
+      "expected_hex": "0600f800f0010010f800f6010110f800fb010210f800fe010310f80003000410f80008000510",
+      "replacement_hex": "0600f840f8010010f80000000510f80000000510f80000000510f80000000510f80000000510"
+    },
+    {
+      "id": "battle-23-frame-0",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324488,
+      "expected_hex": "0400f000f2010000f000f8010100f000fd010200f00004000300",
+      "replacement_hex": "0400f040f0410000f00000000700f00000000700f00000000700"
+    },
+    {
+      "id": "battle-23-frame-1",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324516,
+      "expected_hex": "01000800f2010000",
+      "replacement_hex": "01000840f0410000"
+    },
+    {
+      "id": "battle-23-frame-2",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324524,
+      "expected_hex": "01000900f2010000",
+      "replacement_hex": "01000940f0410000"
+    },
+    {
+      "id": "battle-23-frame-3",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324532,
+      "expected_hex": "01000700f2010000",
+      "replacement_hex": "01000740f0410000"
+    },
+    {
+      "id": "battle-23-frame-4",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324540,
+      "expected_hex": "02000300f20100000800f8010100",
+      "replacement_hex": "02000640f0410000060000000700"
+    },
+    {
+      "id": "battle-23-frame-5",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324556,
+      "expected_hex": "0200fb00f20100000900f8010100",
+      "replacement_hex": "02000240f0410000020000000700"
+    },
+    {
+      "id": "battle-23-frame-6",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324572,
+      "expected_hex": "0300f100f20100000700f80101000800fd010200",
+      "replacement_hex": "03000040f0410000000000000700000000000700"
+    },
+    {
+      "id": "battle-23-frame-7",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324592,
+      "expected_hex": "0400eb00f20100000300f80101000900fd010200080003000100",
+      "replacement_hex": "04000040f0410000000000000700000000000700000000000700"
+    },
+    {
+      "id": "battle-23-frame-8",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324620,
+      "expected_hex": "0500e900f2010000fb00f80101000700fd010200090003000100080008000400",
+      "replacement_hex": "0500ff40f0410000ff0000000700ff0000000700ff0000000700ff0000000700"
+    },
+    {
+      "id": "battle-23-frame-9",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324652,
+      "expected_hex": "0500e800f2010000f100f80101000300fd010200070003000100090008000400",
+      "replacement_hex": "0500fc40f0410000fc0000000700fc0000000700fc0000000700fc0000000700"
+    },
+    {
+      "id": "battle-23-frame-10",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324684,
+      "expected_hex": "0500e900f2010000eb00f8010100fb00fd010200030003000100070008000400",
+      "replacement_hex": "0500f840f0410000f80000000700f80000000700f80000000700f80000000700"
+    },
+    {
+      "id": "battle-23-frame-11",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324716,
+      "expected_hex": "0500eb00f2010000e900f8010100f100fd010200fb0003000100030008000400",
+      "replacement_hex": "0500f440f0410000f40000000700f40000000700f40000000700f40000000700"
+    },
+    {
+      "id": "battle-23-frame-12",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324748,
+      "expected_hex": "0500ef00f2010000e800f8010100eb00fd010200f10003000100fb0008000400",
+      "replacement_hex": "0500f040f0410000f00000000700f00000000700f00000000700f00000000700"
+    },
+    {
+      "id": "battle-23-frame-13",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324780,
+      "expected_hex": "0500f200f2010000e900f8010100e900fd010200eb0003000100f10008000400",
+      "replacement_hex": "0500ed40f0410000ed0000000700ed0000000700ed0000000700ed0000000700"
+    },
+    {
+      "id": "battle-23-frame-14",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324812,
+      "expected_hex": "0500ef00f2010000eb00f8010100e800fd010200e90003000100eb0008000400",
+      "replacement_hex": "0500eb40f0410000eb0000000700eb0000000700eb0000000700eb0000000700"
+    },
+    {
+      "id": "battle-23-frame-15",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324844,
+      "expected_hex": "0500f000f2010000ef00f8010100e900fd010200e80003000100e90008000400",
+      "replacement_hex": "0500eb40f0410000eb0000000700eb0000000700eb0000000700eb0000000700"
+    },
+    {
+      "id": "battle-23-frame-16",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324876,
+      "expected_hex": "0600f000f2010000f200f8010100eb00fd010200e90003000100e800080004000840f8010500",
+      "replacement_hex": "0600f140f0410000f10000000700f10000000700f10000000700f10000000700f10000000700"
+    },
+    {
+      "id": "battle-23-frame-17",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324916,
+      "expected_hex": "0600f000f2010000ef00f8010100ef00fd010200eb0003000100e900080004000940f8010500",
+      "replacement_hex": "0600f240f0410000f20000000700f20000000700f20000000700f20000000700f20000000700"
+    },
+    {
+      "id": "battle-23-frame-18",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324956,
+      "expected_hex": "0600f000f2010000f000f8010100f200fd010200ef0003000100eb00080004000740f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-19",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4324996,
+      "expected_hex": "0600f000f2010000f000f8010100ef00fd010200f20003000100ef00080004000440f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-20",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325036,
+      "expected_hex": "0600f000f2010000f000f8010100f000fd010200ef0003000100f20008000400fc40f8010500",
+      "replacement_hex": "0600f240f0410000f20000000700f20000000700f20000000700f20000000700f20000000700"
+    },
+    {
+      "id": "battle-23-frame-21",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325076,
+      "expected_hex": "0600f540f8010500f000f2010000f000f8010100f000fd010200f00003000100ef0008000400",
+      "replacement_hex": "0600f140f0410000f10000000700f10000000700f10000000700f10000000700f10000000700"
+    },
+    {
+      "id": "battle-23-frame-22",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325116,
+      "expected_hex": "0600ef000a000700f340f8010500f000f2010000f000f8010100f000fd010200f00004000300",
+      "replacement_hex": "0600f040f0410000f00000000700f00000000700f00000000700f00000000700f00000000700"
+    },
+    {
+      "id": "battle-23-frame-23",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325156,
+      "expected_hex": "0600f20008000700f440f8010500f000f2010000f000f8010100f000fd010200f00004000300",
+      "replacement_hex": "0600f140f0410000f10000000700f10000000700f10000000700f10000000700f10000000700"
+    },
+    {
+      "id": "battle-23-frame-24",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325196,
+      "expected_hex": "0600f60006000700f000f2010000f000f8010100f000fd010200f00004000300fa40f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-25",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325236,
+      "expected_hex": "0600fa0004000700f000f2010000f000f8010100f000fd010200f00004000300f740f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-26",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325276,
+      "expected_hex": "0600fb0003000700f000f2010000f000f8010100f000fd010200f00004000300f840f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-27",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325316,
+      "expected_hex": "0600fa0004000700f000f2010000f000f8010100f000fd010200f00004000300f940f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-28",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325356,
+      "expected_hex": "0600f50008000700f000f2010000f000f8010100f000fd010200f00004000300f840f8010500",
+      "replacement_hex": "0600f240f0410000f20000000700f20000000700f20000000700f20000000700f20000000700"
+    },
+    {
+      "id": "battle-23-frame-29",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325396,
+      "expected_hex": "0600f60007000700f000f2010000f000f8010100f000fd010200f00004000300f840f8010500",
+      "replacement_hex": "0600f240f0410000f20000000700f20000000700f20000000700f20000000700f20000000700"
+    },
+    {
+      "id": "battle-23-frame-30",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325436,
+      "expected_hex": "0600f80006000700f000f2010000f000f8010100f000fd010200f00004000300f840f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-31",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325476,
+      "expected_hex": "0600f90005000700f000f2010000f000f8010100f000fd010200f00004000300f840f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    },
+    {
+      "id": "battle-23-frame-32",
+      "depends_on": {
+        "bank": "battle-labels",
+        "type": 23
+      },
+      "offset": 4325516,
+      "expected_hex": "0600f80006000700f000f2010000f000f8010100f000fd010200f00004000300f840f8010500",
+      "replacement_hex": "0600f340f0410000f30000000700f30000000700f30000000700f30000000700f30000000700"
+    }
+  ],
+  "terminology": {
+    "native_cn_sha256": "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+    "category_reference": {
+      "family": "fixed",
+      "page": 8,
+      "index": 61,
+      "rom_offset": 11363951,
+      "wording": [
+        "行动技能",
+        "反应技能",
+        "援助技能",
+        "连击技能"
+      ]
+    },
+    "note": "Category labels follow native CN tutorial terminology. Result and battle phrases are editorial translations; original text resources are unchanged."
+  },
+  "deferred_battle_types": [
+    12,
+    14,
+    19
+  ],
+  "repairs": [
+    {
+      "translation": "任务完成",
+      "enabled": true
+    },
+    {
+      "translation": "任务失败",
+      "enabled": true
+    },
+    {
+      "translation": "战斗胜利",
+      "enabled": true
+    },
+    {
+      "translation": "战斗失败",
+      "enabled": true
+    },
+    {
+      "translation": "任务完成",
+      "enabled": true
+    },
+    {
+      "translation": "任务失败",
+      "enabled": true
+    },
+    {
+      "translation": "战斗胜利",
+      "enabled": true
+    },
+    {
+      "translation": "战斗失败",
+      "enabled": true
+    },
+    {
+      "translation": "行动",
+      "enabled": true
+    },
+    {
+      "translation": "反应",
+      "enabled": true
+    },
+    {
+      "translation": "援助",
+      "enabled": true
+    },
+    {
+      "translation": "连击",
+      "enabled": true
+    },
+    {
+      "translation": "恢复",
+      "enabled": true
+    },
+    {
+      "translation": "驱散",
+      "enabled": true
+    },
+    {
+      "translation": "武攻",
+      "enabled": true
+    },
+    {
+      "translation": "武攻",
+      "enabled": true
+    },
+    {
+      "translation": "武防",
+      "enabled": true
+    },
+    {
+      "translation": "武防",
+      "enabled": true
+    },
+    {
+      "translation": "速度",
+      "enabled": true
+    },
+    {
+      "translation": "缓慢",
+      "enabled": true
+    },
+    {
+      "translation": "停止",
+      "enabled": true
+    },
+    {
+      "translation": "加速",
+      "enabled": true
+    },
+    {
+      "translation": "转移",
+      "enabled": true
+    },
+    {
+      "translation": "会心提升",
+      "enabled": true
+    },
+    {
+      "translation": "命中要害",
+      "enabled": true
+    },
+    {
+      "translation": "接住",
+      "enabled": true
+    },
+    {
+      "translation": "隐身",
+      "enabled": true
+    },
+    {
+      "translation": "会心",
+      "enabled": true
+    },
+    {
+      "translation": "未中",
+      "enabled": true
+    },
+    {
+      "translation": "中毒",
+      "enabled": true
+    },
+    {
+      "translation": "等级提升",
+      "enabled": true
+    },
+    {
+      "translation": "魔攻",
+      "enabled": true
+    },
+    {
+      "translation": "魔攻",
+      "enabled": true
+    }
+  ]
+}

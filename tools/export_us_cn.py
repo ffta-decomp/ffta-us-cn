@@ -159,7 +159,7 @@ def export(retail_path, translated_path, output_dir, tool_prefix='arm-none-eabi-
     (output_dir / patch_name).write_bytes(patch)
     (output_dir / 'plugins.json').write_bytes((ROOT / 'plugins.json').read_bytes())
     write_json(output_dir / 'patches.json', dict(
-        schema=1, profile='exact-us-v1.1-cn-reference', enabled_plugins=['uscn'],
+        schema=1, profile='exact-us-v1.1-cn-reference', enabled_plugins=['cn2025'],
         pinyin_enabled=False, link_fix_enabled=False, info_enabled=False,
         catalogue_role='Available plugin metadata; not all entries are enabled in this reference.',
         ips=dict(path=patch_name, input_sha256=sha(retail), output_sha256=sha(rebuilt),

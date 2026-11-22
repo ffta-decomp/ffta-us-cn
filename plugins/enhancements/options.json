@@ -1,0 +1,9 @@
+{
+  "schema": "ffta-common-options-v1",
+  "storage_byte": 3,
+  "options": [
+    {"id": "shop_refresh", "bit": 0, "label": "每月更新商店", "hint": "每月一日更新交易品。"},
+    {"id": "growth_bonus", "bit": 1, "label": "成长装备强化", "hint": "成长装备每场加五点。"},
+    {"id": "party_ap", "bit": 2, "label": "全员获得AP", "hint": "未参战成员获得二十AP。"}
+  ]
+}

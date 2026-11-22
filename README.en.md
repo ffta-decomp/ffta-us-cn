@@ -14,6 +14,8 @@ keyboard page; the original second page remains available. No third tab is added
 | Default | CN resources/loading, pinyin naming, serial timeout fix, title Info and appended italic entry glyphs |
 | `--disable-pinyin` | CN with the serial timeout fix, without pinyin |
 | `--disable-pinyin --disable-link-fix` | Exact pinned 16 MiB Chinese reference |
+| `--enable-recruit-rename` | Enable recruit naming. mGBA expands the battery save to 128 KiB at boot. See [save setup for other emulators](plugins/recruit_rename/README.md). |
+| `--disable-vbam-save-fix` | Disable the VBA-M Flash 128 KiB chip-ID alias enabled in the default Chinese build. Native game progress stays in the lower 64 KiB. |
 | `--disable-cjk` | English baseline, with pinyin disabled automatically |
 | `--disable-cjk --enable-link-fix --disable-info` | English with only the serial timeout fix |
 | `--disable-cjk --enable-pinyin` | Rejected as contradictory |
@@ -201,3 +203,23 @@ The [persistent reference exporter](docs/us-cn-resource-export.md) exports nativ
 glyphs, text, resources and IPS metadata, then proves a full-ROM byte match.
 The optional [title Info UI](docs/plugin-info.md) reads plugin credits from
 `plugins.json`; use `--disable-info` to omit it.
+
+## Translation versions
+
+The base translation plugin is now named `cn2025`. It retains the existing US
+CN v1.1 resources and font. Builds still default to CN2025; existing optional
+pinyin, link and other extensions keep their independent switches.
+
+CN2026 extends CN2025 with translation revisions by 隼, enables pinyin naming,
+and adds image enhancements: left-aligned menu titles,
+job-name icons, ability categories, the repaired Action arrow, rank/price
+labels, confirmed result/battle labels, ten rounded stat labels, consistent save-slot titles and a larger single-line completed-mission caption.
+Some result/battle scenes still need natural scene and palette acceptance.
+Image localization and packaging are credited to bhe. The shared native Options module adds monthly shop refresh, growth equipment and nonparticipant AP switches before the final reset row. Existing saves keep them off; normal saving persists them and reset clears them. Gameplay still needs full battle acceptance; these are test builds.
+
+Add `--cn-version cn2026 --cn2026-pack /absolute/private/resource-pack`
+to the existing build command. The pack must be supplied explicitly outside
+the repository. Missing or altered resources fail the build. Rendering tools,
+fonts and image data stay private; only configuration and the plugin loader
+belong in source. Info displays the selected version, while CN2025 retains
+ownership of the native font.

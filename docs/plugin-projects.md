@@ -53,7 +53,7 @@ is required. Commit the declared sources, manifest and updated lock together.
 The starter is deliberately a no-op until its extension manifest is implemented.
 
 Set `enabled` to `false` to disable an entry. Optional `feature` ties it to an
-existing build feature (`cjk`, `link_fix`, `info`, `italic_font`); otherwise it
+existing build feature (`cjk`, `cn2026`, `link_fix`, `info`, `italic_font`); otherwise it
 runs whenever enabled, including English and exact-reference profiles. Disable
 your custom changes when reproducing the original ROM. The Info sidebar shows
 enabled plugin credits and currently supports at most four pages.
@@ -78,13 +78,22 @@ must have pinned hashes; original-range hashes refer to `reference`.
 
 Plugins run in ascending `(priority, id)` order. Conflicting byte changes by
 additional plugins fail; priority does not silently authorize overwriting one
-another. Info retains its specialized font/UI build stage. `uscn` owns the
+another. Info retains its specialized font/UI build stage. `cn2025` owns the
 original font with priority 1000; append styles cannot replace its cells or
 codes. Font rules are described in [font extensions](font-plugins.md).
 
 The root `plugins.json` can override exported defaults with an explicit
 `{"id": "my_plugin", "project": "builtin", "enabled": false}` registration.
 Use `--disable-info` to disable the specialized built-in Info UI stage.
+
+CN2025 is the base translation/font plugin. Selecting `--cn-version cn2026`
+enables the CN2026 translation/image plugin and pinyin naming, and requires an
+explicit external `--cn2026-pack` (legacy alias: `--image-enhancement-pack`). The default remains CN2025. CN2026 declares
+`supersedes: ["cn2025"]`: this replaces only its Info page, retaining the active
+CN2025 base font. The four native sidebar slots remain sufficient with netfix,
+Info and Options enabled. See [CN2026](../plugins/cn2026/README.md).
+
+The in-game native Options core lives in `plugins/common/options`. Plugins export stable flag descriptors through their `options` field; the shared module owns rendering, confirmation and persistence. See [shared Options](../plugins/common/options/README.md).
 
 ## External plugin projects
 

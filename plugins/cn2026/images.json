@@ -1,0 +1,1714 @@
+{
+  "schema": "ffta-cn2026-image-pack-v1",
+  "version": "cn2026-images-4",
+  "rom_bytes": 16777216,
+  "base_translation": "cn2025",
+  "scope": "Image resources, resource pointers and guarded native save-caption layout instructions only; no gameplay or save-format changes.",
+  "included": [
+    "27 left-aligned menu titles",
+    "42 job-name icons with heads shifted left 3px",
+    "4 ability categories and repaired Action arrow",
+    "Rank and price labels",
+    "4 static and 4 animated result labels",
+    "21 confirmed battle-feedback types",
+    "Save slots 1/2 with matching title layout and a larger single-line completed-mission count label",
+    "10 stat labels redrawn with a native-size rounded pixel font and restored decorative bars"
+  ],
+  "deferred": [
+    "Battle-feedback types 12, 14 and 19",
+    "Remaining atlas candidates without verified native consumers"
+  ],
+  "validation_limits": "Equipment screen and native decoder checks verified; natural result, battle-feedback and category scene/palette acceptance remains pending.",
+  "fragments": [
+    {
+      "file": "0001857c.bin",
+      "rom_offset": 99708,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "aece1b3fd1d5d568c4d76cd71066fee5464094e8cf04a7bdf44c6ff66f82078c",
+      "sha256": "8a82687dd7f0d59b20ba25b71dd91e7256ceb70049e3d2e1d1fa7fb6e167e2c3"
+    },
+    {
+      "file": "000185b0.bin",
+      "rom_offset": 99760,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "aece1b3fd1d5d568c4d76cd71066fee5464094e8cf04a7bdf44c6ff66f82078c",
+      "sha256": "8a82687dd7f0d59b20ba25b71dd91e7256ceb70049e3d2e1d1fa7fb6e167e2c3"
+    },
+    {
+      "file": "0007bdf0.bin",
+      "rom_offset": 507376,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "ba6dfece9c081e9a0e06c46de8be1efb6c88f058a124395ed026dafc4bcd660c",
+      "sha256": "84735ee45bd5232a7d3a8dd75b59b2afb1a2ad190434bc26fff705e74dfbb553"
+    },
+    {
+      "file": "0007bff8.bin",
+      "rom_offset": 507896,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "ba6dfece9c081e9a0e06c46de8be1efb6c88f058a124395ed026dafc4bcd660c",
+      "sha256": "84735ee45bd5232a7d3a8dd75b59b2afb1a2ad190434bc26fff705e74dfbb553"
+    },
+    {
+      "file": "0008c628.bin",
+      "rom_offset": 575016,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "ba6dfece9c081e9a0e06c46de8be1efb6c88f058a124395ed026dafc4bcd660c",
+      "sha256": "84735ee45bd5232a7d3a8dd75b59b2afb1a2ad190434bc26fff705e74dfbb553"
+    },
+    {
+      "file": "00090b90.bin",
+      "rom_offset": 592784,
+      "bytes": 8,
+      "kind": "data",
+      "preimage_sha256": "f8497f7382b1b50d028d54bde7dfd62bc637d8bbaa4619747ce5b7167005da13",
+      "sha256": "f06f7fd5f68c40aada2238f515770f788b3149b3f47da72561656adc46f89049"
+    },
+    {
+      "file": "00090ccc.bin",
+      "rom_offset": 593100,
+      "bytes": 8,
+      "kind": "data",
+      "preimage_sha256": "f8497f7382b1b50d028d54bde7dfd62bc637d8bbaa4619747ce5b7167005da13",
+      "sha256": "f06f7fd5f68c40aada2238f515770f788b3149b3f47da72561656adc46f89049"
+    },
+    {
+      "file": "00090e04.bin",
+      "rom_offset": 593412,
+      "bytes": 8,
+      "kind": "data",
+      "preimage_sha256": "f8497f7382b1b50d028d54bde7dfd62bc637d8bbaa4619747ce5b7167005da13",
+      "sha256": "f06f7fd5f68c40aada2238f515770f788b3149b3f47da72561656adc46f89049"
+    },
+    {
+      "file": "00090f40.bin",
+      "rom_offset": 593728,
+      "bytes": 8,
+      "kind": "data",
+      "preimage_sha256": "f8497f7382b1b50d028d54bde7dfd62bc637d8bbaa4619747ce5b7167005da13",
+      "sha256": "f06f7fd5f68c40aada2238f515770f788b3149b3f47da72561656adc46f89049"
+    },
+    {
+      "file": "000a8bbc.bin",
+      "rom_offset": 691132,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "e7851b98299476f4cf021b2bd33a6f207333b8dd7dbfadf13bb5e57c4ee6e297",
+      "sha256": "2fa3ee2859182ba241135ad8bf5cefbf246da58923ad1878d87bb36b629aa6b3"
+    },
+    {
+      "file": "000cba10.bin",
+      "rom_offset": 834064,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "3f13d9e348f5593ba30cdd06ae543d47f2c7f3e84308864562fbfe60212aed13",
+      "sha256": "05381bbe3fd61beacd669593db96d18372764466f535dd6f3305c1b5d8c517d0"
+    },
+    {
+      "file": "00137ff4.bin",
+      "rom_offset": 1277940,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "2b507bba45d133e4435e7d42d540ea8ab754823036fecada0f0a43984ad28950",
+      "sha256": "60d4130b8cc324b94c2d587891d12a34104ec565c8e473ed4c9141ec61b92296"
+    },
+    {
+      "file": "0036d75c.bin",
+      "rom_offset": 3594076,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "97695a9f1543ed5cd404c2e55121bde062ea97ad7ebbb2217b1ef51672f59418",
+      "sha256": "73bf8f4f5b1f79cd076121fb2680fdb6a2222b93ba82118bd94e4ab00ab5014a"
+    },
+    {
+      "file": "003940b4.bin",
+      "rom_offset": 3752116,
+      "bytes": 600,
+      "kind": "data",
+      "preimage_sha256": "5c67413b2fd22567791f90f7b94706f34ea81fee5aa288af01acc8e5ef97ea2e",
+      "sha256": "f30a46f8647e3f58507839079bdc701f2f9da9a8024a6ec793e6835ccc7631fa"
+    },
+    {
+      "file": "0041d1f4.bin",
+      "rom_offset": 4313588,
+      "bytes": 22,
+      "kind": "data",
+      "preimage_sha256": "97303841dbeddf27a3ce9989fac3816f266e450687a63bb8789a83a99ca3f97f",
+      "sha256": "b6e7231cb547c4a3dde5f60df19eb1b61567a8a40df7ce0d2872c42dbe99f08d"
+    },
+    {
+      "file": "0041d20c.bin",
+      "rom_offset": 4313612,
+      "bytes": 46,
+      "kind": "data",
+      "preimage_sha256": "696c6227fb0728c983fda8ce3070697ebbe30394d3e1e2904992c50c0ac9f2df",
+      "sha256": "2284eef7fe7b057071788a30d750e8b99b8cf68efc4a4b717809a8d9d54341ef"
+    },
+    {
+      "file": "0041d23c.bin",
+      "rom_offset": 4313660,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "c9d0d857a49e5943d69e93554ea0d9c7ac318866a8b7d4b9624021e781e9a7b6",
+      "sha256": "41c9d3b135f3530cbae2899b6e9344eaf7aa6b173e071254241fc149ea8d3435"
+    },
+    {
+      "file": "0041d258.bin",
+      "rom_offset": 4313688,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "6736fe7d2234af8d6e3ac44db5913b491d5852cf88e5d1e455019e4586b2652e",
+      "sha256": "42125bce1fb26020d3d76c12d83c110d32924d2a10aede19bcfaa09cff4eccf4"
+    },
+    {
+      "file": "0041d274.bin",
+      "rom_offset": 4313716,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "42034d37cac87dfc8b82e6f37c20e78483b11810e78023e3f2ce8206c4e69c6a",
+      "sha256": "a51659e7a787291e1f44247d73346e8be00423b3104883340e8647c552bd741c"
+    },
+    {
+      "file": "0041d290.bin",
+      "rom_offset": 4313744,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "8b6e9d232098e640d2828b9a56290d7ea8ee35657abcacede19c57e67052905c",
+      "sha256": "a51659e7a787291e1f44247d73346e8be00423b3104883340e8647c552bd741c"
+    },
+    {
+      "file": "0041d2ac.bin",
+      "rom_offset": 4313772,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "d592320caaeaa5f2854a50077a96b01942aad11d4f8dbfc273a9a90f3dd7ae35",
+      "sha256": "8cd18032a2e6ba2bd064549e84b62ef096578563f76f1790f715438fa8584280"
+    },
+    {
+      "file": "0041d2c8.bin",
+      "rom_offset": 4313800,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "407c37d5821e33daadaf115b6728c853988e825ade647a0c7e6afa24d19158a9",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041d2e4.bin",
+      "rom_offset": 4313828,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "492e45d7d7045bb3b5d37ba5fca4a8b0bb7728f8d235a206f479dca882744451",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041d334.bin",
+      "rom_offset": 4313908,
+      "bytes": 22,
+      "kind": "data",
+      "preimage_sha256": "d72ebca6c057b8615369b5724cfa88895d303bc7b623c222aabf90fd180eae7e",
+      "sha256": "a2fa35d597db8f15dc3d354c143391a4ab354cc11dd95415d6df3555d8d80bde"
+    },
+    {
+      "file": "0041d34c.bin",
+      "rom_offset": 4313932,
+      "bytes": 46,
+      "kind": "data",
+      "preimage_sha256": "7bf48547a2f2c8f15b7c4f08fb34e3b80312add46914f88bd989ab5d1905e7e5",
+      "sha256": "e7c1857d4cd08210c9ef40c0633525a4491e53d84e4f9137a4f2fa2f61d2e907"
+    },
+    {
+      "file": "0041d37c.bin",
+      "rom_offset": 4313980,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "f8c32e47cec805d5b3bde20cd1f637b12de27b3e8c980993135c3a285cd767dc",
+      "sha256": "cc0d74a09b7abd098e80de649a934699b3f98cd005bd353609e6febadf449ff3"
+    },
+    {
+      "file": "0041d398.bin",
+      "rom_offset": 4314008,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "eff0a8a42ec31e7b45c9f336df0fb17e3298206c4eaa0ca03b95cea1eb136fef",
+      "sha256": "a51659e7a787291e1f44247d73346e8be00423b3104883340e8647c552bd741c"
+    },
+    {
+      "file": "0041d3b4.bin",
+      "rom_offset": 4314036,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "260d7d6dc2e75c51544ff300ba9a9b64c314f74b1374c74d3897b0576f680d49",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041d3d0.bin",
+      "rom_offset": 4314064,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "877f4316c32ff151095c83e2da3391642b2959a98860724b0f9d135b9ecb2e81",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041d3ec.bin",
+      "rom_offset": 4314092,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "b1b75c278d8f65590845f0832c12694a120dba758ebcd1a29d9e42f144a75b42",
+      "sha256": "b45c5fa5e67ba331e3ba53b7ff10c58981f0384c259b12835f86191e13ed639a"
+    },
+    {
+      "file": "0041d408.bin",
+      "rom_offset": 4314120,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "d7e26c1f5e2cbb4c12041433975069ee50245672cae4ac6d40ea563bf3868dc0",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041d424.bin",
+      "rom_offset": 4314148,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "7d79efbd79ab0f79cd36a0d9c3a6465bfbc73df64054fed36e6ca97bf805229f",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041dac0.bin",
+      "rom_offset": 4315840,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "a31c035cbff60ca025544d23a6213e1c2f4a082f1be144e335ad9055b02b6037",
+      "sha256": "bf2fe96b4613ff6f1f2a5a764640be8bd7ab52904e17312425fa231c86cf3dfa"
+    },
+    {
+      "file": "0041dad0.bin",
+      "rom_offset": 4315856,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "c1cfcaa2759a3d21da9e36a049bf9fac80436ab6348a4901bb090e235431bdd2",
+      "sha256": "8216e224fdec22aadb6c3400dbb69966e2019a214291470e0090e1bf2bbeb5de"
+    },
+    {
+      "file": "0041dae0.bin",
+      "rom_offset": 4315872,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "8745403cbd9790c080cfca788d95fa8425a5a37ccc63c47c5ddac2a022aa1ffc",
+      "sha256": "2bb0802acd9b3025b49ee8526a8676b0ade6c3420508248d8b04468897641f3a"
+    },
+    {
+      "file": "0041daf0.bin",
+      "rom_offset": 4315888,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "6b5f10ef53020a406ebf8918b1d1d7e928319427da12e6ae44264812156c1ac1",
+      "sha256": "6d83e876da0735a6facb44618f4ff3f9c9fbfd128fbe5ef7116f105e07a8cd07"
+    },
+    {
+      "file": "0041db00.bin",
+      "rom_offset": 4315904,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "29c4cfa4e1b03748b8aafd9faa9166437c9ae13dc690082689cb08cc27edc3f7",
+      "sha256": "c031ec3edbdfb758123dd4f38754c3985b58b820acb89b872f18d3ce48b10b96"
+    },
+    {
+      "file": "0041db10.bin",
+      "rom_offset": 4315920,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "708f84c8e6a92e242698deed0af8a182d7c902aba786986ec2ec69155c7f4023",
+      "sha256": "e5ac6fae65ca5177ab730d0ddb6c7dcc2a0c6df64b70599b113edad040cca596"
+    },
+    {
+      "file": "0041db20.bin",
+      "rom_offset": 4315936,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "e520c837f8fc8c15e35ce231f3d52091a0a80e850b0b465f0746ef96bd507f43",
+      "sha256": "feaf8c98f6b433db81d9dceb837c4a0fe903288c2a8fa416dca5a8feb9acd450"
+    },
+    {
+      "file": "0041db30.bin",
+      "rom_offset": 4315952,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "77993a9f2b0fee4576588eaa394efd1f27958f9ea0495e53ca5758a7b4f75e07",
+      "sha256": "04e271edee51e3642eaa5e7b29768349fd7d3a03c83545ee6d41a7b0f3b0625b"
+    },
+    {
+      "file": "0041db40.bin",
+      "rom_offset": 4315968,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "46407d32e7c7fe0b08782277013bac70c3866dbb6864118d3b6ce5906cafca36",
+      "sha256": "bfbe1b8f6f7e7ee8fc3276b2eae2589579796199049113a9e3029dd38b01d4b6"
+    },
+    {
+      "file": "0041db50.bin",
+      "rom_offset": 4315984,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "bdd1d3e7b6bbc1b6939e78b755c8e5b3b5af2bf27337fb615dc81bd20c3385d2",
+      "sha256": "8b986e59f97b28a23a6036003d3effe1811fb6204413cd82f8557dba2b39f4fb"
+    },
+    {
+      "file": "0041db60.bin",
+      "rom_offset": 4316000,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "39cee17f28a21fc90a3d9c17f29185c19e9ddbd7f48f27fa9271c18a86cc36dd",
+      "sha256": "cf5c89c1b34fe05686ed9540a534878aa6cd252df0ae47b5d9adb7b307a88aba"
+    },
+    {
+      "file": "0041db70.bin",
+      "rom_offset": 4316016,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "631d1373111761fed5bb37b81586ffe4a372733cbf6beb3a8eb2940cb01522de",
+      "sha256": "266cf6aa48011181db8b7c3b8a2c25d60cdb8ec53b2838f24a207d5ab98ad5ed"
+    },
+    {
+      "file": "0041db80.bin",
+      "rom_offset": 4316032,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "78c10eae797735b0f915f915f4b914846d0a6a606b3a673462cc43c4ac1e72d3",
+      "sha256": "1e4286db0f0d6332f016199ead1ede7bff52e5570d3eaa840f59776923fc40c9"
+    },
+    {
+      "file": "0041db90.bin",
+      "rom_offset": 4316048,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "bd1f0abe34b6bac8f8bcb84a6eb088004ea9970e8824bdfc95cca7b887c2cc26",
+      "sha256": "bcffbe528b38854d532309b2a868786f2d95bfe96cfa3873e67568486498e8c5"
+    },
+    {
+      "file": "0041dc30.bin",
+      "rom_offset": 4316208,
+      "bytes": 62,
+      "kind": "data",
+      "preimage_sha256": "10a14e562bde19505e5bcb1f2dd6d8876d07afe6dc0b93a520a1dddb132472ae",
+      "sha256": "87332deb2018bf72600466c37d4c1e43d0437c2b652ffbcf3a557c7f62633b35"
+    },
+    {
+      "file": "0041dc70.bin",
+      "rom_offset": 4316272,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "1af6fa95f805e8864bca4bfc1810ccd76a968ad3ead854933338a5c8b5d147ff",
+      "sha256": "71592328fd5d88199684a4955d21a3b460790e2d04b86f60857231613e44effd"
+    },
+    {
+      "file": "0041dc80.bin",
+      "rom_offset": 4316288,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "97275bcf9535dc4895ad5652ad6225bc64d955d7fda5407f88463cb20c479506",
+      "sha256": "71592328fd5d88199684a4955d21a3b460790e2d04b86f60857231613e44effd"
+    },
+    {
+      "file": "0041dc90.bin",
+      "rom_offset": 4316304,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "fbd9d99f001393d4fcb5666fd1fa613cd57397d7f986ee2ac1c0e70e9641d7f1",
+      "sha256": "a071b9b2aac719d8366e90bec35ae0d11d444f7a481f03bcb9be94a61d9e2f6f"
+    },
+    {
+      "file": "0041dca0.bin",
+      "rom_offset": 4316320,
+      "bytes": 146,
+      "kind": "data",
+      "preimage_sha256": "a92a09f194f441d37a126b0e54f623c9bb75319afa5cc14c991e00cbc1cd7544",
+      "sha256": "5d3f70fc5beec936184709b95d11fe1fd8a7831ae37330b73749fab43be7723a"
+    },
+    {
+      "file": "0041dd34.bin",
+      "rom_offset": 4316468,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "6a38022a64f899bd08b025746d091ebf925a900612be3415d5dcee88d6ad14fc",
+      "sha256": "42125bce1fb26020d3d76c12d83c110d32924d2a10aede19bcfaa09cff4eccf4"
+    },
+    {
+      "file": "0041dd50.bin",
+      "rom_offset": 4316496,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "8cb34277984f62aaa2290fc1c705d44df0e372cfad12c81794ff98588fb714a1",
+      "sha256": "ec004771d99401475d7c4fdd51d9220368817581d99822781b470c3f67a5109d"
+    },
+    {
+      "file": "0041dd6c.bin",
+      "rom_offset": 4316524,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "4d2ef6834940c522187e8e168b23b0375e1452be2829923628741e41ea95532a",
+      "sha256": "a51659e7a787291e1f44247d73346e8be00423b3104883340e8647c552bd741c"
+    },
+    {
+      "file": "0041dd88.bin",
+      "rom_offset": 4316552,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "754fa5c555370b1e9a35911c69fd433252161ec40d2580cd727dc1b0db3f14a5",
+      "sha256": "8cd18032a2e6ba2bd064549e84b62ef096578563f76f1790f715438fa8584280"
+    },
+    {
+      "file": "0041dda4.bin",
+      "rom_offset": 4316580,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "6852e579d24a2e54a3b1be1499d9dc1bdd4c74acfc3c1526b95e9fa997c56807",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041ddc0.bin",
+      "rom_offset": 4316608,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "4a03c1c50416e00427aa50a47f1ef424f3be6d08984f4106e4c3743b6c6aa5a9",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041dddc.bin",
+      "rom_offset": 4316636,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "db1166a47c1b10f2dd98a125cdaa900fc89d2b076ee6f9578522d20070c77391",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041ddf8.bin",
+      "rom_offset": 4316664,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "7a0073c504c32e049a8e0f1548342efbaf9320e24cefe977e449384f0e6d8b31",
+      "sha256": "8cd18032a2e6ba2bd064549e84b62ef096578563f76f1790f715438fa8584280"
+    },
+    {
+      "file": "0041de14.bin",
+      "rom_offset": 4316692,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "a1cfbbd46d379fdc41795d94f700a27e683522264b3fa937167158a9ed238594",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041de30.bin",
+      "rom_offset": 4316720,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "1f2e685b2b08c2f16c6847f9166d596ccd44e21aff70d6ab8d5ecf98fb8b2017",
+      "sha256": "b45c5fa5e67ba331e3ba53b7ff10c58981f0384c259b12835f86191e13ed639a"
+    },
+    {
+      "file": "0041de4c.bin",
+      "rom_offset": 4316748,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "070f63783cdb76652e7a7d8a69e2c3accbb4a29dc74f3bae4bad92083d869879",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041de68.bin",
+      "rom_offset": 4316776,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "3f924a190c8fa56ccc87fa501f71cf0c7dcef23f3e8a652e6a263646a67336c5",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041de84.bin",
+      "rom_offset": 4316804,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "4f39c5deb36f885b413ea0e93f88c2f2a76ae3f6af0266d6beb7140942ab024b",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041dea0.bin",
+      "rom_offset": 4316832,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "43eb5dd15682b3579bb27b74104c5ab1a16c96ff1557f4b764f096b63d04cc4e",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041debc.bin",
+      "rom_offset": 4316860,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "e9425231017aa822d249a7ef939d11e2b3302c2325640def323142bee105f05a",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041ded8.bin",
+      "rom_offset": 4316888,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "e078eaaf01d3a67efcc3d0c92c51541a0c86b3775026b83b0141a808b0e57f8e",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041def4.bin",
+      "rom_offset": 4316916,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "6faa72e33aff6deacb2e761ec2bbb995158a4ea69e39c4c613feb441fd37ec40",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041df68.bin",
+      "rom_offset": 4317032,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "ac68bccc39f04eb7cc4668bb867a39805a176fc7868aa73b0e7bdea1cb838d26",
+      "sha256": "543c2869c0274caaad9d71b85babf34f37de23bed4c76f2cfe524f7904422e57"
+    },
+    {
+      "file": "0041df78.bin",
+      "rom_offset": 4317048,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "32ed5681047ca455940b850e0d5e97f818a6c3525cd1a5bddb146c941795cb84",
+      "sha256": "965f665d780dad10cfd5bc6ca846cad2171644671a42a5252ffcea1d7eb69aa3"
+    },
+    {
+      "file": "0041df88.bin",
+      "rom_offset": 4317064,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "8e84d04384223e3baf575eedf898ed4022f7b50c71a4d09f13f7e9ab7253e08b",
+      "sha256": "683a3de2924cee64b422b790ea232bfa1dd6ae7273004de46bca8b20ca2ac0ba"
+    },
+    {
+      "file": "0041df98.bin",
+      "rom_offset": 4317080,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "d3f331479623ae109fa1565161c1b0c6f3cb4ad990005c3b5a1428619825c963",
+      "sha256": "88c38e5c1e31e2cc956e2f5d15f989b088a4f5c2b75980576d9bcb5d6ab59858"
+    },
+    {
+      "file": "0041dfa8.bin",
+      "rom_offset": 4317096,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "0990dc9dae376071878399219cfe28108d8944fd3b6a051e1213c5fc0585504d",
+      "sha256": "b0495263314212469aa6f93ef5b3d24d61927f729cb3f805a7397b352b01456f"
+    },
+    {
+      "file": "0041dfb8.bin",
+      "rom_offset": 4317112,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "f4809a89ac6199f3e41e88baf3edc830dc1cf51b228201b0f3f292c263244cba",
+      "sha256": "06f56b67b048e2a8843b20d614b68488ef43ca52e6af94cf90b0de83f0fdb0ad"
+    },
+    {
+      "file": "0041dfc8.bin",
+      "rom_offset": 4317128,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "111be01da178bc2e7d96c97e37d96426364b6796723ae0b383be07d059db1e5c",
+      "sha256": "2c8160dc00499a708ffcf2ac68a0acd1de8c5af1f99b07881f9c9f016781720b"
+    },
+    {
+      "file": "0041dfd8.bin",
+      "rom_offset": 4317144,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "e4fa4be8149f40fb4177b988b52df6d4ec67cb6a04fd770ab184a34a498e0e0d",
+      "sha256": "2766136568c9d5d174799be3b5a6b869e1a584bf25b667752783639c6bf1db3f"
+    },
+    {
+      "file": "0041dfe8.bin",
+      "rom_offset": 4317160,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "423e2e76757cf3a28834be319b7e82245f14f8853a7f4481a11d2f97ac7bc9f2",
+      "sha256": "eacaee144d0ef2c98b0e4d8992a1d12a705c59633551da66d98e31dcd522658a"
+    },
+    {
+      "file": "0041dff8.bin",
+      "rom_offset": 4317176,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "c0bee6d129fcd62c6b9a1359aa94dc5a65defb41bbd491b94c93c204cde3d265",
+      "sha256": "85327ca8ddc782605023ac6a9e0f94cd2b3cc7db50f5fa685d9f3fa6664f87c9"
+    },
+    {
+      "file": "0041e008.bin",
+      "rom_offset": 4317192,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "318af31c8ce32953d79c0772606502617db2fcc1132f0628376da34bccf8056a",
+      "sha256": "2b272305b5315f2b0cb738fb47d1ec53879391020827108b93269f6894c77893"
+    },
+    {
+      "file": "0041e018.bin",
+      "rom_offset": 4317208,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "cc02b6ea3ce341cc26ddcef72b1d0d01dfbbc7221f9ffb1b4367055dec1bb675",
+      "sha256": "33a47aa6cbf0ab5b5c8ff17ae3fe8de1f348bec467590b43ff5539693f376e2a"
+    },
+    {
+      "file": "0041e028.bin",
+      "rom_offset": 4317224,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "8de75d8002ab7a5564d89973ed6589540927967a12437450273d2e99ccf033c8",
+      "sha256": "80f0123b26323a7faa750fab0c9690d6b576c5c5ceecb2d2d29b15077ba0a911"
+    },
+    {
+      "file": "0041e038.bin",
+      "rom_offset": 4317240,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "7dc3b360d46f8faa1488a735e662ebeb0f4709dfa5f6bbeafa892764d6bbed11",
+      "sha256": "d6c09a98bde4016fa2786c674990f02ab2c7d8f925249094e40c5aefc022484c"
+    },
+    {
+      "file": "0041e048.bin",
+      "rom_offset": 4317256,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "db51a7fbf294d28acbccedfac8e158982fafabdbe1e63f4613b619a6ad181e86",
+      "sha256": "73429c262d7f5e2691dc7ffcce6337a01fc123705afdad72a57e72e02242c455"
+    },
+    {
+      "file": "0041e058.bin",
+      "rom_offset": 4317272,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "1fd2fa5286859da2d88f32e9ad533b9eb2dd08bf2d23abb82df6456aa060bfea",
+      "sha256": "38d51841eb45f1e591d77a11faca12fb6eb1a36e8da54c7b4dcf983db2216eb0"
+    },
+    {
+      "file": "0041e068.bin",
+      "rom_offset": 4317288,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "cd025a0042a63e36125a3068314555f9a6c7a8480965d61230807242f2017030",
+      "sha256": "8faa33a8b9f499e58548ee4a4258db1e0b4e35dbe8af2ac3e0c15de5c8119852"
+    },
+    {
+      "file": "0041e078.bin",
+      "rom_offset": 4317304,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "086021277e6a826959f2eed1653ee0d63140668a2137669f23b59d3240562772",
+      "sha256": "a9a190f27f6b8b3e0cc59b727545306e1eb45b0874b206691b199e55e9fa8421"
+    },
+    {
+      "file": "0041e088.bin",
+      "rom_offset": 4317320,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "17bf8d1ed4f389007c5fc1ad6b141f4e41d251103ae2698455dbb540e1bb46f6",
+      "sha256": "4ab7dcc8e69dc1ea46028a9d3014be4d222692779adf5a74aa2c48504d362426"
+    },
+    {
+      "file": "0041e098.bin",
+      "rom_offset": 4317336,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "c6ad984c287cd540b590012ab097d2002e1e5592d8b3529a61541ecd225b8a1f",
+      "sha256": "ba8d9bf5f6c71afdcbc3486e60986cab682064114665a930b5f39fbd173cc56c"
+    },
+    {
+      "file": "0041e290.bin",
+      "rom_offset": 4317840,
+      "bytes": 872,
+      "kind": "data",
+      "preimage_sha256": "267027872cee80a3d98479ecfeb082bf3873993475b42992d775763f5ca7c413",
+      "sha256": "ca2782a6acada875e5ef4eb6387c6c00b3a0f79e9f2ac4cb2686697f3363d6e6"
+    },
+    {
+      "file": "0041e7c8.bin",
+      "rom_offset": 4319176,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "401451aecdae9bb0651ae459fcaa8d7d4089b9293f2b08a104d6dfa7ac29748d",
+      "sha256": "99cb02a79a31859974fa7902b0b49bea4ddd90e35fa3dc22a08273ef085a9569"
+    },
+    {
+      "file": "0041e7d8.bin",
+      "rom_offset": 4319192,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "8260592cb787c5345faa5d729d4815cfa5ccdb7a968f738b37270ae2d4cdbdbe",
+      "sha256": "22769fc096136ed9799caa1105a0fc0e2f993f5f6f93d4e7dc19930fe1cdc4f3"
+    },
+    {
+      "file": "0041e7e8.bin",
+      "rom_offset": 4319208,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "7a0c9df5c73e238ae5a90584dc519d673f09c3c554ba295738088eb680cb6ad2",
+      "sha256": "815d304cb55838a27d83be83862457624001e26246a2aae9482768ae78452ad9"
+    },
+    {
+      "file": "0041e7f8.bin",
+      "rom_offset": 4319224,
+      "bytes": 46,
+      "kind": "data",
+      "preimage_sha256": "fe479b95b387c8d42faa76cdac17ceaaf27269b584640bc85674e69b792e084a",
+      "sha256": "fa63273e095e059610f90c2b84cb5abf75720d117f47f7a541b807bd3b724871"
+    },
+    {
+      "file": "0041e828.bin",
+      "rom_offset": 4319272,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "f849d8e5a962ed32336cf571ec6609f4fa75af78d99c2938110990fed540a2e6",
+      "sha256": "d55178b55d7fa1695a56caed11cb3b217410dbbd04bf4737c1287f2aad2ef224"
+    },
+    {
+      "file": "0041e844.bin",
+      "rom_offset": 4319300,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "a6aa978772ee9a8fa3f93d46ff9da16114e3636ccb5b304da3367b4ea4d47544",
+      "sha256": "a62dca9a5169a02a6a4917530b4d3eb449aa5e2e203c0a6598846228c6888b79"
+    },
+    {
+      "file": "0041e860.bin",
+      "rom_offset": 4319328,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "c44e65b2513aa0eb759e4daf8524fbd124d74390e92d3fdfa3ac4e8cf8bacdc7",
+      "sha256": "1504abdc5fd439b7a159fb051bb8c5b1bdff4e3abd7be313771de8e78c22e9e0"
+    },
+    {
+      "file": "0041e87c.bin",
+      "rom_offset": 4319356,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "ff31bdb554cf7e6626f0ab9f9ac16dca1662505b82bae970b524e46016f9b716",
+      "sha256": "1504abdc5fd439b7a159fb051bb8c5b1bdff4e3abd7be313771de8e78c22e9e0"
+    },
+    {
+      "file": "0041e898.bin",
+      "rom_offset": 4319384,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "1a17efaee8c20e3b04d85bf00c7761dfb2a518163422be3ae9667c9baa564676",
+      "sha256": "a62dca9a5169a02a6a4917530b4d3eb449aa5e2e203c0a6598846228c6888b79"
+    },
+    {
+      "file": "0041e8b4.bin",
+      "rom_offset": 4319412,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "12f2a4bfe934dbdc942d760610770bd235ea361d9783eec7eaef6a0b9ed078ad",
+      "sha256": "a62dca9a5169a02a6a4917530b4d3eb449aa5e2e203c0a6598846228c6888b79"
+    },
+    {
+      "file": "0041e8d0.bin",
+      "rom_offset": 4319440,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "35725c3ede2f0ec97e3cedbdd9c8d1e0de17dc119e26dfdb015133f5cf5ba89c",
+      "sha256": "a62dca9a5169a02a6a4917530b4d3eb449aa5e2e203c0a6598846228c6888b79"
+    },
+    {
+      "file": "0041e968.bin",
+      "rom_offset": 4319592,
+      "bytes": 30,
+      "kind": "data",
+      "preimage_sha256": "2ee4c213c47d512c7e1ddb7bc8203cca5c03141d7b4c9d08e0f5a895953de947",
+      "sha256": "ae70c6268415e5a2d6f5c28abb5ea0709bab24dcf741622c894e28e2df41be4b"
+    },
+    {
+      "file": "0041e988.bin",
+      "rom_offset": 4319624,
+      "bytes": 54,
+      "kind": "data",
+      "preimage_sha256": "13a82eb45e7a2535c2bef0fdf20c6b54eeff3150b35d68a27473155ee8fa0177",
+      "sha256": "40ad76f68baef8c28434dd1fe767af9ee015a1b0849db07abb661f007dd66a12"
+    },
+    {
+      "file": "0041e9c0.bin",
+      "rom_offset": 4319680,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "1b86e3a79b6640953adcf7803fbb4d596cf8cee34c969e85d2c1189f74c0044e",
+      "sha256": "6413d7feea94e75cdd0d64c3e0808a2eb2adf8db3dfc81011a1217d099d5a74c"
+    },
+    {
+      "file": "0041e9dc.bin",
+      "rom_offset": 4319708,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "9d5c5e4ccf4ad8d5b6b7ef01375b2afe36d0aa7e8837f9ce795f892b162d9f03",
+      "sha256": "55b6d59808bd16be2d88f4390a33d176bf9149ebbc7782267f9a395431f90a5d"
+    },
+    {
+      "file": "0041e9ec.bin",
+      "rom_offset": 4319724,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "9be5e9ae53742f19927f00fdd1daff1f05a1c5f73701aa2a91d1c6a8efdc5c7d",
+      "sha256": "40742168d7ddb52ca7f511f71c38f4252bb9d87fc616b999f57d79f29f4917b1"
+    },
+    {
+      "file": "0041e9fc.bin",
+      "rom_offset": 4319740,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "23205d301d578f06d22f0231612c3410056c8f51b6622b13666560849fad2543",
+      "sha256": "40364f96b0e1c7ecad826d106e196e6f9d83013a71c7285d1fcf7b6dac9b7e6d"
+    },
+    {
+      "file": "0041ea0c.bin",
+      "rom_offset": 4319756,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "19f19e419bd5383a898fcbe48dfd00be28a3e14cd90ac2d798c2248a4dff4050",
+      "sha256": "613645527de54a4aeb10470803658cc9cbbf0f5eb8c8a508ff89f897095f327b"
+    },
+    {
+      "file": "0041ea28.bin",
+      "rom_offset": 4319784,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "5cd18611ca6585eca3dbd156eee04318b2d31fa66d8287b23b70e3332599a63e",
+      "sha256": "613645527de54a4aeb10470803658cc9cbbf0f5eb8c8a508ff89f897095f327b"
+    },
+    {
+      "file": "0041ea44.bin",
+      "rom_offset": 4319812,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "cac6c2a381c85050ffe1197bab416ad14f6f57454267cd35e6613baed401b4a8",
+      "sha256": "613645527de54a4aeb10470803658cc9cbbf0f5eb8c8a508ff89f897095f327b"
+    },
+    {
+      "file": "0041ea60.bin",
+      "rom_offset": 4319840,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "21a9c2bab6e7eeb98c0ec30329607af3902205f4decf410eb773b0dddbba7bca",
+      "sha256": "613645527de54a4aeb10470803658cc9cbbf0f5eb8c8a508ff89f897095f327b"
+    },
+    {
+      "file": "0041ea7c.bin",
+      "rom_offset": 4319868,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "fb003b9f6a929d47f28959f59383459b9d8e9c7fed042f1a5d920f16724fd0d3",
+      "sha256": "613645527de54a4aeb10470803658cc9cbbf0f5eb8c8a508ff89f897095f327b"
+    },
+    {
+      "file": "0041ea98.bin",
+      "rom_offset": 4319896,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "f1402e65ad5e8d7f951a3d53f89e5a0cd148e08038c79acff3ff239d0608999e",
+      "sha256": "613645527de54a4aeb10470803658cc9cbbf0f5eb8c8a508ff89f897095f327b"
+    },
+    {
+      "file": "0041eab4.bin",
+      "rom_offset": 4319924,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "7aca01bc6e8a7daa75236ad39a012cd3661a6553e7b1ff47202c805e428bb01e",
+      "sha256": "40742168d7ddb52ca7f511f71c38f4252bb9d87fc616b999f57d79f29f4917b1"
+    },
+    {
+      "file": "0041eac4.bin",
+      "rom_offset": 4319940,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "3596e53ed17b3cfad8ed0a5c4e0a3a87ce6b1f5b4c5c8570ae3ace0b92442e71",
+      "sha256": "55b6d59808bd16be2d88f4390a33d176bf9149ebbc7782267f9a395431f90a5d"
+    },
+    {
+      "file": "0041ead4.bin",
+      "rom_offset": 4319956,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "dab9e317244beb035af247daece59fe1e3de39b41713dedc5301186f82f64d69",
+      "sha256": "ca9a6aee3281c4e0d3b036bb32703780d67f916bf6218d5394bf00b7f3615ed9"
+    },
+    {
+      "file": "0041eae4.bin",
+      "rom_offset": 4319972,
+      "bytes": 86,
+      "kind": "data",
+      "preimage_sha256": "89c56462c546261f87942dfb088e61934934ab1c02151e3fb3c9c29fd4585ff0",
+      "sha256": "bcc49ceb39480cefcdb9514653f0882e1f9e22189f9b9ba7f79edbf28095cc10"
+    },
+    {
+      "file": "0041eb3c.bin",
+      "rom_offset": 4320060,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "6092bda6944f2538ad231f9d3c8243263d113a57e499a4cec9733e49c19d2393",
+      "sha256": "eb4f6d7f5bc6d52ab1f801fd7e706354b712ad03669beaadee1bb261fb449b9d"
+    },
+    {
+      "file": "0041eb58.bin",
+      "rom_offset": 4320088,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "afa71dea8d4a4a461810dcace5296112a86c06e86463c5c2f023a7a721844779",
+      "sha256": "6413d7feea94e75cdd0d64c3e0808a2eb2adf8db3dfc81011a1217d099d5a74c"
+    },
+    {
+      "file": "0041eb74.bin",
+      "rom_offset": 4320116,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "6f3a9e229704cf382984e6e4975878dc7f3bc636cf83111e535949eb55b9a589",
+      "sha256": "6413d7feea94e75cdd0d64c3e0808a2eb2adf8db3dfc81011a1217d099d5a74c"
+    },
+    {
+      "file": "0041eb90.bin",
+      "rom_offset": 4320144,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "ac28e98159b43de94dcf7fa60f178ee7d1019a67c836b2a3a64a3caff472063d",
+      "sha256": "6413d7feea94e75cdd0d64c3e0808a2eb2adf8db3dfc81011a1217d099d5a74c"
+    },
+    {
+      "file": "0041ec18.bin",
+      "rom_offset": 4320280,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "d1ea76c6fcd4c6add25974391a7bc0e88b7d80b9aeeae79298f9cda23d8f7dcd",
+      "sha256": "b0ec0bb49754410dd2f3f1c685bbcef2c9ba04bec9d038999ccda57fe86b4da5"
+    },
+    {
+      "file": "0041ec40.bin",
+      "rom_offset": 4320320,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "454c3390887f9b20d1def31de3f0fa2ba3aecde04cbe733738805e6ce9ae4c0e",
+      "sha256": "655685a925f77ccaa3e8db5a35bc2f256beb34af10885e77abeba63c793a8c37"
+    },
+    {
+      "file": "0041ec50.bin",
+      "rom_offset": 4320336,
+      "bytes": 86,
+      "kind": "data",
+      "preimage_sha256": "838fea3dd6f10929a9c07986637b514695b812f3f6a46964bce0ab845411c323",
+      "sha256": "f4d3b04673c084260cd81778d3d7f6a39269cd2b6fa6c51facf2d54fd43d4ad1"
+    },
+    {
+      "file": "0041eca8.bin",
+      "rom_offset": 4320424,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "3ebf6c051dc9c15c5d8ad7f8e02503262230152459cdb62395860b6cb1ac54e9",
+      "sha256": "7a39862a4b862e3d595bf1fd6d3ecb2c2a679c63632f19da2a9f4108f2b39103"
+    },
+    {
+      "file": "0041ecc4.bin",
+      "rom_offset": 4320452,
+      "bytes": 102,
+      "kind": "data",
+      "preimage_sha256": "4e7284e14ac63a90bff0021fd5b119157eb894c2600c4e0f4dd1de130dfc4153",
+      "sha256": "cc6b91479d0feed671e3e92bf2fdfd54f28ca6952e0d12fcf72fdf464d38937b"
+    },
+    {
+      "file": "0041ed2c.bin",
+      "rom_offset": 4320556,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "d964012125384c578b8c2f8a64842045f70892b78127ac10db3e6c2874e288b9",
+      "sha256": "c137ba79dbe3af7b638ed4ad7424c24b7bcdb187a0ccfa366beb37fc756d0e04"
+    },
+    {
+      "file": "0041ed54.bin",
+      "rom_offset": 4320596,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "21e59f9ffbbfce4116febbb80e3660b8e53d73fd107daa5b346dd3526757f2de",
+      "sha256": "f99495bfb5f730e5805cfec69f0c971e9b1e2b4023f6cadcca780a09d8364721"
+    },
+    {
+      "file": "0041ed7c.bin",
+      "rom_offset": 4320636,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "a4977778bebca058159d6c77266fca0ba4bbc3ec9f57a5c530db713c24d6630e",
+      "sha256": "27187c9d627a3de5b72094b988e52081b3124d71e0f0a37feb82ea0359301490"
+    },
+    {
+      "file": "0041eda4.bin",
+      "rom_offset": 4320676,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "8fb013db932e02a0227c58f77e28394675e56a2da3138b1a748752559e4113dc",
+      "sha256": "f99495bfb5f730e5805cfec69f0c971e9b1e2b4023f6cadcca780a09d8364721"
+    },
+    {
+      "file": "0041edcc.bin",
+      "rom_offset": 4320716,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "5d4c305e2cd0d8e353971e270b042469f7508b7c5b2309355a03d63d9305ec7e",
+      "sha256": "865e7a66936f5c0402addc122bdf61d8a0bfad776c9c1bc0a81d4184f3d26372"
+    },
+    {
+      "file": "0041edf4.bin",
+      "rom_offset": 4320756,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "821673f558aa5792cccaf43a7b10b7bc6aef476c89bed943d3dfbb3191464390",
+      "sha256": "c137ba79dbe3af7b638ed4ad7424c24b7bcdb187a0ccfa366beb37fc756d0e04"
+    },
+    {
+      "file": "0041ee1c.bin",
+      "rom_offset": 4320796,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "8018c4278cd823918433c30a9b89c5504fc8a1385b70436bdfed1cf9d96809bc",
+      "sha256": "4954d32b5f779054136395d115e64ea11bc426fc54876c47645c86b419b07a4b"
+    },
+    {
+      "file": "0041ee44.bin",
+      "rom_offset": 4320836,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "9a57ef046e807271d7726723c31f69db800b2dc0126a6d9dca124c8280daf37a",
+      "sha256": "4954d32b5f779054136395d115e64ea11bc426fc54876c47645c86b419b07a4b"
+    },
+    {
+      "file": "0041ee6c.bin",
+      "rom_offset": 4320876,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "450728d65b166b0d53296bfc2f0a531aeb34aaa8d2d1ce08709e692b49cc4cbd",
+      "sha256": "4954d32b5f779054136395d115e64ea11bc426fc54876c47645c86b419b07a4b"
+    },
+    {
+      "file": "0041ee94.bin",
+      "rom_offset": 4320916,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "1e0ed3bfa75d4b4e21f32ac03232112049699b2601610ce2f2b8ac388f28969e",
+      "sha256": "4954d32b5f779054136395d115e64ea11bc426fc54876c47645c86b419b07a4b"
+    },
+    {
+      "file": "0041ef04.bin",
+      "rom_offset": 4321028,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "aaa6d82bba5de934a9c48f0bee0ff6aaa2d4991d1748f0c2796abbb70ac2b9ec",
+      "sha256": "380d42e5c6113ba154366b3a6520ceea7f6cf495a58a6bc4e8e4a866142c2fae"
+    },
+    {
+      "file": "0041ef14.bin",
+      "rom_offset": 4321044,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "e122f39f88ee6d9168daa1ab40f9c3c64cc017f9fdcde541e9e0b3ac62f538d8",
+      "sha256": "17b6142c0b1917e539c863b4164f7cc19348b2ec8167c0ec335dd86a2b816459"
+    },
+    {
+      "file": "0041ef24.bin",
+      "rom_offset": 4321060,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "a31c035cbff60ca025544d23a6213e1c2f4a082f1be144e335ad9055b02b6037",
+      "sha256": "bf2fe96b4613ff6f1f2a5a764640be8bd7ab52904e17312425fa231c86cf3dfa"
+    },
+    {
+      "file": "0041ef34.bin",
+      "rom_offset": 4321076,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "c1cfcaa2759a3d21da9e36a049bf9fac80436ab6348a4901bb090e235431bdd2",
+      "sha256": "8216e224fdec22aadb6c3400dbb69966e2019a214291470e0090e1bf2bbeb5de"
+    },
+    {
+      "file": "0041ef44.bin",
+      "rom_offset": 4321092,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "8745403cbd9790c080cfca788d95fa8425a5a37ccc63c47c5ddac2a022aa1ffc",
+      "sha256": "2bb0802acd9b3025b49ee8526a8676b0ade6c3420508248d8b04468897641f3a"
+    },
+    {
+      "file": "0041ef54.bin",
+      "rom_offset": 4321108,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "6b5f10ef53020a406ebf8918b1d1d7e928319427da12e6ae44264812156c1ac1",
+      "sha256": "6d83e876da0735a6facb44618f4ff3f9c9fbfd128fbe5ef7116f105e07a8cd07"
+    },
+    {
+      "file": "0041ef64.bin",
+      "rom_offset": 4321124,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "29c4cfa4e1b03748b8aafd9faa9166437c9ae13dc690082689cb08cc27edc3f7",
+      "sha256": "c031ec3edbdfb758123dd4f38754c3985b58b820acb89b872f18d3ce48b10b96"
+    },
+    {
+      "file": "0041ef74.bin",
+      "rom_offset": 4321140,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "708f84c8e6a92e242698deed0af8a182d7c902aba786986ec2ec69155c7f4023",
+      "sha256": "e5ac6fae65ca5177ab730d0ddb6c7dcc2a0c6df64b70599b113edad040cca596"
+    },
+    {
+      "file": "0041ef84.bin",
+      "rom_offset": 4321156,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "e520c837f8fc8c15e35ce231f3d52091a0a80e850b0b465f0746ef96bd507f43",
+      "sha256": "feaf8c98f6b433db81d9dceb837c4a0fe903288c2a8fa416dca5a8feb9acd450"
+    },
+    {
+      "file": "0041ef94.bin",
+      "rom_offset": 4321172,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "77993a9f2b0fee4576588eaa394efd1f27958f9ea0495e53ca5758a7b4f75e07",
+      "sha256": "04e271edee51e3642eaa5e7b29768349fd7d3a03c83545ee6d41a7b0f3b0625b"
+    },
+    {
+      "file": "0041efa4.bin",
+      "rom_offset": 4321188,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "46407d32e7c7fe0b08782277013bac70c3866dbb6864118d3b6ce5906cafca36",
+      "sha256": "bfbe1b8f6f7e7ee8fc3276b2eae2589579796199049113a9e3029dd38b01d4b6"
+    },
+    {
+      "file": "0041efb4.bin",
+      "rom_offset": 4321204,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "bdd1d3e7b6bbc1b6939e78b755c8e5b3b5af2bf27337fb615dc81bd20c3385d2",
+      "sha256": "8b986e59f97b28a23a6036003d3effe1811fb6204413cd82f8557dba2b39f4fb"
+    },
+    {
+      "file": "0041efc4.bin",
+      "rom_offset": 4321220,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "39cee17f28a21fc90a3d9c17f29185c19e9ddbd7f48f27fa9271c18a86cc36dd",
+      "sha256": "cf5c89c1b34fe05686ed9540a534878aa6cd252df0ae47b5d9adb7b307a88aba"
+    },
+    {
+      "file": "0041efd4.bin",
+      "rom_offset": 4321236,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "631d1373111761fed5bb37b81586ffe4a372733cbf6beb3a8eb2940cb01522de",
+      "sha256": "266cf6aa48011181db8b7c3b8a2c25d60cdb8ec53b2838f24a207d5ab98ad5ed"
+    },
+    {
+      "file": "0041efe4.bin",
+      "rom_offset": 4321252,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "78c10eae797735b0f915f915f4b914846d0a6a606b3a673462cc43c4ac1e72d3",
+      "sha256": "1e4286db0f0d6332f016199ead1ede7bff52e5570d3eaa840f59776923fc40c9"
+    },
+    {
+      "file": "0041eff4.bin",
+      "rom_offset": 4321268,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "bd1f0abe34b6bac8f8bcb84a6eb088004ea9970e8824bdfc95cca7b887c2cc26",
+      "sha256": "bcffbe528b38854d532309b2a868786f2d95bfe96cfa3873e67568486498e8c5"
+    },
+    {
+      "file": "0041f488.bin",
+      "rom_offset": 4322440,
+      "bytes": 54,
+      "kind": "data",
+      "preimage_sha256": "74a7eb99ea50719e7ecb4f856ec5c1e3b96db798a113d0650233e432fda22ef3",
+      "sha256": "18e1931e79c5da8756008283a042baeaf2342029fcc8bb65ae51c9a25789fe2b"
+    },
+    {
+      "file": "0041f4c0.bin",
+      "rom_offset": 4322496,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "ba81503ca4ee613aa98510660c4187dbf68f58f683b88f4d7106e26bc95d2eaf",
+      "sha256": "0fb7d7529e38ab740000fd4769c3f92019cf02e6c21f8b3d8d7d787a513f63cd"
+    },
+    {
+      "file": "0041f4d0.bin",
+      "rom_offset": 4322512,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "bf30e003673600d312c4811ff1d0b19e12cafaa1ca69bc2cab211e1d04239897",
+      "sha256": "c633d3831f5eee663e2843cbc3cd7888e37ff4e6e73f123fb4f1612271015049"
+    },
+    {
+      "file": "0041f4e0.bin",
+      "rom_offset": 4322528,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "f6d757ec20536e2f23506bd8c38fc4ffb43f1e9ade967614d3e6ca23b8d9bfc8",
+      "sha256": "c895d42e7e5bd6964923993f05e70310cf18c8c318fb0a5ff4a310d649baf0c5"
+    },
+    {
+      "file": "0041f4f0.bin",
+      "rom_offset": 4322544,
+      "bytes": 86,
+      "kind": "data",
+      "preimage_sha256": "b248fca3ac9373aade4724e3f1baa0057ffc154f76e4e0839145c60dcc99a688",
+      "sha256": "88c58d1d26f3533481a115d67734f3bad97dcd0fad05fb8b55096de51326fa66"
+    },
+    {
+      "file": "0041f548.bin",
+      "rom_offset": 4322632,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "39f3ead43af38d152c0c6a51b8f214dbe72d258ae1f5287546e89cc797a3223e",
+      "sha256": "1202bb1dd7e9855040d43ee4698279311dd6fc7a57f3a489ce0f6502cb1d4c1a"
+    },
+    {
+      "file": "0041f564.bin",
+      "rom_offset": 4322660,
+      "bytes": 512,
+      "kind": "data",
+      "preimage_sha256": "9e3386d1b776916b6650cbc3cb0a066738ff5b9eeb1a70469c8fbf7325371f1b",
+      "sha256": "548a86847492e84d5b173a6223a2a695a4aef78869d9e24999124577a1278804"
+    },
+    {
+      "file": "0041f7b8.bin",
+      "rom_offset": 4323256,
+      "bytes": 30,
+      "kind": "data",
+      "preimage_sha256": "545f44b6be4919e92ce6531f05d14f3d4f54628d60bb9f0474e337182eacd3ea",
+      "sha256": "9d6a8f8cc438e85a2a5577baa3599f75fe3627647ac57d49cd1e100ccc8d05b5"
+    },
+    {
+      "file": "0041f7d8.bin",
+      "rom_offset": 4323288,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "1f3f9ab2aa16b272f1d5330f42bffcfad5b4a5f88c8b040f0c493d8861820761",
+      "sha256": "bd1efb6429d273a8a8ec0af0fbe0bfbf98ad6880693a23a2bcca4c091f420564"
+    },
+    {
+      "file": "0041f7e8.bin",
+      "rom_offset": 4323304,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "87273bd53830625ec7b23b799bff0a1de845921c7aadc9382e32716bd6fe252c",
+      "sha256": "bd1efb6429d273a8a8ec0af0fbe0bfbf98ad6880693a23a2bcca4c091f420564"
+    },
+    {
+      "file": "0041f7f8.bin",
+      "rom_offset": 4323320,
+      "bytes": 66,
+      "kind": "data",
+      "preimage_sha256": "9ef466b4de16b0d91d6bd58866e047e8ab609a1556006bcd6327946601cc21de",
+      "sha256": "e205ed97c6bd2c059af2dcc4493f5a63f741c92eb25c302a5922d196a464d505"
+    },
+    {
+      "file": "0041f83c.bin",
+      "rom_offset": 4323388,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "0dcdde33b53230ca3de7a4492600b2cba8235834cd66cc655d6c5afc6c96240c",
+      "sha256": "b45c5fa5e67ba331e3ba53b7ff10c58981f0384c259b12835f86191e13ed639a"
+    },
+    {
+      "file": "0041f858.bin",
+      "rom_offset": 4323416,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "d64bf1a2b3e3e373b8e75536081943e0b5d4f11f89c031185690e023d7cb5d29",
+      "sha256": "ea7573b6d6cd045751514a21c303b09667fad476e7295034dd0eb7948c02e116"
+    },
+    {
+      "file": "0041f874.bin",
+      "rom_offset": 4323444,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "ad8a1a4c87ccbd3c989d7fa8db8cea44925a66bdb43e357404aeb3327b9aef08",
+      "sha256": "b45c5fa5e67ba331e3ba53b7ff10c58981f0384c259b12835f86191e13ed639a"
+    },
+    {
+      "file": "0041f890.bin",
+      "rom_offset": 4323472,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "e559efb6ce3ddfb3c54f20324f08df41750e7d030a042cd8c0d3205d2871cef2",
+      "sha256": "b45c5fa5e67ba331e3ba53b7ff10c58981f0384c259b12835f86191e13ed639a"
+    },
+    {
+      "file": "0041f8ac.bin",
+      "rom_offset": 4323500,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "7fe20f762f5cf064561a744c348cd99006d4d79c95ad58b0d77905a4ee408493",
+      "sha256": "e1737dee3cd104110a1acdd676d5437710fd1b2592894770abdac6a6132ea1fe"
+    },
+    {
+      "file": "0041f8c8.bin",
+      "rom_offset": 4323528,
+      "bytes": 192,
+      "kind": "data",
+      "preimage_sha256": "9e9bcb8158dde931e43fe3adb5f523a5592ed5c648b91a7150d5850db359845f",
+      "sha256": "89488aaec50d53cf71bf721fa37f557862215e3dd5268f1638ecb2d6d0b0a423"
+    },
+    {
+      "file": "0041f9d4.bin",
+      "rom_offset": 4323796,
+      "bytes": 22,
+      "kind": "data",
+      "preimage_sha256": "8509a99098d653b3c6144029a41184d74abbd2583249ad34f6bb0058e4f69bff",
+      "sha256": "4bdbbf22901b9585806bd027b412eb6d1787e5d226dc78bcf572f12ad2a65b82"
+    },
+    {
+      "file": "0041f9ec.bin",
+      "rom_offset": 4323820,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "574e4cb154c2189b2928cfbf87b6189fc0acd38b1650543e76c1fc8fc7a4bd07",
+      "sha256": "0eb86f73a46181f8364152d884bfa0c6c265eefb9bb589eee90b74806d8592df"
+    },
+    {
+      "file": "0041f9fc.bin",
+      "rom_offset": 4323836,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "7bdc2a1891cf24f42cb193ca704cc6302f3b857fae99d4a320effe97d60bd4c6",
+      "sha256": "c3d8987587b3467a64bd17ef636be170af9857cdc14101e35c51b6433bf462ab"
+    },
+    {
+      "file": "0041fa18.bin",
+      "rom_offset": 4323864,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "3122c432d10e470b326c3e24fe0b3835b09305b25dd44676e11580038fad4c62",
+      "sha256": "e821dc22a78727291771cb1b3c9c201abd07108a23e3f43549b708d714cca8e0"
+    },
+    {
+      "file": "0041fa34.bin",
+      "rom_offset": 4323892,
+      "bytes": 102,
+      "kind": "data",
+      "preimage_sha256": "75fb5ae0e2c6965bd0331127f837615c9a7ce00012365a3a93c9f8156b2f4ff2",
+      "sha256": "d0c86bd70708bb42bfb0ba7943b050a3ced9115f81b09025ef745237b6247cd2"
+    },
+    {
+      "file": "0041fa9c.bin",
+      "rom_offset": 4323996,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "fade0f3d5a6a4ebf3413c7c6bff3867cbd5edc0855032534553c13352b7b2158",
+      "sha256": "cda225ae9d2b96c4e087d2b5575aad6417f6513f791f8aa2a43b4291429212aa"
+    },
+    {
+      "file": "0041fac4.bin",
+      "rom_offset": 4324036,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "fe0c9fa623279ce80c6d09fdc6b339f5df41cd697d3bd9156af86fb891552a4d",
+      "sha256": "0c0a699c413bb81d7d914f272d6c82bb0d69f665b963374dead467564dfea52d"
+    },
+    {
+      "file": "0041faec.bin",
+      "rom_offset": 4324076,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "de2217dda386982f0347ff72d8b3ba098950c622e76827aa8be6e5e6c5ed5de2",
+      "sha256": "6d1f7488134df902f0ed1682d1f601a9f95c02a4e027db6d9300eb63db0315d1"
+    },
+    {
+      "file": "0041fb14.bin",
+      "rom_offset": 4324116,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "041472ffdb8ed5824f76176820ef9c6261d86c98b750b521d4284c255da7db10",
+      "sha256": "ccfa095a8086fae982e52d60e4bcec25a8bbe9d7e03e6268a7880134b30e99a3"
+    },
+    {
+      "file": "0041fb3c.bin",
+      "rom_offset": 4324156,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "8453212c0a5d597c16c6da20a6c7842da387e01822d0c9fbc9fba3e0bfa1c0ab",
+      "sha256": "ccfa095a8086fae982e52d60e4bcec25a8bbe9d7e03e6268a7880134b30e99a3"
+    },
+    {
+      "file": "0041fb64.bin",
+      "rom_offset": 4324196,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "3cd8df02e6ca580ef98efc36dd5454c3ab687f4d9fd1918df8942c728683c632",
+      "sha256": "ccfa095a8086fae982e52d60e4bcec25a8bbe9d7e03e6268a7880134b30e99a3"
+    },
+    {
+      "file": "0041fb8c.bin",
+      "rom_offset": 4324236,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "0f1888fe8b7015a673c7bf1b35555cc1e6751d88d3b7455d0214a1e8cbe5162f",
+      "sha256": "ccfa095a8086fae982e52d60e4bcec25a8bbe9d7e03e6268a7880134b30e99a3"
+    },
+    {
+      "file": "0041fbb4.bin",
+      "rom_offset": 4324276,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "d7d15c0bf6ee41eab0838c218e10a732441726815a50eacc5a168a68c2932be8",
+      "sha256": "ccfa095a8086fae982e52d60e4bcec25a8bbe9d7e03e6268a7880134b30e99a3"
+    },
+    {
+      "file": "0041fbdc.bin",
+      "rom_offset": 4324316,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "1acca15037721fd15921aa3ba5c4226a284ed94becbf4fa17c142cab2a8f2eb8",
+      "sha256": "ccfa095a8086fae982e52d60e4bcec25a8bbe9d7e03e6268a7880134b30e99a3"
+    },
+    {
+      "file": "0041fc88.bin",
+      "rom_offset": 4324488,
+      "bytes": 26,
+      "kind": "data",
+      "preimage_sha256": "653563391292686fc60cf0ea1692b73b71f205b8b1eb524724ea0cd5d701a036",
+      "sha256": "78f45594ba8a55f84921cf9b32b2ec5b3c5cf9d273f08baff2a8cabde97ac1c1"
+    },
+    {
+      "file": "0041fca4.bin",
+      "rom_offset": 4324516,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "b7bf0a12eceab00ea9789f61da68452f0e5f9c41e2466b1d98aead1f9b165c6a",
+      "sha256": "2033499643e4e7f6b6da32464f296f1c589930f670533f7643e8acb80d4eec17"
+    },
+    {
+      "file": "0041fccc.bin",
+      "rom_offset": 4324556,
+      "bytes": 14,
+      "kind": "data",
+      "preimage_sha256": "bc82a64feb22f298df2d0532a0172521fecd2ca59a63ec96de32e3c76b1953aa",
+      "sha256": "d0daf9c47474e2ffb3fe8dad1c7d4f53c2e4f404bd9d0907f326fb85c292272b"
+    },
+    {
+      "file": "0041fcdc.bin",
+      "rom_offset": 4324572,
+      "bytes": 46,
+      "kind": "data",
+      "preimage_sha256": "5afb7a3e4c4f6091ff36883cde722e28d431de16c5355cf5ce2d0587cebded81",
+      "sha256": "2934f53d7a69885b68c96b205281e2c3d09a28ae8b2c289c4f3925bb0b28440b"
+    },
+    {
+      "file": "0041fd0c.bin",
+      "rom_offset": 4324620,
+      "bytes": 294,
+      "kind": "data",
+      "preimage_sha256": "3ab3a9ea3d7d87cd7e8bf523199e193062ad33977f7a724dc2cd698bfcff54f0",
+      "sha256": "3b2189560b176d940a3cf584f8ca3e4e49d561cd733e7e9363a052ea0c15ee78"
+    },
+    {
+      "file": "0041fe34.bin",
+      "rom_offset": 4324916,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "03164b61a323c71266bac1e21087a0c9f214bf5702cdf6e7cfc01366b732e026",
+      "sha256": "f0f3621a07805319814a6f28be9184a67f819957f841fdd230955b628e780186"
+    },
+    {
+      "file": "0041fe5c.bin",
+      "rom_offset": 4324956,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "e035b971862466fdd97f165c510debaef69d4849f007e035ade6314f4d6a9a6f",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0041fe84.bin",
+      "rom_offset": 4324996,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "f3421c77f0fe41499d047506ea02e6bac3c03fde4f8363803d2f9d496849e664",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0041feac.bin",
+      "rom_offset": 4325036,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "d0513de072610b20e1cfd6800b20de055f154a13324c1816acac0ca35abeffce",
+      "sha256": "f0f3621a07805319814a6f28be9184a67f819957f841fdd230955b628e780186"
+    },
+    {
+      "file": "0041fed4.bin",
+      "rom_offset": 4325076,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "cf79ceff6c24fe56189c177a16535560682a81ad9f6bfe04ce9538efc8b8f29d",
+      "sha256": "26f2dd89e1c9b9207bfea1092981aa98e25cbbb16c48cf05e996740e84dc08f0"
+    },
+    {
+      "file": "0041fefc.bin",
+      "rom_offset": 4325116,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "bfab7d18a0de44921a246003438debe3f852dcca3d25929139165ad382016f74",
+      "sha256": "7b2654e2366ae90686192095e197683a5a014cf2554db9d0ee66ddc567115ab0"
+    },
+    {
+      "file": "0041ff24.bin",
+      "rom_offset": 4325156,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "dd7bf7f7f8f98877fe8ae27f791d7fc1371b15856d7d0699b9d4352511cb1770",
+      "sha256": "26f2dd89e1c9b9207bfea1092981aa98e25cbbb16c48cf05e996740e84dc08f0"
+    },
+    {
+      "file": "0041ff4c.bin",
+      "rom_offset": 4325196,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "b7db9ea6fc3242b20675fc0940aeaffcd527aa0370e5f23007ad6edbbbbda846",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0041ff74.bin",
+      "rom_offset": 4325236,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "76a3ec0d1a81781dcff301fbb85f45a5539d516ef1fa796a38e55104bcbe3220",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0041ff9c.bin",
+      "rom_offset": 4325276,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "934df3a07af6f613d0f364b5140fec25fc16cf8107badfbf1546c1699227dbbd",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0041ffc4.bin",
+      "rom_offset": 4325316,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "f3183802ff274f435776696412256362c32cdd78bf0d62c68c6520e06d021212",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0041ffec.bin",
+      "rom_offset": 4325356,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "6d2234051b9e0d3b05e6ff2702fa621a6764ed6ad5075f8eceb32ee0813a4d92",
+      "sha256": "f0f3621a07805319814a6f28be9184a67f819957f841fdd230955b628e780186"
+    },
+    {
+      "file": "00420014.bin",
+      "rom_offset": 4325396,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "2ace682f569740db2c4fa1ee75c26557e8f766e115206c721f295d0e658f487b",
+      "sha256": "f0f3621a07805319814a6f28be9184a67f819957f841fdd230955b628e780186"
+    },
+    {
+      "file": "0042003c.bin",
+      "rom_offset": 4325436,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "c7e84e5edae330bc37c64c1feef449d097ed8a3eb7ff9c2a07d190034e45847f",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "00420064.bin",
+      "rom_offset": 4325476,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "f63a7216ab9ee865dc2a75f6cf207e01e1f76eb27f72f25b25c741734212d1ac",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "0042008c.bin",
+      "rom_offset": 4325516,
+      "bytes": 38,
+      "kind": "data",
+      "preimage_sha256": "c7e84e5edae330bc37c64c1feef449d097ed8a3eb7ff9c2a07d190034e45847f",
+      "sha256": "8a37edb300e10386131a9e7348c78feab79c8043281d0db465eeefd059b777cd"
+    },
+    {
+      "file": "00a50004.bin",
+      "rom_offset": 10813444,
+      "bytes": 7264,
+      "kind": "resource",
+      "preimage_sha256": "082fb6a8b4ed2979a84ed10a3a972b179bd4fd770216ef7cf7c8363d97784380",
+      "sha256": "640995ad00fcf46e2fe5ca4ed98d281b3768f405d9aadc21edb98b68f56db58f"
+    },
+    {
+      "file": "00a55004.bin",
+      "rom_offset": 10833924,
+      "bytes": 2880,
+      "kind": "resource",
+      "preimage_sha256": "a770cc205fc97b1b0e20698499f3deafc895e6006488cd482bc991fa4cbe735c",
+      "sha256": "3e47d532e5881de0ebe9662e08fce35eb367de47c4e958aea589b6e5451e8929"
+    },
+    {
+      "file": "00f00000.bin",
+      "rom_offset": 15728640,
+      "bytes": 8192,
+      "kind": "resource",
+      "preimage_sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+      "sha256": "661008f12cd03bc198535a86e4520f47f7adfdd6a31426c406d9e970af7bb034"
+    },
+    {
+      "file": "00f04000.bin",
+      "rom_offset": 15745024,
+      "bytes": 11654,
+      "kind": "resource",
+      "preimage_sha256": "b536b20115821e7aabc453bd42939995d7febc2c0a3326e837a95828e59104e2",
+      "sha256": "1800f20100f006f234f9b7f8f0498afa762804a28e106418f2fa0137fd862571"
+    },
+    {
+      "file": "00f08000.bin",
+      "rom_offset": 15761408,
+      "bytes": 25791,
+      "kind": "resource",
+      "preimage_sha256": "c8311ad5b9cf92aa60fe929a71971ceab1a8522ce0bf96e434bd61da5f96c5b2",
+      "sha256": "20327487486a5bce4e283980c367dafa7cc073e7d6ece54816616b5b3e4b3d24"
+    },
+    {
+      "file": "00f10000.bin",
+      "rom_offset": 15794176,
+      "bytes": 16506,
+      "kind": "resource",
+      "preimage_sha256": "d4423d69b386d3a6612d4af413635d7d24f81956f9faab30599a422d4611ea04",
+      "sha256": "373740131775be3de64d6e281a9e37e98443fa7d6f9e8de57567542e2022bd54"
+    },
+    {
+      "file": "00f18000.bin",
+      "rom_offset": 15826944,
+      "bytes": 14736,
+      "kind": "resource",
+      "preimage_sha256": "bf9d89cad46a06c63f6da61872af0a72a41c7243ba58a5a14ebe86c5f4d3cf79",
+      "sha256": "f30e317c768383271918e789abddf63caa73bd4716e07aba1730a0ae11808a17"
+    },
+    {
+      "file": "00f1c000.bin",
+      "rom_offset": 15843328,
+      "bytes": 1694,
+      "kind": "resource",
+      "preimage_sha256": "4ad43749955dffe60a2fde46e8d6e6b519a9ad94c7800906ba48ff02600c8c06",
+      "sha256": "867d3f593e07fc74a343d176328cdcb811f1321bada4cc0a7bb51aee55940cbe"
+    }
+  ],
+  "translation_revisions": "revisions.json",
+  "layout_repairs": "save-layout.json"
+}

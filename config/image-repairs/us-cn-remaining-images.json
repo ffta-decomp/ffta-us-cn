@@ -1,0 +1,214 @@
+{
+  "schema": "ffta-us-cn-remaining-image-audit-v1",
+  "input_sha256": "ca62f10d21c466778c3ca88fb71976e9547859189c9c62f3c1915de4dff1d71c",
+  "reference_sha256": "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+  "decoded_candidates_identical_to_original_cn": true,
+  "scope": "Discovery configuration only; all repairs disabled. Images and scripts remain private.",
+  "resources": [
+    {
+      "bank_offset": 3928840,
+      "entries": 4,
+      "decoded_entry_bytes": 6144,
+      "decoded_sha256": "86fe3af0352db0d42af2e4b8f704f3e0380d780b6cc16854c4f1d0e026e3a0d3",
+      "literal_sites": [
+        592784,
+        593100,
+        593412,
+        593728
+      ],
+      "labels": [],
+      "layout": {
+        "sprite_cell": [
+          32,
+          32
+        ],
+        "cells_per_entry": 12
+      },
+      "status": "Repaired candidate generated; native decoder and OAM/GPU tests passed; natural scene reachability and target palette pairing remain pending.",
+      "notes": "Four Chinese glyph cells replace each animated result. Native descriptor counts and 32x32 sprite shapes remain intact; unused sprites reference the transparent final cell.",
+      "enabled": false,
+      "implementation": "config/image-repairs/us-cn-native-labels.json"
+    },
+    {
+      "bank_offset": 3933672,
+      "entries": 4,
+      "decoded_entry_bytes": 3840,
+      "decoded_sha256": "3e3dee36e9fdbec47068aa6500a8098fc7329e71669977cb6f32635016f3b77e",
+      "literal_sites": [
+        592788,
+        593104,
+        593416,
+        593732
+      ],
+      "labels": [
+        "MISSION CLEARED!",
+        "MISSION FAILED!",
+        "BATTLE WON!",
+        "LOST!"
+      ],
+      "layout": {
+        "surface_tiles": [
+          30,
+          4
+        ],
+        "entry_order": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "status": "Repaired candidate generated; native decoder and OAM/GPU tests passed; natural scene reachability and target palette pairing remain pending.",
+      "notes": "Four result backgrounds repaired together with animated sprite layers. Native sequential 30x4 tilemap and palette data remain unchanged.",
+      "enabled": false,
+      "implementation": "config/image-repairs/us-cn-native-labels.json"
+    },
+    {
+      "bank_offset": 3954500,
+      "entries": 4,
+      "decoded_entry_bytes": 320,
+      "decoded_sha256": "a6175320bb926ee926b4d358aa3434b4d515ede50f92f2c4753d9bd6a8a689a7",
+      "literal_sites": [
+        507376,
+        507896,
+        575016
+      ],
+      "labels": [
+        "Action",
+        "Reaction",
+        "Support",
+        "Combo"
+      ],
+      "layout": {
+        "surface_tiles": [
+          5,
+          2
+        ],
+        "entry_order": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "tiles": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          1,
+          3,
+          5,
+          7,
+          9
+        ]
+      },
+      "status": "Repaired candidate generated; native decoder and OAM/GPU tests passed; natural scene reachability and target palette pairing remain pending.",
+      "notes": "Native tile-pair writer places consecutive tiles vertically: logical rows are 0,2,4,6,8 / 1,3,5,7,9. Categories use native CN tutorial terminology: Action, Reaction, Support, Combo -> 行动, 反应, 援助, 连击.",
+      "enabled": false,
+      "source_evidence": {
+        "path": "vendor/fftadecomp/src/core_exact_batch_286_16/MENUS286-7BCD8/update_category_header.c",
+        "sha256": "528fbea928fec63b0f69d93cf506ab0ee163676fa50e110175a433b9bff7a233"
+      },
+      "implementation": "config/image-repairs/us-cn-native-labels.json"
+    },
+    {
+      "bank_offset": 3917976,
+      "entries": 85,
+      "decoded_entry_bytes": 64,
+      "decoded_sha256": "01c10cdbf0d0e224a0709bf7b7a37b31b95746c564cdf79cde5e294c8dab9376",
+      "literal_sites": [
+        691132
+      ],
+      "labels": [
+        "Recover",
+        "Dispel",
+        "Attack up",
+        "Attack down",
+        "Defense up",
+        "Defense down",
+        "Speed up",
+        "Slow",
+        "Stop",
+        "Fast",
+        "Shift",
+        "Critical Up!",
+        "Sweet Spot!",
+        "Catch!",
+        "Hide",
+        "Critical",
+        "Miss!",
+        "Poison",
+        "Level Up!",
+        "Magic up",
+        "Magic down"
+      ],
+      "layout": {
+        "entry_tiles": [
+          2,
+          1
+        ],
+        "entry_count": 85,
+        "native_descriptor_table": 3752956
+      },
+      "status": "Repaired candidate generated; native decoder and OAM/GPU tests passed; natural scene reachability and target palette pairing remain pending.",
+      "notes": "Complete labels were re-identified from the native 0x3943FC table (12-byte rows: animation pointer, frame-table pointer, source tile, byte count). Earlier concatenated-strip readings Never Miss! and Sweet Spit! were incorrect. Twenty-one confirmed types are repaired; types 12,14,19 remain deferred. Arrow tiles, numbers and JP fallbacks are preserved.",
+      "enabled": false,
+      "source_evidence": {
+        "path": "vendor/fftadecomp/src/core-exact-batch139/CoreFrontier_000A8AFC/source/round00.c",
+        "sha256": "8dcc6e59720ea1362b931e32ff8c88a47d77bdf1083ff1d577453aa8f581db53"
+      },
+      "implementation": "config/image-repairs/us-cn-native-labels.json"
+    },
+    {
+      "bank_offset": 3889756,
+      "entries": 54,
+      "decoded_entry_bytes": 640,
+      "decoded_sha256": "a01661d8bd5c344b2a0ef58bc3d9eb67329aaf7bc6e48ea77e65f69b3cd74ee1",
+      "literal_sites": [],
+      "labels": [],
+      "layout": {
+        "decoded_entry_tiles": 20,
+        "review_entries": [
+          52,
+          53
+        ]
+      },
+      "status": "English pixels decoded; native address literals still target this bank; natural scene acceptance pending.",
+      "notes": "Two roster overlay candidates contain Latin lettering; exact complete wording and OAM placement unresolved. Do not count them as two confirmed untranslated labels.",
+      "enabled": false,
+      "source_evidence": {
+        "path": "vendor/fftadecomp/src/core_exact_batch_292_15/MENU299-712D0/refresh_roster_pages.c",
+        "sha256": "179d5b62e2b6540abeaf1d5a6de011f2d033eddb845602694ce4f814ed065054"
+      }
+    }
+  ],
+  "previous_pending": [
+    "CLAN FUNDS (two resource copies)",
+    "CLEARED",
+    "Battle",
+    "DAYS",
+    "CARD",
+    "Join! Mission",
+    "MODE",
+    "HELP / INPUT window artwork",
+    "Window entry 6 selected subranges"
+  ],
+  "excluded": [
+    "Already repaired 42 job names and 27 window titles",
+    "Dormant originals behind existing CN overrides at 0x3ACD68, 0x3AB42C, 0x3C1834",
+    "Physical button labels, numbers and standard compact stats pending contextual review"
+  ],
+  "limits": "Static native consumers and decoded English pixels verified; no claim of complete ROM coverage or natural gameplay reachability.",
+  "implementation_summary": {
+    "semantic_label_groups": 29,
+    "result_background_and_animation_pairs": 4,
+    "ability_categories": 4,
+    "battle_message_types": 21,
+    "deferred_battle_types": [
+      12,
+      14,
+      19
+    ]
+  }
+}

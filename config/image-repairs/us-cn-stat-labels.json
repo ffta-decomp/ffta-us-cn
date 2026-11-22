@@ -1,0 +1,193 @@
+{
+  "schema": "ffta-cn-stat-label-repair-v1",
+  "font_file": "ZLabsRoundPix_12px_M_CN.ttf",
+  "font_sha256": "5adc3a83d11edc2e6f5bb3bc009dd9028dc055cbb3fc5f23715fb4de3c4e3eb0",
+  "font_size": 12,
+  "face_mode": "one-bit",
+  "resampling": false,
+  "outline_radius": 1,
+  "outline_index": 1,
+  "fill_indices": [
+    3,
+    12,
+    11,
+    10,
+    9
+  ],
+  "source_sha256": "082fb6a8b4ed2979a84ed10a3a972b179bd4fd770216ef7cf7c8363d97784380",
+  "rom_offset": 10813444,
+  "bytes": 7264,
+  "placements": [
+    {
+      "id": "move",
+      "text": "移动",
+      "rect": [
+        8,
+        64,
+        40,
+        76
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "jump",
+      "text": "跳跃",
+      "rect": [
+        8,
+        76,
+        40,
+        88
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "evade",
+      "text": "回避",
+      "rect": [
+        64,
+        76,
+        96,
+        88
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "weapon",
+      "text": "武器",
+      "rect": [
+        8,
+        92,
+        48,
+        104
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "attack",
+      "text": "攻击",
+      "rect": [
+        56,
+        92,
+        88,
+        104
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "defense",
+      "text": "防御",
+      "rect": [
+        56,
+        104,
+        88,
+        116
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "magic",
+      "text": "魔法",
+      "rect": [
+        8,
+        116,
+        48,
+        128
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "power",
+      "text": "力量",
+      "rect": [
+        56,
+        116,
+        88,
+        128
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "resistance",
+      "text": "抗性",
+      "rect": [
+        56,
+        128,
+        88,
+        140
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    },
+    {
+      "id": "speed",
+      "text": "速度",
+      "rect": [
+        24,
+        140,
+        64,
+        152
+      ],
+      "glyph_gap": 1,
+      "font_size": 12,
+      "ink_extent": 25
+    }
+  ],
+  "restored_bars": [
+    [
+      11,
+      98,
+      83,
+      101
+    ],
+    [
+      56,
+      110,
+      83,
+      113
+    ],
+    [
+      11,
+      122,
+      83,
+      125
+    ],
+    [
+      56,
+      134,
+      83,
+      137
+    ],
+    [
+      24,
+      146,
+      63,
+      149
+    ]
+  ],
+  "alias_policy": "All physical nibble writes must agree; reject conflicts",
+  "changed_bytes": 1477,
+  "font_license": "OFL-1.1",
+  "font_upstream": "https://github.com/Astro-2539/ZLabs-RoundPix-12px",
+  "glyph_canvas": [
+    24,
+    12
+  ],
+  "edge_policy": "Preserve native 11x11 face pixels. Clip outer top/right outline to the 24x12 shared-tile slot; never modify the aliased fourth column of tiles."
+}

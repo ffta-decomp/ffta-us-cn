@@ -69,6 +69,8 @@ def generate_assets(font_image, args, out, pages):
     if fastskip:
         spec = json.loads((PLUGIN_ROOT.parent / 'fastskip/config.json').read_text())
         options_on = spec['labels']['on'] + '\nA: 切换'
+        if getattr(args, 'build_label', None):
+            options_on = args.build_label + '\n\n' + options_on
     mapping = json.loads(args.glyph_map.read_text())
     provenance = json.loads(args.map_report.read_text())
     if provenance['glyph_map_sha256'] != sha(args.glyph_map.read_bytes()) or \
@@ -198,8 +200,10 @@ def prepare(reference, image, font_image, args, out, config):
     if out.is_relative_to(ROOT):
         raise ValueError('Info build artifacts must be external')
     out.mkdir(parents=True, exist_ok=False)
-    pages = load_pages({'cjk': args.cjk, 'link_fix': args.link_fix,
+    pages = load_pages({'cjk': args.cjk, 'cn2026': getattr(args, 'cn2026', False), 'link_fix': args.link_fix,
                         'info': getattr(args, 'info', False), 'fastskip': getattr(args, 'fastskip', False)})
+    from plugin_info import with_build_label
+    pages = with_build_label(pages, getattr(args, 'build_label', None))
     # A catalogue-level enabled:false also removes the runtime UI and hooks.
     args.fastskip = getattr(args, 'fastskip', False) and any(p['id'] == 'fastskip' for p in pages)
     if not pages:
@@ -259,7 +263,7 @@ def prepare(reference, image, font_image, args, out, config):
                         reference_sha256=sha(reference[offset:offset + len(payload)]))])
     path = out / 'extension.json'
     path.write_text(json.dumps(manifest, indent=2) + '\n')
-    report.update(pages=pages, callback_entry=hex(callback), payload_bytes=len(payload),
+    report.update(build_label=getattr(args, 'build_label', None), pages=pages, callback_entry=hex(callback), payload_bytes=len(payload),
                   plugins_sha256=sha((ROOT / 'plugins.json').read_bytes()),
                   recovery_credit_eligible=False)
     return path, report

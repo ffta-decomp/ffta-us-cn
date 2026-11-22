@@ -1,0 +1,35 @@
+{
+  "schema": "ffta-cn2026-save-caption-layout-v1",
+  "patches": [
+    {
+      "offset": 1280426,
+      "expected_hex": "0322",
+      "replacement_hex": "0022",
+      "reason": "Move upper label row from x=40 to x=16"
+    },
+    {
+      "offset": 1280438,
+      "expected_hex": "0522",
+      "replacement_hex": "0822",
+      "reason": "Use eight upper-row tiles"
+    },
+    {
+      "offset": 1280446,
+      "expected_hex": "0534",
+      "replacement_hex": "0834",
+      "reason": "Lower row begins at tile eight"
+    },
+    {
+      "offset": 1280452,
+      "expected_hex": "0322",
+      "replacement_hex": "0022",
+      "reason": "Align lower row with upper row"
+    },
+    {
+      "offset": 1280464,
+      "expected_hex": "0522",
+      "replacement_hex": "0822",
+      "reason": "Use eight lower-row tiles"
+    }
+  ]
+}

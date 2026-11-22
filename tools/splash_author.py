@@ -11,6 +11,7 @@ import zlib
 ROOT = Path(__file__).resolve().parents[1]
 TABLE = ROOT / 'config/charsets/us-cn-v1.1/character-table.json'
 AUTHOR = ROOT / 'author.txt'
+VERSION_CONFIG = ROOT / 'config/image-repairs/us-cn-splash-version.json'
 BITMAP, BITMAP_BYTES = 0xa6d000, 240 * 160 * 2
 STARTUP, STARTUP_BYTES = 0xa7fc00, 0x1b0
 ENTRY = bytes.fromhex('2dff29ea')
@@ -23,6 +24,28 @@ FONT, WIDTHS = 0x433330, 0x4966b0
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def version_pixels(bitmap, config, version=None):
+    x, y, width, height = config['bounds']
+    foreground, background = config['foreground_rgb555'], config['background_rgb555']
+    versions = config['versions']
+    samples = [struct.unpack_from('<' + str(width) + 'H', bitmap, ((y+j)*240+x)*2)
+               for j in range(height)]
+    current = next((name for name, rows in versions.items()
+                    if samples == [tuple(foreground if c == '#' else background for c in row)
+                                   for row in rows]), None)
+    if current is None:
+        raise ValueError('Unsupported splash version digit preimage')
+    if version is None:
+        version = config['original_version']
+    if version not in versions:
+        raise ValueError('Unsupported splash version: ' + version)
+    result = bytearray(bitmap)
+    for j, row in enumerate(versions[version]):
+        struct.pack_into('<' + str(width) + 'H', result, ((y+j)*240+x)*2,
+                         *(foreground if c == '#' else background for c in row))
+    return bytes(result), current
 
 
 def detect(image):
@@ -40,7 +63,17 @@ def detect(image):
         if y <= row < y + height else bitmap[row * 480:(row + 1) * 480]
         for row in range(160))
     if sha(protected) != PROTECTED_SHA:
-        raise ValueError('Detected CN patch but its splash bitmap is modified or unsupported')
+        config = json.loads(VERSION_CONFIG.read_text())
+        try:
+            normalized, _ = version_pixels(bitmap, config)
+        except ValueError:
+            raise ValueError('Detected CN patch but its splash bitmap is modified or unsupported') from None
+        protected = b''.join(normalized[row*480:row*480+x*2] +
+            normalized[row*480+(x+width)*2:(row+1)*480]
+            if y <= row < y+height else normalized[row*480:(row+1)*480]
+            for row in range(160))
+        if sha(protected) != PROTECTED_SHA:
+            raise ValueError('Detected CN patch but its splash bitmap is modified or unsupported')
     return True
 
 
@@ -125,6 +158,20 @@ def stamp(image, author_file=AUTHOR, enabled=True):
         bounds=dict(x=x0, y=y0, width=box_width, height=box_height),
         glyph_tokens=[None if c == ' ' else 0x8000 | mapping[c]['index'] for c in text],
         recovery_credit_eligible=False)
+
+
+def stamp_version(image, version=None):
+    if version is None:
+        return bytes(image), dict(applied=False, reason='disabled')
+    if not detect(image):
+        raise ValueError('Splash version requires the supported CN startup')
+    data = VERSION_CONFIG.read_bytes()
+    config = json.loads(data)
+    bitmap, previous = version_pixels(image[BITMAP:BITMAP+BITMAP_BYTES], config, version)
+    result = bytearray(image)
+    result[BITMAP:BITMAP+BITMAP_BYTES] = bitmap
+    return bytes(result), dict(applied=True, previous_version=previous, version=version,
+        config_sha256=sha(data), bounds=config['bounds'], bitmap_sha256=sha(bitmap))
 
 
 def write_preview(image, path):

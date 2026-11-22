@@ -1,0 +1,26 @@
+{
+  "schema": "ffta-us-cn-save-progress-repair-v2",
+  "translation": "完成任务数",
+  "font_file": "ZLabsRoundPix_12px_M_CN.ttf",
+  "font_sha256": "5adc3a83d11edc2e6f5bb3bc009dd9028dc055cbb3fc5f23715fb4de3c4e3eb0",
+  "font_size": 12,
+  "face_pixels": [
+    11,
+    11
+  ],
+  "canvas": [
+    64,
+    16
+  ],
+  "origin": [
+    1,
+    2
+  ],
+  "glyph_gap": 1,
+  "outline_radius": 1,
+  "source_offset": 3914296,
+  "source_decoded_sha256": "409d35503a0537e8102485f52e8f2c4ce866b30560f6a88195cb869f2f3aa140",
+  "preserve_decoded_tail_from": 512,
+  "validation": "Only the native save-slot caption maps this private stream. Preserve the numeric count at x=82 and all decoded tiles after 15. The five guarded instructions only change caption tile coordinates, width and lower-row offset.",
+  "layout_config": "plugins/cn2026/save-layout.json"
+}

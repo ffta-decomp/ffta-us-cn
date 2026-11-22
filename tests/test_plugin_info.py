@@ -14,6 +14,13 @@ from build_plugin_info import generate_assets, prepare, sha, title_label, FONT_S
 
 
 class PluginInfoTests(unittest.TestCase):
+    def test_build_watermark_keeps_catalogue_unchanged(self):
+        from plugin_info import with_build_label
+        pages = [dict(id='test', name='Test', lines=['Credits'])]
+        marked = with_build_label(pages, '1.2 Test')
+        self.assertEqual(marked[0]['lines'], ['1.2 Test', '', 'Credits'])
+        self.assertEqual(pages[0]['lines'], ['Credits'])
+
     def test_exported_info_metadata_and_host_override(self):
         pages = load_pages({'info': True})
         self.assertEqual([p['id'] for p in pages], ['info'])
@@ -36,7 +43,7 @@ class PluginInfoTests(unittest.TestCase):
 
     def test_selected_metadata_and_explicit_newlines(self):
         pages = load_pages({'cjk': True, 'link_fix': True})
-        self.assertEqual([p['name'] for p in pages], ['uscn', 'netfix'])
+        self.assertEqual([p['name'] for p in pages], ['cn2025', 'netfix'])
         self.assertEqual(pages[0]['lines'], ['美版汉化v1.1 集成', '作者 美版汉化v1.1 汉化组', '开发者bhe'])
         self.assertEqual(pages[1]['lines'], ['联机补丁', '作者闲王小周周'])
         self.assertEqual(load_pages({}), [])
@@ -111,7 +118,7 @@ class PluginInfoTests(unittest.TestCase):
             image, args, pages = self.fixture(out)
             pages[0]['lines'] = ['a' * 160]
             _, _, report = generate_assets(image, args, out, pages)
-            self.assertEqual([v['first_line'] for v in report['views'] if v['plugin'] == 'uscn'], [0, 4])
+            self.assertEqual([v['first_line'] for v in report['views'] if v['plugin'] == 'cn2025'], [0, 4])
 
     @unittest.skipUnless(Path('/opt/homebrew/bin/arm-none-eabi-ld').exists() and shutil.which('clang'),
                          'ARM binutils and clang required')

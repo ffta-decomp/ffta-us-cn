@@ -28,29 +28,29 @@ def resolve(features, path=None):
     path = ROOT / 'plugins.json' if path is None else Path(path)
     load_pages(features, path)  # Validate the shared catalogue before resolving.
     catalogue = load_catalogue(path)
-    uscn = next((p for p in catalogue if p['id'] == 'uscn'), None)
-    if uscn is None or type(uscn.get('priority')) is not int:
-        raise ValueError('Font catalogue requires an explicit uscn priority')
+    cn2025 = next((p for p in catalogue if p['id'] == 'cn2025'), None)
+    if cn2025 is None or type(cn2025.get('priority')) is not int:
+        raise ValueError('Font catalogue requires an explicit cn2025 priority')
     for plugin in catalogue:
         priority = plugin.get('priority', 0)
         if type(priority) is not int or priority < 0:
             raise ValueError('Plugin priority must be a nonnegative integer')
-        if plugin['id'] != 'uscn' and priority >= uscn['priority']:
-            raise ValueError('uscn must have the highest plugin priority')
+        if plugin['id'] != 'cn2025' and priority >= cn2025['priority']:
+            raise ValueError('cn2025 must have the highest plugin priority')
     fonts = sorted((p for p in catalogue if enabled(p, features) and 'font' in p and
                     ('when' not in p['font'] or features.get(p['font']['when'], False))),
                    key=lambda p: (-p.get('priority', 0), p['id']))
     if not fonts:
         return None, [], []
     bases = [p for p in fonts if p['font'].get('mode') == 'base']
-    if not bases or bases[0]['id'] != 'uscn':
-        raise ValueError('Font extensions require the uscn base font')
+    if not bases or bases[0]['id'] != 'cn2025':
+        raise ValueError('Font extensions require the cn2025 base font')
     claims, selected, ignored = {}, [], []
     for plugin in fonts:
         spec = plugin['font']
         if spec.get('mode') == 'base':
-            if plugin['id'] != 'uscn':
-                ignored.append(dict(plugin=plugin['id'], reason='uscn owns base glyphs'))
+            if plugin['id'] != 'cn2025':
+                ignored.append(dict(plugin=plugin['id'], reason='cn2025 owns base glyphs'))
             continue
         if spec.get('mode') != 'append' or spec.get('style') in (None, '', 'default'):
             raise ValueError('Extra fonts must append a named style')
@@ -142,7 +142,7 @@ def prepare(reference, image, features, output):
     spec = base['font']
     if (spec.get('rom_offset'), spec.get('widths_rom_offset'), spec.get('glyph_count'), spec.get('cell_bytes')) != \
        (FONT, WIDTHS, COUNT, 128):
-        raise ValueError('Unexpected uscn font contract')
+        raise ValueError('Unexpected cn2025 font contract')
     table_path = (ROOT / spec['glyph_table']).resolve()
     if not table_path.is_relative_to(ROOT / 'config/charsets'):
         raise ValueError('Base table must be an explicit project character table')

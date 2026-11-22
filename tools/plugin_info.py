@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FEATURES = frozenset({'cjk', 'link_fix', 'info', 'italic_font', 'fastskip'})
+FEATURES = frozenset({'cjk', 'link_fix', 'info', 'italic_font', 'fastskip', 'recruit_rename', 'cn2026'})
 
 
 def load_catalogue(path=None):
@@ -46,8 +46,8 @@ def load_catalogue(path=None):
             raise ValueError('Duplicate plugin id: ' + plugin['id'])
         seen.add(plugin['id'])
         priority = plugin.get('priority', 0)
-        if type(priority) is not int or priority < 0 or (plugin['id'] != 'uscn' and priority >= 1000):
-            raise ValueError('Plugin priority must be nonnegative; uscn (1000) must remain highest')
+        if type(priority) is not int or priority < 0 or (plugin['id'] != 'cn2025' and priority >= 1000):
+            raise ValueError('Plugin priority must be nonnegative; cn2025 (1000) must remain highest')
         enabled(plugin, {})  # Validate boolean even for disabled features.
     return expanded
 
@@ -56,6 +56,13 @@ def load_pages(features, path=None):
     plugins = load_catalogue(path)
     seen = set()
     pages = []
+    superseded = set()
+    for plugin in plugins:
+        targets = plugin.get('supersedes', [])
+        if not isinstance(targets, list) or any(not isinstance(v, str) for v in targets):
+            raise ValueError('Plugin supersedes must be a list of IDs')
+        if enabled(plugin, features):
+            superseded.update(targets)
     for plugin in plugins:
         if not isinstance(plugin, dict):
             raise ValueError('Plugin must be an object')
@@ -75,7 +82,7 @@ def load_pages(features, path=None):
                 raise ValueError('Invalid Unicode scalar in ' + field)
         if '\n' in plugin['name']:
             raise ValueError('Plugin names must fit one row')
-        if enabled(plugin, features):
+        if identifier not in superseded and plugin.get('show_in_info', True) and enabled(plugin, features):
             pages.append({'id': identifier, 'name': plugin['name'],
                           'lines': plugin['content'].split('\n')})
     if len(pages) > 4:
@@ -88,3 +95,10 @@ def enabled(plugin, features):
     if type(value) is not bool:
         raise ValueError('Plugin enabled must be boolean')
     return value and ('feature' not in plugin or features.get(plugin['feature'], False))
+
+
+def with_build_label(pages, label):
+    """Add a per-build watermark without changing the shared catalogue."""
+    if not label:
+        return pages
+    return [dict(page, lines=[label, ''] + list(page['lines'])) for page in pages]

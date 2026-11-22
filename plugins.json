@@ -2,9 +2,9 @@
   "schema": 1,
   "plugins": [
     {
-      "id": "uscn",
+      "id": "cn2025",
       "feature": "cjk",
-      "name": "uscn",
+      "name": "cn2025",
       "content": "美版汉化v1.1 集成\n作者 美版汉化v1.1 汉化组\n开发者bhe",
       "priority": 1000,
       "font": {
@@ -15,6 +15,11 @@
         "glyph_count": 3175,
         "cell_bytes": 128
       }
+    },
+    {
+      "id": "cn2026",
+      "project": "builtin",
+      "priority": 900
     },
     {
       "id": "netfix",

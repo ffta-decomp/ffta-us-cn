@@ -1,0 +1,1225 @@
+{
+  "schema": "ffta-us-cn-job-icon-repairs-v1",
+  "input": {
+    "rom_bytes": 16777216,
+    "accepted_sha256": [
+      "8f4b46e8b11db9754389ae592de5b0c0d72ee8229b6401f27a692dbb6f308d13",
+      "ddbf29205a66d9711d8f6ec2ce7b2de481d3d58255efdc3791e45e1771548c03",
+      "2df5c8b67c69cefb1314bbe8215a04fc3615093b644d4ffa92261b32da616abb"
+    ],
+    "retail_sha256": "43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19"
+  },
+  "font": {
+    "filename": "fusion-pixel-8px-monospaced-zh_hans.bdf",
+    "sha256": "31f654b8348f0d531d0aafe37364edd708eee7e4c6388ec700f77b5f6bf1b43c",
+    "family": "Fusion Pixel 8px Monospaced zh_Hans",
+    "version": "2026.10.25",
+    "upstream": "https://github.com/TakWolf/fusion-pixel-font",
+    "license": "SIL-OFL-1.1",
+    "copyright": "Copyright (c) 2022, TakWolf (https://takwolf.com)",
+    "cell": [
+      8,
+      8
+    ],
+    "ascent": 7,
+    "scaling": "none",
+    "resolution": "Explicit --font path; no search or embedded font data."
+  },
+  "bank": {
+    "offset": 3903492,
+    "bytes": 10217,
+    "sha256": "9c20b5c3203a96e9f75592161696c798129251d77e53c0bde5899505792c89c7",
+    "entries": 44,
+    "decoded_entry_bytes": 256
+  },
+  "layout": {
+    "surface_tiles": [
+      4,
+      2
+    ],
+    "tiles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "portrait_rect": [
+      0,
+      0,
+      16,
+      16
+    ],
+    "nameplate_rect": [
+      15,
+      0,
+      32,
+      16
+    ],
+    "writable_rect": [
+      15,
+      0,
+      32,
+      16
+    ],
+    "glyph_crop": [
+      0,
+      1,
+      7,
+      8
+    ],
+    "max_columns": 3,
+    "max_rows": 2,
+    "background_index": 4,
+    "ink_index": 3,
+    "policy": "Preserve the configured -3px portrait translation. Extend the nameplate into vacated background; draw complete native names with blank-margin glyph cropping, per-row native ink indices and explicit positions.",
+    "label_style": "Full native Chinese job names, with light upper rows and gold lower rows, horizontally staggered in the space released by the shifted portrait.",
+    "portrait_translation": {
+      "dx": -3,
+      "dy": 0,
+      "source_rect": [
+        1,
+        1,
+        18,
+        15
+      ],
+      "destination_clip": [
+        1,
+        1,
+        16,
+        15
+      ],
+      "clear_rect": [
+        1,
+        1,
+        17,
+        15
+      ],
+      "background_index": 3,
+      "separator_column": 16,
+      "separator_index": 1,
+      "policy": "Translate the portrait content within the original icon; retain the exterior portrait frame and clip at its boundary. Vacated right-hand background is available to the expanded nameplate."
+    },
+    "row_ink_indices": [
+      3,
+      7
+    ],
+    "row_offsets": [
+      0,
+      8
+    ],
+    "row_stagger_pixels": 2
+  },
+  "relocation": {
+    "offset": 15745024,
+    "capacity_bytes": 16384,
+    "expected_sha256": "0fbba07a833d4dcfc7024eaf313661a0ba8f80a05c6d29b8801c612e10e60dee",
+    "fill": 255,
+    "pointer_offsets": [
+      834064
+    ],
+    "old_pointer": 138121220,
+    "new_pointer": 149962752
+  },
+  "repairs": [
+    {
+      "entry": 0,
+      "job_id": 2,
+      "translation": "战士",
+      "enabled": true,
+      "source_sha256": "1dd924ab9ad680a42f3ff2e6d2d1bc62af7925fa61c343e4ccd31523a26f71c9",
+      "native_name_pointer_site": 5400308,
+      "native_name_offset": 11041006,
+      "native_name_bytes_sha256": "79b9e8abab6ac473a076fb14ffc2760b80e38563622e772b1365258f92947ca0",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "战士",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 1,
+      "job_id": 3,
+      "translation": "圣骑士",
+      "enabled": true,
+      "source_sha256": "97d8642f8b4cd875d0a44cfc45d5889cd65c825e67980c33e3b4fed336c5b9fb",
+      "native_name_pointer_site": 5400348,
+      "native_name_offset": 11041084,
+      "native_name_bytes_sha256": "6350ac1c8a2a58d5825f84628beb08804d5ac687ad312e24317bf6551e312d08",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "圣",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "骑士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 2,
+      "job_id": 4,
+      "translation": "斗士",
+      "enabled": true,
+      "source_sha256": "7db5cd5a954681086e34661f5a035bf2578c63b9ab545037ed26a84b8ac21db3",
+      "native_name_pointer_site": 5400320,
+      "native_name_offset": 11041028,
+      "native_name_bytes_sha256": "8082f0afb9833eeade8ec380efbb6d06b3105abefbacd04b512168f9680620ba",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "斗士",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 3,
+      "job_id": 5,
+      "translation": "盗贼",
+      "enabled": true,
+      "source_sha256": "defb43d5da25f37224f060c48f83bfa0e59a558c08a76cce614de693699f3489",
+      "native_name_pointer_site": 5400272,
+      "native_name_offset": 11040936,
+      "native_name_bytes_sha256": "7b48b37e4e1cdfcd87250693be95692ad3d18b41f871ac05c3985436303e0fc8",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "盗贼",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 4,
+      "job_id": 6,
+      "translation": "忍者",
+      "enabled": true,
+      "source_sha256": "c07f11a982689d5cb0663b6521fbc41f67372b9bef99282763b4a18721ac9de4",
+      "native_name_pointer_site": 5400344,
+      "native_name_offset": 11041078,
+      "native_name_bytes_sha256": "1cce43ed3d6de6988a8b08ba9d5574a29e735afed3b5cc3008c926cb08b9c5b2",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "忍者",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 5,
+      "job_id": 7,
+      "translation": "白魔道士",
+      "enabled": true,
+      "source_sha256": "86db2728fdfa06df45a4e5c2e52f709413706b25948d8d0f23d60a0fc6e89b85",
+      "native_name_pointer_site": 5400292,
+      "native_name_offset": 11040974,
+      "native_name_bytes_sha256": "a5df4c29dd38cc047b494b8d1ca3d61d58c6f4bcc48f7759bc0d518e936c76ea",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "白魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 6,
+      "job_id": 8,
+      "translation": "黑魔道士",
+      "enabled": true,
+      "source_sha256": "577bf0125a838755ba621d5917e545b639b4585122e5e682e954daf6923b4e4d",
+      "native_name_pointer_site": 5400256,
+      "native_name_offset": 11040904,
+      "native_name_bytes_sha256": "a6d1697b8d6b7fad75333fb012dfdc21c669618999440312ea5e0458aec32618",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "黑魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 7,
+      "job_id": 9,
+      "translation": "幻术士",
+      "enabled": true,
+      "source_sha256": "e9ee859841886079c9fbc3f8bcefa740b12486d3b6b7ca2b2fd5cc0cab66cf8d",
+      "native_name_pointer_site": 5400260,
+      "native_name_offset": 11040914,
+      "native_name_bytes_sha256": "f594942c846b7741a15327cf196b8d0f5ae0d99915e2d82c2a53b44dbc98e4fd",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "幻",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "术士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 8,
+      "job_id": 10,
+      "translation": "青魔道士",
+      "enabled": true,
+      "source_sha256": "6250834792fb3bd130e6e9a3636d9814cf797c23559cbc963d5bf9318e0acf48",
+      "native_name_pointer_site": 5400204,
+      "native_name_offset": 11040788,
+      "native_name_bytes_sha256": "7940e53f58e29a24dc54fe8809e83d9d5d715d4371556cacd9af8d029941d108",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "青魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 9,
+      "job_id": 11,
+      "translation": "弓箭手",
+      "enabled": true,
+      "source_sha256": "817e761f93289e7da117d78221cc66a5f153ef76fa42796dc6c776c1b259e2da",
+      "native_name_pointer_site": 5400412,
+      "native_name_offset": 11041214,
+      "native_name_bytes_sha256": "8495c7f9eb77440228370e7d8b248b972563f939b1f3a3ff6b0e992089eba20a",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "弓",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "箭手",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 10,
+      "job_id": 12,
+      "translation": "猎人",
+      "enabled": true,
+      "source_sha256": "d86135075249d7d8c0dcc6c2a16bd5db22c41e9f0d75bb2f8c39583a33c3e54f",
+      "native_name_pointer_site": 5400356,
+      "native_name_offset": 11041102,
+      "native_name_bytes_sha256": "c35c4a953f869ede794b88cb73f27e81370b4d0194575ed68887f15cc8e46348",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "猎人",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 11,
+      "job_id": 13,
+      "translation": "剑士",
+      "enabled": true,
+      "source_sha256": "d06b04cf975f9133ddef6ea5f7bc30423bd617911cfc75b8c72a7a156127ba80",
+      "native_name_pointer_site": 5400364,
+      "native_name_offset": 11041114,
+      "native_name_bytes_sha256": "a25d41d9c760d459b085ed86f5bfcb28d299fb511d9705d132a21b0cfc1ed5a6",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "剑士",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 12,
+      "job_id": 14,
+      "translation": "龙骑士",
+      "enabled": true,
+      "source_sha256": "48a2b99a71e8c16dc16e018c6ff459d12dc240b9f6f56763f203c1571b9a32be",
+      "native_name_pointer_site": 5400420,
+      "native_name_offset": 11041230,
+      "native_name_bytes_sha256": "c9a0be59fb7dc54990afc9223baacd10affdb6d6f744f25f0f569b0b798289c8",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "龙",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "骑士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 13,
+      "job_id": 15,
+      "translation": "守护骑士",
+      "enabled": true,
+      "source_sha256": "b3ccc91048359f79dc16ccd1ea1750b5d2b4a8598ecdd103a6eaf52985946d5e",
+      "native_name_pointer_site": 5400236,
+      "native_name_offset": 11040864,
+      "native_name_bytes_sha256": "10a09e004e260594bb4d6b9fc111a4160bb4a910bfc59b7b06648cffd92db0e3",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "守护",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "骑士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 14,
+      "job_id": 16,
+      "translation": "魔剑士",
+      "enabled": true,
+      "source_sha256": "f44003aa7059acd96d42197a1cd41b58506682fdd3e65b66e60a0ad5c646c019",
+      "native_name_pointer_site": 5400248,
+      "native_name_offset": 11040888,
+      "native_name_bytes_sha256": "090c19a3adcfca19c8f75c7cc16e30f5dd97378bf582e5143549021f4162cd3b",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "魔",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "剑士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 15,
+      "job_id": 17,
+      "translation": "武道家",
+      "enabled": true,
+      "source_sha256": "ba19a63b64e3487aa6e2c8903b451bf4999d4fb805a706e9762352245f7feb72",
+      "native_name_pointer_site": 5400392,
+      "native_name_offset": 11041168,
+      "native_name_bytes_sha256": "a286aa73aaccfefe4f69b9854d688ab0c236bda8fefe909da74f328b5bf93bb2",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "武",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道家",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 16,
+      "job_id": 18,
+      "translation": "主教",
+      "enabled": true,
+      "source_sha256": "7df2cd25a2426c7219d2f8b9c0f73e6c9199739180948d1fd07c72ba1eb06d74",
+      "native_name_pointer_site": 5400360,
+      "native_name_offset": 11041108,
+      "native_name_bytes_sha256": "71bcd5b342f6548b8fc4bed51672d14bdf37b168345ebf0e8fbacb4b34018483",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "主教",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 17,
+      "job_id": 19,
+      "translation": "神殿骑士",
+      "enabled": true,
+      "source_sha256": "27afd75cf1d48ac0e26cfd48f10f60a518a47757864a422ef2b93ab9f9c89ef3",
+      "native_name_pointer_site": 5400352,
+      "native_name_offset": 11041092,
+      "native_name_bytes_sha256": "b0dad2c772fb8efa9329a63773ece0bb9c3dd552c3cb7b36565fd64fb690c0cc",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "神殿",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "骑士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 18,
+      "job_id": 20,
+      "translation": "白魔道士",
+      "enabled": true,
+      "source_sha256": "c91694c8fac33a4766901f5ff469e11b10056fc04de24a43d8e0c9aed1302b02",
+      "native_name_pointer_site": 5400292,
+      "native_name_offset": 11040974,
+      "native_name_bytes_sha256": "a5df4c29dd38cc047b494b8d1ca3d61d58c6f4bcc48f7759bc0d518e936c76ea",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "白魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 19,
+      "job_id": 21,
+      "translation": "黑魔道士",
+      "enabled": true,
+      "source_sha256": "08cab64a86eb9e8dc5481e40b02d0aaf83804dd46444060180a35e153aa54643",
+      "native_name_pointer_site": 5400256,
+      "native_name_offset": 11040904,
+      "native_name_bytes_sha256": "a6d1697b8d6b7fad75333fb012dfdc21c669618999440312ea5e0458aec32618",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "黑魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 20,
+      "job_id": 22,
+      "translation": "时魔道士",
+      "enabled": true,
+      "source_sha256": "1e2e4ebf6ca0afd3f928cf74ee6033f84e7cb7fe70c9fb6e028d41d138d1c55f",
+      "native_name_pointer_site": 5400328,
+      "native_name_offset": 11041042,
+      "native_name_bytes_sha256": "f77c61b18e5f6aae45dddb1bdfbade68a64aaff7d723be101de43eb99ce85831",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "时魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 21,
+      "job_id": 23,
+      "translation": "幻术士",
+      "enabled": true,
+      "source_sha256": "be05176174e40e8aeef110843ab8f02a4fea3164ed7d67b2ba6b0e47eb2a8c63",
+      "native_name_pointer_site": 5400260,
+      "native_name_offset": 11040914,
+      "native_name_bytes_sha256": "f594942c846b7741a15327cf196b8d0f5ae0d99915e2d82c2a53b44dbc98e4fd",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "幻",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "术士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 22,
+      "job_id": 24,
+      "translation": "炼金术士",
+      "enabled": true,
+      "source_sha256": "67c8f6afe0c3316c97893dd8df65a05fe59d13c91390c08f5c63e40050465434",
+      "native_name_pointer_site": 5400216,
+      "native_name_offset": 11040814,
+      "native_name_bytes_sha256": "3c3de65a28f274e7d004748d14b381f2db1427a2f0f69fbaef4ddd3045c046cc",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "炼金",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "术士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 23,
+      "job_id": 25,
+      "translation": "魔兽使",
+      "enabled": true,
+      "source_sha256": "307b717b906ea1717d4e4a886a366f2faf4d237f0046061415ede8b6cecc62b8",
+      "native_name_pointer_site": 5400396,
+      "native_name_offset": 11041176,
+      "native_name_bytes_sha256": "58ffac4870e5be538d78569439ff62eddc97283bb20a04c47399c501423493b6",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "魔",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "兽使",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 24,
+      "job_id": 26,
+      "translation": "变身士",
+      "enabled": true,
+      "source_sha256": "b10fd03d25bc0ebfa047a446bdc30ba4864b244c04f267f479dcf750298a52fa",
+      "native_name_pointer_site": 5400332,
+      "native_name_offset": 11041052,
+      "native_name_bytes_sha256": "70f9870d544182c21722c57f0554a9e7dfe87a7c1d0efdb6e98887c9525d36b5",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "变",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "身士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 25,
+      "job_id": 27,
+      "translation": "贤者",
+      "enabled": true,
+      "source_sha256": "d425da4599d1620dc598ee0315a46cd52970a422520587e66cf92ac783d8c797",
+      "native_name_pointer_site": 5400304,
+      "native_name_offset": 11041000,
+      "native_name_bytes_sha256": "96607ae422bf1a271d0d993371f2df66453146e1dac80639489bda81878aa522",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "贤者",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 26,
+      "job_id": 28,
+      "translation": "击剑手",
+      "enabled": true,
+      "source_sha256": "c0f9fa8cf6bd30b77912b9cc4241257018fa4cfc3795863f7c60acc20f83dd62",
+      "native_name_pointer_site": 5400372,
+      "native_name_offset": 11041126,
+      "native_name_bytes_sha256": "6858364786d15ad6460b7074ccce033830c11b979e4e4ba948fe0a46c8e31436",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "击",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "剑手",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 27,
+      "job_id": 29,
+      "translation": "精灵使",
+      "enabled": true,
+      "source_sha256": "bb8a0d4eea06c2dd957f68a0988116fc632ac4ab72bdf3cfbf2e29bf23f52459",
+      "native_name_pointer_site": 5400276,
+      "native_name_offset": 11040942,
+      "native_name_bytes_sha256": "fb0f4f7d17bef9458b1e3b5a6af2c0b122ec3f4154d525bcc2a02d2c5463c1d8",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "精",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "灵使",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 28,
+      "job_id": 30,
+      "translation": "赤魔道士",
+      "enabled": true,
+      "source_sha256": "7025af9195a3b1cc76880650f4232267ad4bc0d0d4d47fb80ba5c862e46aaf04",
+      "native_name_pointer_site": 5400208,
+      "native_name_offset": 11040798,
+      "native_name_bytes_sha256": "63ab2de981907e6dfd5915da42e26c191771e9117ef864d9ca0178305c7beb50",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "赤魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 29,
+      "job_id": 31,
+      "translation": "白魔道士",
+      "enabled": true,
+      "source_sha256": "bcb6acbe610450486ea2defff53832e408787185f0fca8ad135f7d5ae3788480",
+      "native_name_pointer_site": 5400292,
+      "native_name_offset": 11040974,
+      "native_name_bytes_sha256": "a5df4c29dd38cc047b494b8d1ca3d61d58c6f4bcc48f7759bc0d518e936c76ea",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "白魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 30,
+      "job_id": 32,
+      "translation": "召唤士",
+      "enabled": true,
+      "source_sha256": "611f0adf34e7b27582cd919ffcf8655e4d7ffb396c0aebd7e0edfcdc7f3dc88e",
+      "native_name_pointer_site": 5400288,
+      "native_name_offset": 11040966,
+      "native_name_bytes_sha256": "10c9e3015130d4f714c6137cf56566ea704abf37c0f6c0852251ddd2b90e568b",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "召",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "唤士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 31,
+      "job_id": 33,
+      "translation": "弓箭手",
+      "enabled": true,
+      "source_sha256": "7559723608d228b7277aac688f80adb3611143fdcc747453ce455a77c9069196",
+      "native_name_pointer_site": 5400412,
+      "native_name_offset": 11041214,
+      "native_name_bytes_sha256": "8495c7f9eb77440228370e7d8b248b972563f939b1f3a3ff6b0e992089eba20a",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "弓",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "箭手",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 32,
+      "job_id": 34,
+      "translation": "刺客",
+      "enabled": true,
+      "source_sha256": "ee19aa70fd19b5aa4b1ac98bbb6ce8da56686df8bf2900b3ed23c6f64818376a",
+      "native_name_pointer_site": 5400212,
+      "native_name_offset": 11040808,
+      "native_name_bytes_sha256": "21b2ffa7f4c09a0afe098f73db05ebb5d24732b2c2782452873a2ab027bc43cb",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "刺客",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 33,
+      "job_id": 35,
+      "translation": "狙击手",
+      "enabled": true,
+      "source_sha256": "8f25b512e212f929b7110c194b90fd136153600f4770c7a27f02e7db62aa63d5",
+      "native_name_pointer_site": 5400296,
+      "native_name_offset": 11040984,
+      "native_name_bytes_sha256": "b28070d9c107ddd79302dde6660c8f79ee1fb4ec706e123526282d08dc32da23",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "狙",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "击手",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 34,
+      "job_id": 36,
+      "translation": "动物使",
+      "enabled": true,
+      "source_sha256": "a736696f911a2c27fc58713b4357c6a5d2238c15e0cf2b9b0bdf738535cb1c6b",
+      "native_name_pointer_site": 5400324,
+      "native_name_offset": 11041034,
+      "native_name_bytes_sha256": "d3536d730bee3d56b5ae27b7976356f5f1113971c74b8faffd07cc06ff5d032b",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "动",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "物使",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 35,
+      "job_id": 37,
+      "translation": "莫古利骑士",
+      "enabled": true,
+      "source_sha256": "76e322cafc611380f1bc34b06c7f69504cb20d8c5c0662e8cbffe8fa08af6981",
+      "native_name_pointer_site": 5400400,
+      "native_name_offset": 11041184,
+      "native_name_bytes_sha256": "f79fee7816a18af92f7952aa5be051ef7d874d20488b5bf41e19cab18ad0879a",
+      "native_name_bytes": 11,
+      "background_extensions": [
+        {
+          "rect": [
+            13,
+            0,
+            15,
+            7
+          ],
+          "allowed_source_indices": [
+            1,
+            3,
+            4
+          ],
+          "reason": "Extend the upper name row only across verified frame/background pixels; retain all five native name characters."
+        }
+      ],
+      "text_rows": [
+        {
+          "text": "莫古利",
+          "x": 13,
+          "y": 0,
+          "advance": 6,
+          "ink_index": 3
+        },
+        {
+          "text": "骑士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 36,
+      "job_id": 38,
+      "translation": "火枪手",
+      "enabled": true,
+      "source_sha256": "1f4de71f98f5ed8e82eb710846196a024fcb3cc7576de3ed9edc036fc29f4661",
+      "native_name_pointer_site": 5400284,
+      "native_name_offset": 11040958,
+      "native_name_bytes_sha256": "abc8048fe5e475f2c85ba7207a098849a64f03d63911cc9a83a97a3a01ef0016",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "火",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "枪手",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 37,
+      "job_id": 39,
+      "translation": "盗贼",
+      "enabled": true,
+      "source_sha256": "c830734e87447c08be34fa7e1a451809cd6d4fabe4d7fc6f1431846291cac60d",
+      "native_name_pointer_site": 5400272,
+      "native_name_offset": 11040936,
+      "native_name_bytes_sha256": "7b48b37e4e1cdfcd87250693be95692ad3d18b41f871ac05c3985436303e0fc8",
+      "native_name_bytes": 5,
+      "text_rows": [
+        {
+          "text": "盗贼",
+          "x": 16,
+          "y": 4,
+          "advance": 8,
+          "ink_index": 3
+        }
+      ]
+    },
+    {
+      "entry": 38,
+      "job_id": 40,
+      "translation": "曲艺士",
+      "enabled": true,
+      "source_sha256": "521b0415a92c33cb387ddde4f4dffe9e204d2ce29e755a8a752396fd07f554d7",
+      "native_name_pointer_site": 5400280,
+      "native_name_offset": 11040950,
+      "native_name_bytes_sha256": "ba5a984aa424fdaed9bb4ec249193202d802b84979f8162a8260196fa8e79bc4",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "曲",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "艺士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 39,
+      "job_id": 41,
+      "translation": "机关士",
+      "enabled": true,
+      "source_sha256": "7863d13c3708cc7326ee036b4da27470ac5486fb8f8f09eb2a03ab1183be7e81",
+      "native_name_pointer_site": 5400240,
+      "native_name_offset": 11040874,
+      "native_name_bytes_sha256": "9e57ff56f1ecaaae04ae972a1762cd68369b053d02786b13abffb02552d3ce42",
+      "native_name_bytes": 7,
+      "text_rows": [
+        {
+          "text": "机",
+          "x": 19,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "关士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 40,
+      "job_id": 42,
+      "translation": "黑魔道士",
+      "enabled": true,
+      "source_sha256": "204e77ff1e2653749ecf322235ee5a8daa9dcab8fc7fdc5a4fed36d89f6390c0",
+      "native_name_pointer_site": 5400256,
+      "native_name_offset": 11040904,
+      "native_name_bytes_sha256": "a6d1697b8d6b7fad75333fb012dfdc21c669618999440312ea5e0458aec32618",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "黑魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    },
+    {
+      "entry": 41,
+      "job_id": 43,
+      "translation": "时魔道士",
+      "enabled": true,
+      "source_sha256": "58544580762a5832d9444bb52e28243b26ba9276c2a7adb496c9305500df17fb",
+      "native_name_pointer_site": 5400328,
+      "native_name_offset": 11041042,
+      "native_name_bytes_sha256": "f77c61b18e5f6aae45dddb1bdfbade68a64aaff7d723be101de43eb99ce85831",
+      "native_name_bytes": 9,
+      "text_rows": [
+        {
+          "text": "时魔",
+          "x": 15,
+          "y": 0,
+          "advance": 8,
+          "ink_index": 3
+        },
+        {
+          "text": "道士",
+          "x": 17,
+          "y": 8,
+          "advance": 8,
+          "ink_index": 7
+        }
+      ]
+    }
+  ],
+  "preserved_entries": [
+    42,
+    43
+  ],
+  "native_evidence": [
+    {
+      "path": "vendor/fftadecomp/src/load_interleaved_a7_graphic.c",
+      "sha256": "29578c885be0f7dac255953df574e0e460e525031e7bca1884ceb17e6e599cd8"
+    },
+    {
+      "path": "vendor/fftadecomp/src/native_ui_362/draw_native_shop_resource_icon.c",
+      "sha256": "e1be2a39f1f357b2ae6423da6b20520315223c01672a9cfaea87791bbdf83286"
+    }
+  ],
+  "validation_status": "Native image geometry and full CN names verified. Direct native-loader and drawing checks must be rerun for the new two-color layout; natural item-page palette pairing remains pending.",
+  "scope": "Image enhancement configuration only. Private code, extracted assets, fonts, ROMs and patches stay outside Git."
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "ffta-cn-splash-version-v1",
+  "bounds": [234, 153, 5, 7],
+  "foreground_rgb555": 1057,
+  "background_rgb555": 32767,
+  "original_version": "1.1",
+  "versions": {
+    "1.1": ["..#..", ".##..", "..#..", "..#..", "..#..", "..#..", ".###."],
+    "1.2": [".###.", "#...#", "....#", "...#.", "..#..", ".#...", "#####"]
+  },
+  "scope": "Replace only the last five-by-seven digit of the existing bottom-right FFTA-Ver1.1 caption; preserve its color, baseline and all adjacent artwork."
+}

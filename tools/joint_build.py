@@ -166,11 +166,16 @@ def build(args):
         if image[:0x4d78] != before[:0x4d78] or image[0x4d7a:] != before[0x4d7a:]:
             raise ValueError('Link comparison extension changed bytes outside its instruction')
         link_report['extension'] = link_extension
+    vbam_report = None
+    if args.vbam_save_fix:
+        from vbam_save_fix import prepare as prepare_vbam
+        manifest, vbam_report = prepare_vbam(reference, image, out / 'vbam-save-fix')
+        image, vbam_report['extension'] = apply_extensions(image, reference, config, manifest)
     font_report = None
     if args.italic_font:
         from font_plugins import prepare as prepare_font
         font_manifest, font_report = prepare_font(reference, image,
-            {'cjk': args.cjk, 'link_fix': args.link_fix, 'info': args.info, 'italic_font': args.italic_font},
+            {'cjk': args.cjk, 'cn2026': getattr(args, 'cn2026', False), 'link_fix': args.link_fix, 'info': args.info, 'italic_font': args.italic_font},
             out / 'font-extensions')
         image, font_extension = apply_extensions(image, reference, config, font_manifest)
         font_report['extension'] = font_extension
@@ -190,9 +195,19 @@ def build(args):
             lambda module: compile_source(module, 'info-source-extensions'))
         info_report['extension'] = info_extension
     image, plugin_reports = apply_project_plugins(reference, image, args, out, config, compile_source)
+    if getattr(args, 'cn2026', False) and not any(p['id'] == 'cn2026' for p in plugin_reports):
+        raise ValueError('Selected cn2026 plugin is disabled or missing from the catalogue')
+    for plugin in plugin_reports:
+        revisions = plugin['report'].get('translation_revisions')
+        if revisions and font_report:
+            font_report['post_build_translation_glyphs'] = revisions['glyph_slots']
+            font_report['final_font_sha256'] = revisions['final_active_font_sha256']
     report = {'schema': 1, 'build_mode': 'joint-decomp-extension',
+              'cn_version': getattr(args, 'cn_version', 'cn2025') if args.cjk else None,
+              'cn2026_enabled': getattr(args, 'cn2026', False),
               'cjk_enabled': args.cjk, 'pinyin_enabled': args.pinyin,
               'link_fix_enabled': args.link_fix, 'link_fix': link_report,
+              'vbam_save_fix_enabled': args.vbam_save_fix, 'vbam_save_fix': vbam_report,
               'info_enabled': args.info, 'plugin_info': info_report,
               'project_plugins': plugin_reports,
               'fastskip_available': args.fastskip,
@@ -215,7 +230,9 @@ def apply_project_plugins(reference, image, args, out, config, compile_source):
     from plugin_info import load_catalogue, enabled
     from plugin_projects import load_entry
     features = dict(cjk=args.cjk, link_fix=args.link_fix, info=args.info,
-                    italic_font=args.italic_font, fastskip=getattr(args, 'fastskip', False))
+                    cn2026=getattr(args, 'cn2026', False),
+                    italic_font=args.italic_font, fastskip=getattr(args, 'fastskip', False),
+                    recruit_rename=getattr(args, 'recruit_rename', False))
     plugin_reports = []
     written = {}
     for plugin in sorted(load_catalogue(), key=lambda p: (p.get('priority', 0), p['id'])):

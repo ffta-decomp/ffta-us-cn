@@ -157,6 +157,8 @@ python3 tools/package_source.py --output "$SOURCE_ARCHIVE"
 | --- | --- |
 | `--disable-pinyin` | 保留汉化和串行超时修复，关闭拼音输入 |
 | `--disable-pinyin --disable-link-fix` | 精确复现汉化参考版，同时关闭默认 Info 和斜体扩展 |
+| `--enable-recruit-rename` | 开启招募起名。mGBA 启动时自动扩容至 128 KiB，VBA-M 导入 64 KiB 旧档前需手动扩容。详见[存档说明](plugins/recruit_rename/README.md) |
+| `--disable-vbam-save-fix` | 关闭 VBA-M Flash 128 KiB 芯片 ID 兼容。默认汉化构建开启该兼容，原版进度仍保存在低 64 KiB |
 | `--disable-cjk` | 构建英文基线，默认关闭拼音、串行超时修复和 Info |
 | `--disable-cjk --enable-link-fix --disable-info` | 英文基线，仅启用串行超时修复 |
 | `--disable-info` | 关闭标题菜单 Info，默认也不生成其斜体字形 |
@@ -187,3 +189,23 @@ python3 tools/package_source.py --output "$SOURCE_ARCHIVE"
 | 标题菜单和插件信息界面 | [Info 界面](docs/plugin-info.md) |
 | 串行通信修复 | [超时修复说明](docs/link-timeout-fix.md) |
 | 依赖来源与版权说明 | [依赖说明](docs/dependencies.md) · [NOTICE](NOTICE.md) |
+
+## 汉化版本
+
+基础汉化插件现名为 `cn2025`，保留原有美版汉化 v1.1 的资源与字库。
+默认构建仍选择 `cn2025`，现有拼音、联机等可选功能继续由各自开关控制。
+
+`cn2026` 继承 `cn2025`，启用拼音输入法，加入隼的汉化修订与图片汉化增强：菜单标题左对齐、职业名图片、
+技能分类、行动箭头、等级和价格标签，以及已确认的结算和战斗提示图片。
+加入了 10 项圆体属性图片、统一的存档槽标题，以及放大的单行“完成任务数”。部分结算和战斗提示还需实际场景配色验证。
+汉化修订署名为隼，图片汉化和打包署名为 bhe。系统“选单”在恢复初始设定前增加商店每月更新、成长装备强化和未参战成员 AP 三个开关；现有存档默认关闭。开关由公共模块管理，随正常游戏存档保存，恢复初始设定也会关闭这些开关。玩法效果仍需完整战斗验收，当前属于测试构建。
+
+在原有构建命令上增加：
+
+```sh
+--cn-version cn2026 --cn2026-pack /absolute/private/resource-pack
+```
+
+汉化修订和图片资源包必须显式提供并位于仓库外；缺失或哈希不符会中止构建，不会静默退回基础版。
+图片生成工作流、字体和图片数据保持私有，仓库只包含配置与插件加载入口。
+Info 中显示所选汉化版本；`cn2026` 沿用 `cn2025` 字库。

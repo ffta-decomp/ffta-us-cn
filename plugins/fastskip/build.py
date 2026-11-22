@@ -43,12 +43,13 @@ def prepare(reference, image, args, output, config):
         raise ValueError('fastskip outputs must stay outside the source tree')
     output.mkdir(parents=True, exist_ok=False)
     objects = []
+    heap_bound = ['-DMENU_HEAP_END=0x0203ed20u'] if getattr(args, 'recruit_rename', False) else []
     for filename in ['frame.c', 'opening_scene.c', 'heap.c']:
         obj = output / (Path(filename).stem + '.o')
         subprocess.run([args.clang, '--target=arm-none-eabi', '-mcpu=arm7tdmi', '-mthumb',
             '-Os', '-std=c99', '-ffreestanding', '-fno-builtin', '-ffunction-sections',
             '-fno-unwind-tables', '-fno-asynchronous-unwind-tables',
-            '-Wall', '-Wextra', '-Werror', '-c', str(PLUGIN / filename), '-o', str(obj)], check=True)
+            '-Wall', '-Wextra', '-Werror', *heap_bound, '-c', str(PLUGIN / filename), '-o', str(obj)], check=True)
         objects.append(obj)
     script = output / 'fastskip.ld'
     script.write_text('SECTIONS { . = 0x%08x; .text : { *(.text.OpeningBattleFrameTask) *(.text*) *(.rodata*) } '
@@ -74,15 +75,9 @@ def prepare(reference, image, args, output, config):
         target = symbols[targets[hook['name']]] | 1
         if not config['rom_base'] + origin <= target < config['rom_base'] + origin + len(payload):
             raise ValueError('fastskip service outside its reservation')
-        source = output / (hook['name'] + '-entry.s')
-        source.write_text('.syntax unified\n.cpu arm7tdmi\n.thumb\n.text\n.balign 4\n'
-                          'ldr r3, 1f\nbx r3\n.balign 4\n1: .word 0x%08x\n' % target)
-        obj, stub = source.with_suffix('.o'), source.with_suffix('.bin')
-        subprocess.run([args.tool_prefix + 'as', '-mcpu=arm7tdmi', '-mthumb', str(source), '-o', str(obj)], check=True)
-        subprocess.run([args.tool_prefix + 'objcopy', '-O', 'binary', '-j', '.text', str(obj), str(stub)], check=True)
-        if stub.read_bytes() != struct.pack('<HHI', 0x4b00, 0x4718, target):
-            raise ValueError('fastskip entry is not the guarded 8-byte Thumb tail jump')
-        sources.append(source)
+        stub = output / (hook['name'] + '-entry.bin')
+        # Thumb LDR/BX transfers control to the C replacement outside BL range.
+        stub.write_bytes(struct.pack('<HHI', 0x4b00, 0x4718, target))
         offset = hook['rom_offset']
         fragments.append(dict(pin(stub), kind='code', rom_offset=offset,
                               reference_sha256=sha(reference[offset:offset + 8])))
