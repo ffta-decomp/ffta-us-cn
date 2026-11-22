@@ -52,7 +52,7 @@
         "recruit_rename/native.h": "fff1e394e77195d4904b6f76b6d7f637b85291fef762fd5d6ac5859ba271aa76",
         "recruit_rename/recruit.c": "00f69d990371d792331fcd2415a26308d89f6c7663d081ae79906f79382ab84a"
       },
-      "tree_sha256": "d1d496146e8855ad08dd8f57ac464aa9b267176b51bb1c55dffa149488d3c24e",
+      "tree_sha256": "16b91628d692c96157cd24d1c914dfdfc01068399673f6730abe73eff94a589d",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
         "fastskip": "fastskip/build.py",
