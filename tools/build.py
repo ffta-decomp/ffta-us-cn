@@ -44,7 +44,7 @@ def options(argv=None):
     parser.add_argument('--enable-recruit-rename', dest='recruit_rename', action='store_true',
                         help='Name recruits using the keyboard selected by the build')
     parser.add_argument('--enable-battle-speed', dest='battle_speed', action='store_true',
-                        help='Install the experimental 1x/2x/4x/8x battle sprite animation option')
+                        help='Install the experimental 1x/2x/4x/8x battle presentation speed option')
     cjk = parser.add_mutually_exclusive_group()
     cjk.add_argument('--enable-cjk', dest='cjk', action='store_true')
     cjk.add_argument('--disable-cjk', dest='cjk', action='store_false')

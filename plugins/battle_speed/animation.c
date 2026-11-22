@@ -30,6 +30,8 @@ static unsigned committed(u32 context)
     unsigned phase=H(context+220);
     /* Readable AdvanceBattlePhaseBody: confirmed path, action, reaction.
      * In particular 39/47/49 (command/range/target input) are not eligible. */
+    if (W(context+208)&0x4000u || B(context+200)==1) return 0;
+    if (phase==60 && (W(context+208)&0x10000u)) return 0;
     return phase==43 || phase==60 || phase==67;
 }
 
@@ -111,6 +113,19 @@ static u32 action_root(u32 context)
     return 0;
 }
 
+static u32 reaction_root(u32 context)
+{
+    u32 root=W(context+84);
+    if (ram(root,140)) {
+        unsigned state=H(root+68);
+        /* A7218 state 12 calls EndBattleActionWorkspace on every visit.
+         * Leave both initialization and this non-idempotent finalizer to
+         * the native caller, which also releases the result allocation. */
+        if (state>0 && state<12) return root;
+    }
+    return 0;
+}
+
 
 /* Native 01194/01CF0/01F34 use two append-only OAM banks and affine caches.
  * Discard only extra drawing, not task state, allocations or DMA transfers. */
@@ -143,13 +158,12 @@ void BattlePresentationFrame(void *group, u32 count)
         W(0x03000000u)=0; W(0x03000004u)=0; W(0x0200f3a4u)=0;
         drawing_cursor(&cursor,bank,0);
         for (step=1;step<(1u<<mode);++step) {
+            u32 action=0, reaction=0;
             if (renderer()!=graphics || W(0x0200f4a8u)!=context || !committed(context)) break;
+            if (H(context+220)==60 && !(action=action_root(context))) break;
+            if (H(context+220)==67 && !(reaction=reaction_root(context))) break;
             if (H(context+220)==43) update_motion(context);
-            if (H(context+220)==60) {
-                u32 root=action_root(context);
-                if (!root) break;
-                CALL(0x080a8271,unsigned (*)(void *))((void *)root);
-            }
+            if (action) CALL(0x080a8271,unsigned (*)(void *))((void *)action);
             {
                 u16 capacity=H(graphics+480);
                 u32 bookmark=W(graphics+484);
@@ -169,10 +183,16 @@ void BattlePresentationFrame(void *group, u32 count)
                 break;
             }
             update_numbers();
-            if (H(context+220)==67 && W(context+84))
-                CALL(0x080a8959,unsigned (*)(void *))((void *)W(context+84));
+            if (reaction)
+                CALL(0x080a8959,unsigned (*)(void *))((void *)reaction);
             W(0x02008ff0u)=parent;
             drawing_cursor(&cursor,bank,1);
+            /* VBlank already supplied the first palette tick. Consume it
+             * before advancing RAM palette clocks for the following visit,
+             * including the final native visit. Ticking before this step
+             * would duplicate one boundary and skip another: exact-time
+             * fullscreen window sequences can then miss their next key. */
+            CALL(0x08147289,void (*)(void))();
         }
         W(0x03000000u)=raw0; W(0x03000004u)=raw1; W(0x0200f3a4u)=scene_keys;
     }

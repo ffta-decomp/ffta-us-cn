@@ -10,9 +10,9 @@
       "directory": "plugins",
       "files": {
         "README.md": "774b7f25b983e9b448f74d1129b6c611e86d4d3570387af0cd80cf05f5964a12",
-        "battle_speed/README.md": "80afe20914b55cab32d2612b4bd3cb781033933c79ba2d3f6a11512e299d6d80",
-        "battle_speed/animation.c": "e0fbe3fe2b3b3487b41c9475b849c054a3d415ad72abaa8d84115b27e10feb95",
-        "battle_speed/build.py": "e27d707e12c8f68b47332e39c47a0f14dc6bcfe44d09c36ae6e6f96a2b53bab3",
+        "battle_speed/README.md": "3264a80f0ba907d6f10833385444182fe54a15792e6b80ce7aa0e55e14045c9b",
+        "battle_speed/animation.c": "6a957ac28aa88d67b68168efdc7e23a994b3a55b3b936687f5efd836b6304350",
+        "battle_speed/build.py": "54f89c4e86b920048b1e7c737d8bb0bf83398a3b2d849d62fe8045f92ca8a80e",
         "battle_speed/options.json": "82c8f5b0c9bcfbac7005637913e20312b80d7781f37d5c51e0d2ba83f6734dd4",
         "cn2026/README.md": "644b35cc08e34e26831bfef402c79a9838b945dcef3721ce46ccea6de9f140d1",
         "cn2026/build.py": "33c8163dea30ac2fafe7ea830eb81690c04dc46cff9fe90825d8b34fcea7c7ea",
@@ -52,7 +52,7 @@
         "recruit_rename/native.h": "fff1e394e77195d4904b6f76b6d7f637b85291fef762fd5d6ac5859ba271aa76",
         "recruit_rename/recruit.c": "00f69d990371d792331fcd2415a26308d89f6c7663d081ae79906f79382ab84a"
       },
-      "tree_sha256": "16b91628d692c96157cd24d1c914dfdfc01068399673f6730abe73eff94a589d",
+      "tree_sha256": "aa36f1dc9916376bc1cd691bd53a6956a108f66cc82c7f2a0a40f502cbc04434",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
         "fastskip": "fastskip/build.py",

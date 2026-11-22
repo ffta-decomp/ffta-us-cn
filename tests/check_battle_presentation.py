@@ -11,7 +11,9 @@ from unicorn.arm_const import (UC_ARM_REG_R0, UC_ARM_REG_R1, UC_ARM_REG_R2,
 
 
 def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
-             pending=0, destroy=False, queue_command=False, wrong_group=False):
+             pending=0, destroy=False, queue_command=False, wrong_group=False,
+             reaction_state=8, reaction_finishes=False, outer_flags=0, prefix_wait=False,
+             dual_slot=None):
     uc=Uc(UC_ARCH_ARM,UC_MODE_THUMB)
     for at,size in ((0x08000000,len(rom)),(0x02000000,0x40000),(0x03000000,0x8000)):
         uc.mem_map(at,size)
@@ -27,6 +29,15 @@ def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
     w32(0x0200f4a8,context);w32(0x0200f4b0,scene);w32(scene+8,graphics)
     w16(context+220,phase);w32(context+68,motion);w32(context+4,actor)
     w32(context+72,root);w32(context+84,root);w16(root+0x3450,action_state);w16(root+0x26c0,pending)
+    w16(root+68,reaction_state);w32(context+208,outer_flags)
+    uc.mem_write(context+200,bytes([int(prefix_wait)]))
+    selected_root=root
+    if dual_slot is not None:
+        second=0x02014000
+        w32(context+72,0);w32(context+76,root);w32(context+80,second)
+        w16(context+166,33);uc.mem_write(context+175,bytes([dual_slot]))
+        w16(second+0x3450,action_state);w16(second+0x26c0,pending)
+        selected_root=second if dual_slot==1 else root
     w16(motion+220,6);w32(actor,0x02000080)
     w32(graphics+8,list_head);w32(list_head+4,node);w32(node,animation)
     w16(graphics+480,4);w32(graphics+484,0);w32(0x0200f430,effects)
@@ -39,6 +50,14 @@ def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
     uc.mem_write(0x03003270+valid_bank*32,matrices[:32])
     uc.mem_write(0x030032b0+valid_bank*256,matrices[32:])
     w32(0x03000020+valid_bank*4,2);w32(0x03002c50+valid_bank*4,3)
+    # Native palette dispatcher and handler 8 (146C8C), not a timer stub.
+    # Effect scripts must not outrun these VBlank-owned palette clocks.
+    palette=0x03003c7c
+    w32(0x03003c64,palette);w16(palette,1);w16(palette+4,8)
+    w16(palette+6,3);w16(palette+8,3);w32(palette+12,0x0202e000)
+    w16(palette+18,32);w16(palette+20,32)
+    w16(palette+32,1);w16(palette+34,1)
+    uc.mem_write(0x0202e000,struct.pack('<32H',*range(0x2000,0x2020)))
     w32(animation,3);w16(animation+10,1);w16(animation+14,3)
     w32(animation+52,frames);w32(animation+56,frames)
     for i in range(3):
@@ -47,12 +66,14 @@ def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
             frame[9]=1;struct.pack_into('<I',frame,0,0x1234+i)
         else:frame[9]=8;frame[10]=i+1
         uc.mem_write(frames+i*20,bytes(frame))
-    calls={'normal':0,'ticks':0,'effects':0,'action':0,'reaction':0,'motion':0}
+    calls={'normal':0,'ticks':0,'effects':0,'action':0,'reaction':0,'motion':0,'palette':0}
     signals=[]
     def ret(value=0):
         uc.reg_write(UC_ARM_REG_R0,value)
         uc.reg_write(UC_ARM_REG_PC,uc.reg_read(UC_ARM_REG_LR))
     def hook(u,address,size,data):
+        if address==0x08147288:calls['palette']+=1
+        if address==0x080a929c:raise AssertionError('Extra visit finalized action workspace')
         if address==0x08021290:
             calls['ticks']+=1
             assert u.reg_read(UC_ARM_REG_R1)==graphics+20
@@ -77,6 +98,10 @@ def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
             assert bytes(u.mem_read(0x0200f3a4,4))==bytes(4)
         if address==0x08005a24:
             calls['effects']+=1;signals.append(u.mem_read(animation+30,1)[0])
+            # The first visit consumes the palette tick already supplied by
+            # VBlank. An extra tick belongs after its effect consumer.
+            assert calls['palette']==calls['effects']-1
+            assert struct.unpack('<H',u.mem_read(palette+16,2))[0]==2*(calls['effects']-1)
             w32(0x02008ff0,0)
             w32(0x03000020+valid_bank*4,99);w32(0x03002c50+valid_bank*4,99)
             u.mem_write(0x03003270+valid_bank*32,b'\xee'*32)
@@ -85,6 +110,8 @@ def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
             ret();return
         stubs={0x080a8270:'action',0x080a8958:'reaction',0x0809b88c:'motion'}
         if address in stubs:
+            if address==0x080a8270:assert u.reg_read(UC_ARM_REG_R0)==selected_root
+            if address==0x080a8958 and reaction_finishes:w16(root+68,12)
             calls[stubs[address]]+=1;ret(1);return
         values={0x080a9588:1,0x0809d8f0:0,0x080c95a8:0,0x080c8298:0,
                 0x0809d614:1,0x0809caf4:1,0x0802104c:0x0202d000,0x08021064:1}
@@ -96,13 +123,21 @@ def run_case(rom, mode, phase, *, linked=False, bank=0, action_state=15,
     uc.emu_start(0x0836d3b9,0x03007f00,count=300000)
     assert uc.reg_read(UC_ARM_REG_SP)==0x03007e00
     active=mode and not linked and bank<2 and not wrong_group and phase in (43,60,67)
+    if outer_flags&0x4000 or prefix_wait or (phase==60 and outer_flags&0x10000):active=False
     if phase==60 and (action_state in (0,14,36) or pending&7):active=False
-    expected=(1 if destroy else (1<<mode)-1) if active else 0
+    if phase==60 and dual_slot is not None and dual_slot>1:active=False
+    if phase==67 and not 0<reaction_state<12:active=False
+    expected=(1 if destroy or reaction_finishes else (1<<mode)-1) if active else 0
     assert calls['normal']==1
     assert calls['ticks']==calls['effects']==expected,(mode,phase,calls,expected)
     assert calls['motion']==(expected if phase==43 else 0)
     assert calls['action']==(expected if phase==60 else 0)
     assert calls['reaction']==(expected if phase==67 and not destroy else 0)
+    palette_steps=0 if destroy else expected
+    assert calls['palette']==palette_steps
+    assert struct.unpack('<H',uc.mem_read(palette+20,2))[0]==32-palette_steps
+    assert struct.unpack('<H',uc.mem_read(palette+16,2))[0]==2*palette_steps
+    assert not uc.mem_read(0x03005668,1)[0]
     return calls
 
 
@@ -121,7 +156,15 @@ def main():
                 run_case(rom,mode,phase,**kw);cases+=1
         for state in (0,14,36):run_case(rom,mode,60,action_state=state);cases+=1
         for pending in (1,2,4):run_case(rom,mode,60,pending=pending);cases+=1
+        for state in (0,12,13):run_case(rom,mode,67,reaction_state=state);cases+=1
+        run_case(rom,mode,67,reaction_finishes=True);cases+=1
+        for phase in (43,60,67):
+            for kw in ({'outer_flags':0x4000},{'prefix_wait':True}):
+                run_case(rom,mode,phase,**kw);cases+=1
+        run_case(rom,mode,60,outer_flags=0x10000);cases+=1
+        for slot in (0,1,2):run_case(rom,mode,60,dual_slot=slot);cases+=1
     print(json.dumps(dict(rom_sha256=args.sha256,native_cases=cases,
         selectors_checked=127,input_and_context_restored=True,intermediate_dma=False,
-        extra_oam_discarded=True,linked_guard=True)))
+        extra_oam_discarded=True,linked_guard=True,palette_clocks_native=True,
+        result_finalizer_deferred=True)))
 if __name__=='__main__':main()

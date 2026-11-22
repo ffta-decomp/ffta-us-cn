@@ -17,8 +17,10 @@ def prepare(reference, image, args, output, config):
     if image[0x210e4:0x2158c] != reference[0x210e4:0x2158c]:
         raise ValueError('Battle sprite animation engine already modified')
     # Pin every native update/queue contract used by the C implementation.
-    for start,end in ((0x23f00,0x23fd0),(0x5a24,0x5afe),(0x9b88c,0x9c6b8),
-                      (0xa8270,0xa827c),(0xa8958,0xa8968),(0xa8db8,0xa8e0c)):
+    for start,end in ((0x4b0,0x52c),(0x23f00,0x23fd0),(0x5a24,0x5afe),(0x9b88c,0x9c6b8),
+                      (0xa8270,0xa827c),(0xa8958,0xa8968),(0xa8db8,0xa8e0c),
+                      (0xa7218,0xa75bc),(0xa9270,0xa92e4),
+                      (0x147288,0x14731c),(0x9a5cf8,0x9a5d58)):
         if image[start:end]!=reference[start:end]:
             raise ValueError(f'Battle presentation native dependency changed at {start:#x}')
     if reference[HOOK:HOOK+4] != bytes.fromhex('fff7fcfe'):
@@ -77,5 +79,6 @@ ASSERT(SIZEOF(.text)<=0x4000, "Animation ROM reservation")
         setting_bits=[3,4],scope='Committed movement, action and reaction presentation; input remains at 1x',
         linked_battles_accelerated=False,scheduler_changed=True,render_submissions_per_visit=1,intermediate_sprite_dma=False,
         extra_task_groups=['battle effects'],opaque_action_states_deferred=[0,14,36],
+        palette_clocks_interleaved=True,reaction_states_deferred=[0,12],
         extra_update_phases=[43,60,67],static_ram_bytes=0,
         symbols={k:hex(v) for k,v in symbols.items()})
