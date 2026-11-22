@@ -1,6 +1,6 @@
 {
   "schema": "ffta-cn2026-image-pack-v1",
-  "version": "cn2026-images-6",
+  "version": "cn2026-images-7",
   "rom_bytes": 16777216,
   "base_translation": "cn2025",
   "scope": "Image resources, resource pointers, guarded save-caption geometry and unread-badge palette binding only; no gameplay or save-format changes.",
@@ -1731,7 +1731,7 @@
       "bytes": 4906,
       "kind": "resource",
       "preimage_sha256": "90c0f72c4771049f6fde2f81411a60f46469f16cae1b5ed4585774161e203a44",
-      "sha256": "5701b78000fa1a938d3bac5d0cab3db1952234cee760dbfcdf69bc91c2e5b19d"
+      "sha256": "2de0597d33a6dbbd431b06f4199811d97556f3cf02ccb06e305ac027d29d6f11"
     },
     {
       "file": "00f42000.bin",
@@ -1739,7 +1739,7 @@
       "bytes": 128,
       "kind": "resource",
       "preimage_sha256": "e9175db65a9789096ca9cb5524d3abc2107df03e3c9ba3af1aca628f9c5d3bd2",
-      "sha256": "583230eb8b159ee18904b9a6a6b2f41d07f9137234ad0e311f8174b0df05e481"
+      "sha256": "70021ede7bfb1f0f10c8824b1f19dbfb7fc5bdefb4828f1523fed117724d6cb3"
     }
   ],
   "translation_revisions": "revisions.json",
@@ -1748,6 +1748,6 @@
     "schema": 1,
     "pixels_offset": 15998976,
     "pixels_bytes": 128,
-    "pixels_sha256": "583230eb8b159ee18904b9a6a6b2f41d07f9137234ad0e311f8174b0df05e481"
+    "pixels_sha256": "70021ede7bfb1f0f10c8824b1f19dbfb7fc5bdefb4828f1523fed117724d6cb3"
   }
 }

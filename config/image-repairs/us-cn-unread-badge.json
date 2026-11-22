@@ -26,17 +26,26 @@
     "font_sha256": "5adc3a83d11edc2e6f5bb3bc009dd9028dc055cbb3fc5f23715fb4de3c4e3eb0",
     "font_size": 8,
     "face_size": [
-      7,
+      6,
       8
     ],
-    "glyph_advance": 8,
+    "glyph_advance": 6,
     "origin": [
-      0,
+      2,
       4
     ],
     "index": 3,
     "one_bit": true,
-    "resampling": false
+    "resampling": false,
+    "padding_left": 2,
+    "padding_right": 2,
+    "fitting": {
+      "method": "Remove an interior column without resampling",
+      "removed_column": {
+        "未": 2,
+        "读": 2
+      }
+    }
   },
   "relocation": {
     "bank_offset": 15990784,
