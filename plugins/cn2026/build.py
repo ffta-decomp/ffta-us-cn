@@ -127,37 +127,12 @@ def prepare(reference, image, args, output, config):
         at, size = row['rom_offset'], row['bytes']
         manifest['fragments'].append(dict(path=str(target.resolve()), sha256=sha(data),
             rom_offset=at, kind=row['kind'], reference_sha256=sha(reference[at:at + size])))
-    badge_report = None
-    if plan.get('unread_badge'):
-        badge = plan['unread_badge']
-        if (badge.get('schema'), badge.get('pixels_offset'), badge.get('pixels_bytes')) != (1, 0xf42000, 128):
-            raise ValueError('Unsupported unread badge pixel reservation')
-        pixels = [data for row, data in fragments if row['rom_offset']==0xf42000 and row['bytes']==128]
-        if len(pixels)!=1 or sha(pixels[0])!=badge['pixels_sha256']:
-            raise ValueError('Unread badge matcher pixels differ from the resource plan')
-        wide=[data for row,data in fragments if row['rom_offset']==0xf43000 and row['bytes']==192]
-        if (badge.get('wide_pixels_offset')!=0xf43000 or len(wide)!=1 or
-                sha(wide[0])!=badge.get('wide_pixels_sha256')):
-            raise ValueError('Unread wide badge pixels differ from the resource plan')
-        import sys
-        sys.path.insert(0, str(PLUGIN.parents[1]/'tools'))
-        from unread_badge import prepare as prepare_badge
-        extra, badge_report = prepare_badge(reference, image, args, output/'unread-palette')
-        for added in extra['fragments']:
-            start, end = added['rom_offset'], added['rom_offset']+Path(added['path']).stat().st_size
-            if any(start < at+len(data) and at < end for row,data in fragments for at in [row['rom_offset']]):
-                raise ValueError('Unread palette hook overlaps CN resources')
-        manifest['sources'].extend(extra['sources'])
-        manifest['fragments'].extend(extra['fragments'])
     path = output / 'extension.json'
     path.write_text(json.dumps(manifest, indent=2) + '\n')
     report = dict(version=plan['version'], base_plugin='cn2025',
         plan_sha256=sha(plan_path.read_bytes()), image_only=revision is None,
-        fragments=len(manifest['fragments']), save_caption_layout_sites=layout_rows, included=plan['included'], deferred=plan['deferred'],
+        fragments=len(fragments), save_caption_layout_sites=layout_rows, included=plan['included'], deferred=plan['deferred'],
         validation_limits=plan['validation_limits'])
-    if badge_report:
-        report['image_only'] = False
-        report['unread_badge'] = badge_report
     if revision:
         final_font = bytearray(image[active_font:active_font + glyph_count * 128])
         for row, data in fragments:

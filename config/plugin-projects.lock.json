@@ -14,9 +14,9 @@
         "battle_speed/animation.c": "7202752f579cc702c30b5cd75996006f9b92a3ab61bd13fa78a9a88b8767adae",
         "battle_speed/build.py": "6da40e2ccbc273f323b1dc3f1e7d362076b4d2235c4f1817f02cae61c8bebce0",
         "battle_speed/options.json": "b9e8a1772f46b88484f711d9abc5b182efec7e129354f2e2ce12d80ec3612ea7",
-        "cn2026/README.md": "3fddbd25b5289a13b4085ce35797cebc05eb774341f718e40ef54455a024fa77",
-        "cn2026/build.py": "4c15b9831f565a09ae2d453da88b4308a7590fd93521f8697f2b532e02ad19b9",
-        "cn2026/images.json": "76306336bc2024d3e095a181da8f6bc02158bfdc44f8e92dced93b449d72add2",
+        "cn2026/README.md": "644b35cc08e34e26831bfef402c79a9838b945dcef3721ce46ccea6de9f140d1",
+        "cn2026/build.py": "33c8163dea30ac2fafe7ea830eb81690c04dc46cff9fe90825d8b34fcea7c7ea",
+        "cn2026/images.json": "8ddb3a53e3aaa57fac0e610140fb05e4d7c254b008419bbd6b274023386455f0",
         "cn2026/revisions.json": "638018093dd9d85faeb1290272fd225950d3f1d139169bdb0de579614c051d9f",
         "cn2026/save-layout.json": "c7676605ee1da4edc8dda41f0665b03951bf2670a7123103da9adf2af1da8baa",
         "common/options/README.md": "e363ee04f7dda68a987a4acbd762217b41965a632d7d93083defeb82cb86b890",
@@ -52,7 +52,7 @@
         "recruit_rename/native.h": "fff1e394e77195d4904b6f76b6d7f637b85291fef762fd5d6ac5859ba271aa76",
         "recruit_rename/recruit.c": "00f69d990371d792331fcd2415a26308d89f6c7663d081ae79906f79382ab84a"
       },
-      "tree_sha256": "4b4e4ec98ecb46788d34c58d971685373a2fd2b5a18fb78d5a3924a7bbe531e3",
+      "tree_sha256": "d1d496146e8855ad08dd8f57ac464aa9b267176b51bb1c55dffa149488d3c24e",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
         "fastskip": "fastskip/build.py",

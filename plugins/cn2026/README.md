@@ -1,15 +1,5 @@
 # CN2026
 
-Unread list markers use white 8px RoundPix text on a red rounded rectangle.
-The background spans 19 pixels, leaving two pixels on either side of the
-unchanged 7x8 glyph faces and their original one-pixel gap. The managed native
-list uses a guarded 17-column stride within its existing row-template allocation;
-the frame and scrollbar keep their original positions. Exact tile matching and
-owned-view selection styling preserve the badge palette during scrolling.
-The native bank keeps its other 37 decoded entries unchanged. Native unread
-flags, save format and read behavior are unchanged. The font and authored pixels
-remain in the explicit private image pack.
-
 CN2026 extends CN2025 with translation revisions by 隼, image enhancements and
 packaging by bhe, and the existing pinyin naming input method. CN2025 retains
 ownership of native character codes. Existing optional gameplay and save
