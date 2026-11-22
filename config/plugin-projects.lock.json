@@ -12,7 +12,7 @@
         "README.md": "774b7f25b983e9b448f74d1129b6c611e86d4d3570387af0cd80cf05f5964a12",
         "cn2026/README.md": "644b35cc08e34e26831bfef402c79a9838b945dcef3721ce46ccea6de9f140d1",
         "cn2026/build.py": "33c8163dea30ac2fafe7ea830eb81690c04dc46cff9fe90825d8b34fcea7c7ea",
-        "cn2026/images.json": "4dd3958c077d57f7273a4f8268e4f37c12917921d37bcea8fbcc743a6568dba1",
+        "cn2026/images.json": "8ddb3a53e3aaa57fac0e610140fb05e4d7c254b008419bbd6b274023386455f0",
         "cn2026/revisions.json": "638018093dd9d85faeb1290272fd225950d3f1d139169bdb0de579614c051d9f",
         "cn2026/save-layout.json": "c7676605ee1da4edc8dda41f0665b03951bf2670a7123103da9adf2af1da8baa",
         "common/options/README.md": "30c36aa5bbe90de418807a2aea9bba90f7b58a554a0390d0f852984dd2bc73f3",
@@ -48,7 +48,7 @@
         "recruit_rename/native.h": "fff1e394e77195d4904b6f76b6d7f637b85291fef762fd5d6ac5859ba271aa76",
         "recruit_rename/recruit.c": "00f69d990371d792331fcd2415a26308d89f6c7663d081ae79906f79382ab84a"
       },
-      "tree_sha256": "95fe80c5915065ad1efa0d97fe07faadcba80afa1036900b7454220d3639189a",
+      "tree_sha256": "1d8945b2306e2c5f658695ee61a1622f701c4cddf27a8976c7b399b368c4c61a",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
         "fastskip": "fastskip/build.py",

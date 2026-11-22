@@ -1,6 +1,6 @@
 {
   "schema": "ffta-cn2026-image-pack-v1",
-  "version": "cn2026-images-4",
+  "version": "cn2026-images-5",
   "rom_bytes": 16777216,
   "base_translation": "cn2025",
   "scope": "Image resources, resource pointers and guarded native save-caption layout instructions only; no gameplay or save-format changes.",
@@ -12,7 +12,7 @@
     "4 static and 4 animated result labels",
     "21 confirmed battle-feedback types",
     "Save slots 1/2 with matching title layout and a larger single-line completed-mission count label",
-    "10 stat labels redrawn with a native-size rounded pixel font and restored decorative bars"
+    "10 stat labels with individually fitted 10x10 pixel faces, complete one-pixel outlines and restored decorative bars"
   ],
   "deferred": [
     "Battle-feedback types 12, 14 and 19",
@@ -1650,7 +1650,7 @@
       "bytes": 7264,
       "kind": "resource",
       "preimage_sha256": "082fb6a8b4ed2979a84ed10a3a972b179bd4fd770216ef7cf7c8363d97784380",
-      "sha256": "640995ad00fcf46e2fe5ca4ed98d281b3768f405d9aadc21edb98b68f56db58f"
+      "sha256": "21d2b6647012439c82b4ff42fc7de2b418a5bf6e31b615c9e8c62d027d28da37"
     },
     {
       "file": "00a55004.bin",
