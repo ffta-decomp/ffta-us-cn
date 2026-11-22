@@ -1,9 +1,9 @@
 {
   "schema": "ffta-cn2026-image-pack-v1",
-  "version": "cn2026-images-5",
+  "version": "cn2026-images-6",
   "rom_bytes": 16777216,
   "base_translation": "cn2025",
-  "scope": "Image resources, resource pointers and guarded native save-caption layout instructions only; no gameplay or save-format changes.",
+  "scope": "Image resources, resource pointers, guarded save-caption geometry and unread-badge palette binding only; no gameplay or save-format changes.",
   "included": [
     "27 left-aligned menu titles",
     "42 job-name icons with heads shifted left 3px",
@@ -12,7 +12,8 @@
     "4 static and 4 animated result labels",
     "21 confirmed battle-feedback types",
     "Save slots 1/2 with matching title layout and a larger single-line completed-mission count label",
-    "10 stat labels with individually fitted 10x10 pixel faces, complete one-pixel outlines and restored decorative bars"
+    "10 stat labels with individually fitted 10x10 pixel faces, complete one-pixel outlines and restored decorative bars",
+    "White 8px unread text on a solid red rounded rectangle, preserving native read-state logic"
   ],
   "deferred": [
     "Battle-feedback types 12, 14 and 19",
@@ -35,6 +36,14 @@
       "kind": "data",
       "preimage_sha256": "aece1b3fd1d5d568c4d76cd71066fee5464094e8cf04a7bdf44c6ff66f82078c",
       "sha256": "8a82687dd7f0d59b20ba25b71dd91e7256ceb70049e3d2e1d1fa7fb6e167e2c3"
+    },
+    {
+      "file": "0006eae0.bin",
+      "rom_offset": 453344,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "4340c24870b6ed22996d88f05eb87ef306122ff5ed9c6ff6a764230fd854f351",
+      "sha256": "6522c18048bcb7d8558575607565a63389435513a3f07e6724b1b4beee197a5e"
     },
     {
       "file": "0007bdf0.bin",
@@ -99,6 +108,14 @@
       "kind": "data",
       "preimage_sha256": "e7851b98299476f4cf021b2bd33a6f207333b8dd7dbfadf13bb5e57c4ee6e297",
       "sha256": "2fa3ee2859182ba241135ad8bf5cefbf246da58923ad1878d87bb36b629aa6b3"
+    },
+    {
+      "file": "000cb9c8.bin",
+      "rom_offset": 833992,
+      "bytes": 4,
+      "kind": "data",
+      "preimage_sha256": "4340c24870b6ed22996d88f05eb87ef306122ff5ed9c6ff6a764230fd854f351",
+      "sha256": "6522c18048bcb7d8558575607565a63389435513a3f07e6724b1b4beee197a5e"
     },
     {
       "file": "000cba10.bin",
@@ -1707,8 +1724,30 @@
       "kind": "resource",
       "preimage_sha256": "4ad43749955dffe60a2fde46e8d6e6b519a9ad94c7800906ba48ff02600c8c06",
       "sha256": "867d3f593e07fc74a343d176328cdcb811f1321bada4cc0a7bb51aee55940cbe"
+    },
+    {
+      "file": "00f40000.bin",
+      "rom_offset": 15990784,
+      "bytes": 4906,
+      "kind": "resource",
+      "preimage_sha256": "90c0f72c4771049f6fde2f81411a60f46469f16cae1b5ed4585774161e203a44",
+      "sha256": "5701b78000fa1a938d3bac5d0cab3db1952234cee760dbfcdf69bc91c2e5b19d"
+    },
+    {
+      "file": "00f42000.bin",
+      "rom_offset": 15998976,
+      "bytes": 128,
+      "kind": "resource",
+      "preimage_sha256": "e9175db65a9789096ca9cb5524d3abc2107df03e3c9ba3af1aca628f9c5d3bd2",
+      "sha256": "583230eb8b159ee18904b9a6a6b2f41d07f9137234ad0e311f8174b0df05e481"
     }
   ],
   "translation_revisions": "revisions.json",
-  "layout_repairs": "save-layout.json"
+  "layout_repairs": "save-layout.json",
+  "unread_badge": {
+    "schema": 1,
+    "pixels_offset": 15998976,
+    "pixels_bytes": 128,
+    "pixels_sha256": "583230eb8b159ee18904b9a6a6b2f41d07f9137234ad0e311f8174b0df05e481"
+  }
 }

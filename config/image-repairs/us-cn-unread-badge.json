@@ -1,0 +1,55 @@
+{
+  "schema": "ffta-cn-unread-badge-v1",
+  "native_bank": 4013412,
+  "entry": 28,
+  "entry_count": 38,
+  "decoded_bytes": 128,
+  "canvas": [
+    16,
+    16
+  ],
+  "background": {
+    "shape": "rounded-rectangle",
+    "rect": [
+      0,
+      2,
+      16,
+      14
+    ],
+    "radius": 2,
+    "palette_bank": 14,
+    "fill_index": 9
+  },
+  "text": {
+    "value": "未读",
+    "font_file": "ZLabsRoundPix_12px_M_CN.ttf",
+    "font_sha256": "5adc3a83d11edc2e6f5bb3bc009dd9028dc055cbb3fc5f23715fb4de3c4e3eb0",
+    "font_size": 8,
+    "face_size": [
+      7,
+      8
+    ],
+    "glyph_advance": 8,
+    "origin": [
+      0,
+      4
+    ],
+    "index": 3,
+    "one_bit": true,
+    "resampling": false
+  },
+  "relocation": {
+    "bank_offset": 15990784,
+    "bank_bytes": 4906,
+    "matcher_offset": 15998976,
+    "pointer_sites": [
+      453344,
+      833992
+    ]
+  },
+  "palette_binding": {
+    "hook": 96258,
+    "scope": "Exact authored tile match only; native unread flags unchanged"
+  },
+  "untargeted_entries_preserved": true
+}

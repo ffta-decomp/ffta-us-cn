@@ -1,5 +1,11 @@
 # CN2026
 
+Unread list markers use white 8px RoundPix text on a red rounded rectangle.
+The native bank keeps its other 37 decoded entries unchanged. A guarded palette
+hook matches the four authored badge tiles exactly, preserving the palette of
+all other row icons. Native unread flags and their read/save behavior are unchanged.
+The font and authored pixels remain in the explicit private image pack.
+
 CN2026 extends CN2025 with translation revisions by 隼, image enhancements and
 packaging by bhe, and the existing pinyin naming input method. CN2025 retains
 ownership of native character codes. Existing optional gameplay and save
