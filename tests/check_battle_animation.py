@@ -60,8 +60,8 @@ def main():
             for flags in (3,0x4003,0x1003):
                 for steps in (1,2,7,19):
                     got,calls=run(True,steps,timer=timer,flags=flags,mode=mode)
-                    expected,_=run(False,steps*multiplier,timer=timer,flags=flags)
-                    assert got==expected and calls==steps*multiplier,(mode,timer,flags,steps)
+                    expected,_=run(False,steps,timer=timer,flags=flags)
+                    assert got==expected and calls==steps,(mode,timer,flags,steps)
                     count+=1
     for kw in (dict(enabled=False),dict(linked=True),dict(live=False),
                dict(valid_owner=False),dict(matching_renderer=False),
@@ -72,11 +72,11 @@ def main():
     for mode in (1,2,3):
         for timer in (1,2):
             got,calls=run(True,1,timer=timer,event=True,mode=mode)
-            expected,_=run(False,timer,timer=timer,event=True)
-            assert got==expected and got[30]==0x81 and calls==timer
+            expected,_=run(False,1,timer=timer,event=True)
+            assert got==expected and calls==1
             count+=1
     print(json.dumps(dict(rom_sha256=args.sha256,native_cases=count,
-        multipliers_match_native=[2,4,8],event_preserved=True,off_menu_link_guards=True)))
+        one_native_tick_per_display=True,event_preserved=True,off_menu_link_guards=True)))
 
 
 if __name__=='__main__':

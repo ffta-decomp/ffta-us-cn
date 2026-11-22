@@ -11,8 +11,8 @@
         "en": "Animation speed"
       },
       "hint": {
-        "zh-Hans": "战场精灵动画播放速度。",
-        "en": "Battle sprite animation speed."
+        "zh-Hans": "加快移动、攻击和受击演出。",
+        "en": "Faster movement and battle actions."
       },
       "values": [
         "1x",

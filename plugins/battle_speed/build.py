@@ -1,4 +1,4 @@
-"""Opt-in native battle sprite animation clocks; no scheduler replacement."""
+"""Committed battle updates, with the native input/render pass retained."""
 import hashlib
 import json
 from pathlib import Path
@@ -16,6 +16,11 @@ def prepare(reference, image, args, output, config):
         raise ValueError('Unexpected battle animation US revision')
     if image[0x210e4:0x2158c] != reference[0x210e4:0x2158c]:
         raise ValueError('Battle sprite animation engine already modified')
+    # Pin every native update/queue contract used by the C implementation.
+    for start,end in ((0x23f00,0x23fd0),(0x5a24,0x5afe),(0x9b88c,0x9c6b8),
+                      (0xa8270,0xa827c),(0xa8958,0xa8968),(0xa8db8,0xa8e0c)):
+        if image[start:end]!=reference[start:end]:
+            raise ValueError(f'Battle presentation native dependency changed at {start:#x}')
     if reference[HOOK:HOOK+4] != bytes.fromhex('fff7fcfe'):
         raise ValueError('Unexpected native sprite animation call')
     output = Path(output).resolve()
@@ -45,10 +50,16 @@ ASSERT(SIZEOF(.text)<=0x4000, "Animation ROM reservation")
     payload = binary.read_bytes()
     target = symbols['BattleAnimationTick'] | 1
     delta = BRIDGE - (HOOK+4)
+    frame_hook=0x23fa8
+    if reference[frame_hook:frame_hook+4]!=bytes.fromhex('e2f724fd'):
+        raise ValueError('Unexpected native scene group call')
+    frame_delta=BRIDGE+8-(frame_hook+4)
     fragments = []
     for name,at,blob,reserved in (
         ('animation',ORIGIN,payload,True),
         ('bridge',BRIDGE,struct.pack('<HHI',0x4b00,0x4718,target),True),
+        ('frame-bridge',BRIDGE+8,struct.pack('<HHI',0x4b00,0x4718,symbols['BattlePresentationFrame']|1),True),
+        ('frame-call',frame_hook,struct.pack('<HH',0xf000|((frame_delta>>12)&2047),0xf800|((frame_delta>>1)&2047)),False),
         ('call',HOOK,struct.pack('<HH',0xf000|((delta>>12)&2047),0xf800|((delta>>1)&2047)),False),
     ):
         if image[at:at+len(blob)] != reference[at:at+len(blob)]:
@@ -63,6 +74,8 @@ ASSERT(SIZEOF(.text)<=0x4000, "Animation ROM reservation")
     manifest.write_text(json.dumps(dict(schema='build-extension-v1',reference_sha256=sha(reference),
         sources=[dict(path=str(p.resolve()),sha256=sha(p.read_bytes())) for p in sources],fragments=fragments),indent=2)+'\n')
     return manifest, dict(id='battle_speed',experimental=True,multipliers=[1,2,4,8],default_mode=0,
-        setting_bits=[3,4],scope='Battlefield sprite animation only; native events may defer extra ticks',
-        linked_battles_accelerated=False,scheduler_changed=False,render_submissions_per_visit=1,
+        setting_bits=[3,4],scope='Committed movement, action and reaction presentation; input remains at 1x',
+        linked_battles_accelerated=False,scheduler_changed=True,render_submissions_per_visit=1,intermediate_sprite_dma=False,
+        extra_task_groups=['battle effects'],opaque_action_states_deferred=[0,14,36],
+        extra_update_phases=[43,60,67],static_ram_bytes=0,
         symbols={k:hex(v) for k,v in symbols.items()})
