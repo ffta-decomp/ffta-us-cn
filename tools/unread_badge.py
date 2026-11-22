@@ -12,6 +12,11 @@ sha = lambda b: hashlib.sha256(b).hexdigest()
 def prepare(reference, image, args, output):
     if image[0x17734:0x1784c] != reference[0x17734:0x1784c] or reference[HOOK:HOOK+4] != bytes.fromhex('d0263602'):
         raise ValueError('Unread badge native palette writer differs')
+    if image[0x178a4:0x1799c]!=reference[0x178a4:0x1799c]:
+        raise ValueError('Unread badge native selection palette writer differs')
+    for at,expected in ((0x60316,'b7f763f9'),(0x60246,'fff7d3fe'),(0x15da2,'02f007f8')):
+        if reference[at:at+4]!=bytes.fromhex(expected) or image[at:at+4]!=reference[at:at+4]:
+            raise ValueError('Unread badge native row setup differs')
     output.mkdir(parents=True, exist_ok=False)
     sources = [ROOT/'engine/unread_badge.c', ROOT/'engine/unread_badge.s']
     objects=[]
@@ -28,7 +33,7 @@ def prepare(reference, image, args, output):
  .data : {{ *(.data*) }} .bss : {{ *(.bss*) *(COMMON) }}
  /DISCARD/ : {{ *(.ARM.exidx*) *(.ARM.extab*) *(.comment*) *(.note*) }}
 }}
-ASSERT(SIZEOF(.bridge)<=0x40 && SIZEOF(.text)<=0x1000 && SIZEOF(.data)==0 && SIZEOF(.bss)==0, "Unread badge reservation")
+ASSERT(SIZEOF(.bridge)<=0x80 && SIZEOF(.text)<=0x1000 && SIZEOF(.data)==0 && SIZEOF(.bss)==0, "Unread badge reservation")
 ''')
     prefix=args.tool_prefix
     subprocess.run([prefix+'ld','-T',str(script),*map(str,objects),'-o',str(elf)],check=True)
@@ -45,6 +50,16 @@ ASSERT(SIZEOF(.bridge)<=0x40 && SIZEOF(.text)<=0x1000 && SIZEOF(.data)==0 && SIZ
     delta=(symbols['UnreadBadgePaletteBridge'] & ~1)-(BASE+HOOK+4)
     if not -0x400000<=delta<0x400000: raise ValueError('Unread palette bridge out of range')
     blobs.append(('call',HOOK,struct.pack('<HH',0xf000|((delta>>12)&2047),0xf800|((delta>>1)&2047)),False))
+    for name,at,symbol in (('wide-view',0x60316,'ConfigureWideUnreadBridge'),
+                           ('wide-row',0x60246,'FinishWideUnreadBridge'),
+                           ('scrollbar',0x15da2,'WideUnreadScrollbarBridge'),
+                           ('selection-palette-a',0x1794e,'UpdateUnreadPaletteBridge'),
+                           ('selection-palette-b',0x17960,'UpdateUnreadPaletteBridge')):
+        if at in (0x1794e,0x17960) and reference[at:at+4]!=bytes.fromhex('d0210902'):
+            raise ValueError('Unexpected selected unread palette instructions')
+        delta=(symbols[symbol]&~1)-(BASE+at+4)
+        if not -0x400000<=delta<0x400000: raise ValueError('Unread view bridge out of range')
+        blobs.append((name,at,struct.pack('<HH',0xf000|((delta>>12)&2047),0xf800|((delta>>1)&2047)),False))
     for name,at,blob,reserved in blobs:
         if image[at:at+len(blob)] != reference[at:at+len(blob)]:
             raise ValueError('Unread badge extension conflicts at '+hex(at))
@@ -55,4 +70,6 @@ ASSERT(SIZEOF(.bridge)<=0x40 && SIZEOF(.text)<=0x1000 && SIZEOF(.data)==0 && SIZ
             sha256=sha(blob),reference_sha256=sha(reference[at:at+len(blob)])))
     return dict(sources=[dict(path=str(p.resolve()),sha256=sha(p.read_bytes())) for p in (*sources,Path(__file__))],
         fragments=fragments),dict(palette_bank=14,unread_logic='native unchanged',hook=HOOK,
-            match='Exact authored badge tile; all other row icons keep palette 13',ram_reserved_bytes=0)
+            match='Exact authored badge tile; all other row icons keep palette 13',
+            row_columns=17,badge_canvas=[24,16],background_width=19,
+            padding_left=2,padding_right=2,ram_reserved_bytes=0)

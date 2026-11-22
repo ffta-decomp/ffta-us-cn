@@ -3,9 +3,9 @@
   "native_bank": 4013412,
   "entry": 28,
   "entry_count": 38,
-  "decoded_bytes": 128,
+  "decoded_bytes": 192,
   "canvas": [
-    16,
+    24,
     16
   ],
   "background": {
@@ -13,7 +13,7 @@
     "rect": [
       0,
       2,
-      16,
+      19,
       14
     ],
     "radius": 2,
@@ -26,10 +26,10 @@
     "font_sha256": "5adc3a83d11edc2e6f5bb3bc009dd9028dc055cbb3fc5f23715fb4de3c4e3eb0",
     "font_size": 8,
     "face_size": [
-      6,
+      7,
       8
     ],
-    "glyph_advance": 6,
+    "glyph_advance": 8,
     "origin": [
       2,
       4
@@ -38,14 +38,7 @@
     "one_bit": true,
     "resampling": false,
     "padding_left": 2,
-    "padding_right": 2,
-    "fitting": {
-      "method": "Remove an interior column without resampling",
-      "removed_column": {
-        "未": 2,
-        "读": 2
-      }
-    }
+    "padding_right": 2
   },
   "relocation": {
     "bank_offset": 15990784,
@@ -54,11 +47,50 @@
     "pointer_sites": [
       453344,
       833992
-    ]
+    ],
+    "wide_pixels_offset": 16003072,
+    "wide_bytes": 192
   },
   "palette_binding": {
     "hook": 96258,
-    "scope": "Exact authored tile match only; native unread flags unchanged"
+    "scope": "Exact authored tile matching; extend palette to the first badge column only"
   },
-  "untargeted_entries_preserved": true
+  "untargeted_entries_preserved": true,
+  "native_row_layout": {
+    "columns": 17,
+    "original_columns": 16,
+    "period": 9,
+    "tile_base": 448,
+    "character_end": 754,
+    "cache_template_capacity": 4080,
+    "cache_template_bytes": 612,
+    "scrollbar_x": 184
+  },
+  "native_decoded_bytes": 128,
+  "physical_tile_order": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      1
+    ]
+  ]
 }

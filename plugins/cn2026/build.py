@@ -135,6 +135,10 @@ def prepare(reference, image, args, output, config):
         pixels = [data for row, data in fragments if row['rom_offset']==0xf42000 and row['bytes']==128]
         if len(pixels)!=1 or sha(pixels[0])!=badge['pixels_sha256']:
             raise ValueError('Unread badge matcher pixels differ from the resource plan')
+        wide=[data for row,data in fragments if row['rom_offset']==0xf43000 and row['bytes']==192]
+        if (badge.get('wide_pixels_offset')!=0xf43000 or len(wide)!=1 or
+                sha(wide[0])!=badge.get('wide_pixels_sha256')):
+            raise ValueError('Unread wide badge pixels differ from the resource plan')
         import sys
         sys.path.insert(0, str(PLUGIN.parents[1]/'tools'))
         from unread_badge import prepare as prepare_badge
