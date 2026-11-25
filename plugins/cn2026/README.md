@@ -17,6 +17,12 @@ unreferenced residue segment. Every preimage and input fragment is authenticated
 before the official upstream extension manifest is emitted. `save-layout.json` pins five native caption-layout instruction edits for the wider label; arbitrary executable fragments and external manifests are rejected. Missing, altered or overlapping fragments
 fail. Private directories are never discovered.
 
+The verified bold results variant uses Source Han Sans SC Bold for both
+Mission Cleared and Battle Victory. `result-artwork.json` records the style
+and pins the paired sprite and background banks supplied in the private pack.
+The original `cn2026-images-5` pack still works. If only one bank is updated,
+the build rejects the mixed pair.
+
 The supplied revision put four item labels at ROM `0xB00000`, colliding with the
 pinyin program. These labels move to `0xF24000`; only the four typed content-table
 pointers are retargeted. Sixteen formerly blank native glyph slots also change.

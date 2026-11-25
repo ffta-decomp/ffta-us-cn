@@ -57,6 +57,19 @@ def prepare(reference, image, args, output, config):
     # The checked-in plan owns all offsets and hashes. No external code, paths,
     # replacement declarations or optional extra fragments are imported.
     sources = [Path(__file__).resolve(), plan_path]
+    artwork = None
+    artwork_hashes = {}
+    if plan.get('result_artwork'):
+        if plan['result_artwork'] != 'result-artwork.json':
+            raise ValueError('Unsupported CN2026 result artwork reference')
+        artwork_path = PLUGIN / plan['result_artwork']
+        artwork = json.loads(artwork_path.read_text())
+        artwork_hashes = artwork['fragments']
+        if (artwork['schema'] != 'ffta-cn2026-result-artwork-v1' or
+                artwork_hashes.keys() != {'00f08000.bin', '00f10000.bin'}):
+            raise ValueError('Unexpected CN2026 result artwork banks')
+        sources.append(artwork_path)
+    updated_artwork = set()
     rows = list(plan['fragments'])
     revision = None
     if plan.get('translation_revisions'):
@@ -86,9 +99,14 @@ def prepare(reference, image, args, output, config):
         if sha(image[at:at + size]) != row['preimage_sha256']:
             raise ValueError('cn2026 resource preimage differs at ' + hex(at))
         data = source.read_bytes()
-        if len(data) != size or sha(data) != row['sha256']:
+        identity = sha(data)
+        if len(data) != size or identity not in (row['sha256'], artwork_hashes.get(name.name)):
             raise ValueError('cn2026 fragment identity differs: ' + name.name)
+        if identity != row['sha256']:
+            updated_artwork.add(name.name)
         fragments.append((row, data))
+    if updated_artwork and updated_artwork != artwork_hashes.keys():
+        raise ValueError('Both CN2026 result artwork banks must use the same revision')
     layout_rows = []
     if plan.get('layout_repairs'):
         if plan['layout_repairs'] != 'save-layout.json':
@@ -133,6 +151,9 @@ def prepare(reference, image, args, output, config):
         plan_sha256=sha(plan_path.read_bytes()), image_only=revision is None,
         fragments=len(fragments), save_caption_layout_sites=layout_rows, included=plan['included'], deferred=plan['deferred'],
         validation_limits=plan['validation_limits'])
+    if updated_artwork:
+        report['version'] = artwork['version']
+        report['result_artwork'] = dict(style=artwork['style'], entries=artwork['entries'])
     if revision:
         final_font = bytearray(image[active_font:active_font + glyph_count * 128])
         for row, data in fragments:

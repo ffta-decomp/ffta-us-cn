@@ -47,14 +47,13 @@ class CN2026Tests(unittest.TestCase):
                              0xB00000 < row['rom_offset'] + row['bytes'])
         self.assertEqual([r['index'] for r in plan['relocation']['pointer_rows']], [13, 62, 296, 694])
 
-    def fixture(self, root):
+    def fixture(self, root, names=('8.bin', '24.bin')):
         pack = root / 'pack'
         pack.mkdir()
         before = bytes(64)
         rows = []
-        for at in (8, 24):
+        for at, name in zip((8, 24), names, strict=True):
             data = bytes([at]) * 4
-            name = str(at) + '.bin'
             (pack / name).write_bytes(data)
             rows.append(dict(file=name, rom_offset=at, bytes=4, kind='resource',
                              sha256=sha(data), preimage_sha256=sha(before[at:at+4])))
@@ -100,6 +99,28 @@ class CN2026Tests(unittest.TestCase):
             with patch.object(plugin, 'PLUGIN', root), self.assertRaisesRegex(ValueError, 'identity'):
                 plugin.prepare(before, before, args, root / 'out', {})
             self.assertFalse((root / 'out').exists())
+
+    def test_result_artwork_accepts_complete_pairs_only(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            names = ('00f08000.bin', '00f10000.bin')
+            before, args, plan = self.fixture(root, names)
+            plan['result_artwork'] = 'result-artwork.json'
+            (root / 'images.json').write_text(json.dumps(plan))
+            artwork = dict(schema='ffta-cn2026-result-artwork-v1', version='test-bold',
+                           style='bold', entries=[],
+                           fragments={name: sha(b'bold') for name in names})
+            (root / 'result-artwork.json').write_text(json.dumps(artwork))
+            with patch.object(plugin, 'PLUGIN', root):
+                _, legacy = plugin.prepare(before, before, args, root / 'legacy', {})
+                self.assertEqual(legacy['version'], 'test-images')
+                (args.image_enhancement_pack / names[0]).write_bytes(b'bold')
+                with self.assertRaisesRegex(ValueError, 'same revision'):
+                    plugin.prepare(before, before, args, root / 'mixed', {})
+                self.assertFalse((root / 'mixed').exists())
+                (args.image_enhancement_pack / names[1]).write_bytes(b'bold')
+                _, updated = plugin.prepare(before, before, args, root / 'updated', {})
+                self.assertEqual(updated['version'], 'test-bold')
 
     def test_incompatible_preimage_and_code_fragments_fail(self):
         with tempfile.TemporaryDirectory() as tmp:

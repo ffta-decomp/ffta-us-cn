@@ -1710,5 +1710,6 @@
     }
   ],
   "translation_revisions": "revisions.json",
+  "result_artwork": "result-artwork.json",
   "layout_repairs": "save-layout.json"
 }

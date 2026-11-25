@@ -77,6 +77,7 @@
       "files": [
         "cn2026/build.py",
         "cn2026/images.json",
+        "cn2026/result-artwork.json",
         "cn2026/README.md",
         "cn2026/revisions.json",
         "cn2026/save-layout.json"

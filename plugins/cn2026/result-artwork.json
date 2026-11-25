@@ -1,0 +1,88 @@
+{
+  "schema": "ffta-cn2026-result-artwork-v1",
+  "version": "cn2026-images-5-result-bold",
+  "style": "Source Han Sans SC Bold, supersampled with native palette smoothing",
+  "font": {
+    "family": "Source Han Sans SC",
+    "style": "Bold",
+    "license": "OFL-1.1",
+    "sha256": "df2b90f5bcc6d01dfc964cec5f6d535d6b6aebd26ed7fd79a9c1b3f2112fcb6b"
+  },
+  "raster": {
+    "face_height_px": 26,
+    "face_width_px": 26,
+    "face_weight_px": 0,
+    "oblique_slope": 0,
+    "supersample": 12,
+    "stroke_radius_px": 2,
+    "face_threshold": 112,
+    "stroke_threshold": 112
+  },
+  "entries": [
+    {
+      "index": 0,
+      "text": "任务完成"
+    },
+    {
+      "index": 2,
+      "text": "战斗胜利"
+    }
+  ],
+  "native_cell_size": [
+    32,
+    32
+  ],
+  "background_cells_origin": [
+    56,
+    0
+  ],
+  "banks": [
+    {
+      "id": "result-sprites",
+      "entry_format": "native 4bpp",
+      "outline_index": 2,
+      "outer_outline_index": 1,
+      "face_levels": [
+        [
+          208,
+          7
+        ],
+        [
+          163,
+          6
+        ],
+        [
+          119,
+          5
+        ],
+        [
+          78,
+          4
+        ],
+        [
+          44,
+          3
+        ]
+      ]
+    },
+    {
+      "id": "result-backgrounds",
+      "entry_format": "native 4bpp",
+      "outline_index": 11,
+      "face_levels": [
+        [
+          192,
+          1
+        ],
+        [
+          80,
+          10
+        ]
+      ]
+    }
+  ],
+  "fragments": {
+    "00f08000.bin": "bcbe4989896fdcd9142eab0d07b2a81d2d9cb54afd50145eaca614e267625356",
+    "00f10000.bin": "ae3c78b89a6c9a96de991754365de55347e641e8bba32b4fe270c7f0a641de10"
+  }
+}
