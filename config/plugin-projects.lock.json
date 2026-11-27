@@ -46,14 +46,14 @@
         "info/tools/build_plugin_info.py": "af2dac4cf30feb47c34551410c4df98f3f3180f125b2449f983a698d3bf6fa29",
         "info/tools/render_plugin_info.c": "275306e954658751f3533e6b25855917983ab5ac6c7735bb5c1426a33dfbc63e",
         "plugins.json": "96bab5bafbd37390fbed07b541d758318a9498b25a543ad3121ee32dce03a54f",
-        "recruit_rename/README.md": "5730da17bd0927322bc5a53f4485a650780b63ff2576d172cd92394c68aa407c",
-        "recruit_rename/bridges.s": "517563daf945b9975ab55efbf56e1ecdd9649de24d9385ae05fbd04e127e0a5b",
-        "recruit_rename/build.py": "f9514aaf9e37a34ec4402759254861c02ff1e280bfa9e01cf3dae3c1f48eff8e",
+        "recruit_rename/README.md": "5e3b29ba4f52e1c3beb34e5ebe76094dccab21c809b902e0739dfcf01484dcd9",
+        "recruit_rename/bridges.s": "9ed30fc5e5489bc0abbf8680004ab29134a7479d8bfa5eac6940cebe92bbe4f4",
+        "recruit_rename/build.py": "785015e4b39e52f5849d9d48d9baf32fa0b00f03a2f5abd07252f41d00d6eed3",
         "recruit_rename/migrate_save.py": "6b13e71778a02db8b665159a5f2d35aa53c2ab185c325b1c8e85e9482297ff31",
-        "recruit_rename/native.h": "f16742dfab29c67f2e6b9fc362fe737b53606176beb5aa675c7f410e92f90bf6",
-        "recruit_rename/recruit.c": "1baa9ff9f1d62ebfdc69b4dfabeb38857e26a2bc7705bbcead2350f5a6931537"
+        "recruit_rename/native.h": "04f3e7dfeca990347940a53314cf741b6111535442f9eef7397dd9d8d007125e",
+        "recruit_rename/recruit.c": "ba3af4d94aa29cb36998bf2ed89ac585d6ba50158276902626eca9af51de9d0d"
       },
-      "tree_sha256": "6d2bedd70b58a92d95019c25e0894eaddc3d90758101734d20d49b5975091278",
+      "tree_sha256": "b693f770cf1774e7159529438c22311c2d47a3b84e9bd9f3598b9da26fa065f0",
       "plugins": {
         "info": "info/tools/build_plugin_info.py",
         "fastskip": "fastskip/build.py",

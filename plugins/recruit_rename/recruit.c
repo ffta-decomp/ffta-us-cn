@@ -3,6 +3,8 @@
 
 #define LEGACY_NAME_BLOCK_MAGIC 0x314e5252u
 #define NAME_BLOCK_MAGIC 0x324e5252u
+#define ALTERNATE_NAME_BLOCK_MAGIC 0x334e5252u
+#define SUSPEND_REF_MAGIC 0x31524d4eu /* NMR1 */
 #define LIVE_NAME ((u8 *)0x02001f1c)
 #define GRAPHICS_BYTES 0xc000u
 #define EDITOR_HEAP_BYTES 0xe000u
@@ -59,6 +61,7 @@ enum {
 };
 
 enum {
+    EDITOR_BUTTON_A = 1,
     EDITOR_BUTTON_SELECT = 1 << 2,
     EDITOR_BUTTON_START = 1 << 3,
     EDITOR_PROTAGONIST_LAYOUT = 1,
@@ -84,6 +87,12 @@ enum {
     SAVE_CHECKSUM_OFFSET = 12,
     SAVE_SLOT_OFFSET = 16,
     PRIMARY_SAVE_SECTOR_INDEX = 2,
+    SAVE_SECTOR_IDS_OFFSET = 18,
+    FLASH_SECTORS_PER_BANK = 16,
+    SUSPEND_SLOT = 2,
+    MESSAGE_ARGUMENT_OFFSET = 0x20d8,
+    NAME_AREA_BYTES = 0xc00,
+    EMPTY_NATIVE_TEXT = 0x0814a001, /* Terminator of the native save signature. */
 };
 
 /* Preview and existing CN saves stored zero in this byte. */
@@ -130,6 +139,11 @@ struct Runtime {
     const u8 *resolved_names[UNIT_COUNT];
     const u8 *native_names[UNIT_COUNT];
     u8 starter_slot;  /* Zero while the original clan editor owns the task. */
+    u8 preserve_file_names;
+    u8 protected_sector;
+    u8 saving_message_owner;
+    const u8 *saving_image;
+    u32 matching_names;
 };
 
 enum { FRESH, EDITING, OFFERED, JOINED };
@@ -174,7 +188,8 @@ static unsigned prefill(u8 *out, const u8 *source)
     clear(out, NAME_BYTES);
     unsigned compact = *source == 1;
     source += compact;
-    for (unsigned i = 0; i < 8 && *source; ++i) {
+    unsigned i = 0;
+    for (; i < NAME_MAX_CELLS && *source; ++i) {
         if (compact) {
             out[2*i] = 0x80;
             out[2*i+1] = *source++ - 1;
@@ -185,7 +200,23 @@ static unsigned prefill(u8 *out, const u8 *source)
             out[2*i+1] = *source++;
         }
     }
-    return out[0] != 0;
+    return i;
+}
+
+/* Carry the token count into the padded native editor. Some valid CN
+ * glyphs contain a zero low byte, which a byte-length routine would truncate. */
+static void seed_editor(struct NameEditor *editor, const u8 *name)
+{
+    unsigned i = 0;
+    while (i < NAME_MAX_CELLS && name[2 * i]) {
+        copy(editor->name + 2 * i, name + 2 * i, 2);
+        ++i;
+    }
+    editor->length = i;
+    for (; i < sizeof(editor->name) / 2; ++i) {
+        editor->name[2 * i] = 0x40;
+        editor->name[2 * i + 1] = 0x73;
+    }
 }
 
 static unsigned candidate_is_generic(const struct Unit *unit)
@@ -222,20 +253,25 @@ static unsigned roster_index(const struct Unit *unit)
 
 static unsigned alias_matches(const struct Alias *alias, const struct Unit *unit)
 {
-    return alias->name_id && unit->kind == 1 && unit->race == alias->race &&
+    return alias->name_id && alias->name_id <= NAME_POOL_COUNT && unit->kind == 1 && unit->race == alias->race &&
            unit->name == pool_name(alias->name_id);
 }
 
-static void prune(void)
+static u32 names_in_image(const u8 *image)
 {
+    const struct Unit *units = (const struct Unit *)(image + (FIRST_UNIT - LIVE_SAVE));
+    u32 mask = 0;
     for (unsigned i = 0; i < UNIT_COUNT; ++i) {
         struct Alias *alias = &STATE->names.aliases[i];
-        if (!alias_matches(alias, &ROSTER[i])) {
+        if (alias_matches(alias, &units[i]))
+            mask |= 1u << i;
+        else if ((u32)image == LIVE_SAVE) {
             clear(alias, sizeof(*alias));
             STATE->native_names[i] = ROSTER[i].name;
             STATE->resolved_names[i] = ROSTER[i].name;
         }
     }
+    return mask;
 }
 
 /* Both fonts share the Latin and digit tokens. Keep other names in the
@@ -244,7 +280,7 @@ static unsigned alias_is_displayable(const struct Alias *alias)
 {
     if (alias->encoding == NAME_ENCODING)
         return alias->name[0] != 0;
-    for (unsigned i = 0; i < 16 && alias->name[i]; i += 2) {
+    for (unsigned i = 0; i < NAME_MAX_CELLS * 2 && alias->name[i]; i += 2) {
         const u16 token = (alias->name[i] << 8) | alias->name[i + 1];
         if (token != 0x4073 && (token < 0x80a6 || token > 0x80e3))
             return 0;
@@ -341,25 +377,65 @@ static void clear_keyboard_maps(struct EditorSession *session)
 
 static unsigned supports_bank(void);
 
-static void capture_draft(const struct NameEditor *editor)
+/* A zero low byte is valid glyph data. Only the start of a cell can end a name. */
+static unsigned valid_cell(const u8 *cell)
 {
-    unsigned length = 0;
-    clear(STATE->draft, NAME_BYTES);
-    for (unsigned i = 0; i < 16; i += 2) {
-        unsigned high = editor->name[i];
-        unsigned low = editor->name[i + 1];
-        if (!high)
-            break;
-        if (high < 0x80 && (high != 0x40 || low != 0x73)) {
-            clear(STATE->draft, NAME_BYTES);
-            return;
-        }
-        STATE->draft[i] = high;
-        STATE->draft[i + 1] = low;
-        if (high >= 0x80)
-            length = i + 2;
+    return cell[0] >= 0x80 || (cell[0] == 0x40 && cell[1] == 0x73);
+}
+
+static unsigned valid_saved_name(const struct Alias *alias)
+{
+    if (!alias->name_id || alias->name_id > NAME_POOL_COUNT ||
+        alias->encoding > ENCODING_US || !alias->name[0])
+        return 0;
+    for (unsigned i = 0; i < NAME_MAX_CELLS; ++i) {
+        const u8 *cell = alias->name + 2 * i;
+        if (!*cell)
+            return 1;
+        if (!valid_cell(cell))
+            return 0;
     }
-    clear(STATE->draft + length, NAME_BYTES - length);
+    return alias->name[2 * NAME_MAX_CELLS] == 0;
+}
+
+static unsigned capture_draft(const struct NameEditor *editor)
+{
+    clear(STATE->draft, NAME_BYTES);
+    if (editor->length > NAME_MAX_CELLS)
+        return 0;
+    unsigned bytes = 0;
+    for (unsigned i = 0; i < editor->length; ++i) {
+        const u8 *cell = editor->name + 2 * i;
+        if (!valid_cell(cell))
+            return 0;
+        if (cell[0] >= 0x80)
+            bytes = 2 * (i + 1);
+    }
+    copy(STATE->draft, editor->name, bytes);
+    return 1;
+}
+
+/* The retail keyboard can leave an uncommitted ninth narrow glyph in its
+ * measurement cell. Keep that cell free in both companion editors. */
+static unsigned reject_full_input(unsigned state, unsigned buttons, const struct NameEditor *editor)
+{
+    if (state == EDITOR_INPUT_STATE && (buttons & EDITOR_BUTTON_A) &&
+        editor->length >= NAME_MAX_CELLS) {
+        SetSound(104);
+        return 1;
+    }
+    return 0;
+}
+
+static unsigned confirm_draft(struct NameEvent *event, struct NameEditor *editor)
+{
+    if (capture_draft(editor))
+        return 1;
+    seed_editor(editor, STATE->draft);
+    editor->phase = NAME_CONFIRM_SHOW;
+    event->state = EDITOR_INPUT_STATE;
+    SetSound(104);
+    return 0;
 }
 
 typedef u32 (*NameTask)(u32, struct NameEvent *, struct NameEditor *);
@@ -432,15 +508,15 @@ static u32 opening_name_task(u32 task, struct NameEvent *event, struct NameEdito
          * text before the later stages load and draw the keyboard. */
         u8 original[NAME_BYTES];
         prefill(original, unit->name);
-        copy(editor->name, original, sizeof(editor->name));
-        editor->length = NameByteLength(editor->name) >> 1;
-        PadEditedName(editor->name);
+        seed_editor(editor, original);
         editor->portrait_unit = unit;
         editor->portrait = NATIVE(RESOLVE_UNIT_PORTRAIT_ADDRESS, void *, (const struct Unit *))(unit);
         return result;
     }
     const unsigned buttons = RAM(volatile u16, NAME_INPUT);
     const unsigned spelling = USE_PINYIN && editor->page == 0 && editor->spelling_length;
+    if (reject_full_input(state, buttons, editor))
+        return 0;
     if (state == EDITOR_INPUT_STATE && (buttons & EDITOR_BUTTON_START) && spelling) {
         SetSound(104);
         return 0;
@@ -462,7 +538,8 @@ static u32 opening_name_task(u32 task, struct NameEvent *event, struct NameEdito
         } else if ((u16)PollDialog()) {
             if ((u8)ReadDialogChoice() == NAME_DIALOG_YES) {
                 u8 original[NAME_BYTES];
-                capture_draft(editor);
+                if (!confirm_draft(event, editor))
+                    return 0;
                 prefill(original, unit->name);
                 if (same(STATE->draft, original, NAME_BYTES))
                     clear(STATE->draft, NAME_BYTES);
@@ -524,6 +601,8 @@ static u32 recruit_editor(u32 task, struct NameEvent *event, struct NameEditor *
     const unsigned state = event->state;
     const unsigned buttons = RAM(volatile u16, NAME_INPUT);
     const unsigned spelling = USE_PINYIN && editor->page == 0 && editor->spelling_length;
+    if (reject_full_input(state, buttons, editor))
+        return 0;
     if (state == EDITOR_INPUT_STATE && (buttons & EDITOR_BUTTON_START) && spelling) {
         SetSound(104);
         return 0;
@@ -540,12 +619,14 @@ static u32 recruit_editor(u32 task, struct NameEvent *event, struct NameEditor *
         copy(LIVE_NAME, STATE->editor_session->original, NAME_BYTES);
         u32 result = NATIVE(NAME_CALLBACK, u32, (u32, void *, void *))(task, event, editor);
         copy(LIVE_NAME, backup, NAME_BYTES);
+        seed_editor(editor, STATE->editor_session->original);
         editor->portrait_unit = STATE->candidate;
         editor->portrait = NATIVE(RESOLVE_UNIT_PORTRAIT_ADDRESS, void *, (const struct Unit *))(STATE->candidate);
         return result;
     }
     if (state == EDITOR_CONFIRM_STATE && editor->phase == 0) {
-        capture_draft(editor);
+        if (!confirm_draft(event, editor))
+            return 0;
         if (same(STATE->draft, STATE->editor_session->original, NAME_BYTES))
             clear(STATE->draft, NAME_BYTES);
         editor->reset = 0;
@@ -802,6 +883,72 @@ struct ReadNames {
     } records;
 };
 
+/* The rest of each slot's 4 KiB extension page belongs to future versions. */
+struct SuspendNameRef {
+    u32 magic;
+    u16 name_id;
+    u8 owner;  /* One-based physical roster slot. */
+    u8 race;
+    u32 crc;
+};
+_Static_assert(sizeof(struct ReadNames) <= NAME_AREA_BYTES, "legacy name bank");
+_Static_assert(NAME_AREA_BYTES + sizeof(struct SuspendNameRef) <= FLASH_SECTOR_BYTES, "suspend metadata");
+_Static_assert(sizeof(struct SuspendNameRef) == 12, "suspend name reference");
+
+static void read_extension(u8 sector, u32 offset, void *out, u32 size)
+{
+    switch_bank(1);
+    NativeRead(sector, offset, out, size);
+    switch_bank(0);
+}
+
+enum RecordLayout { INVALID_RECORDS, SLOT_RECORDS, POINTER_RECORDS };
+
+static enum RecordLayout read_record_layout(u8 sector, unsigned alternate, u32 sequence, u32 crc,
+                                             struct ReadNames *block)
+{
+    if (sector >= FLASH_SECTORS_PER_BANK)
+        return INVALID_RECORDS;
+    read_extension(sector, 0, block, sizeof(*block));
+    if ((block->magic != LEGACY_NAME_BLOCK_MAGIC &&
+         block->magic != (alternate ? ALTERNATE_NAME_BLOCK_MAGIC : NAME_BLOCK_MAGIC)) ||
+        block->sequence != sequence || block->native_crc != crc)
+        return INVALID_RECORDS;
+    if (block->names_crc == NameCrc(block->records.slots, sizeof(block->records.slots), 0))
+        return SLOT_RECORDS;
+    if (block->magic == LEGACY_NAME_BLOCK_MAGIC &&
+        block->names_crc == NameCrc(block->records.pointers, sizeof(block->records.pointers), 0))
+        return POINTER_RECORDS;
+    return INVALID_RECORDS;
+}
+
+/* Older preview ROMs could serialize this display-only pointer. Recognize
+ * exact record starts only; the native argument is also used for numbers. */
+static unsigned normalize_message_argument(u8 *image)
+{
+    const struct Unit *units = (const struct Unit *)(image + (FIRST_UNIT - LIVE_SAVE));
+    const u8 **argument = (const u8 **)(image + MESSAGE_ARGUMENT_OFFSET);
+    for (unsigned i = 0; i < UNIT_COUNT; ++i) {
+        if (*argument == STATE->names.aliases[i].name) {
+            *argument = units[i].kind == 1 && pool_id(units[i].name)
+                      ? units[i].name : (const u8 *)EMPTY_NATIVE_TEXT;
+            return i + 1;
+        }
+    }
+    return 0;
+}
+
+static void restore_message_argument(u8 *image, unsigned owner)
+{
+    if (!owner || owner > UNIT_COUNT)
+        return;
+    unsigned i = owner - 1;
+    const u8 **argument = (const u8 **)(image + MESSAGE_ARGUMENT_OFFSET);
+    if (*argument == STATE->native_names[i] &&
+        STATE->resolved_names[i] == STATE->names.aliases[i].name)
+        *argument = STATE->resolved_names[i];
+}
+
 static void restore_preview_alias(const struct Unit *units, const struct Alias *alias)
 {
     unsigned match = UNIT_COUNT;
@@ -820,9 +967,13 @@ static void normalize_restored_names(void)
 {
     for (unsigned i = 0; i < UNIT_COUNT; ++i) {
         struct Alias *alias = &STATE->names.aliases[i];
+        if (!valid_saved_name(alias)) {
+            clear(alias, sizeof(*alias));
+            continue;
+        }
         if (alias->encoding != ENCODING_CN)
             continue;
-        for (unsigned j = 0; j < 16 && alias->name[j]; j += 2) {
+        for (unsigned j = 0; j < NAME_MAX_CELLS * 2 && alias->name[j]; j += 2) {
             if (alias->name[j] == 0x8c && alias->name[j + 1] == 0x67) {
                 alias->name[j] = 0x85; /* Obsolete preview glyph becomes 招. */
                 alias->name[j + 1] = 0x70;
@@ -831,30 +982,25 @@ static void normalize_restored_names(void)
     }
 }
 
-static unsigned read_names(const u8 *image, u8 slot, u8 sector)
+static unsigned read_names(u8 *image, u8 slot, u8 sector, unsigned alternate)
 {
-    if (!supports_bank())
-        return 0;
     struct ReadNames buffer;
     struct ReadNames *block = &buffer;
-    switch_bank(1);
-    NativeRead(sector, 0, block, sizeof(*block));
-    switch_bank(0);
-    if ((block->magic != NAME_BLOCK_MAGIC && block->magic != LEGACY_NAME_BLOCK_MAGIC) ||
-        block->sequence != *(const u32 *)(image + SAVE_SEQUENCE_OFFSET) ||
-        block->native_crc != *(const u32 *)(image + SAVE_CHECKSUM_OFFSET) || image[SAVE_SLOT_OFFSET] != slot)
+    if (image[SAVE_SLOT_OFFSET] != slot)
         return 0;
-
+    enum RecordLayout layout = read_record_layout(sector, alternate,
+        *(const u32 *)(image + SAVE_SEQUENCE_OFFSET), *(const u32 *)(image + SAVE_CHECKSUM_OFFSET), block);
+    if (layout == INVALID_RECORDS)
+        return 0;
     const struct Unit *units = (const struct Unit *)(image + (FIRST_UNIT - LIVE_SAVE));
-    if (block->names_crc == NameCrc(block->records.slots, sizeof(block->records.slots), 0)) {
-        if (block->magic == NAME_BLOCK_MAGIC)
+    if (layout == SLOT_RECORDS) {
+        if (block->magic != LEGACY_NAME_BLOCK_MAGIC)
             copy((u8 *)STATE->names.aliases, (const u8 *)block->records.slots,
                  sizeof(STATE->names.aliases));
         else
             for (unsigned i = 0; i < UNIT_COUNT; ++i)
                 restore_preview_alias(units, &block->records.slots[i]);
-    } else if (block->magic == LEGACY_NAME_BLOCK_MAGIC &&
-               block->names_crc == NameCrc(block->records.pointers, sizeof(block->records.pointers), 0)) {
+    } else {
         for (unsigned i = 0; i < UNIT_COUNT; ++i) {
             const struct PointerAlias *old = &block->records.pointers[i];
             if (!old->name)
@@ -866,13 +1012,21 @@ static unsigned read_names(const u8 *image, u8 slot, u8 sector)
             copy(alias.name, old->text, NAME_BYTES);
             restore_preview_alias(units, &alias);
         }
-    } else {
-        return 0;
     }
     STATE->names.magic = NAME_BLOCK_MAGIC;
     normalize_restored_names();
     for (unsigned i = 0; i < UNIT_COUNT; ++i)
         resolve_roster_name(i, &units[i]);
+    if (slot == SUSPEND_SLOT && block->magic != LEGACY_NAME_BLOCK_MAGIC) {
+        struct SuspendNameRef ref;
+        read_extension(sector, NAME_AREA_BYTES, &ref, sizeof(ref));
+        if (ref.magic == SUSPEND_REF_MAGIC && ref.owner && ref.owner <= UNIT_COUNT &&
+            ref.crc == NameCrc(&ref, 8, block->native_crc)) {
+            const struct Alias *alias = &STATE->names.aliases[ref.owner - 1];
+            if (ref.name_id == alias->name_id && ref.race == alias->race)
+                restore_message_argument(image, ref.owner);
+        }
+    }
     return 1;
 }
 
@@ -883,11 +1037,15 @@ static u32 recruit_load(u8 slot, u8 *image, u32 caller)
     if (status == 1 && ((u32)image == LIVE_SAVE ||
         ((u32)image == NATIVE_STAGED_LOAD_BUFFER && (caller == NATIVE_LOAD_RETURN_SITE_A || caller == NATIVE_LOAD_RETURN_SITE_B)))) {
         clear(STATE, sizeof(*STATE));
+        unsigned legacy_owner = slot == SUSPEND_SLOT ? normalize_message_argument(image) : 0;
         u8 sectors[20];
-        if (slot > 2 ||
+        if (slot > 2 || !supports_bank() ||
             NATIVE(NATIVE_SAVE_SECTOR_LIST_ADDRESS, u32, (u8, void *))(slot, sectors) != 4 ||
-            !read_names(image, slot, sectors[PRIMARY_SAVE_SECTOR_INDEX]))
+            (!read_names(image, slot, sectors[PRIMARY_SAVE_SECTOR_INDEX], 0) &&
+             !read_names(image, slot, sectors[PRIMARY_SAVE_SECTOR_INDEX + 1], 1)))
             clear(&STATE->names, sizeof(STATE->names));
+        else if (legacy_owner)
+            restore_message_argument(image, legacy_owner);
     }
     return status;
 }
@@ -895,45 +1053,129 @@ static u32 recruit_load(u8 slot, u8 *image, u32 caller)
 /* Keep the full sector on the synchronous writer's stack. File menus own no
  * live EWRAM heap here. Guard at the call site before reserving the sector. */
 __attribute__((noinline))
-static u32 write_sector(u8 sector)
+static u32 write_sector(u8 sector, u32 magic)
 {
-    _Alignas(4) u8 page[FLASH_SECTOR_BYTES];
-    for (unsigned i = 0; i < FLASH_SECTOR_BYTES; ++i)
-        page[i] = 0xff;
-    copy(page, (const u8 *)&STATE->names, sizeof(STATE->names));
+    union {
+        u8 bytes[FLASH_SECTOR_BYTES];
+        struct NameBlock names;
+    } page;
+    if (STATE->protected_sector < FLASH_SECTORS_PER_BANK)
+        read_extension(STATE->protected_sector, 0, &page, sizeof(page));
+    else
+        for (unsigned i = 0; i < sizeof(page); ++i)
+            page.bytes[i] = 0xff;
+
+    if (STATE->preserve_file_names) {
+        /* Retain even pointer-layout RRN1 records until a normal load migrates them. */
+        if (page.names.magic == LEGACY_NAME_BLOCK_MAGIC)
+            magic = LEGACY_NAME_BLOCK_MAGIC;
+    } else {
+        if (page.names.magic == LEGACY_NAME_BLOCK_MAGIC)
+            for (unsigned i = sizeof(struct NameBlock); i < sizeof(struct ReadNames); ++i)
+                page.bytes[i] = 0xff;
+        for (unsigned i = 0; i < UNIT_COUNT; ++i) {
+            struct Alias *out = &page.names.aliases[i];
+            if (STATE->matching_names & (1u << i))
+                copy((u8 *)out, (const u8 *)&STATE->names.aliases[i], sizeof(*out));
+            else
+                clear(out, sizeof(*out));
+        }
+        page.names.names_crc = NameCrc(page.names.aliases, sizeof(page.names.aliases), 0);
+    }
+    const u8 *image = STATE->saving_image;
+    page.names.magic = magic;
+    page.names.sequence = *(const u32 *)(image + SAVE_SEQUENCE_OFFSET);
+    page.names.native_crc = *(const u32 *)(image + SAVE_CHECKSUM_OFFSET);
+    if (image[SAVE_SLOT_OFFSET] == SUSPEND_SLOT) {
+        struct SuspendNameRef ref;
+        clear(&ref, sizeof(ref));
+        unsigned owner = STATE->saving_message_owner;
+        if (owner && owner <= UNIT_COUNT) {
+            const struct Alias *alias = &STATE->names.aliases[owner - 1];
+            ref.magic = SUSPEND_REF_MAGIC;
+            ref.name_id = alias->name_id;
+            ref.owner = owner;
+            ref.race = alias->race;
+            ref.crc = NameCrc(&ref, 8, page.names.native_crc);
+        }
+        copy(page.bytes + NAME_AREA_BYTES, (const u8 *)&ref, sizeof(ref));
+    }
     switch_bank(1);
-    u32 failed = NativeWrite(sector, page);
+    u32 failed = NativeWrite(sector, &page);
     switch_bank(0);
     return failed;
 }
 
-static u32 write_names(u8 sector)
+/* The native writer programs logical pages 3, 2, 1, then the header.
+ * By the header call its sequence, CRC and physical sector list are final. */
+u32 PrepareNameSector(u32 sector, const u8 *page)
 {
+    if (page != STATE->saving_image || !page)
+        return 0;
+    if (sector >= FLASH_SECTORS_PER_BANK || page[SAVE_SECTOR_IDS_OFFSET] != sector)
+        return 1;
+    u32 magic = NAME_BLOCK_MAGIC;
+    if (sector == STATE->protected_sector) {
+        sector = page[SAVE_SECTOR_IDS_OFFSET + 1];
+        if (sector >= FLASH_SECTORS_PER_BANK || sector == STATE->protected_sector)
+            return 1;
+        magic = ALTERNATE_NAME_BLOCK_MAGIC;
+    }
     u32 stack;
     __asm__ volatile ("mov %0, sp" : "=r"(stack));
     /* Leaves at least 0x600 bytes above the native IWRAM work data at 0x616C
      * even after the sector, including nested native Flash calls. */
-    return stack < FLASH_STACK_MIN || stack > 0x03007ec0u ? 1 : write_sector(sector);
+    return stack < FLASH_STACK_MIN || stack > 0x03007ec0u ? 1 : write_sector(sector, magic);
+}
+
+/* Keep the last companion copy for the selected slot until its replacement
+ * header is committed. Both possible pages belong to the native slot. */
+__attribute__((noinline))
+static u8 previous_name_sector(u8 slot)
+{
+    u8 sectors[20];
+    if (NATIVE(NATIVE_SAVE_SECTOR_LIST_ADDRESS, u32, (u8, void *))(slot, sectors) != 4)
+        return FLASH_SECTORS_PER_BANK;
+    u8 primary = sectors[PRIMARY_SAVE_SECTOR_INDEX];
+    if (primary >= FLASH_SECTORS_PER_BANK)
+        return FLASH_SECTORS_PER_BANK;
+    u32 native_key[2];
+    struct ReadNames block;
+    NativeRead(primary, SAVE_SEQUENCE_OFFSET, native_key, sizeof(native_key));
+    for (unsigned i = 0; i < 2; ++i) {
+        u8 sector = sectors[PRIMARY_SAVE_SECTOR_INDEX + i];
+        if (read_record_layout(sector, i, native_key[0], native_key[1], &block) != INVALID_RECORDS)
+            return sector;
+    }
+    return FLASH_SECTORS_PER_BANK;
 }
 
 __attribute__((noinline))
-static u32 recruit_save(u8 slot, u8 *image)
+static u32 recruit_save(u8 slot, u8 *image, unsigned from_file)
 {
+    if (!image || slot > SUSPEND_SLOT)
+        return OriginalSave(slot, image);
+    unsigned live_names = !from_file && STATE->names.magic == NAME_BLOCK_MAGIC;
+    if (!supports_bank())
+        return live_names ? 0 : OriginalSave(slot, image);
+
+    /* The ending owns the previously committed *target file*. All other
+     * native writers submit a live roster or a snapshot of that roster. */
+    STATE->protected_sector = previous_name_sector(slot);
+    unsigned owner = normalize_message_argument(image);
+    /* Commit an empty name block for an unnamed file too. A recycled sector
+     * must never reveal an old alias if its native header happens to repeat. */
+    STATE->preserve_file_names = from_file && STATE->protected_sector < FLASH_SECTORS_PER_BANK;
+    STATE->matching_names = live_names ? names_in_image(image) : 0;
+    STATE->saving_message_owner = slot == SUSPEND_SLOT ? owner : 0;
+    STATE->saving_image = image;
     u32 status = OriginalSave(slot, image);
-    if (status != 1 || (u32)image != LIVE_SAVE || slot > 2 ||
-        STATE->names.magic != NAME_BLOCK_MAGIC || !supports_bank())
-        return status;
-
-    prune();
-    u8 sectors[20];
-    if (NATIVE(NATIVE_SAVE_SECTOR_LIST_ADDRESS, u32, (u8, void *))(slot, sectors) != 4)
-        return status;
-    STATE->names.sequence = RAM(u32, LIVE_SAVE + SAVE_SEQUENCE_OFFSET);
-    STATE->names.native_crc = RAM(u32, LIVE_SAVE + SAVE_CHECKSUM_OFFSET);
-    STATE->names.names_crc = NameCrc(STATE->names.aliases, sizeof(STATE->names.aliases), 0);
-    return write_names(sectors[PRIMARY_SAVE_SECTOR_INDEX]) ? 0 : status;
+    STATE->saving_image = 0;
+    STATE->saving_message_owner = 0;
+    if ((u32)image == LIVE_SAVE)
+        restore_message_argument(image, owner);
+    return status;
 }
-
 
 u32 LoadFar(u8 slot, u8 *image)
 {
@@ -943,5 +1185,5 @@ u32 LoadFar(u8 slot, u8 *image)
 
 u32 SaveFar(u8 slot, u8 *image)
 {
-    return recruit_save(slot, image);
+    return recruit_save(slot, image, (u32)__builtin_return_address(0) == ENDING_FILE_RETURN);
 }

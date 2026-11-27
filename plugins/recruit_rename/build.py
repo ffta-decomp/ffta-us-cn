@@ -11,6 +11,7 @@ PLUGIN = Path(__file__).resolve().parent
 RETAIL_SHA = '43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19'
 ORIGIN = 0xE02000
 BRIDGE = 0x36D370
+COMMIT_BRIDGE = 0x36D3E0
 OPENING_BRIDGE = 0x36D3D8
 BASE = 0x08000000
 STOCK_NAME_CALLBACK = 0x0812A085
@@ -31,9 +32,19 @@ NATIVE_RECRUIT_COPY_OFFSET = 0x1443FC
 MENU_HEAP_ENTRY_OFFSET = 0x227E8
 NATIVE_SAVE_OFFSET = 0x13B0D4
 NATIVE_LOAD_OFFSET = 0x13B480
-# The title previews and temporary copies keep their original direct calls.
-SAVE_CALLS = (0x649F6, 0x64A82, 0x64B6E, 0xBD268, 0x13997A)
+# The ending reads the selected file back into a temporary image. Mission snapshots
+# also use this buffer, but are copied from the active party.
+ENDING_FILE_WRITE = 0x12C450
 LOAD_CALLS = (0x13AA28, 0x13AAC2)
+
+# Retail callers that resolve unit field 0 for immediate name rendering.
+UNIT_NAME_DISPLAY_CALLS = (
+    ('turn-order-name', 0x2586A),             # ResolveSelectionRecordLabel, mode 2
+    ('battle-card-name', 0x2C094),
+    ('deployment-card-name', 0x2C9A4),
+    ('party-card-name', 0x743F6),
+    ('unit-detail-name', 0x7563C),
+)
 
 
 def sha(data):
@@ -100,6 +111,7 @@ def prepare(reference, image, args, output, config):
         f"#define STATE_ADDRESS {memory.menu_heap_end(recruit=True):#x}u\n"
         f"#define RESIDENT_END {memory.RECRUIT_RAM[1]:#x}u\n"
         f"#define FLASH_STACK_MIN {memory.FLASH_STACK_MIN:#x}u\n"
+        f"#define ENDING_FILE_RETURN {BASE + ENDING_FILE_WRITE + 5:#x}u\n"
         f"#define NAME_CALLBACK {callback:#x}u\n"
         f"#define USE_PINYIN {int(args.pinyin)}\n"
         f"#define OPENING_ROSTER_NAMING {int(opening_roster_naming)}\n"
@@ -135,6 +147,7 @@ def prepare(reference, image, args, output, config):
     script.write_text(f'''
 SECTIONS {{
     .bridge {BASE + BRIDGE:#x} : {{ *(.bridge) }}
+    .commit_bridge {BASE + COMMIT_BRIDGE:#x} : {{ *(.commit_bridge) }}
     .opening_bridge {BASE + OPENING_BRIDGE:#x} : {{ *(.opening_bridge) }}
     .text {BASE + ORIGIN:#x} : {{ *(.text*) *(.rodata*) }}
     .data : {{ *(.data*) }}
@@ -143,7 +156,7 @@ SECTIONS {{
 }}
 ASSERT(SIZEOF(.data) == 0 && SIZEOF(.bss) == 0, "Unexpected static RAM")
 ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 52 &&
-       SIZEOF(.opening_bridge) <= 8, "Recruit ROM reservation")
+       SIZEOF(.commit_bridge) == 8 && SIZEOF(.opening_bridge) <= 8, "Recruit ROM reservation")
 ''')
     subprocess.run([prefix + 'ld', '-T', str(script), str(obj), str(bridge_obj), '-o', str(elf)], check=True)
     symbols = {}
@@ -162,7 +175,7 @@ ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 52 &&
         fragments.append(dict(pin(path), kind='code', rom_offset=offset,
                               reference_sha256=sha(old)))
 
-    sections = [('text', ORIGIN), ('bridge', BRIDGE)]
+    sections = [('text', ORIGIN), ('bridge', BRIDGE), ('commit_bridge', COMMIT_BRIDGE)]
     if opening_roster_naming:
         sections.append(('opening_bridge', OPENING_BRIDGE))
     for section, offset in sections:
@@ -191,10 +204,7 @@ ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 52 &&
         if reference[command] != b'\x18\x0b' or image[command] != reference[command]:
             raise ValueError('Unexpected opening clan name command')
         redirect('opening-clan-name', CLAN_NAME_CALL, 'ClanNameBridge', CLAN_NAME_ENTRY)
-    # Field 0 is the name. Redirect the battle and deployment cards as well as
-    # the formation and detail cards, without altering native roster records.
-    for name, offset in (('battle-card-name', 0x2C094), ('deployment-card-name', 0x2C9A4),
-                         ('party-card-name', 0x743F6), ('unit-detail-name', 0x7563C)):
+    for name, offset in UNIT_NAME_DISPLAY_CALLS:
         redirect(name, offset, 'RenderNameBridge', NATIVE_UNIT_FIELD_TEXT_OFFSET)
     for offset in (0x807D0, 0x8097E):
         redirect(f'recruit-accepted-{offset:x}', offset, 'AcceptBridge', NATIVE_RECRUIT_COPY_OFFSET)
@@ -203,8 +213,19 @@ ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 52 &&
         if offset == MENU_HEAP_ENTRY_OFFSET and args.fastskip:
             continue  # Fastskip builds the same lower heap bound.
         add(name, offset, jump(name))
-    for offset in SAVE_CALLS:
-        redirect(f'recruit-save-{offset:x}', offset, 'SaveBridge', NATIVE_SAVE_OFFSET)
+    if image[0x14A001] != 0:
+        raise ValueError('Native empty text terminator changed')
+    # Failure returns through the native scan/failure path with its success flag still zero.
+    if image[0x13B41A:0x13B424] != bytes.fromhex('fff709fd0b98002823d0'):
+        raise ValueError('Unexpected native save failure path')
+    redirect('prepare-name-sector', 0x13B3BC, 'NameCommitBridge', 0x14224C)
+    # Wrap the common serializer, including future callers and indirect calls.
+    # OriginalSave replays these four PC-independent prologue instructions.
+    if reference[NATIVE_SAVE_OFFSET:NATIVE_SAVE_OFFSET + 8] != bytes.fromhex('f0b557464e464546'):
+        raise ValueError('Unexpected native save entry prologue')
+    if image[ENDING_FILE_WRITE:ENDING_FILE_WRITE + 4] != thumb_call(ENDING_FILE_WRITE, BASE + NATIVE_SAVE_OFFSET):
+        raise ValueError('Unexpected ending file transaction')
+    add('recruit-save-entry', NATIVE_SAVE_OFFSET, jump('SaveFar'))
     for offset in LOAD_CALLS:
         redirect(f'recruit-load-{offset:x}', offset, 'LoadBridge', NATIVE_LOAD_OFFSET)
 
