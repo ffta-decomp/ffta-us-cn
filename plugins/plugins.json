@@ -50,9 +50,9 @@
     {
       "id": "recruit_rename",
       "feature": "recruit_rename",
-      "name": "Recruit naming",
-      "content": "Name new recruits",
-      "show_in_info": false,
+      "name": "Naming",
+      "content": "Names in SAV\nEWRAM 1 KiB\nEditor 108692 B\nIWRAM page 4 KiB",
+      "show_in_info": true,
       "priority": 300,
       "entry": "recruit_rename/build.py",
       "files": [

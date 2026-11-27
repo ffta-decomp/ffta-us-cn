@@ -5,6 +5,8 @@ from pathlib import Path
 import struct
 import subprocess
 
+import plugin_memory as memory
+
 PLUGIN = Path(__file__).resolve().parent
 HOST = PLUGIN.parents[1]
 RETAIL_SHA = '43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19'
@@ -43,7 +45,8 @@ def prepare(reference, image, args, output, config):
         raise ValueError('fastskip outputs must stay outside the source tree')
     output.mkdir(parents=True, exist_ok=False)
     objects = []
-    heap_bound = ['-DMENU_HEAP_END=0x0203ed20u'] if getattr(args, 'recruit_rename', False) else []
+    heap_end = memory.menu_heap_end(recruit=getattr(args, 'recruit_rename', False), fastskip=True)
+    heap_bound = [f'-DMENU_HEAP_END={heap_end:#x}u']
     for filename in ['frame.c', 'opening_scene.c', 'heap.c']:
         obj = output / (Path(filename).stem + '.o')
         subprocess.run([args.clang, '--target=arm-none-eabi', '-mcpu=arm7tdmi', '-mthumb',
@@ -70,7 +73,7 @@ def prepare(reference, image, args, output, config):
     targets = dict(frame='OpeningBattleFrameTask', scene='OpeningSceneService', heap='OpeningInitializeMenuHeap')
     fragments = [dict(pin(binary), kind='code', rom_offset=origin,
                       reference_sha256=sha(reference[origin:origin + len(payload)]))]
-    sources = [p for p in sorted(PLUGIN.iterdir()) if p.is_file()]
+    sources = [p for p in sorted(PLUGIN.iterdir()) if p.is_file()] + [Path(memory.__file__)]
     for hook in settings['hooks']:
         target = symbols[targets[hook['name']]] | 1
         if not config['rom_base'] + origin <= target < config['rom_base'] + origin + len(payload):
@@ -87,7 +90,7 @@ def prepare(reference, image, args, output, config):
     path.write_text(json.dumps(manifest, indent=2) + '\n')
     report = dict(id='fastskip', default_enabled=False, toggle='Info > Options',
                   settings_persisted_to_save=False, rom_reservation=[origin, origin + capacity],
-                  ram_reservation=[0x0203fff0, 0x02040000], payload_bytes=len(payload),
+                  ram_reservation=memory.FASTSKIP_RAM, menu_heap_end=heap_end, payload_bytes=len(payload),
                   symbols={k: hex(symbols[v] | 1) for k, v in targets.items()},
                   hooks=settings['hooks'], source=settings['source'], recovery_credit_eligible=False)
     (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')

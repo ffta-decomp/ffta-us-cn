@@ -13,7 +13,6 @@ enum {
     NAME_POOL_COUNT = 725,
     NAME_BYTES = 20,
     NAME_TASK_BYTES = 928,
-    STATE_ADDRESS = 0x0203ed20,
     LIVE_SAVE = 0x02000000,
     FIRST_UNIT = 0x02000080,
     GENERATED_UNIT = 0x02002fc4,
@@ -39,12 +38,17 @@ struct NameEvent {
 };
 
 struct NameEditor {
-    u8 unused[0x298];
+    u8 *caller;
+    u8 unused[0x298 - 4];
     void *portrait;
     const struct Unit *portrait_unit;
-    u8 unused_2a0[0x2f6 - 0x2a0];
+    u8 unused_2a0[0x2f4 - 0x2a0];
+    u8 tick_flag;
+    u8 unused_2f5;
     u8 page;
-    u8 unused_2f7[0x312 - 0x2f7];
+    u8 unused_2f7[0x2fc - 0x2f7];
+    void *buffers[5];
+    u8 unused_310[2];
     u8 name[18];
     u8 cursor[2];
     u8 length;
@@ -59,6 +63,11 @@ struct NameEditor {
 
 _Static_assert(sizeof(struct Unit) == 264, "unit stride");
 _Static_assert(sizeof(struct NameEvent) == 28, "name task event");
+_Static_assert(__builtin_offsetof(struct NameEditor, tick_flag) == 0x2f4, "editor tick flag");
+_Static_assert(__builtin_offsetof(struct NameEditor, buffers) == 0x2fc, "editor allocations");
+_Static_assert(__builtin_offsetof(struct NameEditor, name) == 0x312, "editor name");
+_Static_assert(__builtin_offsetof(struct NameEditor, length) == 0x326, "editor name length");
+_Static_assert(__builtin_offsetof(struct NameEditor, window) == 0x32c, "editor window");
 _Static_assert(__builtin_offsetof(struct NameEditor, phase) == 0x330, "editor phase");
 _Static_assert(__builtin_offsetof(struct NameEditor, spelling_length) == 0x33b, "pinyin composition");
 
@@ -72,6 +81,16 @@ _Static_assert(__builtin_offsetof(struct NameEditor, spelling_length) == 0x33b, 
 #define OriginalLoad NATIVE(0x0813b480, u32, (u8, u8 *))
 #define ShowDialog NATIVE(0x0801174c, void, (void *, u32, u32, const void *, const void *, u32, u32, u32, u32, u32))
 #define SetDialogMode NATIVE(0x0801339c, void, (u32))
+#define PollDialog NATIVE(0x08011860, u32, (void))
+#define ReadDialogChoice NATIVE(0x08013380, u32, (void))
+#define DrawNameConfirmation NATIVE(0x0812a52c, void, (struct NameEditor *))
+#define NameByteLength NATIVE(0x081444b8, u32, (const u8 *))
+#define PadEditedName NATIVE(0x0812b59c, void, (u8 *))
+#define FreeNameBuffer NATIVE(0x08022854, void, (void *))
+#define DestroyNameWindow NATIVE(0x08121b78, void, (void *))
+#define BiosCpuSet NATIVE(0x0814186c, void, (const void *, void *, u32))
+#define RestoreNameDisplay NATIVE(0x0802b8e8, void, (void))
+#define ConfigureNameBackground NATIVE(0x0801e458, void, (u32, u32, u32, u32, u32, void *, void *))
 #define SetSound NATIVE(0x08141540, void, (u32))
 #define CopyRecord NATIVE(0x081443fc, void *, (void *, const void *, unsigned))
 #define NativeWrite NATIVE(0x08141d10, u32, (u16, const void *))

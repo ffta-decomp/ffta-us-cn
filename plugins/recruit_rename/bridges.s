@@ -26,4 +26,6 @@ DialogBridge:
 BRIDGE IdentifyRecruitFlash, IdentifyRecruitFlashFar
 BRIDGE LoadBridge, LoadFar
 BRIDGE SaveBridge, SaveFar
+.section .opening_bridge,"ax",%progbits
+BRIDGE ClanNameBridge, ClanNameFar
 .section .note.GNU-stack,"",%progbits

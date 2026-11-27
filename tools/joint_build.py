@@ -235,6 +235,8 @@ def apply_project_plugins(reference, image, args, out, config, compile_source):
                     battle_speed=getattr(args, 'battle_speed', False),
                     common_options=getattr(args, 'common_options', getattr(args, 'cn2026', False)),
                     recruit_rename=getattr(args, 'recruit_rename', False))
+    from plugin_memory import check_reservations
+
     plugin_reports = []
     written = {}
     for plugin in sorted(load_catalogue(), key=lambda p: (p.get('priority', 0), p['id'])):
@@ -253,4 +255,5 @@ def apply_project_plugins(reference, image, args, out, config, compile_source):
                 written[offset] = new
         image = updated
         plugin_reports.append(dict(id=identifier, report=detail, extension=applied))
+    check_reservations((entry['id'], entry['report']) for entry in plugin_reports)
     return image, plugin_reports

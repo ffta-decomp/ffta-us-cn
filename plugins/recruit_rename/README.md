@@ -11,6 +11,37 @@ original name. While a pinyin spelling is in progress, SELECT pages through
 candidates and START waits for a candidate selection. Choosing No when
 the game asks whether to recruit the unit discards the draft.
 
+After naming the clan in the opening story, the game offers to name each
+ordinary starting companion in order. Named story characters retain
+their original names. Press START and choose Yes to accept
+the name, choose No to continue editing, or press SELECT to keep the original.
+The queue reuses the native keyboard and graphics with its own name buffer,
+confirmation, and cleanup. Use
+`--disable-opening-roster-naming` to skip this queue and keep regular recruit
+naming available.
+
+## Memory
+
+The plugin reserves 1,024 bytes of cold-cleared EWRAM at
+`[0x0203F800, 0x0203FC00)` for name records, the lookup cache and session
+bookkeeping. The builder reads the structure size from the ARM object and
+reports actual use separately from the reservation.
+
+The post-mission editor requests 108,692 bytes from the scene heap for its
+session, graphics backup and private editor pool. It restores the scene
+buffers and frees that allocation when the editor closes. If it cannot get
+the workspace, recruitment proceeds with the original name.
+
+The opening queue reuses the native keyboard and frees each set of editor
+buffers before starting the next companion. Its own close path keeps the
+generated roster's native name IDs so each confirmed alias stays bound to its
+slot. The last editor frees the task.
+
+The name-save extension builds its 4 KiB sector image on the IWRAM stack only
+during a synchronous Flash write. It checks the live stack address before
+reserving the sector. The build checks the compiler's static writer frame
+against the guarded stack budget.
+
 Use a copy of your battery save. With this plugin, mGBA expands a 64 KiB
 save to 128 KiB at boot under default settings. The first bank is preserved,
 the added bank is erased, and existing 128 KiB saves retain both banks.
@@ -18,7 +49,7 @@ For VBA-M, expand a 64 KiB save before importing it. If your emulator
 still selects 64 KiB, set its cartridge override to Flash 1 Mbit.
 
 ```sh
-python3 plugins/recruit_rename/migrate_save.py original.sav recruit.sav
+python3 engine/recruit_rename/migrate_save.py original.sav recruit.sav
 ```
 
 Manual migration copies all 65,536 original bytes and appends an erased bank.
@@ -34,7 +65,10 @@ The native sequence and checksum identify the exact save, and a separate CRC
 covers the name records. Each name belongs to the native roster slot and is
 checked against the unit's original name and race. The native roster copy
 replaces the slot's previous name after the player accepts the recruit.
-The party card, unit details and recruitment prompts show the resulting name.
+The formation, deployment, battle and unit detail cards use the same resolved
+name. Recruitment prompts use the pending draft until acceptance. Fixed-name units
+are outside the ordinary recruitment flow. The optional opening naming flow
+uses its own editor sequence.
 Native unit identifiers, protagonist naming and clan naming retain their
 original behavior.
 Names using the shared Latin letters and digits display in both ROMs. Other

@@ -5,12 +5,32 @@ from pathlib import Path
 import struct
 import subprocess
 
+import plugin_memory as memory
+
 PLUGIN = Path(__file__).resolve().parent
 RETAIL_SHA = '43fc8204c6dceee58828aebc7af0c72eb807e99f35ad641c8bb0a4fa8b6edc19'
 ORIGIN = 0xE02000
 BRIDGE = 0x36D370
+OPENING_BRIDGE = 0x36D3D8
 BASE = 0x08000000
 STOCK_NAME_CALLBACK = 0x0812A085
+CLAN_NAME_CALL = 0x12256E
+CLAN_NAME_ENTRY = 0x12B230
+OPENING_CLAN_COMMAND = 0x9A863E
+RECRUIT_SCRIPT_PAGE_POINTER = 0x36D67C
+RECRUIT_QUESTION_TEXT_INDEX = 21
+NATIVE_NAME_POOL_OFFSET = 0x5680DC
+NATIVE_NAME_POOL_COUNT = 725
+FLASH_SIGNATURE_OFFSET = 0x36CE28
+FLASH_PROBE_CALL = 0x141DAC
+NATIVE_FLASH_ID_OFFSET = 0x1418C0
+RECRUIT_DIALOG_CALL = 0x1181A
+NATIVE_DIALOG_TEXT_OFFSET = 0x18028
+NATIVE_UNIT_FIELD_TEXT_OFFSET = 0xC7EA4
+NATIVE_RECRUIT_COPY_OFFSET = 0x1443FC
+MENU_HEAP_ENTRY_OFFSET = 0x227E8
+NATIVE_SAVE_OFFSET = 0x13B0D4
+NATIVE_LOAD_OFFSET = 0x13B480
 # The title previews and temporary copies keep their original direct calls.
 SAVE_CALLS = (0x649F6, 0x64A82, 0x64B6E, 0xBD268, 0x13997A)
 LOAD_CALLS = (0x13AA28, 0x13AAC2)
@@ -39,10 +59,10 @@ def encode_english(text):
 
 
 def recruit_messages(image, cjk):
-    page, = struct.unpack_from('<I', image, 0x36d67c)
+    page, = struct.unpack_from('<I', image, RECRUIT_SCRIPT_PAGE_POINTER)
     page -= BASE
-    first, end = struct.unpack_from('<HH', image, page + 21 * 2)
-    original = image[page + first + 2:page + end]
+    text_start, text_end = struct.unpack_from('<HH', image, page + RECRUIT_QUESTION_TEXT_INDEX * 2)
+    original = image[page + text_start + 2:page + text_end]
     choice = original[original.index(b'\x40\x6e\x40\x53'):]
     if cjk:
         charset = PLUGIN.parents[1] / 'config/charsets/us-cn-v1.1/unicode-to-tokens.json'
@@ -68,19 +88,24 @@ def prepare(reference, image, args, output, config):
     if sha(reference) != RETAIL_SHA or config['rom_base'] != BASE:
         raise ValueError('Recruit naming requires the pinned US image')
     output.mkdir(parents=True, exist_ok=False)
+    opening_roster_naming = getattr(args, 'opening_roster_naming', True)
     callback = STOCK_NAME_CALLBACK
     if args.pinyin:
         pinyin_report = output.parent.parent / 'cn-module-stage/build-report.json'
         callback = int(json.loads(pinyin_report.read_text())['callback_entry'], 16)
-    vanilla_names = struct.unpack_from('<725I', image, 0x5680DC)
+    native_name_pointers = struct.unpack_from(f'<{NATIVE_NAME_POOL_COUNT}I', image, NATIVE_NAME_POOL_OFFSET)
     messages, message_sources = recruit_messages(image, args.cjk)
     header = output / 'build_bindings.h'
     header.write_text(
+        f"#define STATE_ADDRESS {memory.menu_heap_end(recruit=True):#x}u\n"
+        f"#define RESIDENT_END {memory.RECRUIT_RAM[1]:#x}u\n"
+        f"#define FLASH_STACK_MIN {memory.FLASH_STACK_MIN:#x}u\n"
         f"#define NAME_CALLBACK {callback:#x}u\n"
         f"#define USE_PINYIN {int(args.pinyin)}\n"
+        f"#define OPENING_ROSTER_NAMING {int(opening_roster_naming)}\n"
         f"#define NAME_ENCODING {'ENCODING_CN' if args.cjk else 'ENCODING_US'}\n"
-        f"#define NAMES_FIRST {min(vanilla_names):#x}u\n"
-        f"#define NAMES_END {max(vanilla_names) + 1:#x}u\n")
+        f"#define NAMES_FIRST {min(native_name_pointers):#x}u\n"
+        f"#define NAMES_END {max(native_name_pointers) + 1:#x}u\n")
     with header.open('a') as bindings:
         for name, data in messages.items():
             bindings.write(f'static const u8 {name}[] __attribute__((aligned(2))) = {{' +
@@ -90,7 +115,17 @@ def prepare(reference, image, args, output, config):
     subprocess.run([args.clang, '--target=arm-none-eabi', '-mcpu=arm7tdmi', '-mthumb',
         '-Os', '-std=c11', '-ffreestanding', '-fno-builtin', '-fno-unwind-tables',
         '-fno-asynchronous-unwind-tables', '-Wall', '-Wextra', '-Werror',
-        '-I', str(output), '-c', str(source), '-o', str(obj)], check=True)
+        '-fstack-usage', '-I', str(output), '-c', str(source), '-o', str(obj)], check=True)
+    usage = output / 'memory-usage.bin'
+    subprocess.run([args.tool_prefix + 'objcopy', '-O', 'binary', '-j', '.recruit_memory',
+                    str(obj), str(usage)], check=True)
+    start, resident, editor, page = struct.unpack('<4I', usage.read_bytes())
+    stack_rows = [row.split('\t') for row in obj.with_suffix('.su').read_text().splitlines()]
+    writers = [(int(size), kind) for site, size, kind in stack_rows if site.endswith(':write_sector')]
+    if len(writers) != 1 or writers[0][1] != 'static':
+        raise ValueError('Expected a single statically bounded Recruit Flash writer')
+    writer_stack = writers[0][0]
+    memory.check_recruit_memory(start, resident, editor, page, writer_stack)
     bridge_source = PLUGIN / 'bridges.s'
     bridge_obj = output / 'bridges.o'
     subprocess.run([args.clang, '--target=arm-none-eabi', '-mcpu=arm7tdmi', '-mthumb',
@@ -100,13 +135,15 @@ def prepare(reference, image, args, output, config):
     script.write_text(f'''
 SECTIONS {{
     .bridge {BASE + BRIDGE:#x} : {{ *(.bridge) }}
+    .opening_bridge {BASE + OPENING_BRIDGE:#x} : {{ *(.opening_bridge) }}
     .text {BASE + ORIGIN:#x} : {{ *(.text*) *(.rodata*) }}
     .data : {{ *(.data*) }}
     .bss : {{ *(.bss*) *(COMMON) }}
-    /DISCARD/ : {{ *(.ARM.exidx*) *(.ARM.extab*) *(.comment*) *(.note*) }}
+    /DISCARD/ : {{ *(.ARM.exidx*) *(.ARM.extab*) *(.comment*) *(.note*) *(.recruit_memory) }}
 }}
 ASSERT(SIZEOF(.data) == 0 && SIZEOF(.bss) == 0, "Unexpected static RAM")
-ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 0x40, "Recruit ROM reservation")
+ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 52 &&
+       SIZEOF(.opening_bridge) <= 8, "Recruit ROM reservation")
 ''')
     subprocess.run([prefix + 'ld', '-T', str(script), str(obj), str(bridge_obj), '-o', str(elf)], check=True)
     symbols = {}
@@ -125,7 +162,10 @@ ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 0x40, "Recruit ROM reservat
         fragments.append(dict(pin(path), kind='code', rom_offset=offset,
                               reference_sha256=sha(old)))
 
-    for section, offset in (('text', ORIGIN), ('bridge', BRIDGE)):
+    sections = [('text', ORIGIN), ('bridge', BRIDGE)]
+    if opening_roster_naming:
+        sections.append(('opening_bridge', OPENING_BRIDGE))
+    for section, offset in sections:
         path = output / f'{section}.object'
         subprocess.run([prefix + 'objcopy', '-O', 'binary', '-j', f'.{section}', str(elf), str(path)], check=True)
         blob = path.read_bytes()
@@ -143,31 +183,43 @@ ASSERT(SIZEOF(.text) <= 0x2000 && SIZEOF(.bridge) <= 0x40, "Recruit ROM reservat
 
     for offset in (0x70E10, 0x70F58):
         add(f'recruit-step-{offset:x}', offset, struct.pack('<I', symbols['RecruitStep']))
-    add('flash-marker', 0x36CE28, b'FLASH1M_V103' + bytes(4))
-    redirect('flash-probe', 0x141DAC, 'IdentifyRecruitFlash', 0x1418C0)
-    redirect('recruit-dialog', 0x1181A, 'DialogBridge', 0x18028)
-    for name, offset in (('party-card-name', 0x743F6), ('unit-detail-name', 0x7563C)):
-        redirect(name, offset, 'RenderNameBridge', 0xC7EA4)
+    add('flash-marker', FLASH_SIGNATURE_OFFSET, b'FLASH1M_V103' + bytes(4))
+    redirect('flash-probe', FLASH_PROBE_CALL, 'IdentifyRecruitFlash', NATIVE_FLASH_ID_OFFSET)
+    redirect('recruit-dialog', RECRUIT_DIALOG_CALL, 'DialogBridge', NATIVE_DIALOG_TEXT_OFFSET)
+    if opening_roster_naming:
+        command = slice(OPENING_CLAN_COMMAND, OPENING_CLAN_COMMAND + 2)
+        if reference[command] != b'\x18\x0b' or image[command] != reference[command]:
+            raise ValueError('Unexpected opening clan name command')
+        redirect('opening-clan-name', CLAN_NAME_CALL, 'ClanNameBridge', CLAN_NAME_ENTRY)
+    # Field 0 is the name. Redirect the battle and deployment cards as well as
+    # the formation and detail cards, without altering native roster records.
+    for name, offset in (('battle-card-name', 0x2C094), ('deployment-card-name', 0x2C9A4),
+                         ('party-card-name', 0x743F6), ('unit-detail-name', 0x7563C)):
+        redirect(name, offset, 'RenderNameBridge', NATIVE_UNIT_FIELD_TEXT_OFFSET)
     for offset in (0x807D0, 0x8097E):
-        redirect(f'recruit-accepted-{offset:x}', offset, 'AcceptBridge', 0x1443FC)
-    for offset, name in ((0x227E8, 'MenuHeap'), (0x4CA00, 'MissionHeap'),
+        redirect(f'recruit-accepted-{offset:x}', offset, 'AcceptBridge', NATIVE_RECRUIT_COPY_OFFSET)
+    for offset, name in ((MENU_HEAP_ENTRY_OFFSET, 'MenuHeap'), (0x4CA00, 'MissionHeap'),
                          (0x13C064, 'SaveHeap')):
-        if offset == 0x227E8 and args.fastskip:
+        if offset == MENU_HEAP_ENTRY_OFFSET and args.fastskip:
             continue  # Fastskip builds the same lower heap bound.
         add(name, offset, jump(name))
     for offset in SAVE_CALLS:
-        redirect(f'recruit-save-{offset:x}', offset, 'SaveBridge', 0x13B0D4)
+        redirect(f'recruit-save-{offset:x}', offset, 'SaveBridge', NATIVE_SAVE_OFFSET)
     for offset in LOAD_CALLS:
-        redirect(f'recruit-load-{offset:x}', offset, 'LoadBridge', 0x13B480)
+        redirect(f'recruit-load-{offset:x}', offset, 'LoadBridge', NATIVE_LOAD_OFFSET)
 
     manifest = output / 'extension.json'
     manifest.write_text(json.dumps(dict(schema='build-extension-v1', reference_sha256=RETAIL_SHA,
         sources=[pin(path) for path in (PLUGIN / 'build.py', PLUGIN / 'native.h',
-                                        source, bridge_source, *message_sources, header)],
+                                        source, bridge_source, *message_sources, Path(memory.__file__), header)],
         fragments=fragments), indent=2) + '\n')
     return manifest, dict(id='recruit_rename', rom_origin=ORIGIN, bridge=BRIDGE,
                           language='cn' if args.cjk else 'us',
                           keyboard='pinyin' if args.pinyin else 'native',
                           flash_capacity=131072, extension_offset=65536,
-                          startup_flash_probe=0x141DAC,
+                          ram_reservation=memory.RECRUIT_RAM, resident_bytes=resident,
+                          editor_heap_request_bytes=editor, flash_page_bytes=page,
+                          flash_writer_stack_bytes=writer_stack, menu_heap_end=start,
+                          startup_flash_probe=FLASH_PROBE_CALL,
+                          opening_roster_naming=opening_roster_naming,
                           symbols={name: hex(address) for name, address in symbols.items()})
