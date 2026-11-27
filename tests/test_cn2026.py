@@ -64,11 +64,11 @@ class CN2026Tests(unittest.TestCase):
         args = SimpleNamespace(cjk=True, cn2026=True, image_enhancement_pack=pack)
         return before, args, plan
 
-    def test_credit_replacement_preserves_four_pages_and_base_font(self):
+    def test_credit_replacement_lists_enhancements_and_retains_base_font(self):
         features = dict(cjk=True, cn2026=True, link_fix=True, info=True,
                         fastskip=True, italic_font=True)
         self.assertEqual([p['id'] for p in load_pages(features)],
-                         ['cn2026', 'netfix', 'info', 'fastskip'])
+                         ['cn2026', 'netfix', 'info', 'fastskip', 'enhancements'])
         self.assertEqual(resolve(features)[0]['id'], 'cn2025')
         features['cn2026'] = False
         self.assertEqual([p['id'] for p in load_pages(features)],

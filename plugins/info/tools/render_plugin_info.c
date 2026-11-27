@@ -69,12 +69,17 @@ int main(int argc, char **argv)
     for (page = 0; page < count; ++page) {
       for (variant = 0; variant < (page == HOST_OPTIONS_PAGE ? 2u : 1u); ++variant) {
         const char *content = variant ? host_options_on : host_pages[page].content;
+        unsigned sidebar_first = PluginInfoSidebarFirst(page);
         unsigned lines = Text(content, 96, 48, 120, 0, 0);
+        if (page == HOST_OPTIONS_PAGE && lines > 4) {
+            fprintf(stderr, "Fastskip Options must fit in one view per switch value\n");
+            return 1;
+        }
         if (lines > 255 * 4) { fprintf(stderr, "Too many content lines\n"); return 1; }
         for (first = 0; first < lines; first += 4) {
             PluginInfoFrame(pixels, page, count);
-            for (n = 0; n < count; ++n)
-                if (Text(host_pages[n].name, 26, 24 + n * 24, 46, 0, 1) != 1) {
+            for (n = 0; n < PLUGIN_INFO_SIDEBAR_ROWS && sidebar_first + n < count; ++n)
+                if (Text(host_pages[sidebar_first + n].name, 26, 24 + n * 24, 50, 0, 1) != 1) {
                     fprintf(stderr, "Plugin name exceeds sidebar width\n"); return 1;
                 }
             Text(host_pages[page].name, 96, 22, 120, 0, 1);

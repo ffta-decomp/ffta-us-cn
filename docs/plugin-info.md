@@ -59,3 +59,23 @@ The complete panel graphics, including text and frames, are semi-transparent thr
 (12/16 panel plus 4/16 background). A separate footer below the white frames
 reads `B: Close`. Native display/window and blending registers are
 restored together when the modal view closes.
+
+## Plugin memory budgets
+
+Each player-facing Info page describes the plugin's memory ownership. Title
+Info owns a 12-byte task tail and displays its graphics in 10 KiB of OBJ VRAM.
+Shared Options requests 7,296 bytes from the active menu heap and releases
+them on exit. Other battle and translation extensions describe when they
+reuse native storage or store their assets in ROM.
+
+The build checks the menu heap ceiling, overlapping declared EWRAM
+reservations and measured recruit-naming workspace. In the deployment R Info
+replay the native allocator needed a contiguous `0xC600`-byte payload after
+a 12-byte block header. The occupied position for this replay gives a
+minimum heap ceiling of `0x0203EDD8`. The enabled recruit plugin uses
+`0x0203F800`, leaving 2,600 bytes above that measured requirement. This
+budget covers the recorded route. Emulator replays verify menu behavior
+under the actual allocation sequence.
+
+The Fastskip page uses A to change its session switch. Both rendered
+variants show the memory cost and must fit in one view each.

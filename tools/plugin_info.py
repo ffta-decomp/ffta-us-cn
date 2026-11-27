@@ -85,8 +85,8 @@ def load_pages(features, path=None):
         if identifier not in superseded and plugin.get('show_in_info', True) and enabled(plugin, features):
             pages.append({'id': identifier, 'name': plugin['name'],
                           'lines': plugin['content'].split('\n')})
-    if len(pages) > 4:
-        raise ValueError('Info sidebar supports at most four plugins')
+    if len(pages) > 256:
+        raise ValueError('Info page index exceeds the native 8-bit field')
     return pages
 
 
@@ -101,4 +101,6 @@ def with_build_label(pages, label):
     """Add a per-build watermark without changing the shared catalogue."""
     if not label:
         return pages
-    return [dict(page, lines=[label, ''] + list(page['lines'])) for page in pages]
+    # The Options page uses A for switching, so its two views cannot scroll.
+    return [page if page['id'] == 'fastskip' else
+            dict(page, lines=[label, ''] + list(page['lines'])) for page in pages]

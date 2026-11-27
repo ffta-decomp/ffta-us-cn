@@ -17,5 +17,7 @@ unsigned PluginInfoText(const char *, unsigned x, unsigned y, unsigned width,
                         unsigned visible_lines, PluginInfoWidth,
                         PluginInfoGlyph, void *);
 /* 240x160 indexed framebuffer: 0 transparent, 1 blue, 2 white. */
+#define PLUGIN_INFO_SIDEBAR_ROWS 4u
+unsigned PluginInfoSidebarFirst(unsigned selected);
 void PluginInfoFrame(uint8_t *pixels, unsigned selected, unsigned count);
 #endif

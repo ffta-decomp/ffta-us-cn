@@ -68,9 +68,11 @@ def generate_assets(font_image, args, out, pages):
     options_on = ''
     if fastskip:
         spec = json.loads((PLUGIN_ROOT.parent / 'fastskip/config.json').read_text())
-        options_on = spec['labels']['on'] + '\nA: 切换'
-        if getattr(args, 'build_label', None):
-            options_on = args.build_label + '\n\n' + options_on
+        off = spec['labels']['off']
+        lines = pages[options_page]['lines']
+        if lines.count(off) != 1:
+            raise ValueError('Fastskip Options needs exactly one disabled label')
+        options_on = '\n'.join(spec['labels']['on'] if line == off else line for line in lines)
     mapping = json.loads(args.glyph_map.read_text())
     provenance = json.loads(args.map_report.read_text())
     if provenance['glyph_map_sha256'] != sha(args.glyph_map.read_bytes()) or \
@@ -200,8 +202,12 @@ def prepare(reference, image, font_image, args, out, config):
     if out.is_relative_to(ROOT):
         raise ValueError('Info build artifacts must be external')
     out.mkdir(parents=True, exist_ok=False)
-    pages = load_pages({'cjk': args.cjk, 'cn2026': getattr(args, 'cn2026', False), 'link_fix': args.link_fix,
-                        'info': getattr(args, 'info', False), 'fastskip': getattr(args, 'fastskip', False)})
+    cn2026 = getattr(args, 'cn2026', False)
+    pages = load_pages({'cjk': args.cjk, 'cn2026': cn2026, 'link_fix': args.link_fix,
+                        'info': getattr(args, 'info', False), 'fastskip': getattr(args, 'fastskip', False),
+                        'recruit_rename': getattr(args, 'recruit_rename', False),
+                        'battle_speed': getattr(args, 'battle_speed', False),
+                        'common_options': getattr(args, 'common_options', cn2026)})
     from plugin_info import with_build_label
     pages = with_build_label(pages, getattr(args, 'build_label', None))
     # A catalogue-level enabled:false also removes the runtime UI and hooks.

@@ -1,8 +1,10 @@
 /* Reserve exactly 16 bytes from the same native heap used by the source mod.
  * Its pinned start is already word-aligned. No new save or battle state. */
-#ifndef MENU_HEAP_END
-#define MENU_HEAP_END 0x0203fff0u
-#endif
+#include "runtime_option.h"
+
+_Static_assert(OPENING_OPTION_ADDRESS == EXPECTED_OPTION_ADDRESS, "option address");
+_Static_assert(sizeof(struct OpeningOption) == EXPECTED_OPTION_BYTES, "option size");
+_Static_assert(MENU_HEAP_END <= OPENING_OPTION_ADDRESS, "option overlaps menu heap");
 
 void OpeningInitializeMenuHeap(void)
 {

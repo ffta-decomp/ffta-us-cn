@@ -5,7 +5,7 @@
       "id": "cn2025",
       "feature": "cjk",
       "name": "cn2025",
-      "content": "美版汉化v1.1 集成\n作者 美版汉化v1.1 汉化组\n开发者bhe",
+      "content": "美版汉化v1.1 集成\n作者 美版汉化v1.1 汉化组\n开发者bhe\nText and art in ROM",
       "priority": 1000,
       "font": {
         "mode": "base",
@@ -25,7 +25,7 @@
       "id": "netfix",
       "feature": "link_fix",
       "name": "netfix",
-      "content": "联机补丁\n作者闲王小周周",
+      "content": "联机补丁\n作者闲王小周周\nNo reserved RAM",
       "priority": 0
     },
     {

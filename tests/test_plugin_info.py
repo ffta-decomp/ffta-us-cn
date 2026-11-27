@@ -24,7 +24,7 @@ class PluginInfoTests(unittest.TestCase):
     def test_exported_info_metadata_and_host_override(self):
         pages = load_pages({'info': True})
         self.assertEqual([p['id'] for p in pages], ['info'])
-        self.assertEqual(pages[0]['lines'], ['Plugin information', 'Developer bhe'])
+        self.assertEqual(pages[0]['lines'], ['Plugin information', 'Developer bhe', 'Title state 12 B', 'OBJ VRAM 10 KiB'])
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / 'plugins.json'
             path.write_text(json.dumps(dict(schema=1, plugins=[
@@ -44,8 +44,8 @@ class PluginInfoTests(unittest.TestCase):
     def test_selected_metadata_and_explicit_newlines(self):
         pages = load_pages({'cjk': True, 'link_fix': True})
         self.assertEqual([p['name'] for p in pages], ['cn2025', 'netfix'])
-        self.assertEqual(pages[0]['lines'], ['美版汉化v1.1 集成', '作者 美版汉化v1.1 汉化组', '开发者bhe'])
-        self.assertEqual(pages[1]['lines'], ['联机补丁', '作者闲王小周周'])
+        self.assertEqual(pages[0]['lines'], ['美版汉化v1.1 集成', '作者 美版汉化v1.1 汉化组', '开发者bhe', 'Text and art in ROM'])
+        self.assertEqual(pages[1]['lines'], ['联机补丁', '作者闲王小周周', 'No reserved RAM'])
         self.assertEqual(load_pages({}), [])
         self.assertEqual(load_pages({'link_fix': True}), [pages[1]])
 
@@ -91,6 +91,9 @@ class PluginInfoTests(unittest.TestCase):
             out = Path(tmp)
             image, args, pages = self.fixture(out, fastskip=True)
             self.assertEqual(pages[3]['id'], 'fastskip')
+            self.assertIn('EWRAM 16 B', pages[3]['lines'])
+            from plugin_info import with_build_label
+            self.assertEqual(with_build_label(pages, '1.2plus Test')[3], pages[3])
             _, header, report = generate_assets(image, args, out, pages)
             self.assertEqual(len([r for r in report['views'] if r['plugin'] == 'fastskip']), 2)
             self.assertIn('#define PLUGIN_OPTIONS_PAGE 3u', header.read_text())

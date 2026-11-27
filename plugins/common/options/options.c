@@ -10,16 +10,18 @@ typedef unsigned int u32;
 #define SETTINGS 0x1bcc
 #include "bindings.h"
 
+_Static_assert(0x1c7c + 4 <= OPTIONS_CONTEXT_BYTES, "Options context");
+
 void EnhancedOptionsInit(void *old, void *display_a, void *display_b, u32 tile, u32 linked)
 {
     u8 *p;
     u32 i;
     void *pool = *(void **)(__builtin_return_address(0) == (void *)0x080329ed ? 0x0200f38c : 0x0200f434);
     (void)old;
-    p = ((u8 *(*)(void *,u32))0x08007139)(pool, 0x1c80);
+    p = ((u8 *(*)(void *,u32))0x08007139)(pool, OPTIONS_CONTEXT_BYTES);
     CONTEXT = p;
     if (!p) return;
-    for (i = 0; i < 0x1c80; ++i) p[i] = 0;
+    for (i = 0; i < OPTIONS_CONTEXT_BYTES; ++i) p[i] = 0;
     *(void **)(p+24) = display_a;
     *(void **)(p+28) = display_b;
     *(u16 *)(p+2) = tile;
