@@ -17,8 +17,11 @@ R_INFO_END = R_INFO_FREE_BLOCK + NATIVE_BLOCK_HEADER + R_INFO_ARENA
 SHARED_OPTIONS_REQUEST = 0x1C80
 RECRUIT_EDITOR_REQUEST = 108692
 FLASH_PAGE_BYTES = 4096
-FLASH_STACK_MIN = 0x03007800
-FLASH_STACK_LIMIT = FLASH_STACK_MIN - 0x0300616C - 0x600
+# In addition to write_sector's compiler frame, the synchronous native Flash
+# calls use at least 284 bytes (program wrapper and its read-back verifier).
+FLASH_CALLEE_ALLOWANCE = 0x200
+FLASH_STACK_MIN = 0x03007A00
+FLASH_STACK_LIMIT = FLASH_STACK_MIN - 0x0300616C - 0x600 - FLASH_CALLEE_ALLOWANCE
 
 
 def checked_menu_heap_end(end):

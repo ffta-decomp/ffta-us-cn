@@ -28,4 +28,33 @@ BRIDGE LoadBridge, LoadFar
 BRIDGE SaveBridge, SaveFar
 .section .opening_bridge,"ax",%progbits
 BRIDGE ClanNameBridge, ClanNameFar
+.section .commit_bridge,"ax",%progbits
+BRIDGE NameCommitBridge, ProgramWithNames
+.text
+.balign 2
+.global OriginalSave
+.thumb_func
+OriginalSave:
+ push {r4-r7, lr}
+ mov r7, r10
+ mov r6, r9
+ mov r5, r8
+ ldr r3, =0x0813b0dd
+ bx r3
+ .ltorg
+.thumb_func
+ProgramWithNames:
+ push {r0-r2, lr}
+ bl PrepareNameSector
+ cmp r0, #0
+ pop {r0-r3}
+ bne 3f
+ mov lr, r3
+ bx r2
+3:
+ /* Scan sector state and unwind through the native write failure path.
+  * The caller spills its loop index before this hook. */
+ ldr r3, =0x0813b41b
+ bx r3
+ .ltorg
 .section .note.GNU-stack,"",%progbits
