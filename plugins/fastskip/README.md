@@ -23,3 +23,9 @@ Disable its build support with `--disable-fastskip` for an original menu, or
 use `exact-reference`. Enabled runtime behavior and disabled behavior must be
 checked separately in emulator replays. Prior source-project fixture success
 does not establish a new cold-boot playthrough, save reload or hardware acceptance.
+
+## Memory
+
+Fastskip owns the last 16 bytes of EWRAM for its session toggle. The state
+is outside the menu heap and does not use battery save space. When recruit
+naming is enabled, both patches use the same earlier heap ceiling.

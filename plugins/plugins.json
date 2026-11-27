@@ -5,7 +5,7 @@
       "id": "info",
       "feature": "info",
       "name": "info",
-      "content": "Plugin information\nDeveloper bhe",
+      "content": "Plugin information\nDeveloper bhe\nTitle state 12 B\nOBJ VRAM 10 KiB",
       "priority": 100,
       "font": {
         "mode": "append",
@@ -31,7 +31,7 @@
       "id": "fastskip",
       "feature": "fastskip",
       "name": "Options",
-      "content": "雪球战跳过: 关\nA: 切换",
+      "content": "雪球战跳过: 关\nA: 切换\nEWRAM 16 B",
       "enabled": true,
       "priority": 200,
       "entry": "fastskip/build.py",
@@ -50,9 +50,9 @@
     {
       "id": "recruit_rename",
       "feature": "recruit_rename",
-      "name": "Recruit naming",
-      "content": "Name new recruits",
-      "show_in_info": false,
+      "name": "Naming",
+      "content": "Names in SAV\nEWRAM 1 KiB\nEditor 108692 B\nIWRAM page 4 KiB",
+      "show_in_info": true,
       "priority": 300,
       "entry": "recruit_rename/build.py",
       "files": [
@@ -68,7 +68,7 @@
       "id": "cn2026",
       "feature": "cn2026",
       "name": "cn2026",
-      "content": "cn2025 汉化基础\n原汉化 美版汉化v1.1 汉化组\n汉化修订 隼\n图片汉化和打包 bhe\n拼音输入法",
+      "content": "cn2025 汉化基础\n原汉化 美版汉化v1.1 汉化组\n汉化修订 隼\n图片汉化和打包 bhe\n拼音输入法\nText and art in ROM\nPinyin task 928 B",
       "priority": 900,
       "supersedes": [
         "cn2025"
@@ -86,9 +86,9 @@
     {
       "id": "enhancements",
       "feature": "cn2026",
-      "name": "Enhancements",
-      "content": "Native Options enhancements",
-      "show_in_info": false,
+      "name": "Tuning",
+      "content": "Native Options\nNo reserved RAM",
+      "show_in_info": true,
       "priority": 950,
       "entry": "enhancements/build.py",
       "files": [
@@ -104,9 +104,9 @@
     {
       "id": "options",
       "feature": "common_options",
-      "name": "Options",
-      "content": "Shared native Options extension",
-      "show_in_info": false,
+      "name": "Setup",
+      "content": "Menu heap 7296 B\nReleased on exit\nNative SAV bits",
+      "show_in_info": true,
       "priority": 980,
       "entry": "common/options/build.py",
       "files": [
@@ -120,9 +120,9 @@
     {
       "id": "battle_speed",
       "feature": "battle_speed",
-      "name": "Battle animation speed",
-      "content": "Experimental battle sprite clocks",
-      "show_in_info": false,
+      "name": "Speed",
+      "content": "Battle animation\nNative task RAM\nNo reserved RAM",
+      "show_in_info": true,
       "priority": 960,
       "entry": "battle_speed/build.py",
       "options": "battle_speed/options.json",

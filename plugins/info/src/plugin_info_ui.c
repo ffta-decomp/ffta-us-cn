@@ -66,16 +66,34 @@ static void Box(uint8_t *pixels, unsigned left, unsigned top,
         }
 }
 
+unsigned PluginInfoSidebarFirst(unsigned selected)
+{
+    return selected < PLUGIN_INFO_SIDEBAR_ROWS ? 0 :
+        selected - PLUGIN_INFO_SIDEBAR_ROWS + 1;
+}
+
+static void SidebarArrow(uint8_t *pixels, int tip, int direction)
+{
+    int distance, x;
+    for (distance = 0; distance < 4; ++distance)
+        for (x = 43 - distance; x <= 43 + distance; ++x)
+            pixels[(tip + distance * direction) * 240 + x] = 2;
+}
+
 void PluginInfoFrame(uint8_t *pixels, unsigned selected, unsigned count)
 {
-    unsigned i, row, x;
+    unsigned i, first, row, x;
     for (i = 0; i < 240 * 160; ++i) pixels[i] = 0;
     for (i = 138 * 240; i < 160 * 240; ++i) pixels[i] = 1;
     Box(pixels, 8, 8, 79, 133);
     Box(pixels, 84, 8, 231, 133);
     if (selected >= count) return;
-    row = 27 + selected * 24;
-    if (row + 6 >= 143) return;
+    first = PluginInfoSidebarFirst(selected);
+    if (first > 0)
+        SidebarArrow(pixels, 15, 1);
+    if (count - first > PLUGIN_INFO_SIDEBAR_ROWS)
+        SidebarArrow(pixels, 124, -1);
+    row = 27 + (selected - first) * 24;
     for (i = 0; i < 7; ++i)
         for (x = 0; x <= (i <= 3 ? i : 6 - i); ++x)
             pixels[(row + i) * 240 + 16 + x] = 2;

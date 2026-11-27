@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import struct
 import subprocess
+
+import plugin_memory as memory
 import sys
 
 PLUGIN = Path(__file__).resolve().parent
@@ -126,6 +128,7 @@ def prepare(reference, image, args, output, config):
             rows.append(struct.pack('<10H', len(values), 16, *identifiers, *([0]*(8-len(values)))))
     header = output / 'bindings.h'
     data = [f'#define COMMON_OPTION_COUNT {count}',
+            f'#define OPTIONS_CONTEXT_BYTES {memory.SHARED_OPTIONS_REQUEST}u',
             f'#define COMMON_OPTION_STORAGE_MASK {sum(1 << bit for bit in used)}u',
             'typedef char CommonOptionCapacityGuard[(COMMON_OPTION_STORAGE_MASK & ~255u) ? -1 : 1];',
             f'const unsigned char CommonOptionCount = {count};', 'extern unsigned int NativeQuery(unsigned int, unsigned int);']
@@ -229,11 +232,11 @@ ASSERT(SIZEOF(.bridge)<=0x1c && SIZEOF(.text)<=0x8000, "Enhancement ROM reservat
             raise ValueError('Unexpected native Options value table')
         add('value-table', 0x912c, struct.pack('<I', symbols['EnhancedValues']))
     manifest = output/'extension.json'
-    sources = [PLUGIN/'build.py', PLUGIN/'options.c', PLUGIN/'bridges.s', PLUGIN/'options.h', header, *registration_sources]
+    sources = [PLUGIN/'build.py', PLUGIN/'options.c', PLUGIN/'bridges.s', PLUGIN/'options.h', header, Path(memory.__file__), *registration_sources]
     if args.cjk: sources.append(charset)
     manifest.write_text(json.dumps(dict(schema='build-extension-v1',reference_sha256=sha(reference),
         sources=[dict(path=str(p.resolve()),sha256=sha(p.read_bytes())) for p in sources],fragments=fragments),indent=2)+'\n')
-    return manifest, dict(id='options', settings_byte=0x2fc3, settings_mask=sum(1 << bit for bit in used),
+    return manifest, dict(id='options', menu_context_bytes=memory.SHARED_OPTIONS_REQUEST, settings_byte=0x2fc3, settings_mask=sum(1 << bit for bit in used),
         original_settings_bytes=4, storage_capacity_bits=STORAGE_BITS,
         storage_used_bits=sorted(used), storage_remaining_bits=sorted(set(range(STORAGE_BITS))-used),
         storage_layout_checked=True, rows=count, language=language,
